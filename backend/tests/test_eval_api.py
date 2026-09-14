@@ -82,3 +82,17 @@ def test_persisted_eval_run_read_endpoints(monkeypatch, tmp_path):
     assert get_response.status_code == 200
     assert get_response.json()["report"]["summary"]["total_tasks"] == 10
     assert missing_response.status_code == 404
+
+
+def test_saved_runs_html_endpoint(monkeypatch, tmp_path):
+    db_path = tmp_path / "runs.sqlite3"
+    saved = save_report(main_module.run_evaluation(), db_path=db_path)
+    monkeypatch.setattr(main_module, "list_runs", lambda: list_runs(db_path=db_path))
+    client = TestClient(app)
+
+    response = client.get("/eval/runs.html")
+
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/html")
+    assert "Saved Evaluation Runs" in response.text
+    assert f"#{saved.run_id}" in response.text

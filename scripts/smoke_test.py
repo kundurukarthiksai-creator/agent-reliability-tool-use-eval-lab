@@ -30,6 +30,10 @@ def main():
     html_response.raise_for_status()
     assert "Agent Reliability Eval Report" in html_response.text
 
+    runs_html_response = client.get("/eval/runs.html")
+    runs_html_response.raise_for_status()
+    assert "Saved Evaluation Runs" in runs_html_response.text
+
     print("smoke test passed")
 
 

@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
 from app.models import EvalReport, EvalRunMetadata, EvalRunRecord, ToolDefinition
-from app.reporting import render_eval_report_html
+from app.reporting import render_eval_report_html, render_runs_index_html
 from app.registry import build_default_registry
 from app.runner import run_evaluation
 from app.storage import get_run, list_runs, save_report
@@ -49,6 +49,11 @@ async def create_eval_run() -> EvalRunRecord:
 @app.get("/eval/runs", response_model=list[EvalRunMetadata])
 async def eval_runs() -> list[EvalRunMetadata]:
     return list_runs()
+
+
+@app.get("/eval/runs.html", response_class=HTMLResponse)
+async def eval_runs_html() -> HTMLResponse:
+    return HTMLResponse(render_runs_index_html(list_runs()))
 
 
 @app.get("/eval/runs/{run_id}", response_model=EvalRunRecord)

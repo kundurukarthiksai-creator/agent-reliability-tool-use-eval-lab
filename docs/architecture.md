@@ -51,6 +51,7 @@ API:
 - `POST /eval/run` executes all starter tasks and returns an `EvalReport`.
 - `POST /eval/runs` executes and saves an eval run to SQLite.
 - `GET /eval/runs` lists saved run summaries.
+- `GET /eval/runs.html` renders saved run summaries as HTML.
 - `GET /eval/runs/{run_id}` returns one saved run and report.
 - `GET /reports/latest.html` renders the latest deterministic report as HTML.
 
