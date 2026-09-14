@@ -353,6 +353,8 @@ def _render_task(result: TaskRunResult) -> str:
       <dd><code>{escape(result.selected_tool)}</code></dd>
       <dt>Score</dt>
       <dd>{result.score:.2f}</dd>
+      <dt>Category</dt>
+      <dd>{escape(result.failure_category)}</dd>
       <dt>Confidence</dt>
       <dd>{result.agent_plan.confidence:.2f}</dd>
       <dt>Signals</dt>

@@ -22,6 +22,7 @@ def test_wrong_tool_selection_is_reported_as_failed_task():
     assert result.selected_tool == "course_note_search"
     assert result.expected_tool == "repo_health_check"
     assert not result.passed
+    assert result.failure_category == "tool_selection"
     assert any(
         assertion.name == "tool_selection" and not assertion.passed
         for assertion in result.assertions

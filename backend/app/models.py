@@ -54,6 +54,12 @@ class TaskRunResult(BaseModel):
     assertions: list[AssertionResult]
     score: float
     passed: bool
+    failure_category: Literal[
+        "passed",
+        "tool_selection",
+        "tool_execution",
+        "output_assertion",
+    ]
 
 
 class EvalSummary(BaseModel):

@@ -11,6 +11,7 @@ def test_render_eval_report_html_contains_summary_and_trace():
     assert "repo-health-ready" in html
     assert "Tool Call Trace" in html
     assert "Pass Rate" in html
+    assert "Category" in html
 
 
 def test_render_runs_index_html_contains_saved_run(tmp_path):

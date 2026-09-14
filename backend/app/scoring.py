@@ -72,3 +72,19 @@ def score_task(
     score = passed_count / len(assertions) if assertions else 0.0
     passed = all(assertion.passed for assertion in assertions)
     return assertions, score, passed
+
+
+def classify_failure(
+    assertions: list[AssertionResult],
+    tool_result: ToolResult,
+) -> str:
+    if tool_result.status == "error":
+        return "tool_execution"
+    if all(assertion.passed for assertion in assertions):
+        return "passed"
+    if any(
+        assertion.name == "tool_selection" and not assertion.passed
+        for assertion in assertions
+    ):
+        return "tool_selection"
+    return "output_assertion"

@@ -49,6 +49,7 @@ The HTML report shows:
 
 - total tasks, passed tasks, failed tasks, and pass rate;
 - expected vs selected tool;
+- failure category;
 - planner confidence and matched signals;
 - assertion-level details;
 - tool-call trace status.
@@ -65,3 +66,14 @@ Saved runs persist:
 - full report JSON.
 
 The persistence layer does not change scoring. It only records the report produced by the deterministic runner.
+
+## Failure Categories
+
+Each task receives one failure category:
+
+- `passed`: every assertion passed;
+- `tool_selection`: the planner chose the wrong tool;
+- `tool_execution`: the selected tool raised a runtime error;
+- `output_assertion`: the right tool ran, but one or more output assertions failed.
+
+These categories make the report useful for debugging instead of only ranking runs by average score.

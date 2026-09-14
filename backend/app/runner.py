@@ -12,7 +12,7 @@ from app.models import (
     ToolResult,
 )
 from app.registry import ToolRegistry, build_default_registry
-from app.scoring import score_task
+from app.scoring import classify_failure, score_task
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -56,6 +56,7 @@ def run_task(
         )
     ]
     assertions, score, passed = score_task(task, selected_tool, tool_result)
+    failure_category = classify_failure(assertions, tool_result)
     return TaskRunResult(
         task_id=task.id,
         title=task.title,
@@ -67,6 +68,7 @@ def run_task(
         assertions=assertions,
         score=score,
         passed=passed,
+        failure_category=failure_category,
     )
 
 

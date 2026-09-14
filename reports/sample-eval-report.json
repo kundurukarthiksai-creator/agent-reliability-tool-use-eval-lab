@@ -75,7 +75,8 @@
         }
       ],
       "score": 1.0,
-      "passed": true
+      "passed": true,
+      "failure_category": "passed"
     },
     {
       "task_id": "repo-health-unverified",
@@ -145,7 +146,8 @@
         }
       ],
       "score": 1.0,
-      "passed": true
+      "passed": true,
+      "failure_category": "passed"
     },
     {
       "task_id": "course-note-search",
@@ -217,7 +219,8 @@
         }
       ],
       "score": 1.0,
-      "passed": true
+      "passed": true,
+      "failure_category": "passed"
     },
     {
       "task_id": "application-tracker-update",
@@ -295,7 +298,8 @@
         }
       ],
       "score": 1.0,
-      "passed": true
+      "passed": true,
+      "failure_category": "passed"
     },
     {
       "task_id": "ambiguous-application-event",
@@ -352,7 +356,8 @@
         }
       ],
       "score": 1.0,
-      "passed": true
+      "passed": true,
+      "failure_category": "passed"
     },
     {
       "task_id": "repo-health-missing-repo",
@@ -416,7 +421,8 @@
         }
       ],
       "score": 1.0,
-      "passed": true
+      "passed": true,
+      "failure_category": "passed"
     },
     {
       "task_id": "course-note-empty-query",
@@ -470,7 +476,8 @@
         }
       ],
       "score": 1.0,
-      "passed": true
+      "passed": true,
+      "failure_category": "passed"
     },
     {
       "task_id": "application-unknown-event",
@@ -545,7 +552,8 @@
         }
       ],
       "score": 1.0,
-      "passed": true
+      "passed": true,
+      "failure_category": "passed"
     },
     {
       "task_id": "course-note-deepmind-foundations",
@@ -613,7 +621,8 @@
         }
       ],
       "score": 1.0,
-      "passed": true
+      "passed": true,
+      "failure_category": "passed"
     },
     {
       "task_id": "repo-health-ai-linkedin",
@@ -683,7 +692,8 @@
         }
       ],
       "score": 1.0,
-      "passed": true
+      "passed": true,
+      "failure_category": "passed"
     }
   ]
 }
