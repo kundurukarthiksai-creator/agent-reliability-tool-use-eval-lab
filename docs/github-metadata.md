@@ -3,7 +3,7 @@
 Suggested repository description:
 
 ```text
-Deterministic evaluation lab for tool-using AI agents with traces, scoring, HTML reports, and SQLite run history.
+Deterministic tool-use agent eval lab with traces, quality gates, HTML reports, OpenAPI export, and a no-key static demo.
 ```
 
 Repository homepage:

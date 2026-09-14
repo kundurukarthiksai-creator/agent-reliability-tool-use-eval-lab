@@ -41,7 +41,7 @@ Then inspect these artifacts in order:
 - FastAPI backend.
 - Deterministic rule-based planner.
 - Tool registry with 6 local tools.
-- 26 starter evaluation tasks.
+- 26 deterministic evaluation tasks.
 - Assertion-level scoring.
 - Strict quality gate for deterministic eval regressions.
 - JSON report output.
@@ -206,7 +206,7 @@ docs/            architecture and methodology notes
 
 - The default planner is rule-based, not an LLM planner.
 - OpenAI planner comparison is manual and disabled unless environment variables are set.
-- The starter eval set is small while tool contracts stabilize.
+- The eval corpus is intentionally focused; broader real-world generalization requires more task families.
 - Fixtures are synthetic/public-safe examples.
 - CI proves deterministic behavior, not broad real-world agent generalization.
 - Saved-run comparison needs at least two persisted runs.

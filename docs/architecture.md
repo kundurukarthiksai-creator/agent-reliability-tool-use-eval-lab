@@ -58,7 +58,7 @@ API:
 - `GET /eval/tasks` lists deterministic evaluation tasks as JSON.
 - `GET /eval/tasks/coverage` summarizes task coverage by expected tool as JSON.
 - `GET /eval/tasks.html` renders task coverage as HTML.
-- `POST /eval/run` executes all starter tasks and returns an `EvalReport`.
+- `POST /eval/run` executes all deterministic tasks and returns an `EvalReport`.
 - `POST /eval/runs` executes and saves an eval run to SQLite.
 - `GET /eval/runs` lists saved run summaries.
 - `GET /eval/runs.html` renders saved run summaries as HTML.
