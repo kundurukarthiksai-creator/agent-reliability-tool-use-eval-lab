@@ -30,6 +30,7 @@ Static demo: https://kundurukarthiksai-creator.github.io/agent-reliability-tool-
 - JSON report output.
 - HTML report renderer and report API route.
 - Task catalog API and HTML view.
+- Static case-study walkthrough for reviewers.
 - Deliberate failure demo for wrong tool selection.
 - SQLite persistence for saved runs.
 - Saved-run comparison API and HTML view.
@@ -150,9 +151,11 @@ reports/run-trends-demo.json
 reports/run-trends-demo.html
 docs/openapi.json
 site/index.html
+site/case-study.html
 ```
 
 The dashboard links the report, run history, run comparison, trends, and planner comparison views.
+The case-study page explains what the project proves, how to inspect it, and its limits.
 The task catalog shows all deterministic task fixtures and the expected tool for each task.
 The quality gate fails when deterministic eval results drop below configured pass-rate, score, task-count, or failure-category thresholds.
 The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
@@ -203,6 +206,7 @@ docs/            architecture and methodology notes
 - `docs/architecture.md`
 - `docs/evaluation-methodology.md`
 - `docs/commands.md`
+- `docs/case-study.md`
 - `docs/demo-walkthrough.md`
 - `docs/schemas.md`
 - `docs/optional-openai-planner.md`

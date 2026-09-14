@@ -56,11 +56,13 @@ def main() -> None:
 
     (SITE_DIR / ".nojekyll").write_text("", encoding="utf-8")
     (SITE_DIR / "index.html").write_text(render_index(), encoding="utf-8")
+    (SITE_DIR / "case-study.html").write_text(render_case_study(), encoding="utf-8")
     print(f"built {SITE_DIR}")
 
 
 def render_index() -> str:
     links = [
+        ("Case Study", "case-study.html", "Read the reviewer-friendly project walkthrough."),
         ("Dashboard", "reports/dashboard.html", "Start with the portfolio demo index."),
         ("Task Catalog", "reports/task-catalog.html", "Inspect all 22 deterministic tasks."),
         ("Eval Report", "reports/sample-eval-report.html", "Review traces, assertions, and scoring."),
@@ -218,6 +220,161 @@ def render_index() -> str:
     </section>
     <section class="preview" aria-label="Report screenshot">
       <img src="assets/eval-report.png" alt="HTML evaluation report screenshot">
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+
+def render_case_study() -> str:
+    return """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Reliability Eval Lab Case Study</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #171a21;
+      --muted: #566173;
+      --border: #d9e0ea;
+      --accent: #0f5db8;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    main {
+      width: 100%;
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 36px 20px 52px;
+    }
+    a { color: var(--accent); }
+    .back {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .summary {
+      max-width: 780px;
+      margin: 16px 0 30px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 22px;
+      margin-top: 14px;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    p, li {
+      color: var(--muted);
+      line-height: 1.58;
+      overflow-wrap: anywhere;
+    }
+    a {
+      overflow-wrap: anywhere;
+    }
+    ul, ol {
+      margin: 10px 0 0;
+      padding-left: 22px;
+    }
+    strong {
+      color: var(--text);
+    }
+    @media (max-width: 520px) {
+      main {
+        max-width: 390px;
+        margin: 0;
+        padding: 28px 16px 42px;
+      }
+      h1 { font-size: 26px; line-height: 1.15; }
+      .summary { font-size: 16px; }
+      section { padding: 18px; }
+      p, li { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="index.html">Back to demo</a>
+    <h1>Agent Reliability Eval Lab Case Study</h1>
+    <p class="summary">A quick reviewer guide for understanding what the project proves, where to inspect the evidence, and what it intentionally does not claim.</p>
+
+    <section>
+      <h2>Why This Project Exists</h2>
+      <p>Most agent demos show a fluent answer. This project asks a narrower question: did the agent choose the right tool, call it with structured input, and produce output that can be checked?</p>
+      <p>The default path is deterministic and runs without API keys, paid model calls, or private data.</p>
+    </section>
+
+    <section>
+      <h2>What It Evaluates</h2>
+      <ul>
+        <li>Tool selection across <strong>22</strong> public-safe tasks.</li>
+        <li>Tool-call traces for <strong>5</strong> deterministic local tools.</li>
+        <li>Assertion-level scoring for expected fields and values.</li>
+        <li>Failure categories for tool selection, tool execution, and output assertions.</li>
+        <li>Saved-run comparison and trend views for regression visibility.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>How To Inspect It</h2>
+      <ol>
+        <li><a href="reports/task-catalog.html">Task catalog</a>: coverage and expected tools.</li>
+        <li><a href="reports/sample-eval-report.html">Eval report</a>: planner traces, selected tools, assertion results, and score.</li>
+        <li><a href="reports/failure-catalog.html">Failure catalog</a>: deliberate failure categories.</li>
+        <li><a href="reports/quality-gate.json">Quality gate</a>: the strict regression threshold used by CI.</li>
+        <li><a href="docs/openapi.json">OpenAPI contract</a>: route schema for the FastAPI app.</li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>What This Proves</h2>
+      <ul>
+        <li>The project evaluates tool use instead of only reading final text.</li>
+        <li>The reports make failure causes visible.</li>
+        <li>CI guards deterministic reliability behavior without secrets.</li>
+        <li>Optional LLM planner experiments can be added without replacing the baseline.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Honest Limits</h2>
+      <ul>
+        <li>The default planner is rule-based.</li>
+        <li>Fixtures are synthetic and public-safe.</li>
+        <li>CI proves deterministic behavior on this task set, not universal agent reliability.</li>
+        <li>Optional LLM planner comparison is manual and disabled by default.</li>
+      </ul>
     </section>
   </main>
 </body>

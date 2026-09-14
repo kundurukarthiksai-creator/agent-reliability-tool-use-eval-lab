@@ -24,6 +24,7 @@ This verifies:
 - saved-run comparison demo;
 - saved-run trend demo;
 - schema export;
+- OpenAPI export;
 - static demo build;
 - static demo link/content check.
 
@@ -31,15 +32,17 @@ This verifies:
 
 1. `reports/dashboard.html`
    - Entry point for the report, task catalog, saved runs, comparison, trends, and planner comparison.
-2. `reports/task-catalog.html`
+2. `site/case-study.html`
+   - Reviewer-focused explanation of what the project proves, where to inspect evidence, and what the limits are.
+3. `reports/task-catalog.html`
    - Shows all 22 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
-3. `reports/sample-eval-report.html`
+4. `reports/sample-eval-report.html`
    - Shows planner traces, selected tools, scores, assertions, and failure categories.
-4. `reports/failure-catalog.html`
+5. `reports/failure-catalog.html`
    - Shows deliberate `tool_selection`, `tool_execution`, and `output_assertion` failures.
-5. `reports/planner-comparison.md`
+6. `reports/planner-comparison.md`
    - Compares the deterministic planner against a deliberately weak baseline.
-6. `site/index.html`
+7. `site/index.html`
    - Local build of the static Pages demo.
 
 ## Local API Demo
