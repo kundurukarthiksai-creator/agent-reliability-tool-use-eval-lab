@@ -40,6 +40,12 @@ Run tests:
 .\.venv\Scripts\python -m pytest backend\tests -q
 ```
 
+Run full local verification:
+
+```powershell
+.\.venv\Scripts\python scripts\check_all.py
+```
+
 Run the evaluation:
 
 ```powershell
@@ -136,4 +142,5 @@ docs/            architecture and methodology notes
 - `STEERING.md`
 - `docs/architecture.md`
 - `docs/evaluation-methodology.md`
+- `docs/commands.md`
 - `docs/github-metadata.md`
