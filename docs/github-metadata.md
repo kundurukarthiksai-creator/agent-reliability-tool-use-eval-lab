@@ -3,7 +3,7 @@
 Suggested repository description:
 
 ```text
-Deterministic tool-use agent eval lab with traces, quality gates, artifact checks, OpenAPI export, and a no-key static demo.
+Deterministic tool-use agent eval lab with traces, quality gates, artifact/tool-safety checks, OpenAPI export, and a no-key static demo.
 ```
 
 Repository homepage:
@@ -26,6 +26,7 @@ pytest
 developer-tools
 reliability
 artifact-consistency
+tool-safety
 ci
 github-pages
 openapi

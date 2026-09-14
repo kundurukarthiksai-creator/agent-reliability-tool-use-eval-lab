@@ -59,6 +59,7 @@ Then inspect these artifacts in order:
 - Static case-study walkthrough for reviewers.
 - Static interview walkthrough for technical explanation practice.
 - Static architecture flow for reviewer inspection.
+- Tool-safety proof audit for schemas, permission gates, approvals, dry-run behavior, audit logs, tests, CI, and public-safe limits.
 - Deliberate failure demo for wrong tool selection.
 - SQLite persistence for saved runs.
 - Saved-run comparison API and HTML view.
