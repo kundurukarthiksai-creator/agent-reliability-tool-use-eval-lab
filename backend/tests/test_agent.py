@@ -30,3 +30,18 @@ def test_agent_selects_application_tracker_for_job_event():
     plan = RuleBasedAgent().plan(task, build_default_registry().list_tools())
 
     assert plan.selected_tool == "application_tracker_update"
+
+
+def test_agent_selects_runbook_lookup_for_incident_triage():
+    task = EvaluationTask(
+        id="incident-runbook",
+        title="Find the CI failure runbook",
+        description="A user needs incident triage steps for a GitHub Actions workflow failure.",
+        expected_tool="course_note_search",
+        input={"service": "ci", "symptom": "schema export workflow failed"},
+    )
+
+    plan = RuleBasedAgent().plan(task, build_default_registry().list_tools())
+
+    assert plan.selected_tool == "runbook_lookup"
+    assert "runbook" in plan.matched_signals

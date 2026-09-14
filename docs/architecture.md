@@ -38,6 +38,7 @@ backend/app/runner.py
         |       +--> repo_health_check
         |       +--> course_note_search
         |       +--> application_tracker_update
+        |       +--> runbook_lookup
         |
         +--> backend/app/scoring.py
         |

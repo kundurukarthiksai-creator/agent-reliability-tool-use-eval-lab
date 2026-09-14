@@ -20,8 +20,8 @@ The default path is intentionally CI-safe: no API keys, no paid model calls, and
 
 - FastAPI backend.
 - Deterministic rule-based planner.
-- Tool registry with 3 local tools.
-- 15 starter evaluation tasks.
+- Tool registry with 4 local tools.
+- 18 starter evaluation tasks.
 - Assertion-level scoring.
 - JSON report output.
 - HTML report renderer and report API route.
@@ -151,9 +151,8 @@ docs/            architecture and methodology notes
 ## Roadmap
 
 - Add more tools and harder task fixtures.
-- Add comparison mode for optional LLM-backed planners.
 - Add optional LLM-backed planner comparison behind environment variables.
-- Add another deterministic tool family beyond the initial 3 tools.
+- Add a lightweight docs/demo deployment if it can stay free of secrets and recurring cost.
 
 ## Docs
 

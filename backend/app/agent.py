@@ -39,6 +39,22 @@ SIGNALS_BY_TOOL = {
         "interview",
         "rejected",
     ],
+    "runbook_lookup": [
+        "runbook",
+        "incident",
+        "triage",
+        "on-call",
+        "oncall",
+        "latency",
+        "timeout",
+        "ci failure",
+        "github actions",
+        "workflow",
+        "database",
+        "persistence",
+        "saved runs",
+        "escalation",
+    ],
 }
 
 

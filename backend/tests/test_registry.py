@@ -10,5 +10,5 @@ def test_default_registry_contains_mvp_tools():
         "repo_health_check",
         "course_note_search",
         "application_tracker_update",
+        "runbook_lookup",
     }
-

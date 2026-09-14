@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_tasks": 15,
-    "passed_tasks": 15,
+    "total_tasks": 18,
+    "passed_tasks": 18,
     "failed_tasks": 0,
     "average_score": 1.0
   },
@@ -1119,6 +1119,276 @@
           "name": "must_equal:needs_clarification",
           "passed": true,
           "detail": "expected=False; actual=False"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "runbook-ci-failure",
+      "title": "Find the CI failure runbook",
+      "expected_tool": "runbook_lookup",
+      "selected_tool": "runbook_lookup",
+      "agent_plan": {
+        "selected_tool": "runbook_lookup",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "runbook",
+          "incident",
+          "triage",
+          "ci failure",
+          "github actions",
+          "workflow"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "runbook_lookup",
+          "payload": {
+            "service": "ci",
+            "symptom": "GitHub Actions workflow failed after schema export"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "runbook_lookup",
+        "output": {
+          "query": "ci github actions workflow failed after schema export",
+          "matches": [
+            {
+              "runbook_id": "ci-failure-001",
+              "service": "ci",
+              "title": "GitHub Actions CI failure triage",
+              "severity": "medium",
+              "score": 9,
+              "steps": [
+                "Open the failing workflow run and identify the first failed step.",
+                "Reproduce the failed command locally with the project virtual environment.",
+                "Check whether generated artifacts are stale or missing.",
+                "Push a focused fix and wait for the replacement CI run."
+              ],
+              "escalation": "dev-tools-oncall"
+            }
+          ],
+          "match_count": 1,
+          "needs_clarification": false
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=runbook_lookup; selected=runbook_lookup"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:needs_clarification",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:matches.0.runbook_id",
+          "passed": true,
+          "detail": "expected='ci-failure-001'; actual='ci-failure-001'"
+        },
+        {
+          "name": "must_equal:matches.0.escalation",
+          "passed": true,
+          "detail": "expected='dev-tools-oncall'; actual='dev-tools-oncall'"
+        },
+        {
+          "name": "min_value:match_count",
+          "passed": true,
+          "detail": "expected >= 1; actual=1"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "runbook-storage-persistence",
+      "title": "Find the saved-runs persistence runbook",
+      "expected_tool": "runbook_lookup",
+      "selected_tool": "runbook_lookup",
+      "agent_plan": {
+        "selected_tool": "runbook_lookup",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "runbook",
+          "incident",
+          "database",
+          "persistence",
+          "saved runs"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "runbook_lookup",
+          "payload": {
+            "service": "eval-storage",
+            "symptom": "SQLite database persistence and saved runs are failing"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "runbook_lookup",
+        "output": {
+          "query": "eval-storage sqlite database persistence and saved runs are failing",
+          "matches": [
+            {
+              "runbook_id": "eval-storage-001",
+              "service": "eval-storage",
+              "title": "Evaluation run persistence triage",
+              "severity": "high",
+              "score": 11,
+              "steps": [
+                "Verify the SQLite data directory is writable.",
+                "Confirm database initialization runs before reads and writes.",
+                "Inspect disk space and file-locking errors.",
+                "Check whether the app is pointing at the expected database path."
+              ],
+              "escalation": "backend-oncall"
+            },
+            {
+              "runbook_id": "ci-failure-001",
+              "service": "ci",
+              "title": "GitHub Actions CI failure triage",
+              "severity": "medium",
+              "score": 3,
+              "steps": [
+                "Open the failing workflow run and identify the first failed step.",
+                "Reproduce the failed command locally with the project virtual environment.",
+                "Check whether generated artifacts are stale or missing.",
+                "Push a focused fix and wait for the replacement CI run."
+              ],
+              "escalation": "dev-tools-oncall"
+            },
+            {
+              "runbook_id": "api-latency-001",
+              "service": "agent-api",
+              "title": "Agent API latency triage",
+              "severity": "medium",
+              "score": 2,
+              "steps": [
+                "Check the health endpoint and recent error rate.",
+                "Review recent deployments and configuration changes.",
+                "Inspect database latency and connection saturation.",
+                "Scale workers if request queue depth is elevated."
+              ],
+              "escalation": "platform-oncall"
+            }
+          ],
+          "match_count": 3,
+          "needs_clarification": false
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=runbook_lookup; selected=runbook_lookup"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:needs_clarification",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:matches.0.runbook_id",
+          "passed": true,
+          "detail": "expected='eval-storage-001'; actual='eval-storage-001'"
+        },
+        {
+          "name": "must_equal:matches.0.severity",
+          "passed": true,
+          "detail": "expected='high'; actual='high'"
+        },
+        {
+          "name": "min_value:match_count",
+          "passed": true,
+          "detail": "expected >= 1; actual=3"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "runbook-missing-symptom",
+      "title": "Ask for clarification before runbook lookup",
+      "expected_tool": "runbook_lookup",
+      "selected_tool": "runbook_lookup",
+      "agent_plan": {
+        "selected_tool": "runbook_lookup",
+        "confidence": 0.69,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "runbook",
+          "incident"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "runbook_lookup",
+          "payload": {},
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "runbook_lookup",
+        "output": {
+          "query": "",
+          "matches": [],
+          "match_count": 0,
+          "needs_clarification": true
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=runbook_lookup; selected=runbook_lookup"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:needs_clarification",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:match_count",
+          "passed": true,
+          "detail": "expected=0; actual=0"
+        },
+        {
+          "name": "must_equal:matches",
+          "passed": true,
+          "detail": "expected=[]; actual=[]"
         }
       ],
       "score": 1.0,

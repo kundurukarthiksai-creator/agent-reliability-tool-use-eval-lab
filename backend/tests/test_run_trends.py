@@ -8,8 +8,8 @@ def test_build_run_trend_sorts_runs_and_reports_deltas():
             run_id=2,
             created_at="2026-09-14T01:00:00+00:00",
             summary=EvalSummary(
-                total_tasks=15,
-                passed_tasks=15,
+                total_tasks=18,
+                passed_tasks=18,
                 failed_tasks=0,
                 average_score=1.0,
             ),
@@ -18,10 +18,10 @@ def test_build_run_trend_sorts_runs_and_reports_deltas():
             run_id=1,
             created_at="2026-09-14T00:00:00+00:00",
             summary=EvalSummary(
-                total_tasks=15,
-                passed_tasks=13,
+                total_tasks=18,
+                passed_tasks=16,
                 failed_tasks=2,
-                average_score=0.8667,
+                average_score=0.8889,
             ),
         ),
     ]
@@ -33,9 +33,9 @@ def test_build_run_trend_sorts_runs_and_reports_deltas():
     assert trend.latest_run_id == 2
     assert trend.passed_tasks_delta == 2
     assert trend.failed_tasks_delta == -2
-    assert trend.average_score_delta == 0.1333
+    assert trend.average_score_delta == 0.1111
     assert trend.best_pass_rate == 100.0
-    assert trend.worst_pass_rate == 86.7
+    assert trend.worst_pass_rate == 88.9
 
 
 def test_render_run_trend_html_contains_empty_state():

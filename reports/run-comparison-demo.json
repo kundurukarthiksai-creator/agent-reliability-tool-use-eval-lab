@@ -6,10 +6,10 @@
   "total_tasks_delta": 0,
   "passed_tasks_delta": 1,
   "failed_tasks_delta": -1,
-  "average_score_delta": 0.0667,
+  "average_score_delta": 0.0556,
   "status_counts": {
     "recovery": 1,
-    "unchanged_pass": 14
+    "unchanged_pass": 17
   },
   "task_comparisons": [
     {
@@ -183,6 +183,42 @@
     {
       "task_id": "repo-health-wrapper-not-ready",
       "title": "Reject a thin wrapper repo before profile promotion",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "runbook-ci-failure",
+      "title": "Find the CI failure runbook",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "runbook-missing-symptom",
+      "title": "Ask for clarification before runbook lookup",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "runbook-storage-persistence",
+      "title": "Find the saved-runs persistence runbook",
       "status": "unchanged_pass",
       "previous_passed": true,
       "current_passed": true,

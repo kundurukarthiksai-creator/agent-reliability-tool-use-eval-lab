@@ -5,6 +5,7 @@ from app.models import ToolDefinition
 from app.tools.application_tracker import application_tracker_update
 from app.tools.course_notes import course_note_search
 from app.tools.repo_health import repo_health_check
+from app.tools.runbooks import runbook_lookup
 
 
 ToolHandler = Callable[[dict[str, Any]], dict[str, Any]]
@@ -50,5 +51,9 @@ def build_default_registry() -> ToolRegistry:
         "Normalizes a job-application event into tracker-ready fields.",
         application_tracker_update,
     )
+    registry.register(
+        "runbook_lookup",
+        "Finds deterministic incident runbooks for service symptoms.",
+        runbook_lookup,
+    )
     return registry
-

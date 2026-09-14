@@ -93,10 +93,10 @@
       "tool_result": {
         "tool_name": "missing_tool",
         "output": {
-          "error": "\"Unknown tool 'missing_tool'. Available tools: application_tracker_update, course_note_search, repo_health_check\""
+          "error": "\"Unknown tool 'missing_tool'. Available tools: application_tracker_update, course_note_search, repo_health_check, runbook_lookup\""
         },
         "status": "error",
-        "error": "\"Unknown tool 'missing_tool'. Available tools: application_tracker_update, course_note_search, repo_health_check\""
+        "error": "\"Unknown tool 'missing_tool'. Available tools: application_tracker_update, course_note_search, repo_health_check, runbook_lookup\""
       },
       "assertions": [
         {
@@ -107,7 +107,7 @@
         {
           "name": "tool_status",
           "passed": false,
-          "detail": "status=error; error='\"Unknown tool \\'missing_tool\\'. Available tools: application_tracker_update, course_note_search, repo_health_check\"'"
+          "detail": "status=error; error='\"Unknown tool \\'missing_tool\\'. Available tools: application_tracker_update, course_note_search, repo_health_check, runbook_lookup\"'"
         }
       ],
       "score": 0.5,

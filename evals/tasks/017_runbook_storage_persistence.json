@@ -1,0 +1,20 @@
+{
+  "id": "runbook-storage-persistence",
+  "title": "Find the saved-runs persistence runbook",
+  "description": "A user asks for an incident runbook because SQLite saved run history is not persisting evaluation runs.",
+  "expected_tool": "runbook_lookup",
+  "input": {
+    "service": "eval-storage",
+    "symptom": "SQLite database persistence and saved runs are failing"
+  },
+  "expectations": {
+    "must_equal": {
+      "needs_clarification": false,
+      "matches.0.runbook_id": "eval-storage-001",
+      "matches.0.severity": "high"
+    },
+    "min_value": {
+      "match_count": 1
+    }
+  }
+}

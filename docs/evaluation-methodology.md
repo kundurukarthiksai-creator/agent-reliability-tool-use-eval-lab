@@ -20,8 +20,9 @@ The project measures whether an agent uses the correct tool and produces support
 3. Job tracker event -> `application_tracker_update`
 4. Ambiguous input -> refusal/clarification behavior
 5. Final report generation -> structured summary
+6. Incident/runbook lookup -> `runbook_lookup`
 
-The current starter corpus has 15 tasks, including adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, and missing repository fixtures.
+The current starter corpus has 18 tasks, including adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, missing repository fixtures, and incident runbook lookup.
 
 ## Phase 1 Scoring
 

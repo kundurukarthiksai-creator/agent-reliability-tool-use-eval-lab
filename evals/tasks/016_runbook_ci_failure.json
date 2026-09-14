@@ -1,0 +1,20 @@
+{
+  "id": "runbook-ci-failure",
+  "title": "Find the CI failure runbook",
+  "description": "A user asks for the incident runbook to triage a GitHub Actions workflow failure after schema export.",
+  "expected_tool": "runbook_lookup",
+  "input": {
+    "service": "ci",
+    "symptom": "GitHub Actions workflow failed after schema export"
+  },
+  "expectations": {
+    "must_equal": {
+      "needs_clarification": false,
+      "matches.0.runbook_id": "ci-failure-001",
+      "matches.0.escalation": "dev-tools-oncall"
+    },
+    "min_value": {
+      "match_count": 1
+    }
+  }
+}

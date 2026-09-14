@@ -1,0 +1,44 @@
+[
+  {
+    "id": "api-latency-001",
+    "service": "agent-api",
+    "title": "Agent API latency triage",
+    "severity": "medium",
+    "symptoms": ["latency", "timeout", "slow api", "elevated response time"],
+    "steps": [
+      "Check the health endpoint and recent error rate.",
+      "Review recent deployments and configuration changes.",
+      "Inspect database latency and connection saturation.",
+      "Scale workers if request queue depth is elevated."
+    ],
+    "escalation": "platform-oncall"
+  },
+  {
+    "id": "eval-storage-001",
+    "service": "eval-storage",
+    "title": "Evaluation run persistence triage",
+    "severity": "high",
+    "symptoms": ["sqlite", "database", "persistence", "run history", "saved runs"],
+    "steps": [
+      "Verify the SQLite data directory is writable.",
+      "Confirm database initialization runs before reads and writes.",
+      "Inspect disk space and file-locking errors.",
+      "Check whether the app is pointing at the expected database path."
+    ],
+    "escalation": "backend-oncall"
+  },
+  {
+    "id": "ci-failure-001",
+    "service": "ci",
+    "title": "GitHub Actions CI failure triage",
+    "severity": "medium",
+    "symptoms": ["github actions", "ci failure", "workflow", "tests failing", "schema export"],
+    "steps": [
+      "Open the failing workflow run and identify the first failed step.",
+      "Reproduce the failed command locally with the project virtual environment.",
+      "Check whether generated artifacts are stale or missing.",
+      "Push a focused fix and wait for the replacement CI run."
+    ],
+    "escalation": "dev-tools-oncall"
+  }
+]

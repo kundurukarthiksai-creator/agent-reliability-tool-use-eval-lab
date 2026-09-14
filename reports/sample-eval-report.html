@@ -185,8 +185,8 @@
     </header>
 
     <section class="summary" aria-label="Evaluation summary">
-      <div class="metric"><span>Total Tasks</span><strong>15</strong></div>
-      <div class="metric"><span>Passed</span><strong>15</strong></div>
+      <div class="metric"><span>Total Tasks</span><strong>18</strong></div>
+      <div class="metric"><span>Passed</span><strong>18</strong></div>
       <div class="metric"><span>Failed</span><strong>0</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100.0%</strong></div>
     </section>
@@ -770,6 +770,125 @@
       <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
       <h2>Tool Call Trace</h2>
       <p><code>course_note_search</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Find the CI failure runbook</strong>
+      <p>runbook-ci-failure</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>runbook_lookup</code></dd>
+      <dt>Selected</dt>
+      <dd><code>runbook_lookup</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>runbook, incident, triage, ci failure, github actions, workflow</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=runbook_lookup; selected=runbook_lookup</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:needs_clarification: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:matches.0.runbook_id: expected=&#x27;ci-failure-001&#x27;; actual=&#x27;ci-failure-001&#x27;</li>
+<li><strong>pass</strong> must_equal:matches.0.escalation: expected=&#x27;dev-tools-oncall&#x27;; actual=&#x27;dev-tools-oncall&#x27;</li>
+<li><strong>pass</strong> min_value:match_count: expected &gt;= 1; actual=1</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>runbook_lookup</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Find the saved-runs persistence runbook</strong>
+      <p>runbook-storage-persistence</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>runbook_lookup</code></dd>
+      <dt>Selected</dt>
+      <dd><code>runbook_lookup</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>runbook, incident, database, persistence, saved runs</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=runbook_lookup; selected=runbook_lookup</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:needs_clarification: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:matches.0.runbook_id: expected=&#x27;eval-storage-001&#x27;; actual=&#x27;eval-storage-001&#x27;</li>
+<li><strong>pass</strong> must_equal:matches.0.severity: expected=&#x27;high&#x27;; actual=&#x27;high&#x27;</li>
+<li><strong>pass</strong> min_value:match_count: expected &gt;= 1; actual=3</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>runbook_lookup</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Ask for clarification before runbook lookup</strong>
+      <p>runbook-missing-symptom</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>runbook_lookup</code></dd>
+      <dt>Selected</dt>
+      <dd><code>runbook_lookup</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.69</dd>
+      <dt>Signals</dt>
+      <dd>runbook, incident</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=runbook_lookup; selected=runbook_lookup</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:needs_clarification: expected=True; actual=True</li>
+<li><strong>pass</strong> must_equal:match_count: expected=0; actual=0</li>
+<li><strong>pass</strong> must_equal:matches: expected=[]; actual=[]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>runbook_lookup</code> returned <code>ok</code>.</p>
     </div>
   </div>
 </article>

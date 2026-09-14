@@ -9,7 +9,7 @@ This folder contains deterministic evaluation fixtures and tasks.
 
 ## Tasks
 
-The current starter set has 15 tasks, including happy-path checks and adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, and missing repository fixtures.
+The current starter set has 18 tasks, including happy-path checks and adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, missing repository fixtures, and incident runbook lookup.
 
 Each task is a JSON object with:
 

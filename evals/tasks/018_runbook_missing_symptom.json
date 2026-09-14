@@ -1,0 +1,14 @@
+{
+  "id": "runbook-missing-symptom",
+  "title": "Ask for clarification before runbook lookup",
+  "description": "A user asks for a runbook but provides no service, incident, symptom, or failure detail.",
+  "expected_tool": "runbook_lookup",
+  "input": {},
+  "expectations": {
+    "must_equal": {
+      "needs_clarification": true,
+      "match_count": 0,
+      "matches": []
+    }
+  }
+}
