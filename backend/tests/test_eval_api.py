@@ -33,3 +33,14 @@ def test_eval_run_endpoint_returns_passing_report():
     assert len(payload["results"]) == 5
     assert all("agent_plan" in result for result in payload["results"])
     assert all(result["trace"] for result in payload["results"])
+
+
+def test_latest_html_report_endpoint_returns_report_page():
+    client = TestClient(app)
+
+    response = client.get("/reports/latest.html")
+
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/html")
+    assert "Agent Reliability Eval Report" in response.text
+    assert "Tool Call Trace" in response.text

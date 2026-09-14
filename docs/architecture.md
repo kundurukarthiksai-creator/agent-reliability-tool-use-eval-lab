@@ -49,6 +49,7 @@ API:
 
 - `GET /tools` lists registered deterministic tools.
 - `POST /eval/run` executes all starter tasks and returns an `EvalReport`.
+- `GET /reports/latest.html` renders the latest deterministic report as HTML.
 
 CLI:
 

@@ -26,6 +26,10 @@ def main():
     assert report["summary"]["total_tasks"] == 5
     assert report["summary"]["failed_tasks"] == 0
 
+    html_response = client.get("/reports/latest.html")
+    html_response.raise_for_status()
+    assert "Agent Reliability Eval Report" in html_response.text
+
     print("smoke test passed")
 
 

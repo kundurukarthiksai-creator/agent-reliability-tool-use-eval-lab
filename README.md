@@ -101,6 +101,7 @@ Useful routes:
 GET  /health
 GET  /tools
 POST /eval/run
+GET  /reports/latest.html
 ```
 
 ## Plan

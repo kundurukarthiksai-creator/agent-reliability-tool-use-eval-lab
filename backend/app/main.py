@@ -1,7 +1,9 @@
 from fastapi import FastAPI
+from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
 from app.models import EvalReport, ToolDefinition
+from app.reporting import render_eval_report_html
 from app.registry import build_default_registry
 from app.runner import run_evaluation
 
@@ -36,3 +38,8 @@ async def tools() -> list[ToolDefinition]:
 @app.post("/eval/run", response_model=EvalReport)
 async def run_eval() -> EvalReport:
     return run_evaluation()
+
+
+@app.get("/reports/latest.html", response_class=HTMLResponse)
+async def latest_html_report() -> HTMLResponse:
+    return HTMLResponse(render_eval_report_html(run_evaluation()))
