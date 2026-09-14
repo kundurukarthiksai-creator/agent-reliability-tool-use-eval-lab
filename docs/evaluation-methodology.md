@@ -54,3 +54,14 @@ The HTML report shows:
 - tool-call trace status.
 
 This report should make failures understandable without requiring a reader to inspect raw JSON first.
+
+## Saved Runs
+
+Saved runs persist:
+
+- creation timestamp;
+- total, passed, and failed task counts;
+- average score;
+- full report JSON.
+
+The persistence layer does not change scoring. It only records the report produced by the deterministic runner.

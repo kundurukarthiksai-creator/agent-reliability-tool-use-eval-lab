@@ -109,6 +109,9 @@ Useful routes:
 GET  /health
 GET  /tools
 POST /eval/run
+POST /eval/runs
+GET  /eval/runs
+GET  /eval/runs/{run_id}
 GET  /reports/latest.html
 ```
 

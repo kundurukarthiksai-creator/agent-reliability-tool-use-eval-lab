@@ -5,6 +5,8 @@ __pycache__/
 .env
 .env.*
 !.env.example
+data/*.db
+data/*.sqlite
+data/*.sqlite3
 .DS_Store
 Thumbs.db
-

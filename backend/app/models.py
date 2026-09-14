@@ -66,3 +66,16 @@ class EvalSummary(BaseModel):
 class EvalReport(BaseModel):
     summary: EvalSummary
     results: list[TaskRunResult]
+
+
+class EvalRunMetadata(BaseModel):
+    run_id: int
+    created_at: str
+    summary: EvalSummary
+
+
+class EvalRunRecord(BaseModel):
+    run_id: int
+    created_at: str
+    summary: EvalSummary
+    report: EvalReport

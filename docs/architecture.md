@@ -49,6 +49,9 @@ API:
 
 - `GET /tools` lists registered deterministic tools.
 - `POST /eval/run` executes all starter tasks and returns an `EvalReport`.
+- `POST /eval/runs` executes and saves an eval run to SQLite.
+- `GET /eval/runs` lists saved run summaries.
+- `GET /eval/runs/{run_id}` returns one saved run and report.
 - `GET /reports/latest.html` renders the latest deterministic report as HTML.
 
 CLI:
@@ -78,3 +81,11 @@ EvalReport JSON -> backend/app/reporting.py -> reports/sample-eval-report.html
 ```
 
 The HTML report is generated from the same `EvalReport` schema used by the API and CLI. This avoids separate dashboard-only logic and keeps the public artifact reproducible.
+
+## Persistence
+
+```text
+EvalReport -> backend/app/storage.py -> data/eval_runs.sqlite3
+```
+
+SQLite stores run metadata and the full report JSON. The database file is intentionally ignored by git.
