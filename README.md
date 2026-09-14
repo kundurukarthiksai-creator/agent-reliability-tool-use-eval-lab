@@ -4,6 +4,8 @@ Deterministic evaluation lab for tool-using AI agents. It runs structured tasks,
 
 The default path is intentionally CI-safe: no API keys, no paid model calls, and no private data.
 
+![HTML evaluation report screenshot](docs/assets/eval-report.png)
+
 ## What It Proves
 
 - An agent can be evaluated on tool choice, not just final text.
