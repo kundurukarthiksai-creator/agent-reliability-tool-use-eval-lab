@@ -19,6 +19,20 @@ def test_tools_endpoint_lists_registered_tools():
     }
 
 
+def test_planner_comparison_endpoints_return_default_comparison():
+    client = TestClient(app)
+
+    json_response = client.get("/planners/compare")
+    html_response = client.get("/planners/compare.html")
+
+    assert json_response.status_code == 200
+    assert json_response.json()[0]["planner_name"] == "rule_based"
+    assert json_response.json()[0]["passed_tasks"] == 10
+    assert html_response.status_code == 200
+    assert html_response.headers["content-type"].startswith("text/html")
+    assert "Planner Comparison" in html_response.text
+
+
 def test_eval_run_endpoint_returns_passing_report():
     client = TestClient(app)
 

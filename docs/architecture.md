@@ -48,6 +48,8 @@ EvalReport JSON
 API:
 
 - `GET /tools` lists registered deterministic tools.
+- `GET /planners/compare` compares default planner summaries as JSON.
+- `GET /planners/compare.html` renders default planner comparison as HTML.
 - `POST /eval/run` executes all starter tasks and returns an `EvalReport`.
 - `POST /eval/runs` executes and saves an eval run to SQLite.
 - `GET /eval/runs` lists saved run summaries.

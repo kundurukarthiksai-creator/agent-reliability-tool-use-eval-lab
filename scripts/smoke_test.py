@@ -34,6 +34,14 @@ def main():
     runs_html_response.raise_for_status()
     assert "Saved Evaluation Runs" in runs_html_response.text
 
+    comparison_response = client.get("/planners/compare")
+    comparison_response.raise_for_status()
+    assert comparison_response.json()[0]["planner_name"] == "rule_based"
+
+    comparison_html_response = client.get("/planners/compare.html")
+    comparison_html_response.raise_for_status()
+    assert "Planner Comparison" in comparison_html_response.text
+
     print("smoke test passed")
 
 

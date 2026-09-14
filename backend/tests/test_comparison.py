@@ -1,4 +1,8 @@
-from app.comparison import compare_planners, render_planner_comparison_markdown
+from app.comparison import (
+    compare_planners,
+    render_planner_comparison_html,
+    render_planner_comparison_markdown,
+)
 from app.models import AgentPlan, EvaluationTask, ToolDefinition
 
 
@@ -31,3 +35,13 @@ def test_render_planner_comparison_markdown_contains_table():
     assert "# Planner Comparison" in markdown
     assert "| Planner | Total | Passed | Failed | Avg Score | Failure Categories |" in markdown
     assert "always_course_notes" in markdown
+
+
+def test_render_planner_comparison_html_contains_table():
+    results = compare_planners(planners={"always_course_notes": AlwaysCourseNotesAgent()})
+
+    html = render_planner_comparison_html(results)
+
+    assert "Planner Comparison" in html
+    assert "always_course_notes" in html
+    assert "Failure Categories" in html

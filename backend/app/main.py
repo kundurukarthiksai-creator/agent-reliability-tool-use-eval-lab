@@ -2,6 +2,11 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse
 from pydantic import BaseModel
 
+from app.comparison import (
+    PlannerComparisonResult,
+    compare_planners,
+    render_planner_comparison_html,
+)
 from app.models import EvalReport, EvalRunMetadata, EvalRunRecord, ToolDefinition
 from app.reporting import render_eval_report_html, render_runs_index_html
 from app.registry import build_default_registry
@@ -34,6 +39,16 @@ async def health() -> HealthResponse:
 @app.get("/tools", response_model=list[ToolDefinition])
 async def tools() -> list[ToolDefinition]:
     return build_default_registry().list_tools()
+
+
+@app.get("/planners/compare", response_model=list[PlannerComparisonResult])
+async def compare_default_planners() -> list[PlannerComparisonResult]:
+    return compare_planners()
+
+
+@app.get("/planners/compare.html", response_class=HTMLResponse)
+async def compare_default_planners_html() -> HTMLResponse:
+    return HTMLResponse(render_planner_comparison_html(compare_planners()))
 
 
 @app.post("/eval/run", response_model=EvalReport)

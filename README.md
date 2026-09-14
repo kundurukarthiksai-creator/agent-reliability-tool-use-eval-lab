@@ -72,6 +72,8 @@ http://127.0.0.1:8000/reports/latest.html
 ```text
 GET  /health
 GET  /tools
+GET  /planners/compare
+GET  /planners/compare.html
 POST /eval/run
 POST /eval/runs
 GET  /eval/runs
