@@ -1,3 +1,5 @@
+from collections import Counter
+from collections.abc import Iterable
 from html import escape
 
 from app.models import (
@@ -545,6 +547,10 @@ def render_task_catalog_html(
 
 def render_eval_report_html(report: EvalReport) -> str:
     rows = "\n".join(_render_task(result) for result in report.results)
+    tool_rows = _render_count_rows(result.selected_tool for result in report.results)
+    category_rows = _render_count_rows(
+        result.failure_category for result in report.results
+    )
     summary = report.summary
     pass_rate = (
         round((summary.passed_tasks / summary.total_tasks) * 100, 1)
@@ -643,6 +649,42 @@ def render_eval_report_html(report: EvalReport) -> str:
       overflow: hidden;
     }}
 
+    .overview-grid {{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }}
+
+    .overview-panel {{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }}
+
+    .overview-panel table {{
+      width: 100%;
+      border-collapse: collapse;
+    }}
+
+    .overview-panel td {{
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }}
+
+    .overview-panel tr:last-child td {{
+      border-bottom: 0;
+    }}
+
+    .overview-panel td:last-child {{
+      color: var(--muted);
+      font-weight: 700;
+      text-align: right;
+      white-space: nowrap;
+    }}
+
     .task-header {{
       display: flex;
       justify-content: space-between;
@@ -721,6 +763,7 @@ def render_eval_report_html(report: EvalReport) -> str:
 
     @media (max-width: 760px) {{
       .summary,
+      .overview-grid,
       .task-body {{
         grid-template-columns: 1fr;
       }}
@@ -743,6 +786,25 @@ def render_eval_report_html(report: EvalReport) -> str:
       <div class="metric"><span>Passed</span><strong>{summary.passed_tasks}</strong></div>
       <div class="metric"><span>Failed</span><strong>{summary.failed_tasks}</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>{pass_rate}%</strong></div>
+    </section>
+
+    <section class="overview-grid" aria-label="Evaluation distribution summary">
+      <div class="overview-panel">
+        <h2>Tool Selection</h2>
+        <table>
+          <tbody>
+            {tool_rows}
+          </tbody>
+        </table>
+      </div>
+      <div class="overview-panel">
+        <h2>Failure Categories</h2>
+        <table>
+          <tbody>
+            {category_rows}
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section aria-label="Task results">
@@ -956,3 +1018,25 @@ def _render_assertion(assertion: AssertionResult) -> str:
         f"<li><strong>{escape(marker)}</strong> "
         f"{escape(assertion.name)}: {escape(assertion.detail)}</li>"
     )
+
+
+def _render_count_rows(values: Iterable[str]) -> str:
+    counts = Counter(values)
+    if not counts:
+        return """
+        <tr>
+          <td>None</td>
+          <td>0</td>
+        </tr>
+"""
+    rows = []
+    for name, count in sorted(counts.items(), key=lambda item: (-item[1], item[0])):
+        rows.append(
+            f"""
+        <tr>
+          <td><code>{escape(name)}</code></td>
+          <td>{count}</td>
+        </tr>
+"""
+        )
+    return "".join(rows)

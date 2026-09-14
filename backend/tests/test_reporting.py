@@ -18,6 +18,10 @@ def test_render_eval_report_html_contains_summary_and_trace():
     assert "Tool Call Trace" in html
     assert "Pass Rate" in html
     assert "Category" in html
+    assert "Tool Selection" in html
+    assert "Failure Categories" in html
+    assert "repo_health_check" in html
+    assert "passed" in html
 
 
 def test_render_dashboard_html_contains_navigation_and_tools():

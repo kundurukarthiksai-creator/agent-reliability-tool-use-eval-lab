@@ -89,6 +89,42 @@
       overflow: hidden;
     }
 
+    .overview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .overview-panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .overview-panel table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .overview-panel td {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    .overview-panel tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .overview-panel td:last-child {
+      color: var(--muted);
+      font-weight: 700;
+      text-align: right;
+      white-space: nowrap;
+    }
+
     .task-header {
       display: flex;
       justify-content: space-between;
@@ -167,6 +203,7 @@
 
     @media (max-width: 760px) {
       .summary,
+      .overview-grid,
       .task-body {
         grid-template-columns: 1fr;
       }
@@ -189,6 +226,50 @@
       <div class="metric"><span>Passed</span><strong>18</strong></div>
       <div class="metric"><span>Failed</span><strong>0</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100.0%</strong></div>
+    </section>
+
+    <section class="overview-grid" aria-label="Evaluation distribution summary">
+      <div class="overview-panel">
+        <h2>Tool Selection</h2>
+        <table>
+          <tbody>
+            
+        <tr>
+          <td><code>repo_health_check</code></td>
+          <td>6</td>
+        </tr>
+
+        <tr>
+          <td><code>course_note_search</code></td>
+          <td>5</td>
+        </tr>
+
+        <tr>
+          <td><code>application_tracker_update</code></td>
+          <td>4</td>
+        </tr>
+
+        <tr>
+          <td><code>runbook_lookup</code></td>
+          <td>3</td>
+        </tr>
+
+          </tbody>
+        </table>
+      </div>
+      <div class="overview-panel">
+        <h2>Failure Categories</h2>
+        <table>
+          <tbody>
+            
+        <tr>
+          <td><code>passed</code></td>
+          <td>18</td>
+        </tr>
+
+          </tbody>
+        </table>
+      </div>
     </section>
 
     <section aria-label="Task results">
