@@ -73,6 +73,24 @@ def render_index() -> str:
         ("Run Trends", "reports/run-trends-demo.html", "Review reliability movement over runs."),
         ("OpenAPI Contract", "docs/openapi.json", "Inspect the FastAPI route schema."),
     ]
+    inspection_steps = [
+        (
+            "reports/sample-eval-report.html",
+            "Confirm the report shows 26/26 tasks pass, 6 tools exercised, 26/26 traces, and a passing regression guard.",
+        ),
+        (
+            "reports/task-catalog.html",
+            "Check that the task catalog covers the deterministic corpus and tool distribution.",
+        ),
+        (
+            "reports/failure-catalog.html",
+            "Review deliberate tool-selection, tool-execution, and output-assertion failures.",
+        ),
+        (
+            "docs/openapi.json",
+            "Inspect the OpenAPI contract for the FastAPI route surface.",
+        ),
+    ]
     cards = "\n".join(
         f"""
         <a class="card" href="{href}">
@@ -81,6 +99,14 @@ def render_index() -> str:
         </a>
         """.strip()
         for label, href, description in links
+    )
+    inspection_items = "\n".join(
+        f"""
+        <li>
+          <a href="{href}">{description}</a>
+        </li>
+        """.strip()
+        for href, description in inspection_steps
     )
     return f"""<!doctype html>
 <html lang="en">
@@ -162,6 +188,39 @@ def render_index() -> str:
       margin-top: 8px;
       font-size: 28px;
     }}
+    h2 {{
+      margin: 0;
+      font-size: 21px;
+      letter-spacing: 0;
+    }}
+    .inspection {{
+      border-bottom: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      margin: 28px 0;
+      padding: 22px 0;
+    }}
+    .inspection ol {{
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 28px;
+      margin: 16px 0 0;
+      padding-left: 22px;
+    }}
+    .inspection li {{
+      color: var(--muted);
+      line-height: 1.5;
+      padding-right: 12px;
+    }}
+    .inspection a {{
+      color: inherit;
+      overflow-wrap: anywhere;
+      text-decoration-color: rgba(15, 93, 184, .35);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 3px;
+    }}
+    .inspection a:hover {{
+      color: var(--accent);
+    }}
     .grid {{
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -202,11 +261,11 @@ def render_index() -> str:
     }}
     @media (max-width: 840px) {{
       h1 {{ font-size: 29px; }}
-      .metrics, .grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
+      .metrics, .grid, .inspection ol {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
     }}
     @media (max-width: 520px) {{
       main {{ max-width: 390px; margin: 0; padding: 28px 16px 40px; }}
-      .metrics, .grid {{ grid-template-columns: 1fr; }}
+      .metrics, .grid, .inspection ol {{ grid-template-columns: 1fr; }}
       .card {{ min-height: auto; }}
     }}
   </style>
@@ -222,6 +281,12 @@ def render_index() -> str:
       <div class="metric"><span>Tools</span><strong>6</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100%</strong></div>
       <div class="metric"><span>CI Path</span><strong>No Keys</strong></div>
+    </section>
+    <section class="inspection" aria-label="Reviewer inspection checklist">
+      <h2>Reviewer Inspection Checklist</h2>
+      <ol>
+        {inspection_items}
+      </ol>
     </section>
     <section class="grid" aria-label="Demo links">
       {cards}
