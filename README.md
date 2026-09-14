@@ -1,97 +1,57 @@
 # Agent Reliability and Tool-Use Eval Lab
 
-Evaluation lab for AI agents that use tools. The project will run deterministic tool-use tasks, score outputs, expose failures, and produce reproducible reports.
+Deterministic evaluation lab for tool-using AI agents. It runs structured tasks, asks an agent planner to choose a tool, records the tool-call trace, scores the result, and produces JSON plus HTML reports.
 
-LinkedIn is paused until this project has real proof.
+The default path is intentionally CI-safe: no API keys, no paid model calls, and no private data.
 
-## Current Status
+## What It Proves
 
-Phase 0 scaffold:
+- An agent can be evaluated on tool choice, not just final text.
+- Tool calls are visible through traces.
+- Failures are diagnosable at assertion level.
+- Reports are reproducible from local fixtures.
+- Run history can be persisted to SQLite.
 
-- FastAPI backend
-- `/health` route
-- unit test
-- smoke test script
-- architecture and evaluation-methodology stubs
+## Current Features
 
-Phase 1 baseline:
+- FastAPI backend.
+- Deterministic rule-based planner.
+- Tool registry with 3 local tools.
+- 5 starter evaluation tasks.
+- Assertion-level scoring.
+- JSON report output.
+- HTML report renderer and report API route.
+- Deliberate failure demo for wrong tool selection.
+- SQLite persistence for saved runs.
+- GitHub Actions CI.
 
-- deterministic tool registry
-- 3 tools
-- 5 starter tasks
-- scoring engine
-- JSON evaluation report
-- `/tools` and `/eval/run` API endpoints
-
-Phase 2 baseline:
-
-- deterministic rule-based agent planner
-- tool-call trace in each task result
-- CI-safe agent behavior with no external API key
-
-Project hard rules:
-
-- `STEERING.md`
-- `.kiro/steering/product.md`
-- `.kiro/steering/tech.md`
-- `.kiro/steering/quality.md`
-
-## Local Setup
+## Quickstart
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python -m pip install -r requirements.txt
 ```
 
-## Run Tests
+Run tests:
 
 ```powershell
-.\.venv\Scripts\python -m pytest backend\tests
+.\.venv\Scripts\python -m pytest backend\tests -q
 ```
 
-## Run Smoke Test
-
-```powershell
-.\.venv\Scripts\python scripts\smoke_test.py
-```
-
-## Run Evaluation Report
+Run the evaluation:
 
 ```powershell
 .\.venv\Scripts\python scripts\run_eval.py
 ```
 
-The report includes the agent plan, selected tool, tool-call trace, assertion results, and score for each task.
-
-## Render HTML Report
+Render sample reports:
 
 ```powershell
 .\.venv\Scripts\python scripts\render_report.py
-```
-
-## Render Failure Demo
-
-```powershell
 .\.venv\Scripts\python scripts\render_failure_demo.py
 ```
 
-Sample output:
-
-```text
-reports/sample-eval-report.json
-reports/sample-eval-report.html
-reports/sample-failure-report.json
-reports/sample-failure-report.html
-```
-
-## Known Limitations
-
-- The default planner is rule-based, not an LLM planner.
-- The eval set is intentionally small while the tool contracts stabilize.
-- Reports use synthetic/public-safe fixture data, not private job-search or employer data.
-- CI proves deterministic reliability only; it does not claim real-world agent generalization.
-
-## Run API
+Run the API:
 
 ```powershell
 .\.venv\Scripts\python -m uvicorn app.main:app --app-dir backend --reload
@@ -100,10 +60,10 @@ reports/sample-failure-report.html
 Open:
 
 ```text
-http://127.0.0.1:8000/health
+http://127.0.0.1:8000/reports/latest.html
 ```
 
-Useful routes:
+## API Routes
 
 ```text
 GET  /health
@@ -115,6 +75,52 @@ GET  /eval/runs/{run_id}
 GET  /reports/latest.html
 ```
 
-## Plan
+## Sample Artifacts
 
-`D:\KIRO\chatgpt\career\projects\AGENT_RELIABILITY_TOOL_USE_EVAL_LAB_PLAN_2026-09-14.md`
+```text
+reports/sample-eval-report.json
+reports/sample-eval-report.html
+reports/sample-failure-report.json
+reports/sample-failure-report.html
+```
+
+The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
+
+## Project Layout
+
+```text
+backend/app/
+  agent.py       deterministic planner
+  registry.py    tool registry
+  runner.py      evaluation orchestration
+  scoring.py     assertion scoring
+  reporting.py   HTML report rendering
+  storage.py     SQLite persistence
+  tools/         local deterministic tools
+evals/
+  tasks/         JSON evaluation tasks
+  fixtures/      public-safe synthetic fixtures
+reports/         generated sample outputs
+docs/            architecture and methodology notes
+```
+
+## Known Limitations
+
+- The default planner is rule-based, not an LLM planner.
+- The starter eval set is small while tool contracts stabilize.
+- Fixtures are synthetic/public-safe examples.
+- CI proves deterministic behavior, not broad real-world agent generalization.
+
+## Roadmap
+
+- Add more tools and harder task fixtures.
+- Add comparison mode for optional LLM-backed planners.
+- Add a compact dashboard view for saved runs.
+- Add richer failure categories and trend summaries.
+
+## Docs
+
+- `STEERING.md`
+- `docs/architecture.md`
+- `docs/evaluation-methodology.md`
+- `docs/github-metadata.md`

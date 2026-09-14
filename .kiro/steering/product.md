@@ -10,7 +10,7 @@ Primary audience:
 
 - SWE internship recruiters who need quick proof that the project is more than a chatbot.
 - Engineers who care about testing, observability, and agent reliability.
-- Karthik, as a learning vehicle for backend, AI tooling, and evaluation discipline.
+- Students and builders learning backend, AI tooling, and evaluation discipline.
 
 ## Positioning
 
@@ -24,7 +24,7 @@ The project should communicate:
 ## Non-Goals
 
 - Do not turn the first screen into a generic AI chatbot.
-- Do not optimize for LinkedIn language before the project has proof.
+- Do not optimize for profile language before the project has proof.
 - Do not add paid API dependency to core tests.
 - Do not claim production usage unless it is true and public-safe.
 

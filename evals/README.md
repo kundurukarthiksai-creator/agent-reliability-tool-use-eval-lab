@@ -18,5 +18,6 @@ Each task is a JSON object with:
 - `input`
 - `expectations`
 
-The Phase 1 runner executes the expected tool directly, then scores the output. A later agent loop will have to choose the tool itself; the current runner establishes the deterministic baseline first.
+The runner asks the deterministic planner to choose a tool from the task title, description, and input payload. The selected tool is then scored against `expected_tool` and the output expectations.
 
+The `expected_tool` field is an answer key for scoring. Planner implementations should not read it when choosing a tool.

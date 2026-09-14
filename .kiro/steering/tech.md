@@ -28,4 +28,4 @@
 
 - Do not store real private job applications, resume material, or employer-confidential data in public fixtures.
 - Use synthetic or public-safe data in sample reports.
-- Treat Amazon internship details as private context unless explicitly converted into public-safe wording.
+- Treat employer-specific details as private unless explicitly converted into public-safe wording.
