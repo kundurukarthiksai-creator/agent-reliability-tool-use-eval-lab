@@ -48,6 +48,14 @@ def main():
     run_comparison_html_response.raise_for_status()
     assert "Saved Run Comparison" in run_comparison_html_response.text
 
+    run_trends_response = client.get("/eval/runs/trends")
+    run_trends_response.raise_for_status()
+    assert run_trends_response.json()["run_count"] >= 2
+
+    run_trends_html_response = client.get("/eval/runs/trends.html")
+    run_trends_html_response.raise_for_status()
+    assert "Saved Run Trends" in run_trends_html_response.text
+
     comparison_response = client.get("/planners/compare")
     comparison_response.raise_for_status()
     assert comparison_response.json()[0]["planner_name"] == "rule_based"

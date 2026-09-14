@@ -81,6 +81,18 @@ Saved-run comparison compares the latest two persisted reports and records:
 
 This is useful because a single green run is not enough evidence. The project should also make regressions visible when the task suite or planner changes.
 
+## Saved-Run Trends
+
+Saved-run trends summarize all persisted run metadata:
+
+- run count;
+- first and latest run ids;
+- passed, failed, and average-score deltas;
+- best and worst pass rates;
+- chronological run points.
+
+The trend view stays metadata-only. Detailed per-task movement remains in the latest-two comparison view.
+
 ## Failure Categories
 
 Each task receives one failure category:

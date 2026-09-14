@@ -14,6 +14,7 @@ Generated schemas:
 - `docs/schemas/eval-report.schema.json`
 - `docs/schemas/eval-run-record.schema.json`
 - `docs/schemas/eval-run-comparison.schema.json`
+- `docs/schemas/eval-run-trend.schema.json`
 - `docs/schemas/planner-comparison-result.schema.json`
 
 These schemas describe:
@@ -22,4 +23,5 @@ These schemas describe:
 - report output format;
 - persisted run record format;
 - saved run comparison format;
+- saved run trend summary format;
 - planner comparison summary format.

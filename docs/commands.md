@@ -23,6 +23,7 @@ This runs:
 - failure catalog renderer;
 - planner comparison renderer.
 - run comparison demo renderer.
+- run trends demo renderer.
 
 ## Individual Commands
 
@@ -36,6 +37,7 @@ This runs:
 .\.venv\Scripts\python scripts\render_failure_catalog.py
 .\.venv\Scripts\python scripts\compare_planners.py
 .\.venv\Scripts\python scripts\render_run_comparison_demo.py
+.\.venv\Scripts\python scripts\render_run_trends_demo.py
 .\.venv\Scripts\python scripts\export_schemas.py
 ```
 
@@ -51,5 +53,6 @@ Useful pages:
 http://127.0.0.1:8000/reports/latest.html
 http://127.0.0.1:8000/eval/runs.html
 http://127.0.0.1:8000/eval/runs/compare.html
+http://127.0.0.1:8000/eval/runs/trends.html
 http://127.0.0.1:8000/planners/compare.html
 ```

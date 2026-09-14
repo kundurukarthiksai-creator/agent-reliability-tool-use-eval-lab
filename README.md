@@ -28,6 +28,7 @@ The default path is intentionally CI-safe: no API keys, no paid model calls, and
 - Deliberate failure demo for wrong tool selection.
 - SQLite persistence for saved runs.
 - Saved-run comparison API and HTML view.
+- Saved-run trend summary API and HTML view.
 - GitHub Actions CI.
 
 ## Quickstart
@@ -63,6 +64,7 @@ Render sample reports:
 .\.venv\Scripts\python scripts\render_failure_catalog.py
 .\.venv\Scripts\python scripts\compare_planners.py
 .\.venv\Scripts\python scripts\render_run_comparison_demo.py
+.\.venv\Scripts\python scripts\render_run_trends_demo.py
 .\.venv\Scripts\python scripts\export_schemas.py
 ```
 
@@ -91,6 +93,8 @@ GET  /eval/runs
 GET  /eval/runs.html
 GET  /eval/runs/compare
 GET  /eval/runs/compare.html
+GET  /eval/runs/trends
+GET  /eval/runs/trends.html
 GET  /eval/runs/{run_id}
 GET  /reports/latest.html
 ```
@@ -108,12 +112,15 @@ reports/planner-comparison.json
 reports/planner-comparison.md
 reports/run-comparison-demo.json
 reports/run-comparison-demo.html
+reports/run-trends-demo.json
+reports/run-trends-demo.html
 ```
 
 The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
 The failure catalog demonstrates `tool_selection`, `tool_execution`, and `output_assertion` categories.
 The planner comparison shows the default planner against a deliberately weak baseline.
 The run comparison demo shows how saved runs surface regressions and recoveries.
+The run trends demo shows reliability movement across several saved runs.
 
 ## Project Layout
 
@@ -145,8 +152,8 @@ docs/            architecture and methodology notes
 
 - Add more tools and harder task fixtures.
 - Add comparison mode for optional LLM-backed planners.
-- Add richer trend summaries across many saved runs.
 - Add optional LLM-backed planner comparison behind environment variables.
+- Add another deterministic tool family beyond the initial 3 tools.
 
 ## Docs
 

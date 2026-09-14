@@ -47,5 +47,8 @@ jobs:
       - name: Render run comparison demo
         run: python scripts/render_run_comparison_demo.py
 
+      - name: Render run trends demo
+        run: python scripts/render_run_trends_demo.py
+
       - name: Export schemas
         run: python scripts/export_schemas.py

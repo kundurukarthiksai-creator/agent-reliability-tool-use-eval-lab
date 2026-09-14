@@ -1,0 +1,129 @@
+{
+  "$defs": {
+    "RunTrendPoint": {
+      "properties": {
+        "run_id": {
+          "title": "Run Id",
+          "type": "integer"
+        },
+        "created_at": {
+          "title": "Created At",
+          "type": "string"
+        },
+        "total_tasks": {
+          "title": "Total Tasks",
+          "type": "integer"
+        },
+        "passed_tasks": {
+          "title": "Passed Tasks",
+          "type": "integer"
+        },
+        "failed_tasks": {
+          "title": "Failed Tasks",
+          "type": "integer"
+        },
+        "average_score": {
+          "title": "Average Score",
+          "type": "number"
+        },
+        "pass_rate": {
+          "title": "Pass Rate",
+          "type": "number"
+        }
+      },
+      "required": [
+        "run_id",
+        "created_at",
+        "total_tasks",
+        "passed_tasks",
+        "failed_tasks",
+        "average_score",
+        "pass_rate"
+      ],
+      "title": "RunTrendPoint",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "run_count": {
+      "title": "Run Count",
+      "type": "integer"
+    },
+    "first_run_id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "First Run Id"
+    },
+    "latest_run_id": {
+      "anyOf": [
+        {
+          "type": "integer"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Latest Run Id"
+    },
+    "passed_tasks_delta": {
+      "title": "Passed Tasks Delta",
+      "type": "integer"
+    },
+    "failed_tasks_delta": {
+      "title": "Failed Tasks Delta",
+      "type": "integer"
+    },
+    "average_score_delta": {
+      "title": "Average Score Delta",
+      "type": "number"
+    },
+    "best_pass_rate": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Best Pass Rate"
+    },
+    "worst_pass_rate": {
+      "anyOf": [
+        {
+          "type": "number"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "title": "Worst Pass Rate"
+    },
+    "points": {
+      "items": {
+        "$ref": "#/$defs/RunTrendPoint"
+      },
+      "title": "Points",
+      "type": "array"
+    }
+  },
+  "required": [
+    "run_count",
+    "first_run_id",
+    "latest_run_id",
+    "passed_tasks_delta",
+    "failed_tasks_delta",
+    "average_score_delta",
+    "best_pass_rate",
+    "worst_pass_rate",
+    "points"
+  ],
+  "title": "EvalRunTrend",
+  "type": "object"
+}

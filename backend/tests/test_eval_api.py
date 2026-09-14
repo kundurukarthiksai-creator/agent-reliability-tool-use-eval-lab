@@ -147,3 +147,21 @@ def test_saved_run_comparison_requires_two_runs(monkeypatch, tmp_path):
     response = client.get("/eval/runs/compare")
 
     assert response.status_code == 404
+
+
+def test_saved_run_trend_endpoints(monkeypatch, tmp_path):
+    db_path = tmp_path / "runs.sqlite3"
+    save_report(main_module.run_evaluation(), db_path=db_path)
+    save_report(main_module.run_evaluation(), db_path=db_path)
+    monkeypatch.setattr(main_module, "list_runs", lambda: list_runs(db_path=db_path))
+    client = TestClient(app)
+
+    json_response = client.get("/eval/runs/trends")
+    html_response = client.get("/eval/runs/trends.html")
+
+    assert json_response.status_code == 200
+    assert json_response.json()["run_count"] == 2
+    assert json_response.json()["latest_run_id"] == 2
+    assert html_response.status_code == 200
+    assert html_response.headers["content-type"].startswith("text/html")
+    assert "Saved Run Trends" in html_response.text

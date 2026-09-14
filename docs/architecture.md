@@ -56,6 +56,8 @@ API:
 - `GET /eval/runs.html` renders saved run summaries as HTML.
 - `GET /eval/runs/compare` compares the latest two saved runs as JSON.
 - `GET /eval/runs/compare.html` renders the latest saved-run comparison as HTML.
+- `GET /eval/runs/trends` summarizes all saved runs as JSON.
+- `GET /eval/runs/trends.html` renders saved-run trend summaries as HTML.
 - `GET /eval/runs/{run_id}` returns one saved run and report.
 - `GET /reports/latest.html` renders the latest deterministic report as HTML.
 
@@ -102,3 +104,11 @@ EvalRunRecord + EvalRunRecord -> backend/app/run_comparison.py -> JSON/HTML delt
 ```
 
 The comparison view labels task-level movement between the latest two saved runs: unchanged pass, unchanged fail, regression, recovery, score changed, added, or removed. This turns saved reports into a simple reliability trend signal without adding any non-deterministic dependencies.
+
+## Saved-Run Trends
+
+```text
+EvalRunMetadata[] -> backend/app/run_trends.py -> JSON/HTML trend summary
+```
+
+The trend view summarizes all saved runs by pass-rate, average-score movement, and passed/failed task deltas. It is intentionally metadata-only so trend pages stay cheap and deterministic.

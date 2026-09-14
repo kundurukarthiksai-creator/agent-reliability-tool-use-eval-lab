@@ -21,6 +21,7 @@ COMMANDS = [
     ("failure-catalog", [sys.executable, "scripts/render_failure_catalog.py"], False),
     ("planner-comparison", [sys.executable, "scripts/compare_planners.py"], False),
     ("run-comparison-demo", [sys.executable, "scripts/render_run_comparison_demo.py"], False),
+    ("run-trends-demo", [sys.executable, "scripts/render_run_trends_demo.py"], False),
     ("schemas", [sys.executable, "scripts/export_schemas.py"], False),
 ]
 

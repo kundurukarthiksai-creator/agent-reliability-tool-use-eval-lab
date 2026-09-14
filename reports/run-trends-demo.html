@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saved Run Trends</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f6f7f9;
+      color: #16181d;
+      font: 15px/1.5 Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      width: min(1080px, calc(100vw - 32px));
+      margin: 32px auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 24px;
+      color: #5d6470;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .metric,
+    table {
+      background: #ffffff;
+      border: 1px solid #d9dee7;
+      border-radius: 8px;
+    }
+
+    .metric {
+      padding: 16px;
+    }
+
+    .metric span {
+      display: block;
+      color: #5d6470;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #d9dee7;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: #5d6470;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    code {
+      background: #eef2f8;
+      border: 1px solid #d7deea;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+
+    @media (max-width: 760px) {
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Saved Run Trends</h1>
+    <p>Reliability movement across all saved evaluation runs.</p>
+
+    <section class="summary" aria-label="Run trend summary">
+      <div class="metric"><span>Runs</span><strong>3</strong></div>
+      <div class="metric"><span>Latest</span><strong>#3</strong></div>
+      <div class="metric"><span>Passed Delta</span><strong>+2</strong></div>
+      <div class="metric"><span>Best Pass Rate</span><strong>100.0%</strong></div>
+    </section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Run</th>
+          <th>Created</th>
+          <th>Total</th>
+          <th>Passed</th>
+          <th>Failed</th>
+          <th>Avg Score</th>
+          <th>Pass Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>#1</code></td>
+          <td>2026-09-14T00:00:00+00:00</td>
+          <td>15</td>
+          <td>13</td>
+          <td>2</td>
+          <td>0.8667</td>
+          <td>86.7%</td>
+        </tr>
+
+
+        <tr>
+          <td><code>#2</code></td>
+          <td>2026-09-14T01:00:00+00:00</td>
+          <td>15</td>
+          <td>14</td>
+          <td>1</td>
+          <td>0.9333</td>
+          <td>93.3%</td>
+        </tr>
+
+
+        <tr>
+          <td><code>#3</code></td>
+          <td>2026-09-14T02:00:00+00:00</td>
+          <td>15</td>
+          <td>15</td>
+          <td>0</td>
+          <td>1.0000</td>
+          <td>100.0%</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

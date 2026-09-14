@@ -15,6 +15,7 @@ from app.run_comparison import (
     compare_eval_runs,
     render_run_comparison_html,
 )
+from app.run_trends import EvalRunTrend, build_run_trend, render_run_trend_html
 from app.runner import run_evaluation
 from app.storage import get_latest_run_pair, get_run, list_runs, save_report
 
@@ -99,6 +100,16 @@ async def eval_runs_compare_html() -> HTMLResponse:
     previous, current = run_pair
     comparison = compare_eval_runs(previous, current)
     return HTMLResponse(render_run_comparison_html(comparison))
+
+
+@app.get("/eval/runs/trends", response_model=EvalRunTrend)
+async def eval_runs_trends() -> EvalRunTrend:
+    return build_run_trend(list_runs())
+
+
+@app.get("/eval/runs/trends.html", response_class=HTMLResponse)
+async def eval_runs_trends_html() -> HTMLResponse:
+    return HTMLResponse(render_run_trend_html(build_run_trend(list_runs())))
 
 
 @app.get("/eval/runs/{run_id}", response_model=EvalRunRecord)
