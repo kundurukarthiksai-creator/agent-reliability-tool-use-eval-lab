@@ -7,11 +7,18 @@ from app.comparison import (
     compare_planners,
     render_planner_comparison_html,
 )
-from app.models import EvalReport, EvalRunMetadata, EvalRunRecord, ToolDefinition
+from app.models import (
+    EvalReport,
+    EvalRunMetadata,
+    EvalRunRecord,
+    EvaluationTask,
+    ToolDefinition,
+)
 from app.reporting import (
     render_dashboard_html,
     render_eval_report_html,
     render_runs_index_html,
+    render_task_catalog_html,
 )
 from app.registry import build_default_registry
 from app.run_comparison import (
@@ -20,7 +27,7 @@ from app.run_comparison import (
     render_run_comparison_html,
 )
 from app.run_trends import EvalRunTrend, build_run_trend, render_run_trend_html
-from app.runner import run_evaluation
+from app.runner import load_tasks, run_evaluation
 from app.storage import get_latest_run_pair, get_run, list_runs, save_report
 
 
@@ -71,6 +78,22 @@ async def compare_default_planners() -> list[PlannerComparisonResult]:
 @app.get("/planners/compare.html", response_class=HTMLResponse)
 async def compare_default_planners_html() -> HTMLResponse:
     return HTMLResponse(render_planner_comparison_html(compare_planners()))
+
+
+@app.get("/eval/tasks", response_model=list[EvaluationTask])
+async def eval_tasks() -> list[EvaluationTask]:
+    return load_tasks()
+
+
+@app.get("/eval/tasks.html", response_class=HTMLResponse)
+async def eval_tasks_html() -> HTMLResponse:
+    registry = build_default_registry()
+    return HTMLResponse(
+        render_task_catalog_html(
+            tasks=load_tasks(),
+            tools=registry.list_tools(),
+        )
+    )
 
 
 @app.post("/eval/run", response_model=EvalReport)

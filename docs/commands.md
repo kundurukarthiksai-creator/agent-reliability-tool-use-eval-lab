@@ -19,6 +19,7 @@ This runs:
 - API smoke test;
 - normal eval JSON;
 - dashboard renderer;
+- task catalog renderer;
 - HTML report renderer;
 - failure demo renderer;
 - failure catalog renderer;
@@ -34,6 +35,7 @@ This runs:
 .\.venv\Scripts\python scripts\run_eval.py
 .\.venv\Scripts\python scripts\run_eval.py reports\sample-eval-report.json
 .\.venv\Scripts\python scripts\render_dashboard.py
+.\.venv\Scripts\python scripts\render_task_catalog.py
 .\.venv\Scripts\python scripts\render_report.py
 .\.venv\Scripts\python scripts\render_failure_demo.py
 .\.venv\Scripts\python scripts\render_failure_catalog.py
@@ -54,6 +56,7 @@ Useful pages:
 ```text
 http://127.0.0.1:8000/reports/latest.html
 http://127.0.0.1:8000/
+http://127.0.0.1:8000/eval/tasks.html
 http://127.0.0.1:8000/eval/runs.html
 http://127.0.0.1:8000/eval/runs/compare.html
 http://127.0.0.1:8000/eval/runs/trends.html

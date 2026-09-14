@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evaluation Task Catalog</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #16181d;
+      --muted: #5d6470;
+      --line: #d9dee7;
+      --accent: #2454a6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.5 Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      width: min(1120px, calc(100vw - 32px));
+      margin: 32px auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    a {
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back-link {
+      align-self: flex-start;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 10px;
+      white-space: nowrap;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .metric,
+    section {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 16px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    td:first-child {
+      width: 22%;
+      padding-right: 16px;
+    }
+
+    code {
+      display: inline-block;
+      max-width: 100%;
+      background: #eef2f8;
+      border: 1px solid #d7deea;
+      border-radius: 4px;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+      padding: 1px 4px;
+      white-space: normal;
+    }
+
+    .task-title {
+      display: block;
+      margin-bottom: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .expectations {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    @media (max-width: 980px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 820px) {
+      header {
+        display: block;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-top: 16px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      table,
+      thead,
+      tbody,
+      tr,
+      th,
+      td {
+        display: block;
+      }
+
+      thead {
+        display: none;
+      }
+
+      tr {
+        border-bottom: 1px solid var(--line);
+        padding: 12px 0;
+      }
+
+      tr:last-child {
+        border-bottom: 0;
+      }
+
+      td,
+      td:first-child {
+        width: auto;
+        border-bottom: 0;
+        padding: 4px 0;
+      }
+
+      td::before {
+        content: attr(data-label);
+        display: block;
+        color: var(--muted);
+        font-size: 12px;
+        margin-bottom: 2px;
+        text-transform: uppercase;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Evaluation Task Catalog</h1>
+        <p>Public-safe task coverage for deterministic tool-selection evaluation.</p>
+      </div>
+      <a class="back-link" href="/">Dashboard</a>
+    </header>
+
+    <section class="summary" aria-label="Task catalog summary">
+      <div class="metric"><span>Tasks</span><strong>18</strong></div>
+      <div class="metric"><span>Tools</span><strong>4</strong></div>
+      <div class="metric"><span>Fixture Type</span><strong>Public</strong></div>
+    </section>
+
+    <div class="grid">
+      <section>
+        <h2>Tasks</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Expected Tool</th>
+              <th>Checks</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Check whether a cleaned repo is profile-ready</strong>
+            <code>repo-health-ready</code>
+          </td>
+          <td data-label="Expected Tool"><code>repo_health_check</code></td>
+          <td data-label="Checks">
+            A user asks if GitHub Dev Card has enough public proof signals for portfolio use.
+            <div class="expectations">Assertions: min_value, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Flag an unverified repo before promotion</strong>
+            <code>repo-health-unverified</code>
+          </td>
+          <td data-label="Expected Tool"><code>repo_health_check</code></td>
+          <td data-label="Checks">
+            A user asks whether a thin AI wrapper should be promoted publicly.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Find relevant tool-use learning notes</strong>
+            <code>course-note-search</code>
+          </td>
+          <td data-label="Expected Tool"><code>course_note_search</code></td>
+          <td data-label="Checks">
+            A user asks which resource supports public-safe tool interfaces.
+            <div class="expectations">Assertions: min_value, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Normalize an application event</strong>
+            <code>application-tracker-update</code>
+          </td>
+          <td data-label="Expected Tool"><code>application_tracker_update</code></td>
+          <td data-label="Checks">
+            A user saves a Google internship role and needs a tracker-ready update.
+            <div class="expectations">Assertions: must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Flag ambiguous application input</strong>
+            <code>ambiguous-application-event</code>
+          </td>
+          <td data-label="Expected Tool"><code>application_tracker_update</code></td>
+          <td data-label="Checks">
+            A user gives an application update without enough structure. The tool should request clarification instead of inventing details.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Flag a missing repo fixture</strong>
+            <code>repo-health-missing-repo</code>
+          </td>
+          <td data-label="Expected Tool"><code>repo_health_check</code></td>
+          <td data-label="Checks">
+            A user asks if a GitHub repo has enough public proof, but the repo is not in the known fixture set.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Ask for clarification on an empty course-note query</strong>
+            <code>course-note-empty-query</code>
+          </td>
+          <td data-label="Expected Tool"><code>course_note_search</code></td>
+          <td data-label="Checks">
+            A user asks for course notes but gives an empty search query.
+            <div class="expectations">Assertions: must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Normalize an unknown application event</strong>
+            <code>application-unknown-event</code>
+          </td>
+          <td data-label="Expected Tool"><code>application_tracker_update</code></td>
+          <td data-label="Checks">
+            A user records a job application tracker update with a complete company and role but an event type that needs review.
+            <div class="expectations">Assertions: must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Find model evaluation foundations notes</strong>
+            <code>course-note-deepmind-foundations</code>
+          </td>
+          <td data-label="Expected Tool"><code>course_note_search</code></td>
+          <td data-label="Checks">
+            A user asks which learning resource supports model evaluation foundations.
+            <div class="expectations">Assertions: min_value, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Check another cleaned repo for public proof</strong>
+            <code>repo-health-ai-linkedin</code>
+          </td>
+          <td data-label="Expected Tool"><code>repo_health_check</code></td>
+          <td data-label="Checks">
+            A user asks if the AI LinkedIn Post Generator repo has enough GitHub portfolio proof signals.
+            <div class="expectations">Assertions: min_value, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Reject a thin wrapper repo before profile promotion</strong>
+            <code>repo-health-wrapper-not-ready</code>
+          </td>
+          <td data-label="Expected Tool"><code>repo_health_check</code></td>
+          <td data-label="Checks">
+            A user asks whether a public GitHub AI wrapper repo is ready to promote as portfolio proof.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Find MCP contract notes despite repo wording</strong>
+            <code>course-note-mcp-contracts-with-repo-noise</code>
+          </td>
+          <td data-label="Expected Tool"><code>course_note_search</code></td>
+          <td data-label="Checks">
+            A user asks for a learning resource about MCP structured contracts and tool interfaces, while also mentioning GitHub repo CI cleanup.
+            <div class="expectations">Assertions: min_value, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Ask for company before tracking an application</strong>
+            <code>application-missing-company-clarification</code>
+          </td>
+          <td data-label="Expected Tool"><code>application_tracker_update</code></td>
+          <td data-label="Checks">
+            A user gives an internship application tracker update with a role and event type but forgets the company.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Confirm GitHub Dev Card is profile-ready</strong>
+            <code>repo-health-dev-card-ready</code>
+          </td>
+          <td data-label="Expected Tool"><code>repo_health_check</code></td>
+          <td data-label="Checks">
+            A user asks whether the GitHub Dev Card repo has enough README, tests, CI, screenshots, and limitations proof for a public profile.
+            <div class="expectations">Assertions: must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Return no note matches for unrelated learning query</strong>
+            <code>course-note-no-match</code>
+          </td>
+          <td data-label="Expected Tool"><code>course_note_search</code></td>
+          <td data-label="Checks">
+            A user asks the course-note search for an unrelated learning topic that is not present in the notes fixture.
+            <div class="expectations">Assertions: must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Find the CI failure runbook</strong>
+            <code>runbook-ci-failure</code>
+          </td>
+          <td data-label="Expected Tool"><code>runbook_lookup</code></td>
+          <td data-label="Checks">
+            A user asks for the incident runbook to triage a GitHub Actions workflow failure after schema export.
+            <div class="expectations">Assertions: min_value, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Find the saved-runs persistence runbook</strong>
+            <code>runbook-storage-persistence</code>
+          </td>
+          <td data-label="Expected Tool"><code>runbook_lookup</code></td>
+          <td data-label="Checks">
+            A user asks for an incident runbook because SQLite saved run history is not persisting evaluation runs.
+            <div class="expectations">Assertions: min_value, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Ask for clarification before runbook lookup</strong>
+            <code>runbook-missing-symptom</code>
+          </td>
+          <td data-label="Expected Tool"><code>runbook_lookup</code></td>
+          <td data-label="Checks">
+            A user asks for a runbook but provides no service, incident, symptom, or failure detail.
+            <div class="expectations">Assertions: must_equal</div>
+          </td>
+        </tr>
+
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Registered Tools</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+        <tr>
+          <td data-label="Tool"><code>repo_health_check</code></td>
+          <td data-label="Description">Checks whether a repo has basic public-proof signals.</td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Tool"><code>course_note_search</code></td>
+          <td data-label="Description">Searches curated course notes and returns source-backed snippets.</td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Tool"><code>application_tracker_update</code></td>
+          <td data-label="Description">Normalizes a job-application event into tracker-ready fields.</td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Tool"><code>runbook_lookup</code></td>
+          <td data-label="Description">Finds deterministic incident runbooks for service symptoms.</td>
+        </tr>
+
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </main>
+</body>
+</html>

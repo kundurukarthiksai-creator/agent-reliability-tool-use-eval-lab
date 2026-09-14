@@ -35,6 +35,9 @@ jobs:
       - name: Render dashboard
         run: python scripts/render_dashboard.py
 
+      - name: Render task catalog
+        run: python scripts/render_task_catalog.py
+
       - name: Render HTML report
         run: python scripts/render_report.py
 

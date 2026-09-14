@@ -25,6 +25,7 @@ The default path is intentionally CI-safe: no API keys, no paid model calls, and
 - Assertion-level scoring.
 - JSON report output.
 - HTML report renderer and report API route.
+- Task catalog API and HTML view.
 - Deliberate failure demo for wrong tool selection.
 - SQLite persistence for saved runs.
 - Saved-run comparison API and HTML view.
@@ -60,6 +61,7 @@ Render sample reports:
 
 ```powershell
 .\.venv\Scripts\python scripts\render_dashboard.py
+.\.venv\Scripts\python scripts\render_task_catalog.py
 .\.venv\Scripts\python scripts\render_report.py
 .\.venv\Scripts\python scripts\render_failure_demo.py
 .\.venv\Scripts\python scripts\render_failure_catalog.py
@@ -89,6 +91,8 @@ GET  /health
 GET  /tools
 GET  /planners/compare
 GET  /planners/compare.html
+GET  /eval/tasks
+GET  /eval/tasks.html
 POST /eval/run
 POST /eval/runs
 GET  /eval/runs
@@ -105,6 +109,7 @@ GET  /reports/latest.html
 
 ```text
 reports/dashboard.html
+reports/task-catalog.html
 reports/sample-eval-report.json
 reports/sample-eval-report.html
 reports/sample-failure-report.json
@@ -120,6 +125,7 @@ reports/run-trends-demo.html
 ```
 
 The dashboard links the report, run history, run comparison, trends, and planner comparison views.
+The task catalog shows all deterministic task fixtures and the expected tool for each task.
 The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
 The failure catalog demonstrates `tool_selection`, `tool_execution`, and `output_assertion` categories.
 The planner comparison shows the default planner against a deliberately weak baseline.

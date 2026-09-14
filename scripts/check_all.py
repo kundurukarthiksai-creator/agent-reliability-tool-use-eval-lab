@@ -17,6 +17,7 @@ COMMANDS = [
         False,
     ),
     ("dashboard", [sys.executable, "scripts/render_dashboard.py"], False),
+    ("task-catalog", [sys.executable, "scripts/render_task_catalog.py"], False),
     ("html-report", [sys.executable, "scripts/render_report.py"], False),
     ("failure-demo", [sys.executable, "scripts/render_failure_demo.py"], False),
     ("failure-catalog", [sys.executable, "scripts/render_failure_catalog.py"], False),

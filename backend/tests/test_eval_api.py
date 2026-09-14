@@ -28,7 +28,30 @@ def test_dashboard_endpoint_returns_navigation_page():
     assert response.status_code == 200
     assert response.headers["content-type"].startswith("text/html")
     assert "Agent Reliability Lab" in response.text
+    assert "/eval/tasks.html" in response.text
     assert "/planners/compare.html" in response.text
+
+
+def test_eval_task_catalog_endpoints_return_public_task_coverage():
+    client = TestClient(app)
+
+    json_response = client.get("/eval/tasks")
+    html_response = client.get("/eval/tasks.html")
+
+    assert json_response.status_code == 200
+    tasks = json_response.json()
+    assert len(tasks) == 18
+    assert tasks[0]["id"] == "repo-health-ready"
+    assert {task["expected_tool"] for task in tasks} == {
+        "repo_health_check",
+        "course_note_search",
+        "application_tracker_update",
+        "runbook_lookup",
+    }
+    assert html_response.status_code == 200
+    assert html_response.headers["content-type"].startswith("text/html")
+    assert "Evaluation Task Catalog" in html_response.text
+    assert "repo-health-ready" in html_response.text
 
 
 def test_planner_comparison_endpoints_return_default_comparison():

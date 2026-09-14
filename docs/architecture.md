@@ -52,6 +52,8 @@ API:
 - `GET /tools` lists registered deterministic tools.
 - `GET /planners/compare` compares default planner summaries as JSON.
 - `GET /planners/compare.html` renders default planner comparison as HTML.
+- `GET /eval/tasks` lists deterministic evaluation tasks as JSON.
+- `GET /eval/tasks.html` renders task coverage as HTML.
 - `POST /eval/run` executes all starter tasks and returns an `EvalReport`.
 - `POST /eval/runs` executes and saves an eval run to SQLite.
 - `GET /eval/runs` lists saved run summaries.
@@ -90,6 +92,8 @@ EvalReport JSON -> backend/app/reporting.py -> reports/sample-eval-report.html
 ```
 
 The HTML report is generated from the same `EvalReport` schema used by the API and CLI. This avoids separate dashboard-only logic and keeps the public artifact reproducible.
+
+The task catalog is generated from the same JSON fixtures that power the runner. It is meant to show coverage quickly: task title, fixture id, expected tool, and assertion keys.
 
 ## Persistence
 
