@@ -18,6 +18,7 @@ This runs:
 - backend tests;
 - API smoke test;
 - normal eval JSON;
+- strict quality gate;
 - dashboard renderer;
 - task catalog renderer;
 - HTML report renderer;
@@ -33,6 +34,7 @@ This runs:
 .\.venv\Scripts\python -m pytest backend\tests -q
 .\.venv\Scripts\python scripts\smoke_test.py
 .\.venv\Scripts\python scripts\run_eval.py
+.\.venv\Scripts\python scripts\check_quality_gate.py --output reports\quality-gate.json
 .\.venv\Scripts\python scripts\run_eval.py reports\sample-eval-report.json
 .\.venv\Scripts\python scripts\render_dashboard.py
 .\.venv\Scripts\python scripts\render_task_catalog.py

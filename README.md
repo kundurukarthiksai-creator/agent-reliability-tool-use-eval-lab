@@ -23,6 +23,7 @@ The default path is intentionally CI-safe: no API keys, no paid model calls, and
 - Tool registry with 4 local tools.
 - 18 starter evaluation tasks.
 - Assertion-level scoring.
+- Strict quality gate for deterministic eval regressions.
 - JSON report output.
 - HTML report renderer and report API route.
 - Task catalog API and HTML view.
@@ -56,6 +57,12 @@ Run the evaluation:
 
 ```powershell
 .\.venv\Scripts\python scripts\run_eval.py
+```
+
+Check the strict quality gate:
+
+```powershell
+.\.venv\Scripts\python scripts\check_quality_gate.py --output reports\quality-gate.json
 ```
 
 Render sample reports:
@@ -120,6 +127,7 @@ GET  /reports/latest.html
 ```text
 reports/dashboard.html
 reports/task-catalog.html
+reports/quality-gate.json
 reports/sample-eval-report.json
 reports/sample-eval-report.html
 reports/sample-failure-report.json
@@ -136,6 +144,7 @@ reports/run-trends-demo.html
 
 The dashboard links the report, run history, run comparison, trends, and planner comparison views.
 The task catalog shows all deterministic task fixtures and the expected tool for each task.
+The quality gate fails when deterministic eval results drop below configured pass-rate, score, task-count, or failure-category thresholds.
 The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
 The failure catalog demonstrates `tool_selection`, `tool_execution`, and `output_assertion` categories.
 The planner comparison shows the default planner against a deliberately weak baseline.

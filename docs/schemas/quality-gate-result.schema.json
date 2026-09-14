@@ -1,0 +1,142 @@
+{
+  "$defs": {
+    "EvalSummary": {
+      "properties": {
+        "total_tasks": {
+          "title": "Total Tasks",
+          "type": "integer"
+        },
+        "passed_tasks": {
+          "title": "Passed Tasks",
+          "type": "integer"
+        },
+        "failed_tasks": {
+          "title": "Failed Tasks",
+          "type": "integer"
+        },
+        "average_score": {
+          "title": "Average Score",
+          "type": "number"
+        }
+      },
+      "required": [
+        "total_tasks",
+        "passed_tasks",
+        "failed_tasks",
+        "average_score"
+      ],
+      "title": "EvalSummary",
+      "type": "object"
+    },
+    "QualityGateCheck": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "passed": {
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "detail": {
+          "title": "Detail",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "passed",
+        "detail"
+      ],
+      "title": "QualityGateCheck",
+      "type": "object"
+    },
+    "QualityGateConfig": {
+      "properties": {
+        "min_total_tasks": {
+          "default": 18,
+          "title": "Min Total Tasks",
+          "type": "integer"
+        },
+        "min_pass_rate": {
+          "default": 1.0,
+          "title": "Min Pass Rate",
+          "type": "number"
+        },
+        "min_average_score": {
+          "default": 1.0,
+          "title": "Min Average Score",
+          "type": "number"
+        },
+        "max_failed_tasks": {
+          "default": 0,
+          "title": "Max Failed Tasks",
+          "type": "integer"
+        },
+        "allowed_failure_categories": {
+          "items": {
+            "enum": [
+              "passed",
+              "tool_selection",
+              "tool_execution",
+              "output_assertion"
+            ],
+            "type": "string"
+          },
+          "title": "Allowed Failure Categories",
+          "type": "array"
+        }
+      },
+      "title": "QualityGateConfig",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "passed": {
+      "title": "Passed",
+      "type": "boolean"
+    },
+    "config": {
+      "$ref": "#/$defs/QualityGateConfig"
+    },
+    "summary": {
+      "$ref": "#/$defs/EvalSummary"
+    },
+    "pass_rate": {
+      "title": "Pass Rate",
+      "type": "number"
+    },
+    "failure_category_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Failure Category Counts",
+      "type": "object"
+    },
+    "failed_task_ids": {
+      "items": {
+        "type": "string"
+      },
+      "title": "Failed Task Ids",
+      "type": "array"
+    },
+    "checks": {
+      "items": {
+        "$ref": "#/$defs/QualityGateCheck"
+      },
+      "title": "Checks",
+      "type": "array"
+    }
+  },
+  "required": [
+    "passed",
+    "config",
+    "summary",
+    "pass_rate",
+    "failure_category_counts",
+    "failed_task_ids",
+    "checks"
+  ],
+  "title": "QualityGateResult",
+  "type": "object"
+}

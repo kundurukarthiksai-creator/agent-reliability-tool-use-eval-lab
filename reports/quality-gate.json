@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "config": {
+    "min_total_tasks": 18,
+    "min_pass_rate": 1.0,
+    "min_average_score": 1.0,
+    "max_failed_tasks": 0,
+    "allowed_failure_categories": [
+      "passed"
+    ]
+  },
+  "summary": {
+    "total_tasks": 18,
+    "passed_tasks": 18,
+    "failed_tasks": 0,
+    "average_score": 1.0
+  },
+  "pass_rate": 1.0,
+  "failure_category_counts": {
+    "passed": 18
+  },
+  "failed_task_ids": [],
+  "checks": [
+    {
+      "name": "min_total_tasks",
+      "passed": true,
+      "detail": "total_tasks=18; required>=18"
+    },
+    {
+      "name": "min_pass_rate",
+      "passed": true,
+      "detail": "pass_rate=1.0000; required>=1.0000"
+    },
+    {
+      "name": "min_average_score",
+      "passed": true,
+      "detail": "average_score=1.0000; required>=1.0000"
+    },
+    {
+      "name": "max_failed_tasks",
+      "passed": true,
+      "detail": "failed_tasks=0; allowed<=0"
+    },
+    {
+      "name": "allowed_failure_categories",
+      "passed": true,
+      "detail": "disallowed=[]; allowed=['passed']"
+    }
+  ]
+}

@@ -115,3 +115,15 @@ Planner comparison runs the same task set against multiple planner implementatio
 - failure-category counts.
 
 The included comparison uses the deterministic default planner and a deliberately weak baseline. Optional LLM-backed planners can be added later, but they should use the same comparison output.
+
+## Quality Gate
+
+The quality gate turns an eval report into a release-style pass/fail signal. The strict default gate checks:
+
+- minimum task count;
+- minimum pass rate;
+- minimum average score;
+- maximum failed tasks;
+- allowed failure categories.
+
+CI uses the strict gate so the public deterministic baseline fails fast if task coverage, planner behavior, scoring, or report generation regresses.

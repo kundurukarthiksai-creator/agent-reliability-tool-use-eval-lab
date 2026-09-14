@@ -4,6 +4,7 @@ This folder contains public-safe sample output from the deterministic evaluation
 
 - `dashboard.html` was generated with `scripts/render_dashboard.py`.
 - `task-catalog.html` was generated with `scripts/render_task_catalog.py`.
+- `quality-gate.json` was generated with `scripts/check_quality_gate.py --output reports/quality-gate.json`.
 - `sample-eval-report.json` was generated with `scripts/run_eval.py`.
 - `sample-eval-report.html` was generated with `scripts/render_report.py`.
 - `sample-failure-report.json` and `sample-failure-report.html` were generated with `scripts/render_failure_demo.py`.

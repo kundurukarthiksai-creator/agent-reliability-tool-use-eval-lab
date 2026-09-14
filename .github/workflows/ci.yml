@@ -29,6 +29,9 @@ jobs:
       - name: Run evaluation report
         run: python scripts/run_eval.py
 
+      - name: Check quality gate
+        run: python scripts/check_quality_gate.py --output reports/quality-gate.json
+
       - name: Write sample JSON report
         run: python scripts/run_eval.py reports/sample-eval-report.json
 

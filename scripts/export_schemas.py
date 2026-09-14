@@ -9,6 +9,7 @@ sys.path.insert(0, str(BACKEND))
 
 from app.comparison import PlannerComparisonResult  # noqa: E402
 from app.models import EvalReport, EvalRunRecord, EvaluationTask, TaskCatalogSummary  # noqa: E402
+from app.quality_gate import QualityGateResult  # noqa: E402
 from app.run_comparison import EvalRunComparison  # noqa: E402
 from app.run_trends import EvalRunTrend  # noqa: E402
 
@@ -21,6 +22,7 @@ SCHEMAS = {
     "eval-run-trend.schema.json": EvalRunTrend,
     "planner-comparison-result.schema.json": PlannerComparisonResult,
     "task-catalog-summary.schema.json": TaskCatalogSummary,
+    "quality-gate-result.schema.json": QualityGateResult,
 }
 
 

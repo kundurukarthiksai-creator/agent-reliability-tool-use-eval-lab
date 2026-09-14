@@ -12,6 +12,16 @@ COMMANDS = [
     ("smoke", [sys.executable, "scripts/smoke_test.py"], False),
     ("eval-json", [sys.executable, "scripts/run_eval.py"], True),
     (
+        "quality-gate",
+        [
+            sys.executable,
+            "scripts/check_quality_gate.py",
+            "--output",
+            "reports/quality-gate.json",
+        ],
+        False,
+    ),
+    (
         "sample-json",
         [sys.executable, "scripts/run_eval.py", "reports/sample-eval-report.json"],
         False,
