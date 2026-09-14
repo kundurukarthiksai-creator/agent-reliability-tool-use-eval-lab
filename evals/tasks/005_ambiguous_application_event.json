@@ -1,0 +1,19 @@
+{
+  "id": "ambiguous-application-event",
+  "title": "Flag ambiguous application input",
+  "description": "A user gives an application update without enough structure. The tool should request clarification instead of inventing details.",
+  "expected_tool": "application_tracker_update",
+  "input": {
+    "company": "Google",
+    "event_type": "applied"
+  },
+  "expectations": {
+    "must_equal": {
+      "needs_clarification": true
+    },
+    "must_contain": {
+      "missing_fields": "role"
+    }
+  }
+}
+

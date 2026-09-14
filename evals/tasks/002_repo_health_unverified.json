@@ -1,0 +1,18 @@
+{
+  "id": "repo-health-unverified",
+  "title": "Flag an unverified repo before promotion",
+  "description": "A user asks whether a thin AI wrapper should be promoted publicly.",
+  "expected_tool": "repo_health_check",
+  "input": {
+    "repo_name": "Unverified-AI-Wrapper"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_profile": false
+    },
+    "must_contain": {
+      "missing": "ci"
+    }
+  }
+}
+

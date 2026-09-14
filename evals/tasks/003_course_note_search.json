@@ -1,0 +1,18 @@
+{
+  "id": "course-note-search",
+  "title": "Find relevant tool-use learning notes",
+  "description": "A user asks which resource supports public-safe tool interfaces.",
+  "expected_tool": "course_note_search",
+  "input": {
+    "query": "MCP tool interfaces structured contracts"
+  },
+  "expectations": {
+    "min_value": {
+      "match_count": 1
+    },
+    "must_equal": {
+      "matches.0.source_id": "mcp-beginners-001"
+    }
+  }
+}
+

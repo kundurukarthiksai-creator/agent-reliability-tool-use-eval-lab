@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
+from app.models import EvalReport, ToolDefinition
+from app.registry import build_default_registry
+from app.runner import run_evaluation
+
 
 class HealthResponse(BaseModel):
     status: str
@@ -23,3 +27,12 @@ async def health() -> HealthResponse:
         phase="phase-0-scaffold",
     )
 
+
+@app.get("/tools", response_model=list[ToolDefinition])
+async def tools() -> list[ToolDefinition]:
+    return build_default_registry().list_tools()
+
+
+@app.post("/eval/run", response_model=EvalReport)
+async def run_eval() -> EvalReport:
+    return run_evaluation()

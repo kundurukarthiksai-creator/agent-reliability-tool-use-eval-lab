@@ -21,3 +21,13 @@ The project measures whether an agent uses the correct tool and produces support
 4. Ambiguous input -> refusal/clarification behavior
 5. Final report generation -> structured summary
 
+## Phase 1 Scoring
+
+The Phase 1 runner executes the expected tool directly and scores:
+
+- tool selection;
+- exact expected fields;
+- list containment;
+- minimum numeric thresholds.
+
+This is intentionally deterministic. The later agent loop must earn the right to be interesting by matching this baseline without breaking repeatability.

@@ -14,6 +14,15 @@ Phase 0 scaffold:
 - smoke test script
 - architecture and evaluation-methodology stubs
 
+Phase 1 baseline:
+
+- deterministic tool registry
+- 3 tools
+- 5 starter tasks
+- scoring engine
+- JSON evaluation report
+- `/tools` and `/eval/run` API endpoints
+
 ## Local Setup
 
 ```powershell
@@ -33,6 +42,12 @@ python -m venv .venv
 .\.venv\Scripts\python scripts\smoke_test.py
 ```
 
+## Run Evaluation Report
+
+```powershell
+.\.venv\Scripts\python scripts\run_eval.py
+```
+
 ## Run API
 
 ```powershell
@@ -45,7 +60,14 @@ Open:
 http://127.0.0.1:8000/health
 ```
 
+Useful routes:
+
+```text
+GET  /health
+GET  /tools
+POST /eval/run
+```
+
 ## Plan
 
 `D:\KIRO\chatgpt\career\projects\AGENT_RELIABILITY_TOOL_USE_EVAL_LAB_PLAN_2026-09-14.md`
-

@@ -20,9 +20,14 @@ def main():
     assert payload["status"] == "ok"
     assert payload["service"] == "agent-reliability-tool-use-eval-lab"
 
+    eval_response = client.post("/eval/run")
+    eval_response.raise_for_status()
+    report = eval_response.json()
+    assert report["summary"]["total_tasks"] == 5
+    assert report["summary"]["failed_tasks"] == 0
+
     print("smoke test passed")
 
 
 if __name__ == "__main__":
     main()
-

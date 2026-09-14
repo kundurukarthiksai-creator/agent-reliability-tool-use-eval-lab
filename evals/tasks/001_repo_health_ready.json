@@ -1,0 +1,19 @@
+{
+  "id": "repo-health-ready",
+  "title": "Check whether a cleaned repo is profile-ready",
+  "description": "A user asks if GitHub Dev Card has enough public proof signals for portfolio use.",
+  "expected_tool": "repo_health_check",
+  "input": {
+    "repo_name": "GitHub-Dev-Card-Generator"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_profile": true,
+      "score": 5
+    },
+    "min_value": {
+      "max_score": 5
+    }
+  }
+}
+

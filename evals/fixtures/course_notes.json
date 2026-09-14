@@ -1,0 +1,21 @@
+[
+  {
+    "id": "hf-agents-001",
+    "title": "Hugging Face Agents Course",
+    "tags": ["agents", "tool-use", "evaluation"],
+    "content": "Use agent courses selectively to learn tool calling, observation loops, and evaluation. Do not binge frameworks before shipping a working project."
+  },
+  {
+    "id": "mcp-beginners-001",
+    "title": "Microsoft MCP for Beginners",
+    "tags": ["mcp", "tools", "protocol"],
+    "content": "MCP material is useful for public-safe tool interfaces and for explaining how agents call external capabilities through structured contracts."
+  },
+  {
+    "id": "google-deepmind-001",
+    "title": "Google DeepMind AI Research Foundations",
+    "tags": ["language-models", "foundations", "evaluation"],
+    "content": "Use the foundations path for model and evaluation concepts that directly support the reliability lab. Avoid turning it into passive course collecting."
+  }
+]
+

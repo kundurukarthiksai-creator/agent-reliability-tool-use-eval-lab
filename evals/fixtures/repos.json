@@ -1,0 +1,30 @@
+[
+  {
+    "name": "AI-LinkedIn-Post-Generator",
+    "summary": "Preview-first LinkedIn post generator with smoke-test CI and screenshots.",
+    "readme": true,
+    "tests": true,
+    "ci": true,
+    "screenshots": true,
+    "known_limitations": true
+  },
+  {
+    "name": "GitHub-Dev-Card-Generator",
+    "summary": "FastAPI/Gemini developer card generator with no-key fallback and smoke-test CI.",
+    "readme": true,
+    "tests": true,
+    "ci": true,
+    "screenshots": true,
+    "known_limitations": true
+  },
+  {
+    "name": "Unverified-AI-Wrapper",
+    "summary": "Thin LLM wrapper without proof artifacts.",
+    "readme": true,
+    "tests": false,
+    "ci": false,
+    "screenshots": false,
+    "known_limitations": false
+  }
+]
+
