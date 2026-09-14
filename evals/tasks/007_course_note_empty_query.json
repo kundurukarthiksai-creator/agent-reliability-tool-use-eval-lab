@@ -1,0 +1,15 @@
+{
+  "id": "course-note-empty-query",
+  "title": "Ask for clarification on an empty course-note query",
+  "description": "A user asks for course notes but gives an empty search query.",
+  "expected_tool": "course_note_search",
+  "input": {
+    "query": ""
+  },
+  "expectations": {
+    "must_equal": {
+      "needs_clarification": true,
+      "match_count": 0
+    }
+  }
+}

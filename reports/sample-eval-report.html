@@ -185,8 +185,8 @@
     </header>
 
     <section class="summary" aria-label="Evaluation summary">
-      <div class="metric"><span>Total Tasks</span><strong>5</strong></div>
-      <div class="metric"><span>Passed</span><strong>5</strong></div>
+      <div class="metric"><span>Total Tasks</span><strong>10</strong></div>
+      <div class="metric"><span>Passed</span><strong>10</strong></div>
       <div class="metric"><span>Failed</span><strong>0</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100.0%</strong></div>
     </section>
@@ -366,6 +366,185 @@
       <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
       <h2>Tool Call Trace</h2>
       <p><code>application_tracker_update</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Flag a missing repo fixture</strong>
+      <p>repo-health-missing-repo</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>repo_health_check</code></dd>
+      <dt>Selected</dt>
+      <dd><code>repo_health_check</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Confidence</dt>
+      <dd>0.93</dd>
+      <dt>Signals</dt>
+      <dd>repo, github, portfolio, public proof</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=repo_health_check; selected=repo_health_check</li>
+<li><strong>pass</strong> must_equal:ready_for_profile: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:score: expected=0; actual=0</li>
+<li><strong>pass</strong> must_contain:missing: expected list to contain &#x27;repo_not_found&#x27;; actual=[&#x27;repo_not_found&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>repo_health_check</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Ask for clarification on an empty course-note query</strong>
+      <p>course-note-empty-query</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>course_note_search</code></dd>
+      <dt>Selected</dt>
+      <dd><code>course_note_search</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Confidence</dt>
+      <dd>0.69</dd>
+      <dt>Signals</dt>
+      <dd>course, notes</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=course_note_search; selected=course_note_search</li>
+<li><strong>pass</strong> must_equal:needs_clarification: expected=True; actual=True</li>
+<li><strong>pass</strong> must_equal:match_count: expected=0; actual=0</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>course_note_search</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Normalize an unknown application event</strong>
+      <p>application-unknown-event</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>application_tracker_update</code></dd>
+      <dt>Selected</dt>
+      <dd><code>application_tracker_update</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Confidence</dt>
+      <dd>0.93</dd>
+      <dt>Signals</dt>
+      <dd>application, tracker, role, company</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=application_tracker_update; selected=application_tracker_update</li>
+<li><strong>pass</strong> must_equal:needs_clarification: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:normalized.company: expected=&#x27;ASU&#x27;; actual=&#x27;ASU&#x27;</li>
+<li><strong>pass</strong> must_equal:normalized.status: expected=&#x27;needs_review&#x27;; actual=&#x27;needs_review&#x27;</li>
+<li><strong>pass</strong> must_equal:normalized.source: expected=&#x27;manual&#x27;; actual=&#x27;manual&#x27;</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>application_tracker_update</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Find model evaluation foundations notes</strong>
+      <p>course-note-deepmind-foundations</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>course_note_search</code></dd>
+      <dt>Selected</dt>
+      <dd><code>course_note_search</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Confidence</dt>
+      <dd>0.81</dd>
+      <dt>Signals</dt>
+      <dd>learning, resource, notes</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=course_note_search; selected=course_note_search</li>
+<li><strong>pass</strong> must_equal:matches.0.source_id: expected=&#x27;google-deepmind-001&#x27;; actual=&#x27;google-deepmind-001&#x27;</li>
+<li><strong>pass</strong> min_value:match_count: expected &gt;= 1; actual=2</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>course_note_search</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Check another cleaned repo for public proof</strong>
+      <p>repo-health-ai-linkedin</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>repo_health_check</code></dd>
+      <dt>Selected</dt>
+      <dd><code>repo_health_check</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Confidence</dt>
+      <dd>0.93</dd>
+      <dt>Signals</dt>
+      <dd>repo, github, portfolio, public proof</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=repo_health_check; selected=repo_health_check</li>
+<li><strong>pass</strong> must_equal:ready_for_profile: expected=True; actual=True</li>
+<li><strong>pass</strong> must_equal:score: expected=5; actual=5</li>
+<li><strong>pass</strong> min_value:max_score: expected &gt;= 5; actual=5</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>repo_health_check</code> returned <code>ok</code>.</p>
     </div>
   </div>
 </article>

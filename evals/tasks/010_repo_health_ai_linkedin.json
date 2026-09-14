@@ -1,0 +1,18 @@
+{
+  "id": "repo-health-ai-linkedin",
+  "title": "Check another cleaned repo for public proof",
+  "description": "A user asks if the AI LinkedIn Post Generator repo has enough GitHub portfolio proof signals.",
+  "expected_tool": "repo_health_check",
+  "input": {
+    "repo_name": "AI-LinkedIn-Post-Generator"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_profile": true,
+      "score": 5
+    },
+    "min_value": {
+      "max_score": 5
+    }
+  }
+}

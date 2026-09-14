@@ -27,12 +27,12 @@ def test_eval_run_endpoint_returns_passing_report():
     assert response.status_code == 200
     payload = response.json()
     assert payload["summary"] == {
-        "total_tasks": 5,
-        "passed_tasks": 5,
+        "total_tasks": 10,
+        "passed_tasks": 10,
         "failed_tasks": 0,
         "average_score": 1.0,
     }
-    assert len(payload["results"]) == 5
+    assert len(payload["results"]) == 10
     assert all("agent_plan" in result for result in payload["results"])
     assert all(result["trace"] for result in payload["results"])
 
@@ -80,5 +80,5 @@ def test_persisted_eval_run_read_endpoints(monkeypatch, tmp_path):
     assert list_response.status_code == 200
     assert list_response.json()[0]["run_id"] == saved.run_id
     assert get_response.status_code == 200
-    assert get_response.json()["report"]["summary"]["total_tasks"] == 5
+    assert get_response.json()["report"]["summary"]["total_tasks"] == 10
     assert missing_response.status_code == 404

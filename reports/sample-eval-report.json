@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_tasks": 5,
-    "passed_tasks": 5,
+    "total_tasks": 10,
+    "passed_tasks": 10,
     "failed_tasks": 0,
     "average_score": 1.0
   },
@@ -349,6 +349,337 @@
           "name": "must_contain:missing_fields",
           "passed": true,
           "detail": "expected list to contain 'role'; actual=['role']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task_id": "repo-health-missing-repo",
+      "title": "Flag a missing repo fixture",
+      "expected_tool": "repo_health_check",
+      "selected_tool": "repo_health_check",
+      "agent_plan": {
+        "selected_tool": "repo_health_check",
+        "confidence": 0.93,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "repo",
+          "github",
+          "portfolio",
+          "public proof"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "repo_health_check",
+          "payload": {
+            "repo_name": "Missing-Portfolio-Repo"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "repo_health_check",
+        "output": {
+          "repo_name": "Missing-Portfolio-Repo",
+          "ready_for_profile": false,
+          "score": 0,
+          "missing": [
+            "repo_not_found"
+          ],
+          "checks": {}
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=repo_health_check; selected=repo_health_check"
+        },
+        {
+          "name": "must_equal:ready_for_profile",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:score",
+          "passed": true,
+          "detail": "expected=0; actual=0"
+        },
+        {
+          "name": "must_contain:missing",
+          "passed": true,
+          "detail": "expected list to contain 'repo_not_found'; actual=['repo_not_found']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task_id": "course-note-empty-query",
+      "title": "Ask for clarification on an empty course-note query",
+      "expected_tool": "course_note_search",
+      "selected_tool": "course_note_search",
+      "agent_plan": {
+        "selected_tool": "course_note_search",
+        "confidence": 0.69,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "course",
+          "notes"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "course_note_search",
+          "payload": {
+            "query": ""
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "course_note_search",
+        "output": {
+          "query": "",
+          "matches": [],
+          "match_count": 0,
+          "needs_clarification": true
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=course_note_search; selected=course_note_search"
+        },
+        {
+          "name": "must_equal:needs_clarification",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:match_count",
+          "passed": true,
+          "detail": "expected=0; actual=0"
+        }
+      ],
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task_id": "application-unknown-event",
+      "title": "Normalize an unknown application event",
+      "expected_tool": "application_tracker_update",
+      "selected_tool": "application_tracker_update",
+      "agent_plan": {
+        "selected_tool": "application_tracker_update",
+        "confidence": 0.93,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "application",
+          "tracker",
+          "role",
+          "company"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "application_tracker_update",
+          "payload": {
+            "company": "ASU",
+            "role": "Graduate Grader",
+            "event_type": "emailed",
+            "source": "manual"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "application_tracker_update",
+        "output": {
+          "needs_clarification": false,
+          "missing_fields": [],
+          "normalized": {
+            "company": "ASU",
+            "role": "Graduate Grader",
+            "status": "needs_review",
+            "source": "manual",
+            "next_action": "review",
+            "notes": ""
+          }
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=application_tracker_update; selected=application_tracker_update"
+        },
+        {
+          "name": "must_equal:needs_clarification",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:normalized.company",
+          "passed": true,
+          "detail": "expected='ASU'; actual='ASU'"
+        },
+        {
+          "name": "must_equal:normalized.status",
+          "passed": true,
+          "detail": "expected='needs_review'; actual='needs_review'"
+        },
+        {
+          "name": "must_equal:normalized.source",
+          "passed": true,
+          "detail": "expected='manual'; actual='manual'"
+        }
+      ],
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task_id": "course-note-deepmind-foundations",
+      "title": "Find model evaluation foundations notes",
+      "expected_tool": "course_note_search",
+      "selected_tool": "course_note_search",
+      "agent_plan": {
+        "selected_tool": "course_note_search",
+        "confidence": 0.81,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "learning",
+          "resource",
+          "notes"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "course_note_search",
+          "payload": {
+            "query": "model evaluation foundations"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "course_note_search",
+        "output": {
+          "query": "model evaluation foundations",
+          "matches": [
+            {
+              "source_id": "google-deepmind-001",
+              "title": "Google DeepMind AI Research Foundations",
+              "score": 3,
+              "snippet": "Use the foundations path for model and evaluation concepts that directly support the reliability lab. Avoid turning it into passive course collecting."
+            },
+            {
+              "source_id": "hf-agents-001",
+              "title": "Hugging Face Agents Course",
+              "score": 1,
+              "snippet": "Use agent courses selectively to learn tool calling, observation loops, and evaluation. Do not binge frameworks before shipping a working project."
+            }
+          ],
+          "match_count": 2,
+          "needs_clarification": false
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=course_note_search; selected=course_note_search"
+        },
+        {
+          "name": "must_equal:matches.0.source_id",
+          "passed": true,
+          "detail": "expected='google-deepmind-001'; actual='google-deepmind-001'"
+        },
+        {
+          "name": "min_value:match_count",
+          "passed": true,
+          "detail": "expected >= 1; actual=2"
+        }
+      ],
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task_id": "repo-health-ai-linkedin",
+      "title": "Check another cleaned repo for public proof",
+      "expected_tool": "repo_health_check",
+      "selected_tool": "repo_health_check",
+      "agent_plan": {
+        "selected_tool": "repo_health_check",
+        "confidence": 0.93,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "repo",
+          "github",
+          "portfolio",
+          "public proof"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "repo_health_check",
+          "payload": {
+            "repo_name": "AI-LinkedIn-Post-Generator"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "repo_health_check",
+        "output": {
+          "repo_name": "AI-LinkedIn-Post-Generator",
+          "ready_for_profile": true,
+          "score": 5,
+          "max_score": 5,
+          "missing": [],
+          "checks": {
+            "readme": true,
+            "tests": true,
+            "ci": true,
+            "screenshots": true,
+            "known_limitations": true
+          },
+          "summary": "Preview-first LinkedIn post generator with smoke-test CI and screenshots."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=repo_health_check; selected=repo_health_check"
+        },
+        {
+          "name": "must_equal:ready_for_profile",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:score",
+          "passed": true,
+          "detail": "expected=5; actual=5"
+        },
+        {
+          "name": "min_value:max_score",
+          "passed": true,
+          "detail": "expected >= 5; actual=5"
         }
       ],
       "score": 1.0,

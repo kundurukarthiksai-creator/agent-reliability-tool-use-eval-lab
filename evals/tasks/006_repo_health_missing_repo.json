@@ -1,0 +1,18 @@
+{
+  "id": "repo-health-missing-repo",
+  "title": "Flag a missing repo fixture",
+  "description": "A user asks if a GitHub repo has enough public proof, but the repo is not in the known fixture set.",
+  "expected_tool": "repo_health_check",
+  "input": {
+    "repo_name": "Missing-Portfolio-Repo"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_profile": false,
+      "score": 0
+    },
+    "must_contain": {
+      "missing": "repo_not_found"
+    }
+  }
+}
