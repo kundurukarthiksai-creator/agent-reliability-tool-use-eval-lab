@@ -1,0 +1,18 @@
+{
+  "id": "profile-readme-missing-profile-id",
+  "title": "Request profile README clarification",
+  "description": "A user asks for a recruiter-readiness profile README audit but does not provide which profile fixture to inspect.",
+  "expected_tool": "profile_readme_audit",
+  "input": {
+    "target_project": "agent-reliability-tool-use-eval-lab"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_recruiter": false,
+      "score": 0
+    },
+    "must_contain": {
+      "missing": "profile_id_required"
+    }
+  }
+}

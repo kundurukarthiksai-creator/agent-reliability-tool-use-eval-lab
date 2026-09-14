@@ -227,8 +227,8 @@
     </header>
 
     <section class="summary" aria-label="Task catalog summary">
-      <div class="metric"><span>Tasks</span><strong>18</strong></div>
-      <div class="metric"><span>Tools</span><strong>4</strong></div>
+      <div class="metric"><span>Tasks</span><strong>22</strong></div>
+      <div class="metric"><span>Tools</span><strong>5</strong></div>
       <div class="metric"><span>Fixture Type</span><strong>Public</strong></div>
     </section>
 
@@ -478,6 +478,58 @@
           </td>
         </tr>
 
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Audit profile README flagship project readiness</strong>
+            <code>profile-readme-ready</code>
+          </td>
+          <td data-label="Expected Tool"><code>profile_readme_audit</code></td>
+          <td data-label="Checks">
+            A user asks whether a GitHub profile README gives recruiters enough featured project, proof link, metric, headline, learning focus, and contact signals.
+            <div class="expectations">Assertions: must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Find missing proof in profile README</strong>
+            <code>profile-readme-missing-proof</code>
+          </td>
+          <td data-label="Expected Tool"><code>profile_readme_audit</code></td>
+          <td data-label="Checks">
+            A user asks why a GitHub profile README still feels thin even though it lists a featured project for recruiters.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Check whether profile README features target project</strong>
+            <code>profile-readme-missing-project</code>
+          </td>
+          <td data-label="Expected Tool"><code>profile_readme_audit</code></td>
+          <td data-label="Checks">
+            A user asks if their portfolio profile README actually features the target flagship project prominently enough for recruiter review.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Request profile README clarification</strong>
+            <code>profile-readme-missing-profile-id</code>
+          </td>
+          <td data-label="Expected Tool"><code>profile_readme_audit</code></td>
+          <td data-label="Checks">
+            A user asks for a recruiter-readiness profile README audit but does not provide which profile fixture to inspect.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
           </tbody>
         </table>
       </section>
@@ -519,6 +571,13 @@
           <td data-label="Tool"><code>runbook_lookup</code></td>
           <td data-label="Tasks">3</td>
           <td data-label="Description">Finds deterministic incident runbooks for service symptoms.</td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Tool"><code>profile_readme_audit</code></td>
+          <td data-label="Tasks">4</td>
+          <td data-label="Description">Audits profile README readiness using public-safe synthetic signals.</td>
         </tr>
 
           </tbody>

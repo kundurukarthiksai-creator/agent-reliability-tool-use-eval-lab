@@ -36,7 +36,8 @@ def test_render_dashboard_html_contains_navigation_and_tools():
     assert "/reports/latest.html" in html
     assert "/eval/runs/trends.html" in html
     assert "runbook_lookup" in html
-    assert "18" in html
+    assert "profile_readme_audit" in html
+    assert "22" in html
 
 
 def test_render_task_catalog_html_contains_tool_coverage_counts():
@@ -47,6 +48,7 @@ def test_render_task_catalog_html_contains_tool_coverage_counts():
     assert "Evaluation Task Catalog" in html
     assert "repo-health-ready" in html
     assert "repo_health_check" in html
+    assert "profile_readme_audit" in html
     assert 'data-label="Tasks">6</td>' in html
 
 
@@ -57,7 +59,7 @@ def test_render_runs_index_html_contains_saved_run(tmp_path):
 
     assert "Saved Evaluation Runs" in html
     assert f"#{saved.run_id}" in html
-    assert "18" in html
+    assert "22" in html
 
 
 def test_render_runs_index_html_handles_empty_state():

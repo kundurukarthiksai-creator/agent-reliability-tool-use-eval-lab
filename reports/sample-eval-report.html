@@ -222,8 +222,8 @@
     </header>
 
     <section class="summary" aria-label="Evaluation summary">
-      <div class="metric"><span>Total Tasks</span><strong>18</strong></div>
-      <div class="metric"><span>Passed</span><strong>18</strong></div>
+      <div class="metric"><span>Total Tasks</span><strong>22</strong></div>
+      <div class="metric"><span>Passed</span><strong>22</strong></div>
       <div class="metric"><span>Failed</span><strong>0</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100.0%</strong></div>
     </section>
@@ -250,6 +250,11 @@
         </tr>
 
         <tr>
+          <td><code>profile_readme_audit</code></td>
+          <td>4</td>
+        </tr>
+
+        <tr>
           <td><code>runbook_lookup</code></td>
           <td>3</td>
         </tr>
@@ -264,7 +269,7 @@
             
         <tr>
           <td><code>passed</code></td>
-          <td>18</td>
+          <td>22</td>
         </tr>
 
           </tbody>
@@ -970,6 +975,162 @@
       <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
       <h2>Tool Call Trace</h2>
       <p><code>runbook_lookup</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Audit profile README flagship project readiness</strong>
+      <p>profile-readme-ready</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>profile_readme_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>profile_readme_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>profile readme, profile, featured project, proof link, recruiter, headline, learning focus, contact</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=profile_readme_audit; selected=profile_readme_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:ready_for_recruiter: expected=True; actual=True</li>
+<li><strong>pass</strong> must_equal:score: expected=6; actual=6</li>
+<li><strong>pass</strong> must_equal:featured_project_present: expected=True; actual=True</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>profile_readme_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Find missing proof in profile README</strong>
+      <p>profile-readme-missing-proof</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>profile_readme_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>profile_readme_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.93</dd>
+      <dt>Signals</dt>
+      <dd>profile readme, profile, featured project, recruiter</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=profile_readme_audit; selected=profile_readme_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:ready_for_recruiter: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:featured_project_present: expected=True; actual=True</li>
+<li><strong>pass</strong> must_contain:missing: expected list to contain &#x27;proof_links&#x27;; actual=[&#x27;proof_links&#x27;, &#x27;metrics&#x27;, &#x27;learning_focus&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>profile_readme_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Check whether profile README features target project</strong>
+      <p>profile-readme-missing-project</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>profile_readme_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>profile_readme_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.81</dd>
+      <dt>Signals</dt>
+      <dd>profile readme, profile, recruiter</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=profile_readme_audit; selected=profile_readme_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:ready_for_recruiter: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:featured_project_present: expected=False; actual=False</li>
+<li><strong>pass</strong> must_contain:missing: expected list to contain &#x27;featured_project&#x27;; actual=[&#x27;featured_project&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>profile_readme_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Request profile README clarification</strong>
+      <p>profile-readme-missing-profile-id</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>profile_readme_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>profile_readme_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.81</dd>
+      <dt>Signals</dt>
+      <dd>profile readme, profile, recruiter</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=profile_readme_audit; selected=profile_readme_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:ready_for_recruiter: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:score: expected=0; actual=0</li>
+<li><strong>pass</strong> must_contain:missing: expected list to contain &#x27;profile_id_required&#x27;; actual=[&#x27;profile_id_required&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>profile_readme_audit</code> returned <code>ok</code>.</p>
     </div>
   </div>
 </article>

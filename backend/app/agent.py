@@ -55,6 +55,17 @@ SIGNALS_BY_TOOL = {
         "saved runs",
         "escalation",
     ],
+    "profile_readme_audit": [
+        "profile readme",
+        "profile",
+        "featured project",
+        "proof link",
+        "proof links",
+        "recruiter",
+        "headline",
+        "learning focus",
+        "contact",
+    ],
 }
 
 

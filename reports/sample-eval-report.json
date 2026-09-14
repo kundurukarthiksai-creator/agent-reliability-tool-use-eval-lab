@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_tasks": 18,
-    "passed_tasks": 18,
+    "total_tasks": 22,
+    "passed_tasks": 22,
     "failed_tasks": 0,
     "average_score": 1.0
   },
@@ -1389,6 +1389,328 @@
           "name": "must_equal:matches",
           "passed": true,
           "detail": "expected=[]; actual=[]"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "profile-readme-ready",
+      "title": "Audit profile README flagship project readiness",
+      "expected_tool": "profile_readme_audit",
+      "selected_tool": "profile_readme_audit",
+      "agent_plan": {
+        "selected_tool": "profile_readme_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "profile readme",
+          "profile",
+          "featured project",
+          "proof link",
+          "recruiter",
+          "headline",
+          "learning focus",
+          "contact"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "profile_readme_audit",
+          "payload": {
+            "profile_id": "candidate-profile-polished",
+            "target_project": "agent-reliability-tool-use-eval-lab"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "profile_readme_audit",
+        "output": {
+          "profile_id": "candidate-profile-polished",
+          "target_project": "agent-reliability-tool-use-eval-lab",
+          "ready_for_recruiter": true,
+          "score": 6,
+          "max_score": 6,
+          "featured_project_present": true,
+          "missing": [],
+          "checks": {
+            "headline": true,
+            "featured_project": true,
+            "proof_links": true,
+            "metrics": true,
+            "learning_focus": true,
+            "contact": true
+          },
+          "summary": "Profile README presents a clear recruiter-facing flagship project with proof links, metrics, learning direction, and contact path."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=profile_readme_audit; selected=profile_readme_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_recruiter",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:score",
+          "passed": true,
+          "detail": "expected=6; actual=6"
+        },
+        {
+          "name": "must_equal:featured_project_present",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "profile-readme-missing-proof",
+      "title": "Find missing proof in profile README",
+      "expected_tool": "profile_readme_audit",
+      "selected_tool": "profile_readme_audit",
+      "agent_plan": {
+        "selected_tool": "profile_readme_audit",
+        "confidence": 0.93,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "profile readme",
+          "profile",
+          "featured project",
+          "recruiter"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "profile_readme_audit",
+          "payload": {
+            "profile_id": "candidate-profile-thin",
+            "target_project": "agent-reliability-tool-use-eval-lab"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "profile_readme_audit",
+        "output": {
+          "profile_id": "candidate-profile-thin",
+          "target_project": "agent-reliability-tool-use-eval-lab",
+          "ready_for_recruiter": false,
+          "score": 3,
+          "max_score": 6,
+          "featured_project_present": true,
+          "missing": [
+            "proof_links",
+            "metrics",
+            "learning_focus"
+          ],
+          "checks": {
+            "headline": true,
+            "featured_project": true,
+            "proof_links": false,
+            "metrics": false,
+            "learning_focus": false,
+            "contact": true
+          },
+          "summary": "Profile README names a project but lacks proof links, measurable signals, and current learning direction."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=profile_readme_audit; selected=profile_readme_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_recruiter",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:featured_project_present",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_contain:missing",
+          "passed": true,
+          "detail": "expected list to contain 'proof_links'; actual=['proof_links', 'metrics', 'learning_focus']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "profile-readme-missing-project",
+      "title": "Check whether profile README features target project",
+      "expected_tool": "profile_readme_audit",
+      "selected_tool": "profile_readme_audit",
+      "agent_plan": {
+        "selected_tool": "profile_readme_audit",
+        "confidence": 0.81,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "profile readme",
+          "profile",
+          "recruiter"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "profile_readme_audit",
+          "payload": {
+            "profile_id": "candidate-profile-misaligned",
+            "target_project": "agent-reliability-tool-use-eval-lab"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "profile_readme_audit",
+        "output": {
+          "profile_id": "candidate-profile-misaligned",
+          "target_project": "agent-reliability-tool-use-eval-lab",
+          "ready_for_recruiter": false,
+          "score": 5,
+          "max_score": 6,
+          "featured_project_present": false,
+          "missing": [
+            "featured_project"
+          ],
+          "checks": {
+            "headline": true,
+            "featured_project": false,
+            "proof_links": true,
+            "metrics": true,
+            "learning_focus": true,
+            "contact": true
+          },
+          "summary": "Profile README has basic structure but does not feature the requested flagship project."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=profile_readme_audit; selected=profile_readme_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_recruiter",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:featured_project_present",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_contain:missing",
+          "passed": true,
+          "detail": "expected list to contain 'featured_project'; actual=['featured_project']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "profile-readme-missing-profile-id",
+      "title": "Request profile README clarification",
+      "expected_tool": "profile_readme_audit",
+      "selected_tool": "profile_readme_audit",
+      "agent_plan": {
+        "selected_tool": "profile_readme_audit",
+        "confidence": 0.81,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "profile readme",
+          "profile",
+          "recruiter"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "profile_readme_audit",
+          "payload": {
+            "target_project": "agent-reliability-tool-use-eval-lab"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "profile_readme_audit",
+        "output": {
+          "profile_id": null,
+          "target_project": "agent-reliability-tool-use-eval-lab",
+          "ready_for_recruiter": false,
+          "score": 0,
+          "max_score": 6,
+          "featured_project_present": false,
+          "missing": [
+            "profile_id_required"
+          ],
+          "checks": {},
+          "summary": "A profile id is required before profile README quality can be audited."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=profile_readme_audit; selected=profile_readme_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_recruiter",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:score",
+          "passed": true,
+          "detail": "expected=0; actual=0"
+        },
+        {
+          "name": "must_contain:missing",
+          "passed": true,
+          "detail": "expected list to contain 'profile_id_required'; actual=['profile_id_required']"
         }
       ],
       "score": 1.0,

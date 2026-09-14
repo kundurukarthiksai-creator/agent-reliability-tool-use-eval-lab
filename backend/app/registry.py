@@ -4,6 +4,7 @@ from typing import Any
 from app.models import ToolDefinition
 from app.tools.application_tracker import application_tracker_update
 from app.tools.course_notes import course_note_search
+from app.tools.profile_readme import profile_readme_audit
 from app.tools.repo_health import repo_health_check
 from app.tools.runbooks import runbook_lookup
 
@@ -55,5 +56,10 @@ def build_default_registry() -> ToolRegistry:
         "runbook_lookup",
         "Finds deterministic incident runbooks for service symptoms.",
         runbook_lookup,
+    )
+    registry.register(
+        "profile_readme_audit",
+        "Audits profile README readiness using public-safe synthetic signals.",
+        profile_readme_audit,
     )
     return registry

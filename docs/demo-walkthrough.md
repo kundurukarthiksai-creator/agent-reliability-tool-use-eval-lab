@@ -14,6 +14,7 @@ This verifies:
 - backend tests;
 - API smoke path;
 - deterministic eval summary;
+- strict quality gate;
 - dashboard render;
 - task catalog render;
 - HTML report render;
@@ -29,7 +30,7 @@ This verifies:
 1. `reports/dashboard.html`
    - Entry point for the report, task catalog, saved runs, comparison, trends, and planner comparison.
 2. `reports/task-catalog.html`
-   - Shows all 18 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
+   - Shows all 22 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
 3. `reports/sample-eval-report.html`
    - Shows planner traces, selected tools, scores, assertions, and failure categories.
 4. `reports/failure-catalog.html`
@@ -62,6 +63,7 @@ The project demonstrates:
 - assertion-level scoring;
 - separated failure categories;
 - saved-run comparison and trend summaries;
+- strict quality gate for deterministic regressions;
 - JSON schemas for public contracts;
 - CI-safe execution without keys or paid model calls.
 

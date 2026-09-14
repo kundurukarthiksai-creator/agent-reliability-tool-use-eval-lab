@@ -1,7 +1,7 @@
 {
   "passed": true,
   "config": {
-    "min_total_tasks": 18,
+    "min_total_tasks": 22,
     "min_pass_rate": 1.0,
     "min_average_score": 1.0,
     "max_failed_tasks": 0,
@@ -10,21 +10,21 @@
     ]
   },
   "summary": {
-    "total_tasks": 18,
-    "passed_tasks": 18,
+    "total_tasks": 22,
+    "passed_tasks": 22,
     "failed_tasks": 0,
     "average_score": 1.0
   },
   "pass_rate": 1.0,
   "failure_category_counts": {
-    "passed": 18
+    "passed": 22
   },
   "failed_task_ids": [],
   "checks": [
     {
       "name": "min_total_tasks",
       "passed": true,
-      "detail": "total_tasks=18; required>=18"
+      "detail": "total_tasks=22; required>=22"
     },
     {
       "name": "min_pass_rate",

@@ -1,0 +1,60 @@
+[
+  {
+    "id": "candidate-profile-polished",
+    "headline": "MS CS candidate building reliable agent tooling and backend systems.",
+    "featured_projects": [
+      "agent-reliability-tool-use-eval-lab",
+      "github-dev-card-generator"
+    ],
+    "proof_links": [
+      "ci-badge",
+      "eval-report",
+      "demo-walkthrough",
+      "quality-gate"
+    ],
+    "metrics": [
+      "22 deterministic tasks",
+      "5 local tools",
+      "strict quality gate"
+    ],
+    "learning_focus": [
+      "agent reliability",
+      "backend systems",
+      "evaluation methodology"
+    ],
+    "contact": "available",
+    "summary": "Profile README presents a clear recruiter-facing flagship project with proof links, metrics, learning direction, and contact path."
+  },
+  {
+    "id": "candidate-profile-thin",
+    "headline": "Software engineering student.",
+    "featured_projects": [
+      "agent-reliability-tool-use-eval-lab"
+    ],
+    "proof_links": [],
+    "metrics": [],
+    "learning_focus": [],
+    "contact": "available",
+    "summary": "Profile README names a project but lacks proof links, measurable signals, and current learning direction."
+  },
+  {
+    "id": "candidate-profile-misaligned",
+    "headline": "Backend developer focused on tooling.",
+    "featured_projects": [
+      "course-roadmap-planner",
+      "interview-practice-tracker"
+    ],
+    "proof_links": [
+      "readme",
+      "tests"
+    ],
+    "metrics": [
+      "2 featured projects"
+    ],
+    "learning_focus": [
+      "backend systems"
+    ],
+    "contact": "available",
+    "summary": "Profile README has basic structure but does not feature the requested flagship project."
+  }
+]

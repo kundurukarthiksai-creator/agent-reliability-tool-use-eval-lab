@@ -1,0 +1,19 @@
+{
+  "id": "profile-readme-missing-proof",
+  "title": "Find missing proof in profile README",
+  "description": "A user asks why a GitHub profile README still feels thin even though it lists a featured project for recruiters.",
+  "expected_tool": "profile_readme_audit",
+  "input": {
+    "profile_id": "candidate-profile-thin",
+    "target_project": "agent-reliability-tool-use-eval-lab"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_recruiter": false,
+      "featured_project_present": true
+    },
+    "must_contain": {
+      "missing": "proof_links"
+    }
+  }
+}

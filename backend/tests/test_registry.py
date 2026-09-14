@@ -11,4 +11,5 @@ def test_default_registry_contains_mvp_tools():
         "course_note_search",
         "application_tracker_update",
         "runbook_lookup",
+        "profile_readme_audit",
     }

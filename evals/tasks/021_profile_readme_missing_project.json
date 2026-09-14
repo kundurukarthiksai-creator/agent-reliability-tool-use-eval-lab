@@ -1,0 +1,19 @@
+{
+  "id": "profile-readme-missing-project",
+  "title": "Check whether profile README features target project",
+  "description": "A user asks if their portfolio profile README actually features the target flagship project prominently enough for recruiter review.",
+  "expected_tool": "profile_readme_audit",
+  "input": {
+    "profile_id": "candidate-profile-misaligned",
+    "target_project": "agent-reliability-tool-use-eval-lab"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_recruiter": false,
+      "featured_project_present": false
+    },
+    "must_contain": {
+      "missing": "featured_project"
+    }
+  }
+}

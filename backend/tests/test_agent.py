@@ -49,3 +49,21 @@ def test_agent_selects_runbook_lookup_for_incident_triage():
 
     assert plan.selected_tool == "runbook_lookup"
     assert "runbook" in plan.matched_signals
+
+
+def test_agent_selects_profile_readme_audit_for_profile_review():
+    task = EvaluationTask(
+        id="profile-readme-review",
+        title="Audit profile README recruiter readiness",
+        description="A user asks if a featured project and proof links are visible enough for recruiters.",
+        expected_tool="repo_health_check",
+        input={
+            "profile_id": "candidate-profile-polished",
+            "target_project": "agent-reliability-tool-use-eval-lab",
+        },
+    )
+
+    plan = RuleBasedAgent().plan(task, build_default_registry().list_tools())
+
+    assert plan.selected_tool == "profile_readme_audit"
+    assert "profile readme" in plan.matched_signals

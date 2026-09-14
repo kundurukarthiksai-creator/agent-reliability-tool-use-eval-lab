@@ -1,0 +1,17 @@
+{
+  "id": "profile-readme-ready",
+  "title": "Audit profile README flagship project readiness",
+  "description": "A user asks whether a GitHub profile README gives recruiters enough featured project, proof link, metric, headline, learning focus, and contact signals.",
+  "expected_tool": "profile_readme_audit",
+  "input": {
+    "profile_id": "candidate-profile-polished",
+    "target_project": "agent-reliability-tool-use-eval-lab"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_recruiter": true,
+      "score": 6,
+      "featured_project_present": true
+    }
+  }
+}

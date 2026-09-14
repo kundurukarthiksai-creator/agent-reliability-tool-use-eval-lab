@@ -20,8 +20,8 @@ The default path is intentionally CI-safe: no API keys, no paid model calls, and
 
 - FastAPI backend.
 - Deterministic rule-based planner.
-- Tool registry with 4 local tools.
-- 18 starter evaluation tasks.
+- Tool registry with 5 local tools.
+- 22 starter evaluation tasks.
 - Assertion-level scoring.
 - Strict quality gate for deterministic eval regressions.
 - JSON report output.
