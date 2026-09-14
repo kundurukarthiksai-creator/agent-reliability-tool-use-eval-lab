@@ -13,7 +13,7 @@
       "quality-gate"
     ],
     "metrics": [
-      "30 deterministic tasks",
+      "34 deterministic tasks",
       "7 local tools",
       "strict quality gate"
     ],

@@ -1,0 +1,18 @@
+{
+  "id": "launch-readiness-marketing-only",
+  "title": "Reject a launch page that has copy but almost no proof",
+  "description": "A user asks if a public launch page is enough because the README sounds polished. The audit should still require CI quality gate, eval report, task catalog, failure catalog, OpenAPI contract, and no-key demo evidence.",
+  "expected_tool": "launch_readiness_audit",
+  "input": {
+    "project_id": "agent-demo-marketing-only"
+  },
+  "expectations": {
+    "must_equal": {
+      "launch_ready": false,
+      "readiness_score": 25
+    },
+    "must_contain": {
+      "missing_required": "ci-quality-gate"
+    }
+  }
+}

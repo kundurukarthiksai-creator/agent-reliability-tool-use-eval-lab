@@ -21,6 +21,22 @@ def test_launch_readiness_reports_missing_public_evidence():
     assert len(result["recommended_evidence"]) == 2
 
 
+def test_launch_readiness_reports_missing_no_key_demo():
+    result = launch_readiness_audit({"project_id": "agent-demo-no-static-proof"})
+
+    assert result["launch_ready"] is False
+    assert result["readiness_score"] == 88
+    assert result["missing_required"] == ["no-key-static-demo"]
+
+
+def test_launch_readiness_rejects_marketing_only_project():
+    result = launch_readiness_audit({"project_id": "agent-demo-marketing-only"})
+
+    assert result["launch_ready"] is False
+    assert result["readiness_score"] == 25
+    assert "ci-quality-gate" in result["missing_required"]
+
+
 def test_launch_readiness_requires_project_id():
     result = launch_readiness_audit({})
 

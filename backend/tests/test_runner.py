@@ -1,10 +1,10 @@
 from app.runner import load_tasks, run_evaluation
 
 
-def test_loads_thirty_deterministic_tasks():
+def test_loads_thirty_four_deterministic_tasks():
     tasks = load_tasks()
 
-    assert len(tasks) == 30
+    assert len(tasks) == 34
     assert {task.expected_tool for task in tasks} == {
         "repo_health_check",
         "course_note_search",
@@ -19,8 +19,8 @@ def test_loads_thirty_deterministic_tasks():
 def test_evaluation_report_all_deterministic_tasks_pass():
     report = run_evaluation()
 
-    assert report.summary.total_tasks == 30
-    assert report.summary.passed_tasks == 30
+    assert report.summary.total_tasks == 34
+    assert report.summary.passed_tasks == 34
     assert report.summary.failed_tasks == 0
     assert report.summary.average_score == 1.0
     assert all(result.passed for result in report.results)

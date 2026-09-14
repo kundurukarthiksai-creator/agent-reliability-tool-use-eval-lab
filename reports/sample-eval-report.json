@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_tasks": 30,
-    "passed_tasks": 30,
+    "total_tasks": 34,
+    "passed_tasks": 34,
     "failed_tasks": 0,
     "average_score": 1.0
   },
@@ -2358,6 +2358,339 @@
           "name": "must_contain:missing_required",
           "passed": true,
           "detail": "expected list to contain 'project_not_found'; actual=['project_not_found']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "launch-readiness-noisy-ready",
+      "title": "Decide if this public launch proof package is actually ready",
+      "expected_tool": "launch_readiness_audit",
+      "selected_tool": "launch_readiness_audit",
+      "agent_plan": {
+        "selected_tool": "launch_readiness_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "public launch",
+          "launch",
+          "no-key demo",
+          "quality gate",
+          "eval report",
+          "task catalog",
+          "failure catalog",
+          "openapi contract",
+          "proof package",
+          "honest limits"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "launch_readiness_audit",
+          "payload": {
+            "project_id": "agent-reliability-eval-lab"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "launch_readiness_audit",
+        "output": {
+          "project_id": "agent-reliability-eval-lab",
+          "launch_ready": true,
+          "readiness_score": 100,
+          "matched_required": [
+            "readme-inspection-path",
+            "no-key-static-demo",
+            "ci-quality-gate",
+            "eval-report",
+            "task-catalog",
+            "failure-catalog",
+            "openapi-contract",
+            "honest-limits"
+          ],
+          "missing_required": [],
+          "recommended_evidence": [],
+          "summary": "Public proof package for the Agent Reliability and Tool-Use Eval Lab, including deterministic reports, reviewer docs, a no-key static demo, and contract artifacts."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=launch_readiness_audit; selected=launch_readiness_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:launch_ready",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:readiness_score",
+          "passed": true,
+          "detail": "expected=100; actual=100"
+        },
+        {
+          "name": "must_contain:matched_required",
+          "passed": true,
+          "detail": "expected list to contain 'failure-catalog'; actual=['readme-inspection-path', 'no-key-static-demo', 'ci-quality-gate', 'eval-report', 'task-catalog', 'failure-catalog', 'openapi-contract', 'honest-limits']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "launch-readiness-no-static-demo",
+      "title": "Block public launch when the no-key demo is missing",
+      "expected_tool": "launch_readiness_audit",
+      "selected_tool": "launch_readiness_audit",
+      "agent_plan": {
+        "selected_tool": "launch_readiness_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "launch readiness",
+          "public launch",
+          "launch",
+          "no-key demo",
+          "static demo",
+          "task catalog",
+          "failure catalog"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "launch_readiness_audit",
+          "payload": {
+            "project_id": "agent-demo-no-static-proof"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "launch_readiness_audit",
+        "output": {
+          "project_id": "agent-demo-no-static-proof",
+          "launch_ready": false,
+          "readiness_score": 88,
+          "matched_required": [
+            "readme-inspection-path",
+            "ci-quality-gate",
+            "eval-report",
+            "task-catalog",
+            "failure-catalog",
+            "openapi-contract",
+            "honest-limits"
+          ],
+          "missing_required": [
+            "no-key-static-demo"
+          ],
+          "recommended_evidence": [
+            "Publish a static demo that works without API keys or account setup."
+          ],
+          "summary": "Project with strong reports and contracts, but no public no-key static demo for reviewers."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=launch_readiness_audit; selected=launch_readiness_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:launch_ready",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:readiness_score",
+          "passed": true,
+          "detail": "expected=88; actual=88"
+        },
+        {
+          "name": "must_contain:missing_required",
+          "passed": true,
+          "detail": "expected list to contain 'no-key-static-demo'; actual=['no-key-static-demo']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "launch-readiness-marketing-only",
+      "title": "Reject a launch page that has copy but almost no proof",
+      "expected_tool": "launch_readiness_audit",
+      "selected_tool": "launch_readiness_audit",
+      "agent_plan": {
+        "selected_tool": "launch_readiness_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "public launch",
+          "launch",
+          "no-key demo",
+          "quality gate",
+          "eval report",
+          "task catalog",
+          "failure catalog",
+          "openapi contract"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "launch_readiness_audit",
+          "payload": {
+            "project_id": "agent-demo-marketing-only"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "launch_readiness_audit",
+        "output": {
+          "project_id": "agent-demo-marketing-only",
+          "launch_ready": false,
+          "readiness_score": 25,
+          "matched_required": [
+            "readme-inspection-path",
+            "honest-limits"
+          ],
+          "missing_required": [
+            "no-key-static-demo",
+            "ci-quality-gate",
+            "eval-report",
+            "task-catalog",
+            "failure-catalog",
+            "openapi-contract"
+          ],
+          "recommended_evidence": [
+            "Publish a static demo that works without API keys or account setup.",
+            "Show a CI-backed quality gate with the same command reviewers can run locally.",
+            "Link a current eval report with task-level traces and scores.",
+            "Expose the task catalog and tool coverage so the corpus is auditable.",
+            "Show deliberate failure modes so reviewers can see what the system catches.",
+            "Export and link an OpenAPI contract for the public API surface."
+          ],
+          "summary": "Project page with launch copy and limits, but missing the technical proof package reviewers need."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=launch_readiness_audit; selected=launch_readiness_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:launch_ready",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:readiness_score",
+          "passed": true,
+          "detail": "expected=25; actual=25"
+        },
+        {
+          "name": "must_contain:missing_required",
+          "passed": true,
+          "detail": "expected list to contain 'ci-quality-gate'; actual=['no-key-static-demo', 'ci-quality-gate', 'eval-report', 'task-catalog', 'failure-catalog', 'openapi-contract']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "launch-readiness-wrong-identifier-key",
+      "title": "Ask for launch readiness with the wrong project identifier field",
+      "expected_tool": "launch_readiness_audit",
+      "selected_tool": "launch_readiness_audit",
+      "agent_plan": {
+        "selected_tool": "launch_readiness_audit",
+        "confidence": 0.93,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "launch readiness",
+          "public launch",
+          "launch",
+          "proof package"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "launch_readiness_audit",
+          "payload": {
+            "repo_slug": "agent-reliability-eval-lab"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "launch_readiness_audit",
+        "output": {
+          "project_id": null,
+          "launch_ready": false,
+          "readiness_score": 0,
+          "matched_required": [],
+          "missing_required": [
+            "project_id_required"
+          ],
+          "recommended_evidence": [],
+          "summary": "A known project id is required before launch readiness can be audited."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=launch_readiness_audit; selected=launch_readiness_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:launch_ready",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:readiness_score",
+          "passed": true,
+          "detail": "expected=0; actual=0"
+        },
+        {
+          "name": "must_contain:missing_required",
+          "passed": true,
+          "detail": "expected list to contain 'project_id_required'; actual=['project_id_required']"
         }
       ],
       "score": 1.0,

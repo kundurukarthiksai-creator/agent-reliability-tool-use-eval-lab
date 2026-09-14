@@ -297,8 +297,8 @@
     </header>
 
     <section class="summary" aria-label="Evaluation summary">
-      <div class="metric"><span>Total Tasks</span><strong>30</strong></div>
-      <div class="metric"><span>Passed</span><strong>30</strong></div>
+      <div class="metric"><span>Total Tasks</span><strong>34</strong></div>
+      <div class="metric"><span>Passed</span><strong>34</strong></div>
       <div class="metric"><span>Failed</span><strong>0</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100.0%</strong></div>
     </section>
@@ -309,7 +309,7 @@
       <div class="evidence-grid">
         <div class="evidence-item">
           <span>Deterministic baseline</span>
-          <strong>30/30 tasks pass</strong>
+          <strong>34/34 tasks pass</strong>
           <p>Average assertion score: 1.0000.</p>
         </div>
         <div class="evidence-item">
@@ -319,13 +319,13 @@
         </div>
         <div class="evidence-item">
           <span>Traceability</span>
-          <strong>30/30 traces recorded</strong>
+          <strong>34/34 traces recorded</strong>
           <p>Each task keeps the planner rationale, selected tool, and tool result.</p>
         </div>
         <div class="evidence-item">
           <span>Regression guard</span>
           <strong>Passing</strong>
-          <p>Requires at least 30 tasks, 100% pass rate, 1.0 average score, and only passed failure categories.</p>
+          <p>Requires at least 34 tasks, 100% pass rate, 1.0 average score, and only passed failure categories.</p>
         </div>
       </div>
     </section>
@@ -336,6 +336,11 @@
         <table>
           <tbody>
             
+        <tr>
+          <td><code>launch_readiness_audit</code></td>
+          <td>8</td>
+        </tr>
+
         <tr>
           <td><code>repo_health_check</code></td>
           <td>6</td>
@@ -348,11 +353,6 @@
 
         <tr>
           <td><code>application_tracker_update</code></td>
-          <td>4</td>
-        </tr>
-
-        <tr>
-          <td><code>launch_readiness_audit</code></td>
           <td>4</td>
         </tr>
 
@@ -381,7 +381,7 @@
             
         <tr>
           <td><code>passed</code></td>
-          <td>30</td>
+          <td>34</td>
         </tr>
 
           </tbody>
@@ -1552,6 +1552,162 @@
 <li><strong>pass</strong> must_equal:launch_ready: expected=False; actual=False</li>
 <li><strong>pass</strong> must_equal:readiness_score: expected=0; actual=0</li>
 <li><strong>pass</strong> must_contain:missing_required: expected list to contain &#x27;project_not_found&#x27;; actual=[&#x27;project_not_found&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>launch_readiness_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Decide if this public launch proof package is actually ready</strong>
+      <p>launch-readiness-noisy-ready</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>launch_readiness_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>launch_readiness_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>public launch, launch, no-key demo, quality gate, eval report, task catalog, failure catalog, openapi contract, proof package, honest limits</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=launch_readiness_audit; selected=launch_readiness_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:launch_ready: expected=True; actual=True</li>
+<li><strong>pass</strong> must_equal:readiness_score: expected=100; actual=100</li>
+<li><strong>pass</strong> must_contain:matched_required: expected list to contain &#x27;failure-catalog&#x27;; actual=[&#x27;readme-inspection-path&#x27;, &#x27;no-key-static-demo&#x27;, &#x27;ci-quality-gate&#x27;, &#x27;eval-report&#x27;, &#x27;task-catalog&#x27;, &#x27;failure-catalog&#x27;, &#x27;openapi-contract&#x27;, &#x27;honest-limits&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>launch_readiness_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Block public launch when the no-key demo is missing</strong>
+      <p>launch-readiness-no-static-demo</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>launch_readiness_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>launch_readiness_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>launch readiness, public launch, launch, no-key demo, static demo, task catalog, failure catalog</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=launch_readiness_audit; selected=launch_readiness_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:launch_ready: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:readiness_score: expected=88; actual=88</li>
+<li><strong>pass</strong> must_contain:missing_required: expected list to contain &#x27;no-key-static-demo&#x27;; actual=[&#x27;no-key-static-demo&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>launch_readiness_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Reject a launch page that has copy but almost no proof</strong>
+      <p>launch-readiness-marketing-only</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>launch_readiness_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>launch_readiness_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>public launch, launch, no-key demo, quality gate, eval report, task catalog, failure catalog, openapi contract</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=launch_readiness_audit; selected=launch_readiness_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:launch_ready: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:readiness_score: expected=25; actual=25</li>
+<li><strong>pass</strong> must_contain:missing_required: expected list to contain &#x27;ci-quality-gate&#x27;; actual=[&#x27;no-key-static-demo&#x27;, &#x27;ci-quality-gate&#x27;, &#x27;eval-report&#x27;, &#x27;task-catalog&#x27;, &#x27;failure-catalog&#x27;, &#x27;openapi-contract&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>launch_readiness_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Ask for launch readiness with the wrong project identifier field</strong>
+      <p>launch-readiness-wrong-identifier-key</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>launch_readiness_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>launch_readiness_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.93</dd>
+      <dt>Signals</dt>
+      <dd>launch readiness, public launch, launch, proof package</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=launch_readiness_audit; selected=launch_readiness_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:launch_ready: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:readiness_score: expected=0; actual=0</li>
+<li><strong>pass</strong> must_contain:missing_required: expected list to contain &#x27;project_id_required&#x27;; actual=[&#x27;project_id_required&#x27;]</li></ul>
       <h2>Planner Rationale</h2>
       <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
       <h2>Tool Call Trace</h2>

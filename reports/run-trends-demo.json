@@ -4,33 +4,33 @@
   "latest_run_id": 3,
   "passed_tasks_delta": 2,
   "failed_tasks_delta": -2,
-  "average_score_delta": 0.0667,
+  "average_score_delta": 0.0588,
   "best_pass_rate": 100.0,
-  "worst_pass_rate": 93.3,
+  "worst_pass_rate": 94.1,
   "points": [
     {
       "run_id": 1,
       "created_at": "2026-09-14T00:00:00+00:00",
-      "total_tasks": 30,
-      "passed_tasks": 28,
+      "total_tasks": 34,
+      "passed_tasks": 32,
       "failed_tasks": 2,
-      "average_score": 0.9333,
-      "pass_rate": 93.3
+      "average_score": 0.9412,
+      "pass_rate": 94.1
     },
     {
       "run_id": 2,
       "created_at": "2026-09-14T01:00:00+00:00",
-      "total_tasks": 30,
-      "passed_tasks": 29,
+      "total_tasks": 34,
+      "passed_tasks": 33,
       "failed_tasks": 1,
-      "average_score": 0.9667,
-      "pass_rate": 96.7
+      "average_score": 0.9706,
+      "pass_rate": 97.1
     },
     {
       "run_id": 3,
       "created_at": "2026-09-14T02:00:00+00:00",
-      "total_tasks": 30,
-      "passed_tasks": 30,
+      "total_tasks": 34,
+      "passed_tasks": 34,
       "failed_tasks": 0,
       "average_score": 1.0,
       "pass_rate": 100.0

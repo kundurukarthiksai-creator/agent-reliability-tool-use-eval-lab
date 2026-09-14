@@ -82,7 +82,7 @@ CLI:
 EvalReport -> backend/app/quality_gate.py -> pass/fail gate result
 ```
 
-The strict default gate requires the public deterministic baseline to keep at least 30 tasks, 100% pass rate, 1.0 average score, zero failed tasks, and only the `passed` failure category. Thresholds can be relaxed for diagnostic reports, but CI uses the strict gate.
+The strict default gate requires the public deterministic baseline to keep at least 34 tasks, 100% pass rate, 1.0 average score, zero failed tasks, and only the `passed` failure category. Thresholds can be relaxed for diagnostic reports, but CI uses the strict gate.
 
 ## Phase 2 Baseline
 

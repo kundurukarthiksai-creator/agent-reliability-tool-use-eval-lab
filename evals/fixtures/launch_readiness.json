@@ -38,6 +38,27 @@
         "task-catalog",
         "honest-limits"
       ]
+    },
+    {
+      "id": "agent-demo-no-static-proof",
+      "summary": "Project with strong reports and contracts, but no public no-key static demo for reviewers.",
+      "signals": [
+        "readme-inspection-path",
+        "ci-quality-gate",
+        "eval-report",
+        "task-catalog",
+        "failure-catalog",
+        "openapi-contract",
+        "honest-limits"
+      ]
+    },
+    {
+      "id": "agent-demo-marketing-only",
+      "summary": "Project page with launch copy and limits, but missing the technical proof package reviewers need.",
+      "signals": [
+        "readme-inspection-path",
+        "honest-limits"
+      ]
     }
   ]
 }

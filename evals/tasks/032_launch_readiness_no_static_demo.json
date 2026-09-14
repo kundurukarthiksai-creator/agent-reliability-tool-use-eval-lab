@@ -1,0 +1,18 @@
+{
+  "id": "launch-readiness-no-static-demo",
+  "title": "Block public launch when the no-key demo is missing",
+  "description": "A user asks for a launch readiness audit and wants hard evidence gaps, not optimistic marketing. The project has reports, CI, task catalog, failure catalog, OpenAPI, and limits, but no public no-key static demo.",
+  "expected_tool": "launch_readiness_audit",
+  "input": {
+    "project_id": "agent-demo-no-static-proof"
+  },
+  "expectations": {
+    "must_equal": {
+      "launch_ready": false,
+      "readiness_score": 88
+    },
+    "must_contain": {
+      "missing_required": "no-key-static-demo"
+    }
+  }
+}

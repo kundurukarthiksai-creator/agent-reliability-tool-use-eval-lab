@@ -8,7 +8,7 @@ The default path is intentionally deterministic. It runs without API keys or pai
 
 ## What It Evaluates
 
-- Tool selection across 30 public-safe tasks.
+- Tool selection across 34 public-safe tasks.
 - Tool-call traces for 7 deterministic local tools.
 - Assertion-level scoring for expected fields and values.
 - Failure categories for tool selection, tool execution, and output assertions.

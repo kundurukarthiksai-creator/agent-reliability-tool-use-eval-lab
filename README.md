@@ -20,7 +20,7 @@ https://kundurukarthiksai-creator.github.io/agent-reliability-tool-use-eval-lab/
 Then inspect these artifacts in order:
 
 1. `reports/sample-eval-report.html`
-   - Confirms `30/30` tasks pass, `7` tools are exercised, `30/30` traces are recorded, and the strict regression guard is passing.
+   - Confirms `34/34` tasks pass, `7` tools are exercised, `34/34` traces are recorded, and the strict regression guard is passing.
 2. `reports/task-catalog.html`
    - Shows the deterministic task corpus, expected tools, assertion keys, and tool coverage.
 3. `reports/failure-catalog.html`
@@ -43,7 +43,7 @@ Then inspect these artifacts in order:
 - FastAPI backend.
 - Deterministic rule-based planner.
 - Tool registry with 7 local tools.
-- 30 deterministic evaluation tasks.
+- 34 deterministic evaluation tasks.
 - Assertion-level scoring.
 - Strict quality gate for deterministic eval regressions.
 - JSON report output.

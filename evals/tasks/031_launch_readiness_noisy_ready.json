@@ -1,0 +1,18 @@
+{
+  "id": "launch-readiness-noisy-ready",
+  "title": "Decide if this public launch proof package is actually ready",
+  "description": "A user says, ship it if the reviewer can inspect the README path, no-key demo, CI quality gate, eval report, task catalog, failure catalog, OpenAPI contract, and honest limits without needing private access.",
+  "expected_tool": "launch_readiness_audit",
+  "input": {
+    "project_id": "agent-reliability-eval-lab"
+  },
+  "expectations": {
+    "must_equal": {
+      "launch_ready": true,
+      "readiness_score": 100
+    },
+    "must_contain": {
+      "matched_required": "failure-catalog"
+    }
+  }
+}

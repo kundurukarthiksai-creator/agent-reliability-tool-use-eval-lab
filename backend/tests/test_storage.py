@@ -12,7 +12,7 @@ def test_save_list_and_get_eval_run(tmp_path):
 
     assert saved.run_id == 1
     assert runs[0].run_id == saved.run_id
-    assert runs[0].summary.total_tasks == 30
+    assert runs[0].summary.total_tasks == 34
     assert loaded is not None
     assert loaded.report.summary.failed_tasks == 0
 
