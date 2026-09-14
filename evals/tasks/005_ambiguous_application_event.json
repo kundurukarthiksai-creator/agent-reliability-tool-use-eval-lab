@@ -4,7 +4,7 @@
   "description": "A user gives an application update without enough structure. The tool should request clarification instead of inventing details.",
   "expected_tool": "application_tracker_update",
   "input": {
-    "company": "Google",
+    "company": "Northstar Systems",
     "event_type": "applied"
   },
   "expectations": {
@@ -16,4 +16,3 @@
     }
   }
 }
-

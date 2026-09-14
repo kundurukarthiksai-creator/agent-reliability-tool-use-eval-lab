@@ -4,15 +4,15 @@
   "description": "A user records a job application tracker update with a complete company and role but an event type that needs review.",
   "expected_tool": "application_tracker_update",
   "input": {
-    "company": "ASU",
-    "role": "Graduate Grader",
+    "company": "Riverton Labs",
+    "role": "Backend Developer Intern",
     "event_type": "emailed",
     "source": "manual"
   },
   "expectations": {
     "must_equal": {
       "needs_clarification": false,
-      "normalized.company": "ASU",
+      "normalized.company": "Riverton Labs",
       "normalized.status": "needs_review",
       "normalized.source": "manual"
     }

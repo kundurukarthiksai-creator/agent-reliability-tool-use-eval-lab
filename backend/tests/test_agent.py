@@ -22,9 +22,13 @@ def test_agent_selects_application_tracker_for_job_event():
     task = EvaluationTask(
         id="application-event",
         title="Normalize a saved internship application",
-        description="A user saved a Google role and needs a tracker-ready update.",
+        description="A user saved a backend internship role and needs a tracker-ready update.",
         expected_tool="course_note_search",
-        input={"company": "Google", "role": "SWE Intern", "event_type": "saved"},
+        input={
+            "company": "Northstar Systems",
+            "role": "Backend Engineering Intern",
+            "event_type": "saved",
+        },
     )
 
     plan = RuleBasedAgent().plan(task, build_default_registry().list_tools())

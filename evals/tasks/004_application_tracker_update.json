@@ -1,11 +1,11 @@
 {
   "id": "application-tracker-update",
   "title": "Normalize an application event",
-  "description": "A user saves a Google internship role and needs a tracker-ready update.",
+  "description": "A user saves a backend internship role and needs a tracker-ready update.",
   "expected_tool": "application_tracker_update",
   "input": {
-    "company": "Google",
-    "role": "Software Engineering Intern, MS",
+    "company": "Northstar Systems",
+    "role": "Backend Engineering Intern",
     "event_type": "saved",
     "source": "company site",
     "next_action": "prepare transcript"
@@ -13,10 +13,9 @@
   "expectations": {
     "must_equal": {
       "needs_clarification": false,
-      "normalized.company": "Google",
+      "normalized.company": "Northstar Systems",
       "normalized.status": "saved",
       "normalized.next_action": "prepare transcript"
     }
   }
 }
-
