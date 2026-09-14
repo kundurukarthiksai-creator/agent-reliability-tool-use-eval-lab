@@ -31,6 +31,13 @@ EXPECTED_TEXT = {
         "What A Passing Task Proves",
         "Failure Interpretation",
     ],
+    "architecture-flow.html": [
+        "Agent Reliability Eval Lab Architecture Flow",
+        "Current Proof",
+        "Evaluation Path",
+        "Failure Exits",
+        "34/34",
+    ],
     "reports/dashboard.html": ["Agent Reliability Lab", "role_readiness_audit"],
     "reports/task-catalog.html": ["Evaluation Task Catalog", "profile-readme-ready"],
     "reports/sample-eval-report.html": ["Agent Reliability Eval Report", "Total Tasks"],

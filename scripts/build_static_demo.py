@@ -61,6 +61,10 @@ def main() -> None:
         render_traceability_guide(),
         encoding="utf-8",
     )
+    (SITE_DIR / "architecture-flow.html").write_text(
+        render_architecture_flow(),
+        encoding="utf-8",
+    )
     print(f"built {SITE_DIR}")
 
 
@@ -68,6 +72,7 @@ def render_index() -> str:
     links = [
         ("Case Study", "case-study.html", "Read the reviewer-friendly project walkthrough."),
         ("Traceability Guide", "traceability.html", "Follow one task from fixture to planner, trace, and assertions."),
+        ("Architecture Flow", "architecture-flow.html", "See how fixtures, planner, tools, scoring, reports, and quality gate connect."),
         ("Dashboard", "reports/dashboard.html", "Start with the portfolio demo index."),
         ("Task Catalog", "reports/task-catalog.html", "Inspect all 34 deterministic tasks."),
         ("Eval Report", "reports/sample-eval-report.html", "Review traces, assertions, and scoring."),
@@ -94,6 +99,10 @@ def render_index() -> str:
         (
             "traceability.html",
             "Use the traceability guide to understand how one task becomes auditable evidence.",
+        ),
+        (
+            "architecture-flow.html",
+            "Use the architecture flow to understand how fixtures, planner, tools, scoring, reports, and the quality gate connect.",
         ),
         (
             "docs/openapi.json",
@@ -302,6 +311,221 @@ def render_index() -> str:
     </section>
     <section class="preview" aria-label="Report screenshot">
       <img src="assets/eval-report.png" alt="HTML evaluation report screenshot">
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+
+def render_architecture_flow() -> str:
+    return """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Reliability Eval Lab Architecture Flow</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #171a21;
+      --muted: #566173;
+      --border: #d9e0ea;
+      --accent: #0f5db8;
+      --success: #147d43;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    main {
+      width: 100%;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 36px 20px 52px;
+    }
+    a { color: var(--accent); }
+    .back {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .summary {
+      max-width: 820px;
+      margin: 16px 0 28px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 21px;
+      letter-spacing: 0;
+    }
+    p, li {
+      color: var(--muted);
+      line-height: 1.58;
+      overflow-wrap: anywhere;
+    }
+    code {
+      background: #eef2f8;
+      border: 1px solid #d7deea;
+      border-radius: 4px;
+      padding: 1px 4px;
+      white-space: normal;
+    }
+    section {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    .proof {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0 0 28px;
+    }
+    .metric, .node {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .metric {
+      min-height: 104px;
+      padding: 18px;
+    }
+    .metric span {
+      color: var(--muted);
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .metric strong {
+      color: var(--success);
+      display: block;
+      font-size: 28px;
+      margin-top: 8px;
+      overflow-wrap: anywhere;
+    }
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+    .node {
+      min-height: 188px;
+      padding: 14px;
+      position: relative;
+    }
+    .node span {
+      color: var(--accent);
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      margin-bottom: 9px;
+      text-transform: uppercase;
+    }
+    .node strong {
+      display: block;
+      font-size: 15px;
+      line-height: 1.25;
+      overflow-wrap: anywhere;
+    }
+    .node p {
+      font-size: 14px;
+      margin: 10px 0 0;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr);
+      gap: 28px;
+    }
+    .plain-list {
+      margin: 10px 0 0;
+      padding-left: 22px;
+    }
+    .plain-list li {
+      margin: 8px 0;
+    }
+    @media (max-width: 820px) {
+      h1 { font-size: 29px; }
+      .proof, .flow, .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px) {
+      main { max-width: 390px; margin: 0; padding: 28px 16px 42px; }
+      h1 { font-size: 26px; line-height: 1.15; }
+      .summary { font-size: 16px; }
+      .proof, .flow, .split { grid-template-columns: 1fr; }
+      .metric, .node { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="index.html">Back to demo</a>
+    <h1>Agent Reliability Eval Lab Architecture Flow</h1>
+    <p class="summary">A compact map of how deterministic task fixtures become planner decisions, tool traces, scored assertions, quality gates, and public demo evidence.</p>
+
+    <section aria-label="Current Proof">
+      <h2>Current Proof</h2>
+      <div class="proof">
+        <div class="metric"><span>Eval Result</span><strong>34/34</strong></div>
+        <div class="metric"><span>Tool Coverage</span><strong>7 tools</strong></div>
+        <div class="metric"><span>Launch Cases</span><strong>8 tasks</strong></div>
+        <div class="metric"><span>Default Path</span><strong>No Keys</strong></div>
+      </div>
+    </section>
+
+    <section aria-label="Evaluation Path">
+      <h2>Evaluation Path</h2>
+      <div class="flow">
+        <div class="node"><span>01</span><strong><code>evals/tasks/*.json</code></strong><p>Defines task input, expected tool, and explicit assertions.</p></div>
+        <div class="node"><span>02</span><strong><code>RuleBasedAgent</code></strong><p>Selects a tool from task title, description, and structured signals.</p></div>
+        <div class="node"><span>03</span><strong><code>ToolRegistry</code></strong><p>Executes one local deterministic tool and records the call trace.</p></div>
+        <div class="node"><span>04</span><strong><code>scoring.py</code></strong><p>Checks tool choice, status, exact values, containment, and minimum thresholds.</p></div>
+        <div class="node"><span>05</span><strong><code>EvalReport</code></strong><p>Preserves plan, trace, assertions, score, and failure category.</p></div>
+        <div class="node"><span>06</span><strong><code>quality-gate.json</code></strong><p>Enforces pass rate, average score, task count, and accepted failure categories.</p></div>
+        <div class="node"><span>07</span><strong><code>site/</code></strong><p>Packages checked evidence into the static GitHub Pages demo.</p></div>
+      </div>
+    </section>
+
+    <section aria-label="Architecture notes">
+      <div class="split">
+        <div>
+          <h2>Why This Matters</h2>
+          <p>The public demo is not a hand-written marketing page. It is built from checked artifacts, so broken links, missing proof text, stale task counts, or missing screenshots fail verification before publishing.</p>
+          <p>The same path supports local inspection, CI verification, and GitHub Pages review without API keys or paid model calls.</p>
+        </div>
+        <div>
+          <h2>Failure Exits</h2>
+          <ul class="plain-list">
+            <li><code>tool_selection</code>: planner chose the wrong tool.</li>
+            <li><code>tool_execution</code>: selected tool failed at runtime.</li>
+            <li><code>output_assertion</code>: tool ran, but output checks failed.</li>
+          </ul>
+        </div>
+      </div>
     </section>
   </main>
 </body>
