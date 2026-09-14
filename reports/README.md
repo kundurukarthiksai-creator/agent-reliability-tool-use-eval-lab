@@ -12,6 +12,6 @@ This folder contains public-safe sample output from the deterministic evaluation
 - `planner-comparison.json` and `planner-comparison.md` were generated with `scripts/compare_planners.py`.
 - `run-comparison-demo.json` and `run-comparison-demo.html` were generated with `scripts/render_run_comparison_demo.py`.
 - `run-trends-demo.json` and `run-trends-demo.html` were generated with `scripts/render_run_trends_demo.py`.
-- `site/` was generated with `scripts/build_static_demo.py` and is ignored by git.
+- `site/` was generated with `scripts/build_static_demo.py`, checked with `scripts/check_static_demo.py`, and is ignored by git.
 - The sample uses synthetic/public-safe fixtures only.
 - Regenerate it after intentional report-schema changes.

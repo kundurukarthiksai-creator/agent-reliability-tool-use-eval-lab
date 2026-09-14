@@ -28,6 +28,7 @@ This runs:
 - run comparison demo renderer.
 - run trends demo renderer.
 - static demo builder.
+- static demo link/content check.
 
 ## Individual Commands
 
@@ -47,6 +48,7 @@ This runs:
 .\.venv\Scripts\python scripts\render_run_trends_demo.py
 .\.venv\Scripts\python scripts\export_schemas.py
 .\.venv\Scripts\python scripts\build_static_demo.py
+.\.venv\Scripts\python scripts\check_static_demo.py
 ```
 
 ## Optional OpenAI Planner

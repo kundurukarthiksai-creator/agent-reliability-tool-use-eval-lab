@@ -81,6 +81,7 @@ Render sample reports:
 .\.venv\Scripts\python scripts\render_run_trends_demo.py
 .\.venv\Scripts\python scripts\export_schemas.py
 .\.venv\Scripts\python scripts\build_static_demo.py
+.\.venv\Scripts\python scripts\check_static_demo.py
 ```
 
 Optional OpenAI planner comparison:
@@ -156,6 +157,7 @@ The planner comparison shows the default planner against a deliberately weak bas
 The run comparison demo shows how saved runs surface regressions and recoveries.
 The run trends demo shows reliability movement across several saved runs.
 The static demo builder packages these artifacts into `site/` for GitHub Pages.
+The static demo check verifies the Pages landing links, expected text, and screenshot asset.
 
 ## Project Layout
 

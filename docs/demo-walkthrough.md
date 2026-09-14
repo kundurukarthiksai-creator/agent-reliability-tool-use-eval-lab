@@ -24,7 +24,8 @@ This verifies:
 - saved-run comparison demo;
 - saved-run trend demo;
 - schema export;
-- static demo build.
+- static demo build;
+- static demo link/content check.
 
 ## What To Inspect First
 
@@ -61,6 +62,7 @@ http://127.0.0.1:8000/planners/compare.html
 
 ```powershell
 .\.venv\Scripts\python scripts\build_static_demo.py
+.\.venv\Scripts\python scripts\check_static_demo.py
 ```
 
 Open:

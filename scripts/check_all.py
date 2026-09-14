@@ -36,6 +36,7 @@ COMMANDS = [
     ("run-trends-demo", [sys.executable, "scripts/render_run_trends_demo.py"], False),
     ("schemas", [sys.executable, "scripts/export_schemas.py"], False),
     ("static-demo", [sys.executable, "scripts/build_static_demo.py"], False),
+    ("static-demo-check", [sys.executable, "scripts/check_static_demo.py"], False),
 ]
 
 
