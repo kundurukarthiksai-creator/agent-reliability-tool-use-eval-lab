@@ -31,3 +31,14 @@ The Phase 1 runner executes the expected tool directly and scores:
 - minimum numeric thresholds.
 
 This is intentionally deterministic. The later agent loop must earn the right to be interesting by matching this baseline without breaking repeatability.
+
+## Phase 2 Agent Trace
+
+Phase 2 records an `agent_plan` and `trace` for each task:
+
+- `agent_plan` explains which tool the planner selected, confidence, and matched signals.
+- `trace` records the actual tool call payload and runtime status.
+
+This separates planner failures from tool failures. Wrong tool selection means the agent failed. Right tool with wrong output means the tool, fixture, or scoring expectation failed. Tool execution errors mean registry/runtime behavior failed.
+
+The CI planner is deterministic on purpose. Future LLM-backed planners should be compared against this baseline instead of replacing it.

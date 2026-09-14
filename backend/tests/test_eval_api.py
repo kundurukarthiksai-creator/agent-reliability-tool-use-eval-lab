@@ -31,4 +31,5 @@ def test_eval_run_endpoint_returns_passing_report():
         "average_score": 1.0,
     }
     assert len(payload["results"]) == 5
-
+    assert all("agent_plan" in result for result in payload["results"])
+    assert all(result["trace"] for result in payload["results"])

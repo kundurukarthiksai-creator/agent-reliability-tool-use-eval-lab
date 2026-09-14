@@ -2,7 +2,15 @@ import json
 from pathlib import Path
 from typing import Any
 
-from app.models import EvalReport, EvalSummary, EvaluationTask, TaskRunResult, ToolResult
+from app.agent import RuleBasedAgent
+from app.models import (
+    EvalReport,
+    EvalSummary,
+    EvaluationTask,
+    TaskRunResult,
+    ToolCallTrace,
+    ToolResult,
+)
 from app.registry import ToolRegistry, build_default_registry
 from app.scoring import score_task
 
@@ -20,8 +28,15 @@ def load_tasks(tasks_dir: Path = TASKS_DIR) -> list[EvaluationTask]:
     return tasks
 
 
-def run_task(task: EvaluationTask, registry: ToolRegistry) -> TaskRunResult:
-    selected_tool = task.expected_tool
+def run_task(
+    task: EvaluationTask,
+    registry: ToolRegistry,
+    agent: RuleBasedAgent | None = None,
+) -> TaskRunResult:
+    selected_agent = agent if agent is not None else RuleBasedAgent()
+    agent_plan = selected_agent.plan(task, registry.list_tools())
+    selected_tool = agent_plan.selected_tool
+
     try:
         output = registry.run(selected_tool, task.input)
         tool_result = ToolResult(tool_name=selected_tool, output=output, status="ok")
@@ -33,12 +48,21 @@ def run_task(task: EvaluationTask, registry: ToolRegistry) -> TaskRunResult:
             error=str(exc),
         )
 
+    trace = [
+        ToolCallTrace(
+            tool_name=selected_tool,
+            payload=task.input,
+            status=tool_result.status,
+        )
+    ]
     assertions, score, passed = score_task(task, selected_tool, tool_result)
     return TaskRunResult(
         task_id=task.id,
         title=task.title,
         expected_tool=task.expected_tool,
         selected_tool=selected_tool,
+        agent_plan=agent_plan,
+        trace=trace,
         tool_result=tool_result,
         assertions=assertions,
         score=score,
@@ -49,11 +73,13 @@ def run_task(task: EvaluationTask, registry: ToolRegistry) -> TaskRunResult:
 def run_evaluation(
     tasks: list[EvaluationTask] | None = None,
     registry: ToolRegistry | None = None,
+    agent: RuleBasedAgent | None = None,
 ) -> EvalReport:
     selected_tasks = tasks if tasks is not None else load_tasks()
     selected_registry = registry if registry is not None else build_default_registry()
+    selected_agent = agent if agent is not None else RuleBasedAgent()
 
-    results = [run_task(task, selected_registry) for task in selected_tasks]
+    results = [run_task(task, selected_registry, selected_agent) for task in selected_tasks]
     passed_tasks = sum(1 for result in results if result.passed)
     total_tasks = len(results)
     average_score = (
@@ -69,4 +95,3 @@ def run_evaluation(
         ),
         results=results,
     )
-

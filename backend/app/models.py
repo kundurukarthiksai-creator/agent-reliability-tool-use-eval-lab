@@ -24,6 +24,19 @@ class ToolResult(BaseModel):
     error: str | None = None
 
 
+class AgentPlan(BaseModel):
+    selected_tool: str
+    confidence: float
+    rationale: str
+    matched_signals: list[str] = Field(default_factory=list)
+
+
+class ToolCallTrace(BaseModel):
+    tool_name: str
+    payload: dict[str, Any]
+    status: Literal["ok", "error"]
+
+
 class AssertionResult(BaseModel):
     name: str
     passed: bool
@@ -35,6 +48,8 @@ class TaskRunResult(BaseModel):
     title: str
     expected_tool: str
     selected_tool: str
+    agent_plan: AgentPlan
+    trace: list[ToolCallTrace] = Field(default_factory=list)
     tool_result: ToolResult
     assertions: list[AssertionResult]
     score: float
@@ -51,4 +66,3 @@ class EvalSummary(BaseModel):
 class EvalReport(BaseModel):
     summary: EvalSummary
     results: list[TaskRunResult]
-

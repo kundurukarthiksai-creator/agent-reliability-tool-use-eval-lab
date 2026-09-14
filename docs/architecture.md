@@ -53,3 +53,19 @@ API:
 CLI:
 
 - `scripts/run_eval.py` prints the JSON report.
+
+## Phase 2 Baseline
+
+```text
+EvaluationTask
+      |
+      v
+RuleBasedAgent planner
+      |
+      v
+selected tool -> ToolRegistry -> ToolCallTrace -> Scoring -> EvalReport JSON
+```
+
+The runner now evaluates the agent-selected tool instead of copying `expected_tool`. The first planner is deterministic and CI-safe: it reads the task title, description, and input payload, then chooses a registered tool through signal matching.
+
+This keeps the project reliable while creating a real agent loop: plan, execute, trace, score, report. Optional LLM planners can be added later as another planner implementation, not as a replacement for the baseline.

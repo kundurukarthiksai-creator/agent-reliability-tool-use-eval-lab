@@ -23,6 +23,12 @@ Phase 1 baseline:
 - JSON evaluation report
 - `/tools` and `/eval/run` API endpoints
 
+Phase 2 baseline:
+
+- deterministic rule-based agent planner
+- tool-call trace in each task result
+- CI-safe agent behavior with no external API key
+
 ## Local Setup
 
 ```powershell
@@ -47,6 +53,8 @@ python -m venv .venv
 ```powershell
 .\.venv\Scripts\python scripts\run_eval.py
 ```
+
+The report includes the agent plan, selected tool, tool-call trace, assertion results, and score for each task.
 
 ## Run API
 
