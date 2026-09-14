@@ -30,6 +30,7 @@ The default path is intentionally CI-safe: no API keys, no paid model calls, and
 - SQLite persistence for saved runs.
 - Saved-run comparison API and HTML view.
 - Saved-run trend summary API and HTML view.
+- Optional OpenAI planner comparison, disabled by default.
 - GitHub Actions CI.
 
 ## Quickstart
@@ -69,6 +70,14 @@ Render sample reports:
 .\.venv\Scripts\python scripts\render_run_comparison_demo.py
 .\.venv\Scripts\python scripts\render_run_trends_demo.py
 .\.venv\Scripts\python scripts\export_schemas.py
+```
+
+Optional OpenAI planner comparison:
+
+```powershell
+$env:EVAL_LAB_ENABLE_OPENAI_PLANNER = "1"
+$env:OPENAI_API_KEY = "<your-api-key>"
+.\.venv\Scripts\python scripts\compare_openai_planner.py
 ```
 
 Run the API:
@@ -154,6 +163,7 @@ docs/            architecture and methodology notes
 ## Known Limitations
 
 - The default planner is rule-based, not an LLM planner.
+- OpenAI planner comparison is manual and disabled unless environment variables are set.
 - The starter eval set is small while tool contracts stabilize.
 - Fixtures are synthetic/public-safe examples.
 - CI proves deterministic behavior, not broad real-world agent generalization.
@@ -162,7 +172,7 @@ docs/            architecture and methodology notes
 ## Roadmap
 
 - Add more tools and harder task fixtures.
-- Add optional LLM-backed planner comparison behind environment variables.
+- Expand optional planner adapters while keeping CI deterministic.
 - Add a lightweight docs/demo deployment if it can stay free of secrets and recurring cost.
 
 ## Docs
@@ -172,4 +182,5 @@ docs/            architecture and methodology notes
 - `docs/evaluation-methodology.md`
 - `docs/commands.md`
 - `docs/schemas.md`
+- `docs/optional-openai-planner.md`
 - `docs/github-metadata.md`

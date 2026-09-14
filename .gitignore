@@ -8,5 +8,7 @@ __pycache__/
 data/*.db
 data/*.sqlite
 data/*.sqlite3
+reports/openai-planner-comparison.json
+reports/openai-planner-comparison.md
 .DS_Store
 Thumbs.db

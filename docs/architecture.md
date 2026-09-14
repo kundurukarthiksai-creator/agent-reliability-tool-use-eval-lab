@@ -84,7 +84,18 @@ selected tool -> ToolRegistry -> ToolCallTrace -> Scoring -> EvalReport JSON
 
 The runner now evaluates the agent-selected tool instead of copying `expected_tool`. The first planner is deterministic and CI-safe: it reads the task title, description, and input payload, then chooses a registered tool through signal matching.
 
-This keeps the project reliable while creating a real agent loop: plan, execute, trace, score, report. Optional LLM planners can be added later as another planner implementation, not as a replacement for the baseline.
+This keeps the project reliable while creating a real agent loop: plan, execute, trace, score, report. Optional LLM planners are separate planner implementations, not replacements for the baseline.
+
+## Optional OpenAI Planner
+
+```text
+EvaluationTask + ToolDefinition[]
+      |
+      v
+OpenAIPlanner -> structured tool-selection JSON -> AgentPlan
+```
+
+The OpenAI planner adapter is disabled by default and is not part of CI. It is enabled only when `EVAL_LAB_ENABLE_OPENAI_PLANNER=1` and `OPENAI_API_KEY` are present. The adapter rejects any selected tool that is not already registered locally.
 
 ## Reporting
 

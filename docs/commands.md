@@ -45,6 +45,20 @@ This runs:
 .\.venv\Scripts\python scripts\export_schemas.py
 ```
 
+## Optional OpenAI Planner
+
+This is not part of CI and does not run without explicit environment variables.
+
+```powershell
+$env:EVAL_LAB_ENABLE_OPENAI_PLANNER = "1"
+$env:OPENAI_API_KEY = "<your-api-key>"
+$env:EVAL_LAB_OPENAI_MODEL = "gpt-4o-mini"
+.\.venv\Scripts\python scripts\compare_openai_planner.py
+```
+
+If `EVAL_LAB_ENABLE_OPENAI_PLANNER` is not set to `1`, the script exits without
+making model calls.
+
 ## API
 
 ```powershell
