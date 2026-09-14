@@ -33,7 +33,9 @@ Then inspect these artifacts in order:
    - Gives a concise explanation for interviews, including tradeoffs, proof, and honest limits.
 7. Static demo architecture flow
    - Shows how fixtures, planner, tools, scoring, reports, quality gate, and the static demo connect.
-8. `docs/openapi.json`
+8. Static demo tool-safety walkthrough
+   - Explains the tool-safety audit controls, failure cases, and inspection path.
+9. `docs/openapi.json`
    - Exposes the FastAPI route contract as a versioned public artifact.
 
 ## What It Proves
@@ -59,6 +61,7 @@ Then inspect these artifacts in order:
 - Static case-study walkthrough for reviewers.
 - Static interview walkthrough for technical explanation practice.
 - Static architecture flow for reviewer inspection.
+- Static tool-safety walkthrough for permission, approval, dry-run, audit-log, and negative-test evidence.
 - Tool-safety proof audit for schemas, permission gates, approvals, dry-run behavior, audit logs, tests, CI, and public-safe limits.
 - Deliberate failure demo for wrong tool selection.
 - SQLite persistence for saved runs.
@@ -185,6 +188,7 @@ site/case-study.html
 site/interview-walkthrough.html
 site/traceability.html
 site/architecture-flow.html
+site/tool-safety.html
 ```
 
 The dashboard links the report, run history, run comparison, trends, and planner comparison views.
@@ -193,6 +197,7 @@ The case-study page explains what the project proves, how to inspect it, and its
 The interview walkthrough explains the project in interview format with tradeoffs, proof, and limits.
 The traceability guide explains how one task becomes auditable evidence.
 The architecture flow explains how fixtures, planner, tools, scoring, reports, quality gate, and static demo publishing connect.
+The tool-safety walkthrough explains how the suite checks schemas, permission gates, approval gates, dry-run behavior, audit logs, negative tests, CI, and public-safe limits.
 The task catalog shows all deterministic task fixtures and the expected tool for each task.
 The quality gate fails when deterministic eval results drop below configured pass-rate, score, task-count, or failure-category thresholds.
 The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
@@ -246,6 +251,7 @@ docs/            architecture and methodology notes
 - `docs/case-study.md`
 - `docs/interview-walkthrough.md`
 - `docs/traceability-guide.md`
+- `docs/tool-safety-walkthrough.md`
 - `docs/demo-walkthrough.md`
 - `docs/schemas.md`
 - `docs/optional-openai-planner.md`

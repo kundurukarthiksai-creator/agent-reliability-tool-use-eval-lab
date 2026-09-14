@@ -73,6 +73,10 @@ def main() -> None:
         render_architecture_flow(),
         encoding="utf-8",
     )
+    (SITE_DIR / "tool-safety.html").write_text(
+        render_tool_safety_walkthrough(),
+        encoding="utf-8",
+    )
     print(f"built {SITE_DIR}")
 
 
@@ -83,6 +87,7 @@ def render_index() -> str:
         ("Interview Walkthrough", "interview-walkthrough.html", "Practice a concise technical explanation with tradeoffs and limits."),
         ("Traceability Guide", "traceability.html", "Follow one task from fixture to planner, trace, and assertions."),
         ("Architecture Flow", "architecture-flow.html", "See how fixtures, planner, tools, scoring, reports, and quality gate connect."),
+        ("Tool Safety Walkthrough", "tool-safety.html", "Review schemas, permission gates, approvals, audit logs, dry-run behavior, and negative tests."),
         ("Dashboard", "reports/dashboard.html", "Start with the portfolio demo index."),
         ("Task Catalog", "reports/task-catalog.html", "Inspect all 42 deterministic tasks."),
         ("Eval Report", "reports/sample-eval-report.html", "Review traces, assertions, and scoring."),
@@ -121,6 +126,10 @@ def render_index() -> str:
         (
             "architecture-flow.html",
             "Use the architecture flow to understand how fixtures, planner, tools, scoring, reports, and the quality gate connect.",
+        ),
+        (
+            "tool-safety.html",
+            "Use the tool-safety walkthrough to inspect permission, approval, dry-run, audit-log, and negative-test evidence.",
         ),
         (
             "docs/openapi.json",
@@ -744,6 +753,186 @@ def render_architecture_flow() -> str:
           </ul>
         </div>
       </div>
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+
+def render_tool_safety_walkthrough() -> str:
+    return """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Reliability Eval Lab Tool Safety Walkthrough</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #171a21;
+      --muted: #566173;
+      --border: #d9e0ea;
+      --accent: #0f5db8;
+      --success: #147d43;
+      --warn: #9a5b00;
+    }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; overflow-x: hidden; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    main {
+      width: 100%;
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 36px 20px 52px;
+    }
+    a { color: var(--accent); }
+    .back {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .summary {
+      max-width: 790px;
+      margin: 16px 0 28px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    section {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    h2 { margin: 0 0 14px; font-size: 21px; letter-spacing: 0; }
+    p, li { color: var(--muted); line-height: 1.58; overflow-wrap: anywhere; }
+    ul, ol { margin: 10px 0 0; padding-left: 22px; }
+    code {
+      background: #eef2f8;
+      border: 1px solid #d8e0eb;
+      border-radius: 6px;
+      padding: 2px 6px;
+      overflow-wrap: anywhere;
+    }
+    .proof {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0 0;
+    }
+    .metric, .case {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+      min-width: 0;
+    }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .metric strong {
+      display: block;
+      font-size: 24px;
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .case h3 {
+      margin: 0 0 8px;
+      font-size: 17px;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .case p { margin: 0; }
+    .pass { color: var(--success); font-weight: 800; }
+    .gap { color: var(--warn); font-weight: 800; }
+    @media (max-width: 760px) {
+      main { max-width: 390px; margin: 0; padding: 28px 16px 42px; }
+      h1 { font-size: 26px; line-height: 1.15; }
+      .summary { font-size: 16px; }
+      .proof, .grid { grid-template-columns: 1fr; }
+      .metric, .case { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="index.html">Back to demo</a>
+    <h1>Agent Reliability Eval Lab Tool Safety Walkthrough</h1>
+    <p class="summary">A reviewer-focused guide to the <code>tool_safety_audit</code> task family: what it checks, what fails, and how the evidence connects to the MCP Tool Safety Lab.</p>
+
+    <section aria-label="Current proof">
+      <h2>Current Proof</h2>
+      <div class="proof">
+        <div class="metric"><span>Eval Result</span><strong>42/42</strong></div>
+        <div class="metric"><span>Tool Coverage</span><strong>9 tools</strong></div>
+        <div class="metric"><span>Tool Safety Cases</span><strong>4 tasks</strong></div>
+        <div class="metric"><span>Current MCP Lab</span><strong>100 score</strong></div>
+      </div>
+    </section>
+
+    <section aria-label="Audit controls">
+      <h2>What The Audit Checks</h2>
+      <ul>
+        <li>Stable tool schemas for callable tools.</li>
+        <li>Permission gates before tool execution.</li>
+        <li>Audit logs for allowed and blocked attempts.</li>
+        <li>Human approval gates for risky publish-like paths.</li>
+        <li>Dry-run behavior for write-like demos.</li>
+        <li>Negative tests for blocked paths.</li>
+        <li>CI verification and public-safe limits.</li>
+      </ul>
+    </section>
+
+    <section aria-label="Task cases">
+      <h2>Task Cases</h2>
+      <div class="grid">
+        <div class="case"><h3><code>tool-safety-mcp-lab-ready</code></h3><p><span class="pass">Passes</span> when the MCP lab shows schemas, permissions, approvals, dry-run behavior, audit logs, negative tests, CI, and public-safe limits.</p></div>
+        <div class="case"><h3><code>tool-safety-missing-approval</code></h3><p><span class="gap">Fails</span> when a publish-like action lacks a human approval boundary.</p></div>
+        <div class="case"><h3><code>tool-safety-missing-audit</code></h3><p><span class="gap">Fails</span> when allowed and blocked tool calls are not observable after execution.</p></div>
+        <div class="case"><h3><code>tool-safety-missing-project-id</code></h3><p><span class="gap">Fails closed</span> when the required project identifier is missing.</p></div>
+      </div>
+    </section>
+
+    <section aria-label="Inspection path">
+      <h2>How To Inspect It</h2>
+      <ol>
+        <li>Open <a href="reports/sample-eval-report.html">the eval report</a> and search for <code>tool_safety_audit</code>.</li>
+        <li>Confirm expected tool and selected tool match for each tool-safety task.</li>
+        <li>Inspect <code>matched_controls</code>, <code>missing_controls</code>, and <code>risky_gaps</code>.</li>
+        <li>Open <a href="reports/task-catalog.html">the task catalog</a> to view all four task definitions together.</li>
+      </ol>
+    </section>
+
+    <section aria-label="Honest limits">
+      <h2>Honest Limits</h2>
+      <p>This is a deterministic public proof check over local fixtures. It does not certify a real production integration, execute external writes, or prove full MCP server compliance.</p>
     </section>
   </main>
 </body>

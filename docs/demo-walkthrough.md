@@ -44,13 +44,15 @@ This verifies:
    - Shows how one task flows from fixture to planner decision, tool trace, assertions, and failure category.
 7. `site/architecture-flow.html`
    - Shows how fixtures, planner, tools, scoring, reports, quality gate, and static publishing connect.
-8. `reports/task-catalog.html`
+8. `site/tool-safety.html`
+   - Explains the tool-safety audit controls, failure cases, and reviewer inspection path.
+9. `reports/task-catalog.html`
    - Shows all 42 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
-9. `reports/sample-eval-report.html`
+10. `reports/sample-eval-report.html`
    - Shows reviewer evidence summary, planner traces, selected tools, scores, assertions, and failure categories.
-10. `reports/failure-catalog.html`
+11. `reports/failure-catalog.html`
    - Shows deliberate `tool_selection`, `tool_execution`, and `output_assertion` failures.
-11. `reports/planner-comparison.md`
+12. `reports/planner-comparison.md`
    - Compares the deterministic planner against a deliberately weak baseline.
 
 ## Local API Demo
