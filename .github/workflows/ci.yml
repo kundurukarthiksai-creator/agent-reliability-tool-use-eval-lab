@@ -40,3 +40,6 @@ jobs:
 
       - name: Compare planners
         run: python scripts/compare_planners.py
+
+      - name: Export schemas
+        run: python scripts/export_schemas.py

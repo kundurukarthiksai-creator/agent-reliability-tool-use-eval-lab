@@ -33,6 +33,7 @@ This runs:
 .\.venv\Scripts\python scripts\render_failure_demo.py
 .\.venv\Scripts\python scripts\render_failure_catalog.py
 .\.venv\Scripts\python scripts\compare_planners.py
+.\.venv\Scripts\python scripts\export_schemas.py
 ```
 
 ## API

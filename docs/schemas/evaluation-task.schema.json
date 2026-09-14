@@ -1,0 +1,38 @@
+{
+  "properties": {
+    "id": {
+      "title": "Id",
+      "type": "string"
+    },
+    "title": {
+      "title": "Title",
+      "type": "string"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "expected_tool": {
+      "title": "Expected Tool",
+      "type": "string"
+    },
+    "input": {
+      "additionalProperties": true,
+      "title": "Input",
+      "type": "object"
+    },
+    "expectations": {
+      "additionalProperties": true,
+      "title": "Expectations",
+      "type": "object"
+    }
+  },
+  "required": [
+    "id",
+    "title",
+    "description",
+    "expected_tool"
+  ],
+  "title": "EvaluationTask",
+  "type": "object"
+}

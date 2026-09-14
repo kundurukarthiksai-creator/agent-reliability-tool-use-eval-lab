@@ -59,6 +59,7 @@ Render sample reports:
 .\.venv\Scripts\python scripts\render_failure_demo.py
 .\.venv\Scripts\python scripts\render_failure_catalog.py
 .\.venv\Scripts\python scripts\compare_planners.py
+.\.venv\Scripts\python scripts\export_schemas.py
 ```
 
 Run the API:
@@ -143,4 +144,5 @@ docs/            architecture and methodology notes
 - `docs/architecture.md`
 - `docs/evaluation-methodology.md`
 - `docs/commands.md`
+- `docs/schemas.md`
 - `docs/github-metadata.md`

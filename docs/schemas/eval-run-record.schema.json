@@ -1,0 +1,269 @@
+{
+  "$defs": {
+    "AgentPlan": {
+      "properties": {
+        "selected_tool": {
+          "title": "Selected Tool",
+          "type": "string"
+        },
+        "confidence": {
+          "title": "Confidence",
+          "type": "number"
+        },
+        "rationale": {
+          "title": "Rationale",
+          "type": "string"
+        },
+        "matched_signals": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Matched Signals",
+          "type": "array"
+        }
+      },
+      "required": [
+        "selected_tool",
+        "confidence",
+        "rationale"
+      ],
+      "title": "AgentPlan",
+      "type": "object"
+    },
+    "AssertionResult": {
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "passed": {
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "detail": {
+          "title": "Detail",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "passed",
+        "detail"
+      ],
+      "title": "AssertionResult",
+      "type": "object"
+    },
+    "EvalReport": {
+      "properties": {
+        "summary": {
+          "$ref": "#/$defs/EvalSummary"
+        },
+        "results": {
+          "items": {
+            "$ref": "#/$defs/TaskRunResult"
+          },
+          "title": "Results",
+          "type": "array"
+        }
+      },
+      "required": [
+        "summary",
+        "results"
+      ],
+      "title": "EvalReport",
+      "type": "object"
+    },
+    "EvalSummary": {
+      "properties": {
+        "total_tasks": {
+          "title": "Total Tasks",
+          "type": "integer"
+        },
+        "passed_tasks": {
+          "title": "Passed Tasks",
+          "type": "integer"
+        },
+        "failed_tasks": {
+          "title": "Failed Tasks",
+          "type": "integer"
+        },
+        "average_score": {
+          "title": "Average Score",
+          "type": "number"
+        }
+      },
+      "required": [
+        "total_tasks",
+        "passed_tasks",
+        "failed_tasks",
+        "average_score"
+      ],
+      "title": "EvalSummary",
+      "type": "object"
+    },
+    "TaskRunResult": {
+      "properties": {
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "expected_tool": {
+          "title": "Expected Tool",
+          "type": "string"
+        },
+        "selected_tool": {
+          "title": "Selected Tool",
+          "type": "string"
+        },
+        "agent_plan": {
+          "$ref": "#/$defs/AgentPlan"
+        },
+        "trace": {
+          "items": {
+            "$ref": "#/$defs/ToolCallTrace"
+          },
+          "title": "Trace",
+          "type": "array"
+        },
+        "tool_result": {
+          "$ref": "#/$defs/ToolResult"
+        },
+        "assertions": {
+          "items": {
+            "$ref": "#/$defs/AssertionResult"
+          },
+          "title": "Assertions",
+          "type": "array"
+        },
+        "score": {
+          "title": "Score",
+          "type": "number"
+        },
+        "passed": {
+          "title": "Passed",
+          "type": "boolean"
+        },
+        "failure_category": {
+          "enum": [
+            "passed",
+            "tool_selection",
+            "tool_execution",
+            "output_assertion"
+          ],
+          "title": "Failure Category",
+          "type": "string"
+        }
+      },
+      "required": [
+        "task_id",
+        "title",
+        "expected_tool",
+        "selected_tool",
+        "agent_plan",
+        "tool_result",
+        "assertions",
+        "score",
+        "passed",
+        "failure_category"
+      ],
+      "title": "TaskRunResult",
+      "type": "object"
+    },
+    "ToolCallTrace": {
+      "properties": {
+        "tool_name": {
+          "title": "Tool Name",
+          "type": "string"
+        },
+        "payload": {
+          "additionalProperties": true,
+          "title": "Payload",
+          "type": "object"
+        },
+        "status": {
+          "enum": [
+            "ok",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "tool_name",
+        "payload",
+        "status"
+      ],
+      "title": "ToolCallTrace",
+      "type": "object"
+    },
+    "ToolResult": {
+      "properties": {
+        "tool_name": {
+          "title": "Tool Name",
+          "type": "string"
+        },
+        "output": {
+          "additionalProperties": true,
+          "title": "Output",
+          "type": "object"
+        },
+        "status": {
+          "default": "ok",
+          "enum": [
+            "ok",
+            "error"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "error": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Error"
+        }
+      },
+      "required": [
+        "tool_name",
+        "output"
+      ],
+      "title": "ToolResult",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "run_id": {
+      "title": "Run Id",
+      "type": "integer"
+    },
+    "created_at": {
+      "title": "Created At",
+      "type": "string"
+    },
+    "summary": {
+      "$ref": "#/$defs/EvalSummary"
+    },
+    "report": {
+      "$ref": "#/$defs/EvalReport"
+    }
+  },
+  "required": [
+    "run_id",
+    "created_at",
+    "summary",
+    "report"
+  ],
+  "title": "EvalRunRecord",
+  "type": "object"
+}

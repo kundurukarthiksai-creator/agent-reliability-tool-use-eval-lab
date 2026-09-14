@@ -1,0 +1,41 @@
+{
+  "properties": {
+    "planner_name": {
+      "title": "Planner Name",
+      "type": "string"
+    },
+    "total_tasks": {
+      "title": "Total Tasks",
+      "type": "integer"
+    },
+    "passed_tasks": {
+      "title": "Passed Tasks",
+      "type": "integer"
+    },
+    "failed_tasks": {
+      "title": "Failed Tasks",
+      "type": "integer"
+    },
+    "average_score": {
+      "title": "Average Score",
+      "type": "number"
+    },
+    "failure_categories": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Failure Categories",
+      "type": "object"
+    }
+  },
+  "required": [
+    "planner_name",
+    "total_tasks",
+    "passed_tasks",
+    "failed_tasks",
+    "average_score",
+    "failure_categories"
+  ],
+  "title": "PlannerComparisonResult",
+  "type": "object"
+}
