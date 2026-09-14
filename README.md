@@ -181,6 +181,7 @@ docs/            architecture and methodology notes
 - `docs/architecture.md`
 - `docs/evaluation-methodology.md`
 - `docs/commands.md`
+- `docs/demo-walkthrough.md`
 - `docs/schemas.md`
 - `docs/optional-openai-planner.md`
 - `docs/github-metadata.md`
