@@ -57,12 +57,17 @@ def main() -> None:
     (SITE_DIR / ".nojekyll").write_text("", encoding="utf-8")
     (SITE_DIR / "index.html").write_text(render_index(), encoding="utf-8")
     (SITE_DIR / "case-study.html").write_text(render_case_study(), encoding="utf-8")
+    (SITE_DIR / "traceability.html").write_text(
+        render_traceability_guide(),
+        encoding="utf-8",
+    )
     print(f"built {SITE_DIR}")
 
 
 def render_index() -> str:
     links = [
         ("Case Study", "case-study.html", "Read the reviewer-friendly project walkthrough."),
+        ("Traceability Guide", "traceability.html", "Follow one task from fixture to planner, trace, and assertions."),
         ("Dashboard", "reports/dashboard.html", "Start with the portfolio demo index."),
         ("Task Catalog", "reports/task-catalog.html", "Inspect all 30 deterministic tasks."),
         ("Eval Report", "reports/sample-eval-report.html", "Review traces, assertions, and scoring."),
@@ -85,6 +90,10 @@ def render_index() -> str:
         (
             "reports/failure-catalog.html",
             "Review deliberate tool-selection, tool-execution, and output-assertion failures.",
+        ),
+        (
+            "traceability.html",
+            "Use the traceability guide to understand how one task becomes auditable evidence.",
         ),
         (
             "docs/openapi.json",
@@ -293,6 +302,172 @@ def render_index() -> str:
     </section>
     <section class="preview" aria-label="Report screenshot">
       <img src="assets/eval-report.png" alt="HTML evaluation report screenshot">
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+
+def render_traceability_guide() -> str:
+    return """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Reliability Eval Lab Traceability Guide</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #171a21;
+      --muted: #566173;
+      --border: #d9e0ea;
+      --accent: #0f5db8;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    main {
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 36px 20px 52px;
+    }
+    a { color: var(--accent); }
+    .back {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .summary {
+      max-width: 780px;
+      margin: 16px 0 30px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    section {
+      border-top: 1px solid var(--border);
+      padding: 22px 0;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 20px;
+      letter-spacing: 0;
+    }
+    p, li {
+      color: var(--muted);
+      line-height: 1.58;
+      overflow-wrap: anywhere;
+    }
+    ul, ol {
+      margin: 10px 0 0;
+      padding-left: 22px;
+    }
+    code {
+      background: #eef2f8;
+      border: 1px solid #d7deea;
+      border-radius: 4px;
+      padding: 1px 4px;
+      white-space: normal;
+    }
+    .path {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .step {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      min-height: 108px;
+      padding: 14px;
+    }
+    .step span {
+      color: var(--accent);
+      display: block;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+    .step p {
+      font-size: 14px;
+      margin: 0;
+    }
+    @media (max-width: 820px) {
+      h1 { font-size: 29px; }
+      .path { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px) {
+      main { max-width: 390px; margin: 0; padding: 28px 16px 42px; }
+      h1 { font-size: 26px; line-height: 1.15; }
+      .summary { font-size: 16px; }
+      .path { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="index.html">Back to demo</a>
+    <h1>Agent Reliability Eval Lab Traceability Guide</h1>
+    <p class="summary">A reviewer guide for following one task from JSON fixture to planner decision, tool call trace, assertions, and final report evidence.</p>
+
+    <section>
+      <h2>Audit Path</h2>
+      <div class="path" aria-label="Traceability path">
+        <div class="step"><span>Task</span><p>Start with one JSON fixture in <code>evals/tasks</code>.</p></div>
+        <div class="step"><span>Plan</span><p>Inspect <code>agent_plan</code> for selected tool, matched signals, and rationale.</p></div>
+        <div class="step"><span>Trace</span><p>Confirm the selected tool was called and returned <code>ok</code>.</p></div>
+        <div class="step"><span>Score</span><p>Check tool selection, status, exact values, containment, and minimum thresholds.</p></div>
+        <div class="step"><span>Category</span><p>Use the failure category to understand what broke when a task fails.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What A Passing Task Proves</h2>
+      <ul>
+        <li>The planner selected the expected tool.</li>
+        <li>The tool call executed successfully.</li>
+        <li>The returned structured output matched the task expectations.</li>
+        <li>The report kept enough trace data for a reviewer to diagnose the path.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What To Check In The Report</h2>
+      <p>In <a href="reports/sample-eval-report.html">the HTML eval report</a>, inspect <code>Expected</code>, <code>Selected</code>, <code>Score</code>, <code>Category</code>, <code>Signals</code>, <code>Assertions</code>, <code>Planner Rationale</code>, and <code>Tool Call Trace</code>.</p>
+      <p>The reviewer evidence summary gives aggregate proof. Individual task cards give the audit trail.</p>
+    </section>
+
+    <section>
+      <h2>Failure Interpretation</h2>
+      <ul>
+        <li><code>tool_selection</code>: the planner chose the wrong tool.</li>
+        <li><code>tool_execution</code>: the selected tool failed at runtime.</li>
+        <li><code>output_assertion</code>: the selected tool ran, but output checks failed.</li>
+      </ul>
+      <p><a href="reports/failure-catalog.html">The failure catalog</a> demonstrates these categories deliberately.</p>
     </section>
   </main>
 </body>

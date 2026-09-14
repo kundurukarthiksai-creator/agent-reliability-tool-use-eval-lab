@@ -25,7 +25,9 @@ Then inspect these artifacts in order:
    - Shows the deterministic task corpus, expected tools, assertion keys, and tool coverage.
 3. `reports/failure-catalog.html`
    - Demonstrates `tool_selection`, `tool_execution`, and `output_assertion` failure categories.
-4. `docs/openapi.json`
+4. Static demo traceability guide
+   - Explains how a reviewer follows one task from fixture to planner decision, trace, assertions, and failure category.
+5. `docs/openapi.json`
    - Exposes the FastAPI route contract as a versioned public artifact.
 
 ## What It Proves
@@ -169,10 +171,12 @@ reports/run-trends-demo.html
 docs/openapi.json
 site/index.html
 site/case-study.html
+site/traceability.html
 ```
 
 The dashboard links the report, run history, run comparison, trends, and planner comparison views.
 The case-study page explains what the project proves, how to inspect it, and its limits.
+The traceability guide explains how one task becomes auditable evidence.
 The task catalog shows all deterministic task fixtures and the expected tool for each task.
 The quality gate fails when deterministic eval results drop below configured pass-rate, score, task-count, or failure-category thresholds.
 The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
@@ -224,6 +228,7 @@ docs/            architecture and methodology notes
 - `docs/evaluation-methodology.md`
 - `docs/commands.md`
 - `docs/case-study.md`
+- `docs/traceability-guide.md`
 - `docs/demo-walkthrough.md`
 - `docs/schemas.md`
 - `docs/optional-openai-planner.md`

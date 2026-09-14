@@ -25,6 +25,12 @@ EXPECTED_TEXT = {
         "How To Inspect It",
         "Honest Limits",
     ],
+    "traceability.html": [
+        "Agent Reliability Eval Lab Traceability Guide",
+        "Audit Path",
+        "What A Passing Task Proves",
+        "Failure Interpretation",
+    ],
     "reports/dashboard.html": ["Agent Reliability Lab", "role_readiness_audit"],
     "reports/task-catalog.html": ["Evaluation Task Catalog", "profile-readme-ready"],
     "reports/sample-eval-report.html": ["Agent Reliability Eval Report", "Total Tasks"],
