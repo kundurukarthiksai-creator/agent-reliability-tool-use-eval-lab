@@ -6,10 +6,10 @@
   "total_tasks_delta": 0,
   "passed_tasks_delta": 1,
   "failed_tasks_delta": -1,
-  "average_score_delta": 0.0455,
+  "average_score_delta": 0.0385,
   "status_counts": {
     "recovery": 1,
-    "unchanged_pass": 21
+    "unchanged_pass": 25
   },
   "task_comparisons": [
     {
@@ -231,6 +231,54 @@
     {
       "task_id": "repo-health-wrapper-not-ready",
       "title": "Reject a thin wrapper repo before profile promotion",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "role-readiness-ai-tools-ready",
+      "title": "Audit role readiness for an AI tools backend internship",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "role-readiness-cloud-gap",
+      "title": "Find role readiness gaps for a cloud platform internship",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "role-readiness-missing-profile",
+      "title": "Ask for target role fit without a profile id",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "role-readiness-missing-role",
+      "title": "Ask for role readiness without a role id",
       "status": "unchanged_pass",
       "previous_passed": true,
       "current_passed": true,

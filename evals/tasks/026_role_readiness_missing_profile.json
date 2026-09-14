@@ -1,0 +1,18 @@
+{
+  "id": "role-readiness-missing-profile",
+  "title": "Ask for target role fit without a profile id",
+  "description": "A user identifies an AI tools backend internship target role but does not say which public profile should be audited for role fit.",
+  "expected_tool": "role_readiness_audit",
+  "input": {
+    "role_id": "ai-tools-backend-internship"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_role": false,
+      "readiness_score": 0
+    },
+    "must_contain": {
+      "missing_required": "profile_id_required"
+    }
+  }
+}

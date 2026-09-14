@@ -66,6 +66,19 @@ SIGNALS_BY_TOOL = {
         "learning focus",
         "contact",
     ],
+    "role_readiness_audit": [
+        "role readiness",
+        "readiness",
+        "target role",
+        "role fit",
+        "fit",
+        "evidence gap",
+        "missing evidence",
+        "ai tools",
+        "backend internship",
+        "cloud platform",
+        "portfolio evidence",
+    ],
 }
 
 

@@ -1,0 +1,72 @@
+{
+  "roles": [
+    {
+      "id": "ai-tools-backend-internship",
+      "title": "AI Tools Backend Internship",
+      "required_signals": [
+        "python",
+        "fastapi",
+        "agent-evaluation",
+        "tool-use-traces",
+        "ci",
+        "public-demo"
+      ],
+      "preferred_signals": [
+        "openapi",
+        "failure-diagnostics",
+        "sqlite-run-history",
+        "case-study"
+      ],
+      "summary": "Backend internship profile that rewards tested Python APIs, agent-evaluation evidence, tool-use traces, CI, and a public demo."
+    },
+    {
+      "id": "cloud-platform-internship",
+      "title": "Cloud Platform Internship",
+      "required_signals": [
+        "python",
+        "api-design",
+        "ci",
+        "cloud-deployment",
+        "observability"
+      ],
+      "preferred_signals": [
+        "incident-runbooks",
+        "persistence",
+        "docs"
+      ],
+      "summary": "Platform internship profile that needs cloud deployment and observability evidence in addition to backend fundamentals."
+    }
+  ],
+  "profiles": [
+    {
+      "id": "eval-lab-portfolio",
+      "signals": [
+        "python",
+        "fastapi",
+        "api-design",
+        "agent-evaluation",
+        "tool-use-traces",
+        "ci",
+        "public-demo",
+        "openapi",
+        "failure-diagnostics",
+        "sqlite-run-history",
+        "case-study",
+        "persistence",
+        "docs",
+        "incident-runbooks"
+      ],
+      "summary": "Portfolio centered on the Agent Reliability and Tool-Use Eval Lab with CI, reports, OpenAPI, GitHub Pages, and reviewer docs."
+    },
+    {
+      "id": "backend-no-cloud-proof",
+      "signals": [
+        "python",
+        "api-design",
+        "ci",
+        "docs"
+      ],
+      "summary": "Backend profile with tests and docs but no public deployment or observability proof."
+    }
+  ]
+}

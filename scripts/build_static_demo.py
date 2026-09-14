@@ -64,7 +64,7 @@ def render_index() -> str:
     links = [
         ("Case Study", "case-study.html", "Read the reviewer-friendly project walkthrough."),
         ("Dashboard", "reports/dashboard.html", "Start with the portfolio demo index."),
-        ("Task Catalog", "reports/task-catalog.html", "Inspect all 22 deterministic tasks."),
+        ("Task Catalog", "reports/task-catalog.html", "Inspect all 26 deterministic tasks."),
         ("Eval Report", "reports/sample-eval-report.html", "Review traces, assertions, and scoring."),
         ("Quality Gate", "reports/quality-gate.json", "See the strict regression gate output."),
         ("Failure Catalog", "reports/failure-catalog.html", "Inspect deliberate failure categories."),
@@ -99,6 +99,10 @@ def render_index() -> str:
       --accent: #0f5db8;
     }}
     * {{ box-sizing: border-box; }}
+    html, body {{
+      width: 100%;
+      overflow-x: hidden;
+    }}
     body {{
       margin: 0;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -106,6 +110,7 @@ def render_index() -> str:
       color: var(--text);
     }}
     main {{
+      width: 100%;
       max-width: 1120px;
       margin: 0 auto;
       padding: 36px 20px 48px;
@@ -120,6 +125,7 @@ def render_index() -> str:
       font-size: 34px;
       line-height: 1.1;
       letter-spacing: 0;
+      overflow-wrap: anywhere;
     }}
     .summary {{
       max-width: 780px;
@@ -127,6 +133,7 @@ def render_index() -> str:
       color: var(--muted);
       font-size: 17px;
       line-height: 1.55;
+      overflow-wrap: anywhere;
     }}
     .metrics {{
       display: grid;
@@ -165,6 +172,7 @@ def render_index() -> str:
       padding: 18px;
       color: inherit;
       text-decoration: none;
+      overflow-wrap: anywhere;
     }}
     .card:hover {{
       border-color: var(--accent);
@@ -197,7 +205,7 @@ def render_index() -> str:
       .metrics, .grid {{ grid-template-columns: repeat(2, minmax(0, 1fr)); }}
     }}
     @media (max-width: 520px) {{
-      main {{ padding: 28px 16px 40px; }}
+      main {{ max-width: 390px; margin: 0; padding: 28px 16px 40px; }}
       .metrics, .grid {{ grid-template-columns: 1fr; }}
       .card {{ min-height: auto; }}
     }}
@@ -207,11 +215,11 @@ def render_index() -> str:
   <main>
     <header>
       <h1>Agent Reliability Eval Lab Demo</h1>
-      <p class="summary">Static public demo for a deterministic tool-use evaluation lab. The default path runs without API keys, scores 22 tasks across 5 local tools, and publishes the same reports verified by CI.</p>
+      <p class="summary">Static public demo for a deterministic tool-use evaluation lab. The default path runs without API keys, scores 26 tasks across 6 local tools, and publishes the same reports verified by CI.</p>
     </header>
     <section class="metrics" aria-label="Demo metrics">
-      <div class="metric"><span>Tasks</span><strong>22</strong></div>
-      <div class="metric"><span>Tools</span><strong>5</strong></div>
+      <div class="metric"><span>Tasks</span><strong>26</strong></div>
+      <div class="metric"><span>Tools</span><strong>6</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100%</strong></div>
       <div class="metric"><span>CI Path</span><strong>No Keys</strong></div>
     </section>
@@ -338,8 +346,8 @@ def render_case_study() -> str:
     <section>
       <h2>What It Evaluates</h2>
       <ul>
-        <li>Tool selection across <strong>22</strong> public-safe tasks.</li>
-        <li>Tool-call traces for <strong>5</strong> deterministic local tools.</li>
+        <li>Tool selection across <strong>26</strong> public-safe tasks.</li>
+        <li>Tool-call traces for <strong>6</strong> deterministic local tools.</li>
         <li>Assertion-level scoring for expected fields and values.</li>
         <li>Failure categories for tool selection, tool execution, and output assertions.</li>
         <li>Saved-run comparison and trend views for regression visibility.</li>

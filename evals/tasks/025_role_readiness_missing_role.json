@@ -1,0 +1,18 @@
+{
+  "id": "role-readiness-missing-role",
+  "title": "Ask for role readiness without a role id",
+  "description": "A user asks for a role readiness audit but does not identify the target role to compare against.",
+  "expected_tool": "role_readiness_audit",
+  "input": {
+    "profile_id": "eval-lab-portfolio"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_role": false,
+      "readiness_score": 0
+    },
+    "must_contain": {
+      "missing_required": "role_id_required"
+    }
+  }
+}

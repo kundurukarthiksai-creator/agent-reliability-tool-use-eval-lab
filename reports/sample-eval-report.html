@@ -222,8 +222,8 @@
     </header>
 
     <section class="summary" aria-label="Evaluation summary">
-      <div class="metric"><span>Total Tasks</span><strong>22</strong></div>
-      <div class="metric"><span>Passed</span><strong>22</strong></div>
+      <div class="metric"><span>Total Tasks</span><strong>26</strong></div>
+      <div class="metric"><span>Passed</span><strong>26</strong></div>
       <div class="metric"><span>Failed</span><strong>0</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100.0%</strong></div>
     </section>
@@ -255,6 +255,11 @@
         </tr>
 
         <tr>
+          <td><code>role_readiness_audit</code></td>
+          <td>4</td>
+        </tr>
+
+        <tr>
           <td><code>runbook_lookup</code></td>
           <td>3</td>
         </tr>
@@ -269,7 +274,7 @@
             
         <tr>
           <td><code>passed</code></td>
-          <td>22</td>
+          <td>26</td>
         </tr>
 
           </tbody>
@@ -1131,6 +1136,163 @@
       <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
       <h2>Tool Call Trace</h2>
       <p><code>profile_readme_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Audit role readiness for an AI tools backend internship</strong>
+      <p>role-readiness-ai-tools-ready</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>role_readiness_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>role_readiness_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>role readiness, readiness, ai tools, backend internship, portfolio evidence</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=role_readiness_audit; selected=role_readiness_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:ready_for_role: expected=True; actual=True</li>
+<li><strong>pass</strong> must_equal:readiness_score: expected=100; actual=100</li>
+<li><strong>pass</strong> must_contain:matched_required: expected list to contain &#x27;agent-evaluation&#x27;; actual=[&#x27;python&#x27;, &#x27;fastapi&#x27;, &#x27;agent-evaluation&#x27;, &#x27;tool-use-traces&#x27;, &#x27;ci&#x27;, &#x27;public-demo&#x27;]</li>
+<li><strong>pass</strong> must_contain:matched_preferred: expected list to contain &#x27;case-study&#x27;; actual=[&#x27;openapi&#x27;, &#x27;failure-diagnostics&#x27;, &#x27;sqlite-run-history&#x27;, &#x27;case-study&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>role_readiness_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Find role readiness gaps for a cloud platform internship</strong>
+      <p>role-readiness-cloud-gap</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>role_readiness_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>role_readiness_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.93</dd>
+      <dt>Signals</dt>
+      <dd>role readiness, readiness, missing evidence, cloud platform</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=role_readiness_audit; selected=role_readiness_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:ready_for_role: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:readiness_score: expected=70; actual=70</li>
+<li><strong>pass</strong> must_contain:missing_required: expected list to contain &#x27;cloud-deployment&#x27;; actual=[&#x27;cloud-deployment&#x27;, &#x27;observability&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>role_readiness_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Ask for role readiness without a role id</strong>
+      <p>role-readiness-missing-role</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>role_readiness_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>role_readiness_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.81</dd>
+      <dt>Signals</dt>
+      <dd>role readiness, readiness, target role</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=role_readiness_audit; selected=role_readiness_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:ready_for_role: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:readiness_score: expected=0; actual=0</li>
+<li><strong>pass</strong> must_contain:missing_required: expected list to contain &#x27;role_id_required&#x27;; actual=[&#x27;role_id_required&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>role_readiness_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Ask for target role fit without a profile id</strong>
+      <p>role-readiness-missing-profile</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>role_readiness_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>role_readiness_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>target role, role fit, fit, ai tools, backend internship</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=role_readiness_audit; selected=role_readiness_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:ready_for_role: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:readiness_score: expected=0; actual=0</li>
+<li><strong>pass</strong> must_contain:missing_required: expected list to contain &#x27;profile_id_required&#x27;; actual=[&#x27;profile_id_required&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>role_readiness_audit</code> returned <code>ok</code>.</p>
     </div>
   </div>
 </article>

@@ -40,6 +40,7 @@ backend/app/runner.py
         |       +--> application_tracker_update
         |       +--> runbook_lookup
         |       +--> profile_readme_audit
+        |       +--> role_readiness_audit
         |
         +--> backend/app/scoring.py
         |
@@ -80,7 +81,7 @@ CLI:
 EvalReport -> backend/app/quality_gate.py -> pass/fail gate result
 ```
 
-The strict default gate requires the public deterministic baseline to keep at least 22 tasks, 100% pass rate, 1.0 average score, zero failed tasks, and only the `passed` failure category. Thresholds can be relaxed for diagnostic reports, but CI uses the strict gate.
+The strict default gate requires the public deterministic baseline to keep at least 26 tasks, 100% pass rate, 1.0 average score, zero failed tasks, and only the `passed` failure category. Thresholds can be relaxed for diagnostic reports, but CI uses the strict gate.
 
 ## Phase 2 Baseline
 

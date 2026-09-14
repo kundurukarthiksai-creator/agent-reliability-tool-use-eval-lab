@@ -1,0 +1,20 @@
+{
+  "id": "role-readiness-ai-tools-ready",
+  "title": "Audit role readiness for an AI tools backend internship",
+  "description": "A user asks if the public portfolio evidence is ready for an AI tools backend internship role, including agent evaluation, tool-use traces, CI, and a public demo.",
+  "expected_tool": "role_readiness_audit",
+  "input": {
+    "role_id": "ai-tools-backend-internship",
+    "profile_id": "eval-lab-portfolio"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_role": true,
+      "readiness_score": 100
+    },
+    "must_contain": {
+      "matched_required": "agent-evaluation",
+      "matched_preferred": "case-study"
+    }
+  }
+}

@@ -41,6 +41,7 @@ def test_openai_planner_builds_structured_payload_and_parses_plan():
         "application_tracker_update",
         "runbook_lookup",
         "profile_readme_audit",
+        "role_readiness_audit",
     ]
 
 

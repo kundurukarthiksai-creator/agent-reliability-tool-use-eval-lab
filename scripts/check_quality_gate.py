@@ -23,7 +23,7 @@ def build_parser() -> argparse.ArgumentParser:
         help="Optional EvalReport JSON file. If omitted, a fresh evaluation is run.",
     )
     parser.add_argument("--output", type=Path, help="Optional path for gate JSON.")
-    parser.add_argument("--min-total-tasks", type=int, default=22)
+    parser.add_argument("--min-total-tasks", type=int, default=26)
     parser.add_argument("--min-pass-rate", type=float, default=1.0)
     parser.add_argument("--min-average-score", type=float, default=1.0)
     parser.add_argument("--max-failed-tasks", type=int, default=0)

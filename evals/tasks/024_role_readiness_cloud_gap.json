@@ -1,0 +1,19 @@
+{
+  "id": "role-readiness-cloud-gap",
+  "title": "Find role readiness gaps for a cloud platform internship",
+  "description": "A user asks whether the same portfolio is ready for a cloud platform internship and wants missing evidence called out instead of a generic score.",
+  "expected_tool": "role_readiness_audit",
+  "input": {
+    "role_id": "cloud-platform-internship",
+    "profile_id": "eval-lab-portfolio"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_role": false,
+      "readiness_score": 70
+    },
+    "must_contain": {
+      "missing_required": "cloud-deployment"
+    }
+  }
+}

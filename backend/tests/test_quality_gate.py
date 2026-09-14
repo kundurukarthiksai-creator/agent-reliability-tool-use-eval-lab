@@ -18,7 +18,7 @@ def test_quality_gate_passes_clean_default_report():
 
     assert result.passed
     assert result.pass_rate == 1.0
-    assert result.failure_category_counts == {"passed": 22}
+    assert result.failure_category_counts == {"passed": 26}
     assert result.failed_task_ids == []
     assert all(check.passed for check in result.checks)
 

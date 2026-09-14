@@ -23,8 +23,8 @@ Static demo: https://kundurukarthiksai-creator.github.io/agent-reliability-tool-
 
 - FastAPI backend.
 - Deterministic rule-based planner.
-- Tool registry with 5 local tools.
-- 22 starter evaluation tasks.
+- Tool registry with 6 local tools.
+- 26 starter evaluation tasks.
 - Assertion-level scoring.
 - Strict quality gate for deterministic eval regressions.
 - JSON report output.

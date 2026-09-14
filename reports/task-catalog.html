@@ -227,8 +227,8 @@
     </header>
 
     <section class="summary" aria-label="Task catalog summary">
-      <div class="metric"><span>Tasks</span><strong>22</strong></div>
-      <div class="metric"><span>Tools</span><strong>5</strong></div>
+      <div class="metric"><span>Tasks</span><strong>26</strong></div>
+      <div class="metric"><span>Tools</span><strong>6</strong></div>
       <div class="metric"><span>Fixture Type</span><strong>Public</strong></div>
     </section>
 
@@ -530,6 +530,58 @@
           </td>
         </tr>
 
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Audit role readiness for an AI tools backend internship</strong>
+            <code>role-readiness-ai-tools-ready</code>
+          </td>
+          <td data-label="Expected Tool"><code>role_readiness_audit</code></td>
+          <td data-label="Checks">
+            A user asks if the public portfolio evidence is ready for an AI tools backend internship role, including agent evaluation, tool-use traces, CI, and a public demo.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Find role readiness gaps for a cloud platform internship</strong>
+            <code>role-readiness-cloud-gap</code>
+          </td>
+          <td data-label="Expected Tool"><code>role_readiness_audit</code></td>
+          <td data-label="Checks">
+            A user asks whether the same portfolio is ready for a cloud platform internship and wants missing evidence called out instead of a generic score.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Ask for role readiness without a role id</strong>
+            <code>role-readiness-missing-role</code>
+          </td>
+          <td data-label="Expected Tool"><code>role_readiness_audit</code></td>
+          <td data-label="Checks">
+            A user asks for a role readiness audit but does not identify the target role to compare against.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Ask for target role fit without a profile id</strong>
+            <code>role-readiness-missing-profile</code>
+          </td>
+          <td data-label="Expected Tool"><code>role_readiness_audit</code></td>
+          <td data-label="Checks">
+            A user identifies an AI tools backend internship target role but does not say which public profile should be audited for role fit.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
           </tbody>
         </table>
       </section>
@@ -578,6 +630,13 @@
           <td data-label="Tool"><code>profile_readme_audit</code></td>
           <td data-label="Tasks">4</td>
           <td data-label="Description">Audits profile README readiness using public-safe synthetic signals.</td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Tool"><code>role_readiness_audit</code></td>
+          <td data-label="Tasks">4</td>
+          <td data-label="Description">Audits public-safe portfolio evidence against target-role signals.</td>
         </tr>
 
           </tbody>

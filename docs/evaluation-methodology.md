@@ -22,8 +22,9 @@ The project measures whether an agent uses the correct tool and produces support
 5. Final report generation -> structured summary
 6. Incident/runbook lookup -> `runbook_lookup`
 7. Profile README audit -> `profile_readme_audit`
+8. Role readiness audit -> `role_readiness_audit`
 
-The current starter corpus has 22 tasks, including adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, missing repository fixtures, incident runbook lookup, and profile README readiness.
+The current starter corpus has 26 tasks, including adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, missing repository fixtures, incident runbook lookup, profile README readiness, and target-role readiness.
 
 ## Phase 1 Scoring
 

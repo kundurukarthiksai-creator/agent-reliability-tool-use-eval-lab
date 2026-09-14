@@ -35,7 +35,7 @@ This verifies:
 2. `site/case-study.html`
    - Reviewer-focused explanation of what the project proves, where to inspect evidence, and what the limits are.
 3. `reports/task-catalog.html`
-   - Shows all 22 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
+   - Shows all 26 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
 4. `reports/sample-eval-report.html`
    - Shows planner traces, selected tools, scores, assertions, and failure categories.
 5. `reports/failure-catalog.html`

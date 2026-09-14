@@ -67,3 +67,21 @@ def test_agent_selects_profile_readme_audit_for_profile_review():
 
     assert plan.selected_tool == "profile_readme_audit"
     assert "profile readme" in plan.matched_signals
+
+
+def test_agent_selects_role_readiness_for_target_role_fit():
+    task = EvaluationTask(
+        id="role-readiness-review",
+        title="Audit role readiness for an AI tools backend internship",
+        description="A user asks whether portfolio evidence fits a target role and wants missing evidence gaps called out.",
+        expected_tool="repo_health_check",
+        input={
+            "role_id": "ai-tools-backend-internship",
+            "profile_id": "eval-lab-portfolio",
+        },
+    )
+
+    plan = RuleBasedAgent().plan(task, build_default_registry().list_tools())
+
+    assert plan.selected_tool == "role_readiness_audit"
+    assert "role readiness" in plan.matched_signals

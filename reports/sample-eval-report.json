@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_tasks": 22,
-    "passed_tasks": 22,
+    "total_tasks": 26,
+    "passed_tasks": 26,
     "failed_tasks": 0,
     "average_score": 1.0
   },
@@ -1709,6 +1709,340 @@
         },
         {
           "name": "must_contain:missing",
+          "passed": true,
+          "detail": "expected list to contain 'profile_id_required'; actual=['profile_id_required']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "role-readiness-ai-tools-ready",
+      "title": "Audit role readiness for an AI tools backend internship",
+      "expected_tool": "role_readiness_audit",
+      "selected_tool": "role_readiness_audit",
+      "agent_plan": {
+        "selected_tool": "role_readiness_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "role readiness",
+          "readiness",
+          "ai tools",
+          "backend internship",
+          "portfolio evidence"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "role_readiness_audit",
+          "payload": {
+            "role_id": "ai-tools-backend-internship",
+            "profile_id": "eval-lab-portfolio"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "role_readiness_audit",
+        "output": {
+          "role_id": "ai-tools-backend-internship",
+          "profile_id": "eval-lab-portfolio",
+          "ready_for_role": true,
+          "readiness_score": 100,
+          "matched_required": [
+            "python",
+            "fastapi",
+            "agent-evaluation",
+            "tool-use-traces",
+            "ci",
+            "public-demo"
+          ],
+          "missing_required": [],
+          "matched_preferred": [
+            "openapi",
+            "failure-diagnostics",
+            "sqlite-run-history",
+            "case-study"
+          ],
+          "missing_preferred": [],
+          "recommended_evidence": [],
+          "summary": "Backend internship profile that rewards tested Python APIs, agent-evaluation evidence, tool-use traces, CI, and a public demo.",
+          "profile_summary": "Portfolio centered on the Agent Reliability and Tool-Use Eval Lab with CI, reports, OpenAPI, GitHub Pages, and reviewer docs."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=role_readiness_audit; selected=role_readiness_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_role",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:readiness_score",
+          "passed": true,
+          "detail": "expected=100; actual=100"
+        },
+        {
+          "name": "must_contain:matched_required",
+          "passed": true,
+          "detail": "expected list to contain 'agent-evaluation'; actual=['python', 'fastapi', 'agent-evaluation', 'tool-use-traces', 'ci', 'public-demo']"
+        },
+        {
+          "name": "must_contain:matched_preferred",
+          "passed": true,
+          "detail": "expected list to contain 'case-study'; actual=['openapi', 'failure-diagnostics', 'sqlite-run-history', 'case-study']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "role-readiness-cloud-gap",
+      "title": "Find role readiness gaps for a cloud platform internship",
+      "expected_tool": "role_readiness_audit",
+      "selected_tool": "role_readiness_audit",
+      "agent_plan": {
+        "selected_tool": "role_readiness_audit",
+        "confidence": 0.93,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "role readiness",
+          "readiness",
+          "missing evidence",
+          "cloud platform"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "role_readiness_audit",
+          "payload": {
+            "role_id": "cloud-platform-internship",
+            "profile_id": "eval-lab-portfolio"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "role_readiness_audit",
+        "output": {
+          "role_id": "cloud-platform-internship",
+          "profile_id": "eval-lab-portfolio",
+          "ready_for_role": false,
+          "readiness_score": 70,
+          "matched_required": [
+            "python",
+            "api-design",
+            "ci"
+          ],
+          "missing_required": [
+            "cloud-deployment",
+            "observability"
+          ],
+          "matched_preferred": [
+            "incident-runbooks",
+            "persistence",
+            "docs"
+          ],
+          "missing_preferred": [],
+          "recommended_evidence": [
+            "Add a public no-cost deployment or document the deployment path.",
+            "Show logs, traces, dashboards, or regression views."
+          ],
+          "summary": "Platform internship profile that needs cloud deployment and observability evidence in addition to backend fundamentals.",
+          "profile_summary": "Portfolio centered on the Agent Reliability and Tool-Use Eval Lab with CI, reports, OpenAPI, GitHub Pages, and reviewer docs."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=role_readiness_audit; selected=role_readiness_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_role",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:readiness_score",
+          "passed": true,
+          "detail": "expected=70; actual=70"
+        },
+        {
+          "name": "must_contain:missing_required",
+          "passed": true,
+          "detail": "expected list to contain 'cloud-deployment'; actual=['cloud-deployment', 'observability']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "role-readiness-missing-role",
+      "title": "Ask for role readiness without a role id",
+      "expected_tool": "role_readiness_audit",
+      "selected_tool": "role_readiness_audit",
+      "agent_plan": {
+        "selected_tool": "role_readiness_audit",
+        "confidence": 0.81,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "role readiness",
+          "readiness",
+          "target role"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "role_readiness_audit",
+          "payload": {
+            "profile_id": "eval-lab-portfolio"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "role_readiness_audit",
+        "output": {
+          "role_id": null,
+          "profile_id": "eval-lab-portfolio",
+          "ready_for_role": false,
+          "readiness_score": 0,
+          "matched_required": [],
+          "missing_required": [
+            "role_id_required"
+          ],
+          "matched_preferred": [],
+          "missing_preferred": [],
+          "recommended_evidence": [],
+          "summary": "A role id and profile id are required before readiness can be audited.",
+          "profile_summary": ""
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=role_readiness_audit; selected=role_readiness_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_role",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:readiness_score",
+          "passed": true,
+          "detail": "expected=0; actual=0"
+        },
+        {
+          "name": "must_contain:missing_required",
+          "passed": true,
+          "detail": "expected list to contain 'role_id_required'; actual=['role_id_required']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "role-readiness-missing-profile",
+      "title": "Ask for target role fit without a profile id",
+      "expected_tool": "role_readiness_audit",
+      "selected_tool": "role_readiness_audit",
+      "agent_plan": {
+        "selected_tool": "role_readiness_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "target role",
+          "role fit",
+          "fit",
+          "ai tools",
+          "backend internship"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "role_readiness_audit",
+          "payload": {
+            "role_id": "ai-tools-backend-internship"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "role_readiness_audit",
+        "output": {
+          "role_id": "ai-tools-backend-internship",
+          "profile_id": null,
+          "ready_for_role": false,
+          "readiness_score": 0,
+          "matched_required": [],
+          "missing_required": [
+            "profile_id_required"
+          ],
+          "matched_preferred": [],
+          "missing_preferred": [],
+          "recommended_evidence": [],
+          "summary": "A role id and profile id are required before readiness can be audited.",
+          "profile_summary": ""
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=role_readiness_audit; selected=role_readiness_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_role",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:readiness_score",
+          "passed": true,
+          "detail": "expected=0; actual=0"
+        },
+        {
+          "name": "must_contain:missing_required",
           "passed": true,
           "detail": "expected list to contain 'profile_id_required'; actual=['profile_id_required']"
         }
