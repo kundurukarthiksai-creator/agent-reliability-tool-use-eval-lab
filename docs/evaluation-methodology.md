@@ -77,3 +77,14 @@ Each task receives one failure category:
 - `output_assertion`: the right tool ran, but one or more output assertions failed.
 
 These categories make the report useful for debugging instead of only ranking runs by average score.
+
+## Planner Comparison
+
+Planner comparison runs the same task set against multiple planner implementations and summarizes:
+
+- total tasks;
+- passed and failed tasks;
+- average score;
+- failure-category counts.
+
+The included comparison uses the deterministic default planner and a deliberately weak baseline. Optional LLM-backed planners can be added later, but they should use the same comparison output.

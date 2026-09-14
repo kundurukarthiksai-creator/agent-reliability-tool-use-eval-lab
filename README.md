@@ -52,6 +52,7 @@ Render sample reports:
 .\.venv\Scripts\python scripts\render_report.py
 .\.venv\Scripts\python scripts\render_failure_demo.py
 .\.venv\Scripts\python scripts\render_failure_catalog.py
+.\.venv\Scripts\python scripts\compare_planners.py
 ```
 
 Run the API:
@@ -88,10 +89,13 @@ reports/sample-failure-report.json
 reports/sample-failure-report.html
 reports/failure-catalog.json
 reports/failure-catalog.html
+reports/planner-comparison.json
+reports/planner-comparison.md
 ```
 
 The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
 The failure catalog demonstrates `tool_selection`, `tool_execution`, and `output_assertion` categories.
+The planner comparison shows the default planner against a deliberately weak baseline.
 
 ## Project Layout
 

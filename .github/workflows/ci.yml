@@ -37,3 +37,6 @@ jobs:
 
       - name: Render failure catalog
         run: python scripts/render_failure_catalog.py
+
+      - name: Compare planners
+        run: python scripts/compare_planners.py

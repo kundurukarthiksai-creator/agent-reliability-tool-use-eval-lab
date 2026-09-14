@@ -1,0 +1,23 @@
+[
+  {
+    "planner_name": "rule_based",
+    "total_tasks": 10,
+    "passed_tasks": 10,
+    "failed_tasks": 0,
+    "average_score": 1.0,
+    "failure_categories": {
+      "passed": 10
+    }
+  },
+  {
+    "planner_name": "always_course_notes",
+    "total_tasks": 10,
+    "passed_tasks": 3,
+    "failed_tasks": 7,
+    "average_score": 0.4683,
+    "failure_categories": {
+      "passed": 3,
+      "tool_selection": 7
+    }
+  }
+]
