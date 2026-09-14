@@ -6,6 +6,12 @@ Suggested repository description:
 Deterministic evaluation lab for tool-using AI agents with traces, scoring, HTML reports, and SQLite run history.
 ```
 
+Repository homepage:
+
+```text
+https://kundurukarthiksai-creator.github.io/agent-reliability-tool-use-eval-lab/
+```
+
 Suggested topics:
 
 ```text
