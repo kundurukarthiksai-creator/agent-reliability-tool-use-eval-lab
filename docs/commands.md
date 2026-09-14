@@ -27,6 +27,7 @@ This runs:
 - planner comparison renderer.
 - run comparison demo renderer.
 - run trends demo renderer.
+- OpenAPI contract export.
 - static demo builder.
 - static demo link/content check.
 
@@ -47,6 +48,7 @@ This runs:
 .\.venv\Scripts\python scripts\render_run_comparison_demo.py
 .\.venv\Scripts\python scripts\render_run_trends_demo.py
 .\.venv\Scripts\python scripts\export_schemas.py
+.\.venv\Scripts\python scripts\export_openapi.py
 .\.venv\Scripts\python scripts\build_static_demo.py
 .\.venv\Scripts\python scripts\check_static_demo.py
 ```
@@ -76,6 +78,7 @@ Useful pages:
 ```text
 http://127.0.0.1:8000/reports/latest.html
 http://127.0.0.1:8000/
+http://127.0.0.1:8000/openapi.json
 http://127.0.0.1:8000/eval/tasks.html
 http://127.0.0.1:8000/eval/tasks/coverage
 http://127.0.0.1:8000/eval/runs.html

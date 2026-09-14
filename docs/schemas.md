@@ -1,11 +1,13 @@
 # Schemas
 
 JSON schemas are generated from Pydantic models so tool contracts stay close to the application code.
+The FastAPI route contract is exported separately as `docs/openapi.json`.
 
 Regenerate:
 
 ```powershell
 .\.venv\Scripts\python scripts\export_schemas.py
+.\.venv\Scripts\python scripts\export_openapi.py
 ```
 
 Generated schemas:

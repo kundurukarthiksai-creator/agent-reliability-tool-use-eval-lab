@@ -1,0 +1,1180 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Agent Reliability and Tool-Use Eval Lab",
+    "description": "Evaluation lab for deterministic tool-use agent tasks.",
+    "version": "0.1.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/tools": {
+      "get": {
+        "summary": "Tools",
+        "operationId": "tools_tools_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/ToolDefinition"
+                  },
+                  "type": "array",
+                  "title": "Response Tools Tools Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/": {
+      "get": {
+        "summary": "Dashboard",
+        "operationId": "dashboard__get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/planners/compare": {
+      "get": {
+        "summary": "Compare Default Planners",
+        "operationId": "compare_default_planners_planners_compare_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/PlannerComparisonResult"
+                  },
+                  "type": "array",
+                  "title": "Response Compare Default Planners Planners Compare Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/planners/compare.html": {
+      "get": {
+        "summary": "Compare Default Planners Html",
+        "operationId": "compare_default_planners_html_planners_compare_html_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/tasks": {
+      "get": {
+        "summary": "Eval Tasks",
+        "operationId": "eval_tasks_eval_tasks_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EvaluationTask"
+                  },
+                  "type": "array",
+                  "title": "Response Eval Tasks Eval Tasks Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/tasks/coverage": {
+      "get": {
+        "summary": "Eval Tasks Coverage",
+        "operationId": "eval_tasks_coverage_eval_tasks_coverage_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/TaskCatalogSummary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/tasks.html": {
+      "get": {
+        "summary": "Eval Tasks Html",
+        "operationId": "eval_tasks_html_eval_tasks_html_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/run": {
+      "post": {
+        "summary": "Run Eval",
+        "operationId": "run_eval_eval_run_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvalReport"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/runs": {
+      "get": {
+        "summary": "Eval Runs",
+        "operationId": "eval_runs_eval_runs_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/EvalRunMetadata"
+                  },
+                  "type": "array",
+                  "title": "Response Eval Runs Eval Runs Get"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create Eval Run",
+        "operationId": "create_eval_run_eval_runs_post",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvalRunRecord"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/runs.html": {
+      "get": {
+        "summary": "Eval Runs Html",
+        "operationId": "eval_runs_html_eval_runs_html_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/runs/compare": {
+      "get": {
+        "summary": "Eval Runs Compare",
+        "operationId": "eval_runs_compare_eval_runs_compare_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvalRunComparison"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/runs/compare.html": {
+      "get": {
+        "summary": "Eval Runs Compare Html",
+        "operationId": "eval_runs_compare_html_eval_runs_compare_html_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/runs/trends": {
+      "get": {
+        "summary": "Eval Runs Trends",
+        "operationId": "eval_runs_trends_eval_runs_trends_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvalRunTrend"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/runs/trends.html": {
+      "get": {
+        "summary": "Eval Runs Trends Html",
+        "operationId": "eval_runs_trends_html_eval_runs_trends_html_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/eval/runs/{run_id}": {
+      "get": {
+        "summary": "Eval Run",
+        "operationId": "eval_run_eval_runs__run_id__get",
+        "parameters": [
+          {
+            "name": "run_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "title": "Run Id"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/EvalRunRecord"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reports/latest.html": {
+      "get": {
+        "summary": "Latest Html Report",
+        "operationId": "latest_html_report_reports_latest_html_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "text/html": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "AgentPlan": {
+        "properties": {
+          "selected_tool": {
+            "type": "string",
+            "title": "Selected Tool"
+          },
+          "confidence": {
+            "type": "number",
+            "title": "Confidence"
+          },
+          "rationale": {
+            "type": "string",
+            "title": "Rationale"
+          },
+          "matched_signals": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Matched Signals"
+          }
+        },
+        "type": "object",
+        "required": [
+          "selected_tool",
+          "confidence",
+          "rationale"
+        ],
+        "title": "AgentPlan"
+      },
+      "AssertionResult": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "passed": {
+            "type": "boolean",
+            "title": "Passed"
+          },
+          "detail": {
+            "type": "string",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "passed",
+          "detail"
+        ],
+        "title": "AssertionResult"
+      },
+      "EvalReport": {
+        "properties": {
+          "summary": {
+            "$ref": "#/components/schemas/EvalSummary"
+          },
+          "results": {
+            "items": {
+              "$ref": "#/components/schemas/TaskRunResult"
+            },
+            "type": "array",
+            "title": "Results"
+          }
+        },
+        "type": "object",
+        "required": [
+          "summary",
+          "results"
+        ],
+        "title": "EvalReport"
+      },
+      "EvalRunComparison": {
+        "properties": {
+          "previous_run_id": {
+            "type": "integer",
+            "title": "Previous Run Id"
+          },
+          "current_run_id": {
+            "type": "integer",
+            "title": "Current Run Id"
+          },
+          "previous_created_at": {
+            "type": "string",
+            "title": "Previous Created At"
+          },
+          "current_created_at": {
+            "type": "string",
+            "title": "Current Created At"
+          },
+          "total_tasks_delta": {
+            "type": "integer",
+            "title": "Total Tasks Delta"
+          },
+          "passed_tasks_delta": {
+            "type": "integer",
+            "title": "Passed Tasks Delta"
+          },
+          "failed_tasks_delta": {
+            "type": "integer",
+            "title": "Failed Tasks Delta"
+          },
+          "average_score_delta": {
+            "type": "number",
+            "title": "Average Score Delta"
+          },
+          "status_counts": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Status Counts"
+          },
+          "task_comparisons": {
+            "items": {
+              "$ref": "#/components/schemas/RunTaskComparison"
+            },
+            "type": "array",
+            "title": "Task Comparisons"
+          }
+        },
+        "type": "object",
+        "required": [
+          "previous_run_id",
+          "current_run_id",
+          "previous_created_at",
+          "current_created_at",
+          "total_tasks_delta",
+          "passed_tasks_delta",
+          "failed_tasks_delta",
+          "average_score_delta",
+          "status_counts",
+          "task_comparisons"
+        ],
+        "title": "EvalRunComparison"
+      },
+      "EvalRunMetadata": {
+        "properties": {
+          "run_id": {
+            "type": "integer",
+            "title": "Run Id"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/EvalSummary"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_id",
+          "created_at",
+          "summary"
+        ],
+        "title": "EvalRunMetadata"
+      },
+      "EvalRunRecord": {
+        "properties": {
+          "run_id": {
+            "type": "integer",
+            "title": "Run Id"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/EvalSummary"
+          },
+          "report": {
+            "$ref": "#/components/schemas/EvalReport"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_id",
+          "created_at",
+          "summary",
+          "report"
+        ],
+        "title": "EvalRunRecord"
+      },
+      "EvalRunTrend": {
+        "properties": {
+          "run_count": {
+            "type": "integer",
+            "title": "Run Count"
+          },
+          "first_run_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "First Run Id"
+          },
+          "latest_run_id": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Latest Run Id"
+          },
+          "passed_tasks_delta": {
+            "type": "integer",
+            "title": "Passed Tasks Delta"
+          },
+          "failed_tasks_delta": {
+            "type": "integer",
+            "title": "Failed Tasks Delta"
+          },
+          "average_score_delta": {
+            "type": "number",
+            "title": "Average Score Delta"
+          },
+          "best_pass_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Best Pass Rate"
+          },
+          "worst_pass_rate": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Worst Pass Rate"
+          },
+          "points": {
+            "items": {
+              "$ref": "#/components/schemas/RunTrendPoint"
+            },
+            "type": "array",
+            "title": "Points"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_count",
+          "first_run_id",
+          "latest_run_id",
+          "passed_tasks_delta",
+          "failed_tasks_delta",
+          "average_score_delta",
+          "best_pass_rate",
+          "worst_pass_rate",
+          "points"
+        ],
+        "title": "EvalRunTrend"
+      },
+      "EvalSummary": {
+        "properties": {
+          "total_tasks": {
+            "type": "integer",
+            "title": "Total Tasks"
+          },
+          "passed_tasks": {
+            "type": "integer",
+            "title": "Passed Tasks"
+          },
+          "failed_tasks": {
+            "type": "integer",
+            "title": "Failed Tasks"
+          },
+          "average_score": {
+            "type": "number",
+            "title": "Average Score"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total_tasks",
+          "passed_tasks",
+          "failed_tasks",
+          "average_score"
+        ],
+        "title": "EvalSummary"
+      },
+      "EvaluationTask": {
+        "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          },
+          "expected_tool": {
+            "type": "string",
+            "title": "Expected Tool"
+          },
+          "input": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Input"
+          },
+          "expectations": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Expectations"
+          }
+        },
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "description",
+          "expected_tool"
+        ],
+        "title": "EvaluationTask"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "title": "Status"
+          },
+          "service": {
+            "type": "string",
+            "title": "Service"
+          },
+          "phase": {
+            "type": "string",
+            "title": "Phase"
+          }
+        },
+        "type": "object",
+        "required": [
+          "status",
+          "service",
+          "phase"
+        ],
+        "title": "HealthResponse"
+      },
+      "PlannerComparisonResult": {
+        "properties": {
+          "planner_name": {
+            "type": "string",
+            "title": "Planner Name"
+          },
+          "total_tasks": {
+            "type": "integer",
+            "title": "Total Tasks"
+          },
+          "passed_tasks": {
+            "type": "integer",
+            "title": "Passed Tasks"
+          },
+          "failed_tasks": {
+            "type": "integer",
+            "title": "Failed Tasks"
+          },
+          "average_score": {
+            "type": "number",
+            "title": "Average Score"
+          },
+          "failure_categories": {
+            "additionalProperties": {
+              "type": "integer"
+            },
+            "type": "object",
+            "title": "Failure Categories"
+          }
+        },
+        "type": "object",
+        "required": [
+          "planner_name",
+          "total_tasks",
+          "passed_tasks",
+          "failed_tasks",
+          "average_score",
+          "failure_categories"
+        ],
+        "title": "PlannerComparisonResult"
+      },
+      "RunTaskComparison": {
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "title": "Task Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "unchanged_pass",
+              "unchanged_fail",
+              "regression",
+              "recovery",
+              "score_changed",
+              "added",
+              "removed"
+            ],
+            "title": "Status"
+          },
+          "previous_passed": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Previous Passed"
+          },
+          "current_passed": {
+            "anyOf": [
+              {
+                "type": "boolean"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Current Passed"
+          },
+          "previous_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Previous Score"
+          },
+          "current_score": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Current Score"
+          },
+          "score_delta": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score Delta"
+          },
+          "previous_category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Previous Category"
+          },
+          "current_category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Current Category"
+          }
+        },
+        "type": "object",
+        "required": [
+          "task_id",
+          "title",
+          "status",
+          "previous_passed",
+          "current_passed",
+          "previous_score",
+          "current_score",
+          "score_delta",
+          "previous_category",
+          "current_category"
+        ],
+        "title": "RunTaskComparison"
+      },
+      "RunTrendPoint": {
+        "properties": {
+          "run_id": {
+            "type": "integer",
+            "title": "Run Id"
+          },
+          "created_at": {
+            "type": "string",
+            "title": "Created At"
+          },
+          "total_tasks": {
+            "type": "integer",
+            "title": "Total Tasks"
+          },
+          "passed_tasks": {
+            "type": "integer",
+            "title": "Passed Tasks"
+          },
+          "failed_tasks": {
+            "type": "integer",
+            "title": "Failed Tasks"
+          },
+          "average_score": {
+            "type": "number",
+            "title": "Average Score"
+          },
+          "pass_rate": {
+            "type": "number",
+            "title": "Pass Rate"
+          }
+        },
+        "type": "object",
+        "required": [
+          "run_id",
+          "created_at",
+          "total_tasks",
+          "passed_tasks",
+          "failed_tasks",
+          "average_score",
+          "pass_rate"
+        ],
+        "title": "RunTrendPoint"
+      },
+      "TaskCatalogSummary": {
+        "properties": {
+          "total_tasks": {
+            "type": "integer",
+            "title": "Total Tasks"
+          },
+          "coverage": {
+            "items": {
+              "$ref": "#/components/schemas/ToolTaskCoverage"
+            },
+            "type": "array",
+            "title": "Coverage"
+          }
+        },
+        "type": "object",
+        "required": [
+          "total_tasks",
+          "coverage"
+        ],
+        "title": "TaskCatalogSummary"
+      },
+      "TaskRunResult": {
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "title": "Task Id"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title"
+          },
+          "expected_tool": {
+            "type": "string",
+            "title": "Expected Tool"
+          },
+          "selected_tool": {
+            "type": "string",
+            "title": "Selected Tool"
+          },
+          "agent_plan": {
+            "$ref": "#/components/schemas/AgentPlan"
+          },
+          "trace": {
+            "items": {
+              "$ref": "#/components/schemas/ToolCallTrace"
+            },
+            "type": "array",
+            "title": "Trace"
+          },
+          "tool_result": {
+            "$ref": "#/components/schemas/ToolResult"
+          },
+          "assertions": {
+            "items": {
+              "$ref": "#/components/schemas/AssertionResult"
+            },
+            "type": "array",
+            "title": "Assertions"
+          },
+          "score": {
+            "type": "number",
+            "title": "Score"
+          },
+          "passed": {
+            "type": "boolean",
+            "title": "Passed"
+          },
+          "failure_category": {
+            "type": "string",
+            "enum": [
+              "passed",
+              "tool_selection",
+              "tool_execution",
+              "output_assertion"
+            ],
+            "title": "Failure Category"
+          }
+        },
+        "type": "object",
+        "required": [
+          "task_id",
+          "title",
+          "expected_tool",
+          "selected_tool",
+          "agent_plan",
+          "tool_result",
+          "assertions",
+          "score",
+          "passed",
+          "failure_category"
+        ],
+        "title": "TaskRunResult"
+      },
+      "ToolCallTrace": {
+        "properties": {
+          "tool_name": {
+            "type": "string",
+            "title": "Tool Name"
+          },
+          "payload": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Payload"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "error"
+            ],
+            "title": "Status"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool_name",
+          "payload",
+          "status"
+        ],
+        "title": "ToolCallTrace"
+      },
+      "ToolDefinition": {
+        "properties": {
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "description": {
+            "type": "string",
+            "title": "Description"
+          }
+        },
+        "type": "object",
+        "required": [
+          "name",
+          "description"
+        ],
+        "title": "ToolDefinition"
+      },
+      "ToolResult": {
+        "properties": {
+          "tool_name": {
+            "type": "string",
+            "title": "Tool Name"
+          },
+          "output": {
+            "additionalProperties": true,
+            "type": "object",
+            "title": "Output"
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "ok",
+              "error"
+            ],
+            "title": "Status",
+            "default": "ok"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool_name",
+          "output"
+        ],
+        "title": "ToolResult"
+      },
+      "ToolTaskCoverage": {
+        "properties": {
+          "tool_name": {
+            "type": "string",
+            "title": "Tool Name"
+          },
+          "task_count": {
+            "type": "integer",
+            "title": "Task Count"
+          }
+        },
+        "type": "object",
+        "required": [
+          "tool_name",
+          "task_count"
+        ],
+        "title": "ToolTaskCoverage"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

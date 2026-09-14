@@ -61,3 +61,12 @@ jobs:
 
       - name: Export schemas
         run: python scripts/export_schemas.py
+
+      - name: Export OpenAPI contract
+        run: python scripts/export_openapi.py
+
+      - name: Build static demo
+        run: python scripts/build_static_demo.py
+
+      - name: Check static demo
+        run: python scripts/check_static_demo.py

@@ -50,6 +50,7 @@ EvalReport JSON
 API:
 
 - `GET /` renders the dashboard index for report and run-analysis views.
+- `GET /openapi.json` exposes the FastAPI route contract.
 - `GET /tools` lists registered deterministic tools.
 - `GET /planners/compare` compares default planner summaries as JSON.
 - `GET /planners/compare.html` renders default planner comparison as HTML.
@@ -71,6 +72,7 @@ CLI:
 
 - `scripts/run_eval.py` prints the JSON report.
 - `scripts/check_quality_gate.py` fails when eval results violate configured thresholds.
+- `scripts/export_openapi.py` writes the FastAPI route contract to `docs/openapi.json`.
 
 ## Quality Gate
 

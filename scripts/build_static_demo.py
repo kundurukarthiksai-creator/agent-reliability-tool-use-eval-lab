@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE_DIR = ROOT / "site"
 REPORTS_DIR = ROOT / "reports"
 ASSETS_DIR = ROOT / "docs" / "assets"
+DOCS_DIR = ROOT / "docs"
 
 
 REPORT_FILES = [
@@ -31,10 +32,12 @@ def main() -> None:
     if SITE_DIR.exists():
         shutil.rmtree(SITE_DIR)
 
-    reports_output = SITE_DIR / "reports"
     assets_output = SITE_DIR / "assets"
+    docs_output = SITE_DIR / "docs"
+    reports_output = SITE_DIR / "reports"
     reports_output.mkdir(parents=True)
     assets_output.mkdir(parents=True)
+    docs_output.mkdir(parents=True)
 
     for filename in REPORT_FILES:
         source = REPORTS_DIR / filename
@@ -45,6 +48,11 @@ def main() -> None:
     screenshot = ASSETS_DIR / "eval-report.png"
     if screenshot.exists():
         shutil.copy2(screenshot, assets_output / screenshot.name)
+
+    openapi_contract = DOCS_DIR / "openapi.json"
+    if not openapi_contract.exists():
+        raise FileNotFoundError(f"Missing OpenAPI contract: {openapi_contract}")
+    shutil.copy2(openapi_contract, docs_output / openapi_contract.name)
 
     (SITE_DIR / ".nojekyll").write_text("", encoding="utf-8")
     (SITE_DIR / "index.html").write_text(render_index(), encoding="utf-8")
@@ -61,6 +69,7 @@ def render_index() -> str:
         ("Planner Comparison", "reports/planner-comparison.md", "Compare planners in a compact report."),
         ("Run Comparison", "reports/run-comparison-demo.html", "Review saved-run regression signals."),
         ("Run Trends", "reports/run-trends-demo.html", "Review reliability movement over runs."),
+        ("OpenAPI Contract", "docs/openapi.json", "Inspect the FastAPI route schema."),
     ]
     cards = "\n".join(
         f"""

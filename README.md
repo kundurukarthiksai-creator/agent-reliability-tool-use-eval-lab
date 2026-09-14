@@ -35,6 +35,7 @@ Static demo: https://kundurukarthiksai-creator.github.io/agent-reliability-tool-
 - Saved-run comparison API and HTML view.
 - Saved-run trend summary API and HTML view.
 - Optional OpenAI planner comparison, disabled by default.
+- Exported OpenAPI contract for route inspection.
 - GitHub Actions CI.
 
 ## Quickstart
@@ -80,6 +81,7 @@ Render sample reports:
 .\.venv\Scripts\python scripts\render_run_comparison_demo.py
 .\.venv\Scripts\python scripts\render_run_trends_demo.py
 .\.venv\Scripts\python scripts\export_schemas.py
+.\.venv\Scripts\python scripts\export_openapi.py
 .\.venv\Scripts\python scripts\build_static_demo.py
 .\.venv\Scripts\python scripts\check_static_demo.py
 ```
@@ -108,6 +110,7 @@ http://127.0.0.1:8000/reports/latest.html
 
 ```text
 GET  /
+GET  /openapi.json
 GET  /health
 GET  /tools
 GET  /planners/compare
@@ -145,6 +148,7 @@ reports/run-comparison-demo.json
 reports/run-comparison-demo.html
 reports/run-trends-demo.json
 reports/run-trends-demo.html
+docs/openapi.json
 site/index.html
 ```
 
@@ -156,6 +160,7 @@ The failure catalog demonstrates `tool_selection`, `tool_execution`, and `output
 The planner comparison shows the default planner against a deliberately weak baseline.
 The run comparison demo shows how saved runs surface regressions and recoveries.
 The run trends demo shows reliability movement across several saved runs.
+The OpenAPI contract exposes the FastAPI route schema as a versioned public artifact.
 The static demo builder packages these artifacts into `site/` for GitHub Pages.
 The static demo check verifies the Pages landing links, expected text, and screenshot asset.
 

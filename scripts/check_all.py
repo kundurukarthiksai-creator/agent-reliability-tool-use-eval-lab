@@ -35,6 +35,7 @@ COMMANDS = [
     ("run-comparison-demo", [sys.executable, "scripts/render_run_comparison_demo.py"], False),
     ("run-trends-demo", [sys.executable, "scripts/render_run_trends_demo.py"], False),
     ("schemas", [sys.executable, "scripts/export_schemas.py"], False),
+    ("openapi", [sys.executable, "scripts/export_openapi.py"], False),
     ("static-demo", [sys.executable, "scripts/build_static_demo.py"], False),
     ("static-demo-check", [sys.executable, "scripts/check_static_demo.py"], False),
 ]
