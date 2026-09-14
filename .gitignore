@@ -10,5 +10,6 @@ data/*.sqlite
 data/*.sqlite3
 reports/openai-planner-comparison.json
 reports/openai-planner-comparison.md
+site/
 .DS_Store
 Thumbs.db

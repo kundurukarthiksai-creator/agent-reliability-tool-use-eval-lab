@@ -1,10 +1,13 @@
 # Agent Reliability and Tool-Use Eval Lab
 
 [![CI](https://github.com/kundurukarthiksai-creator/agent-reliability-tool-use-eval-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/kundurukarthiksai-creator/agent-reliability-tool-use-eval-lab/actions/workflows/ci.yml)
+[![Pages](https://github.com/kundurukarthiksai-creator/agent-reliability-tool-use-eval-lab/actions/workflows/pages.yml/badge.svg)](https://github.com/kundurukarthiksai-creator/agent-reliability-tool-use-eval-lab/actions/workflows/pages.yml)
 
 Deterministic evaluation lab for tool-using AI agents. It runs structured tasks, asks an agent planner to choose a tool, records the tool-call trace, scores the result, and produces JSON plus HTML reports.
 
 The default path is intentionally CI-safe: no API keys, no paid model calls, and no private data.
+
+Static demo: https://kundurukarthiksai-creator.github.io/agent-reliability-tool-use-eval-lab/
 
 ![HTML evaluation report screenshot](docs/assets/eval-report.png)
 
@@ -77,6 +80,7 @@ Render sample reports:
 .\.venv\Scripts\python scripts\render_run_comparison_demo.py
 .\.venv\Scripts\python scripts\render_run_trends_demo.py
 .\.venv\Scripts\python scripts\export_schemas.py
+.\.venv\Scripts\python scripts\build_static_demo.py
 ```
 
 Optional OpenAI planner comparison:
@@ -140,6 +144,7 @@ reports/run-comparison-demo.json
 reports/run-comparison-demo.html
 reports/run-trends-demo.json
 reports/run-trends-demo.html
+site/index.html
 ```
 
 The dashboard links the report, run history, run comparison, trends, and planner comparison views.
@@ -150,6 +155,7 @@ The failure catalog demonstrates `tool_selection`, `tool_execution`, and `output
 The planner comparison shows the default planner against a deliberately weak baseline.
 The run comparison demo shows how saved runs surface regressions and recoveries.
 The run trends demo shows reliability movement across several saved runs.
+The static demo builder packages these artifacts into `site/` for GitHub Pages.
 
 ## Project Layout
 
@@ -182,7 +188,7 @@ docs/            architecture and methodology notes
 
 - Add more tools and harder task fixtures.
 - Expand optional planner adapters while keeping CI deterministic.
-- Add a lightweight docs/demo deployment if it can stay free of secrets and recurring cost.
+- Keep the no-cost static demo polished and current with the generated report artifacts.
 
 ## Docs
 

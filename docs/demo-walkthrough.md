@@ -23,7 +23,8 @@ This verifies:
 - planner comparison;
 - saved-run comparison demo;
 - saved-run trend demo;
-- schema export.
+- schema export;
+- static demo build.
 
 ## What To Inspect First
 
@@ -37,6 +38,8 @@ This verifies:
    - Shows deliberate `tool_selection`, `tool_execution`, and `output_assertion` failures.
 5. `reports/planner-comparison.md`
    - Compares the deterministic planner against a deliberately weak baseline.
+6. `site/index.html`
+   - Local build of the static Pages demo.
 
 ## Local API Demo
 
@@ -53,6 +56,20 @@ http://127.0.0.1:8000/eval/tasks/coverage
 http://127.0.0.1:8000/reports/latest.html
 http://127.0.0.1:8000/planners/compare.html
 ```
+
+## Static Demo
+
+```powershell
+.\.venv\Scripts\python scripts\build_static_demo.py
+```
+
+Open:
+
+```text
+site/index.html
+```
+
+The GitHub Pages workflow builds the same static demo from verified artifacts.
 
 ## Reliability Claims
 

@@ -27,6 +27,7 @@ This runs:
 - planner comparison renderer.
 - run comparison demo renderer.
 - run trends demo renderer.
+- static demo builder.
 
 ## Individual Commands
 
@@ -45,6 +46,7 @@ This runs:
 .\.venv\Scripts\python scripts\render_run_comparison_demo.py
 .\.venv\Scripts\python scripts\render_run_trends_demo.py
 .\.venv\Scripts\python scripts\export_schemas.py
+.\.venv\Scripts\python scripts\build_static_demo.py
 ```
 
 ## Optional OpenAI Planner
