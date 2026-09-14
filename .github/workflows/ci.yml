@@ -28,3 +28,6 @@ jobs:
 
       - name: Run evaluation report
         run: python scripts/run_eval.py
+
+      - name: Render HTML report
+        run: python scripts/render_report.py

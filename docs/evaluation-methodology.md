@@ -42,3 +42,15 @@ Phase 2 records an `agent_plan` and `trace` for each task:
 This separates planner failures from tool failures. Wrong tool selection means the agent failed. Right tool with wrong output means the tool, fixture, or scoring expectation failed. Tool execution errors mean registry/runtime behavior failed.
 
 The CI planner is deterministic on purpose. Future LLM-backed planners should be compared against this baseline instead of replacing it.
+
+## Human-Readable Report
+
+The HTML report shows:
+
+- total tasks, passed tasks, failed tasks, and pass rate;
+- expected vs selected tool;
+- planner confidence and matched signals;
+- assertion-level details;
+- tool-call trace status.
+
+This report should make failures understandable without requiring a reader to inspect raw JSON first.

@@ -63,11 +63,25 @@ python -m venv .venv
 
 The report includes the agent plan, selected tool, tool-call trace, assertion results, and score for each task.
 
+## Render HTML Report
+
+```powershell
+.\.venv\Scripts\python scripts\render_report.py
+```
+
 Sample output:
 
 ```text
 reports/sample-eval-report.json
+reports/sample-eval-report.html
 ```
+
+## Known Limitations
+
+- The default planner is rule-based, not an LLM planner.
+- The eval set is intentionally small while the tool contracts stabilize.
+- Reports use synthetic/public-safe fixture data, not private job-search or employer data.
+- CI proves deterministic reliability only; it does not claim real-world agent generalization.
 
 ## Run API
 

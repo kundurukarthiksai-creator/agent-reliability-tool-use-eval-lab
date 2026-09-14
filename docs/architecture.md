@@ -69,3 +69,11 @@ selected tool -> ToolRegistry -> ToolCallTrace -> Scoring -> EvalReport JSON
 The runner now evaluates the agent-selected tool instead of copying `expected_tool`. The first planner is deterministic and CI-safe: it reads the task title, description, and input payload, then chooses a registered tool through signal matching.
 
 This keeps the project reliable while creating a real agent loop: plan, execute, trace, score, report. Optional LLM planners can be added later as another planner implementation, not as a replacement for the baseline.
+
+## Reporting
+
+```text
+EvalReport JSON -> backend/app/reporting.py -> reports/sample-eval-report.html
+```
+
+The HTML report is generated from the same `EvalReport` schema used by the API and CLI. This avoids separate dashboard-only logic and keeps the public artifact reproducible.
