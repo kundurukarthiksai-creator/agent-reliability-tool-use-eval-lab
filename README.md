@@ -9,6 +9,8 @@ The default path is intentionally CI-safe: no API keys, no paid model calls, and
 
 Static demo: https://kundurukarthiksai-creator.github.io/agent-reliability-tool-use-eval-lab/
 
+Shortest no-key reviewer path: [`quick_start/README.md`](quick_start/README.md)
+
 ![HTML evaluation report screenshot](docs/assets/eval-report.png)
 
 ## Reviewer Inspection Path
@@ -62,6 +64,7 @@ Then inspect these artifacts in order:
 - Static interview walkthrough for technical explanation practice.
 - Static architecture flow for reviewer inspection.
 - Static tool-safety walkthrough for permission, approval, dry-run, audit-log, and negative-test evidence.
+- Quick-start reviewer proof path with local no-key verification.
 - Tool-safety proof audit for schemas, permission gates, approvals, dry-run behavior, audit logs, tests, CI, and public-safe limits.
 - Deliberate failure demo for wrong tool selection.
 - SQLite persistence for saved runs.
@@ -72,6 +75,8 @@ Then inspect these artifacts in order:
 - GitHub Actions CI.
 
 ## Quickstart
+
+For the shortest reviewer-oriented path, use [`quick_start/README.md`](quick_start/README.md).
 
 ```powershell
 python -m venv .venv

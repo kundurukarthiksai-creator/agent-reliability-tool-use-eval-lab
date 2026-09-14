@@ -1,5 +1,8 @@
 # Commands
 
+For a shorter reviewer-oriented path, start with
+[`quick_start/README.md`](../quick_start/README.md).
+
 ## Setup
 
 ```powershell
