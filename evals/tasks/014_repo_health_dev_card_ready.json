@@ -1,0 +1,16 @@
+{
+  "id": "repo-health-dev-card-ready",
+  "title": "Confirm GitHub Dev Card is profile-ready",
+  "description": "A user asks whether the GitHub Dev Card repo has enough README, tests, CI, screenshots, and limitations proof for a public profile.",
+  "expected_tool": "repo_health_check",
+  "input": {
+    "repo_name": "GitHub-Dev-Card-Generator"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_profile": true,
+      "score": 5,
+      "summary": "FastAPI/Gemini developer card generator with no-key fallback and smoke-test CI."
+    }
+  }
+}

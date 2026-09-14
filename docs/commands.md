@@ -30,6 +30,7 @@ This runs:
 .\.venv\Scripts\python -m pytest backend\tests -q
 .\.venv\Scripts\python scripts\smoke_test.py
 .\.venv\Scripts\python scripts\run_eval.py
+.\.venv\Scripts\python scripts\run_eval.py reports\sample-eval-report.json
 .\.venv\Scripts\python scripts\render_report.py
 .\.venv\Scripts\python scripts\render_failure_demo.py
 .\.venv\Scripts\python scripts\render_failure_catalog.py

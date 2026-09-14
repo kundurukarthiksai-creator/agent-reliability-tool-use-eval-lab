@@ -6,15 +6,27 @@
   "total_tasks_delta": 0,
   "passed_tasks_delta": 1,
   "failed_tasks_delta": -1,
-  "average_score_delta": 0.1,
+  "average_score_delta": 0.0667,
   "status_counts": {
     "recovery": 1,
-    "unchanged_pass": 9
+    "unchanged_pass": 14
   },
   "task_comparisons": [
     {
       "task_id": "ambiguous-application-event",
       "title": "Flag ambiguous application input",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "application-missing-company-clarification",
+      "title": "Ask for company before tracking an application",
       "status": "unchanged_pass",
       "previous_passed": true,
       "current_passed": true,
@@ -73,6 +85,30 @@
       "current_category": "passed"
     },
     {
+      "task_id": "course-note-mcp-contracts-with-repo-noise",
+      "title": "Find MCP contract notes despite repo wording",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "course-note-no-match",
+      "title": "Return no note matches for unrelated learning query",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
       "task_id": "course-note-search",
       "title": "Find relevant tool-use learning notes",
       "status": "unchanged_pass",
@@ -87,6 +123,18 @@
     {
       "task_id": "repo-health-ai-linkedin",
       "title": "Check another cleaned repo for public proof",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "repo-health-dev-card-ready",
+      "title": "Confirm GitHub Dev Card is profile-ready",
       "status": "unchanged_pass",
       "previous_passed": true,
       "current_passed": true,
@@ -123,6 +171,18 @@
     {
       "task_id": "repo-health-unverified",
       "title": "Flag an unverified repo before promotion",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "repo-health-wrapper-not-ready",
+      "title": "Reject a thin wrapper repo before profile promotion",
       "status": "unchanged_pass",
       "previous_passed": true,
       "current_passed": true,

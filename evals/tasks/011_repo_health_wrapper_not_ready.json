@@ -1,0 +1,18 @@
+{
+  "id": "repo-health-wrapper-not-ready",
+  "title": "Reject a thin wrapper repo before profile promotion",
+  "description": "A user asks whether a public GitHub AI wrapper repo is ready to promote as portfolio proof.",
+  "expected_tool": "repo_health_check",
+  "input": {
+    "repo_name": "Unverified-AI-Wrapper"
+  },
+  "expectations": {
+    "must_equal": {
+      "ready_for_profile": false,
+      "score": 1
+    },
+    "must_contain": {
+      "missing": "tests"
+    }
+  }
+}

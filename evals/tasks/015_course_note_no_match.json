@@ -1,0 +1,16 @@
+{
+  "id": "course-note-no-match",
+  "title": "Return no note matches for unrelated learning query",
+  "description": "A user asks the course-note search for an unrelated learning topic that is not present in the notes fixture.",
+  "expected_tool": "course_note_search",
+  "input": {
+    "query": "quantum database tuning"
+  },
+  "expectations": {
+    "must_equal": {
+      "match_count": 0,
+      "matches": [],
+      "needs_clarification": false
+    }
+  }
+}

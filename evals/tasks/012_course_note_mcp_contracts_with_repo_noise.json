@@ -1,0 +1,18 @@
+{
+  "id": "course-note-mcp-contracts-with-repo-noise",
+  "title": "Find MCP contract notes despite repo wording",
+  "description": "A user asks for a learning resource about MCP structured contracts and tool interfaces, while also mentioning GitHub repo CI cleanup.",
+  "expected_tool": "course_note_search",
+  "input": {
+    "query": "mcp structured contracts tool interfaces"
+  },
+  "expectations": {
+    "must_equal": {
+      "needs_clarification": false,
+      "matches.0.source_id": "mcp-beginners-001"
+    },
+    "min_value": {
+      "match_count": 1
+    }
+  }
+}

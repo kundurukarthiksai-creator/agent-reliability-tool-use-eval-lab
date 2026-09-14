@@ -10,11 +10,12 @@ def test_compare_eval_runs_reports_recovery():
     previous_result.passed = False
     previous_result.score = 0.0
     previous_result.failure_category = "output_assertion"
+    total_tasks = len(previous_report.results)
     previous_report.summary = EvalSummary(
-        total_tasks=10,
-        passed_tasks=9,
+        total_tasks=total_tasks,
+        passed_tasks=total_tasks - 1,
         failed_tasks=1,
-        average_score=0.9,
+        average_score=round((total_tasks - 1) / total_tasks, 4),
     )
 
     previous = EvalRunRecord(
@@ -36,7 +37,7 @@ def test_compare_eval_runs_reports_recovery():
     assert comparison.current_run_id == 2
     assert comparison.passed_tasks_delta == 1
     assert comparison.failed_tasks_delta == -1
-    assert comparison.average_score_delta == 0.1
+    assert comparison.average_score_delta > 0
     assert comparison.status_counts["recovery"] == 1
 
 

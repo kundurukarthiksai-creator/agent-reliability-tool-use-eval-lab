@@ -11,6 +11,11 @@ COMMANDS = [
     ("tests", [sys.executable, "-m", "pytest", "backend/tests", "-q"], False),
     ("smoke", [sys.executable, "scripts/smoke_test.py"], False),
     ("eval-json", [sys.executable, "scripts/run_eval.py"], True),
+    (
+        "sample-json",
+        [sys.executable, "scripts/run_eval.py", "reports/sample-eval-report.json"],
+        False,
+    ),
     ("html-report", [sys.executable, "scripts/render_report.py"], False),
     ("failure-demo", [sys.executable, "scripts/render_failure_demo.py"], False),
     ("failure-catalog", [sys.executable, "scripts/render_failure_catalog.py"], False),

@@ -27,7 +27,7 @@ def test_planner_comparison_endpoints_return_default_comparison():
 
     assert json_response.status_code == 200
     assert json_response.json()[0]["planner_name"] == "rule_based"
-    assert json_response.json()[0]["passed_tasks"] == 10
+    assert json_response.json()[0]["passed_tasks"] == 15
     assert html_response.status_code == 200
     assert html_response.headers["content-type"].startswith("text/html")
     assert "Planner Comparison" in html_response.text
@@ -41,12 +41,12 @@ def test_eval_run_endpoint_returns_passing_report():
     assert response.status_code == 200
     payload = response.json()
     assert payload["summary"] == {
-        "total_tasks": 10,
-        "passed_tasks": 10,
+        "total_tasks": 15,
+        "passed_tasks": 15,
         "failed_tasks": 0,
         "average_score": 1.0,
     }
-    assert len(payload["results"]) == 10
+    assert len(payload["results"]) == 15
     assert all("agent_plan" in result for result in payload["results"])
     assert all(result["trace"] for result in payload["results"])
 
@@ -94,7 +94,7 @@ def test_persisted_eval_run_read_endpoints(monkeypatch, tmp_path):
     assert list_response.status_code == 200
     assert list_response.json()[0]["run_id"] == saved.run_id
     assert get_response.status_code == 200
-    assert get_response.json()["report"]["summary"]["total_tasks"] == 10
+    assert get_response.json()["report"]["summary"]["total_tasks"] == 15
     assert missing_response.status_code == 404
 
 

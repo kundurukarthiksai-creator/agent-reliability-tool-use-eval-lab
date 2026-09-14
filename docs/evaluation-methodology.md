@@ -21,6 +21,8 @@ The project measures whether an agent uses the correct tool and produces support
 4. Ambiguous input -> refusal/clarification behavior
 5. Final report generation -> structured summary
 
+The current starter corpus has 15 tasks, including adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, and missing repository fixtures.
+
 ## Phase 1 Scoring
 
 The Phase 1 runner executes the expected tool directly and scores:

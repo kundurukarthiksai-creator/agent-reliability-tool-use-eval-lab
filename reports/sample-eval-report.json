@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_tasks": 10,
-    "passed_tasks": 10,
+    "total_tasks": 15,
+    "passed_tasks": 15,
     "failed_tasks": 0,
     "average_score": 1.0
   },
@@ -739,6 +739,386 @@
           "name": "min_value:max_score",
           "passed": true,
           "detail": "expected >= 5; actual=5"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "repo-health-wrapper-not-ready",
+      "title": "Reject a thin wrapper repo before profile promotion",
+      "expected_tool": "repo_health_check",
+      "selected_tool": "repo_health_check",
+      "agent_plan": {
+        "selected_tool": "repo_health_check",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "repo",
+          "github",
+          "portfolio",
+          "promote",
+          "wrapper"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "repo_health_check",
+          "payload": {
+            "repo_name": "Unverified-AI-Wrapper"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "repo_health_check",
+        "output": {
+          "repo_name": "Unverified-AI-Wrapper",
+          "ready_for_profile": false,
+          "score": 1,
+          "max_score": 5,
+          "missing": [
+            "tests",
+            "ci",
+            "screenshots",
+            "known_limitations"
+          ],
+          "checks": {
+            "readme": true,
+            "tests": false,
+            "ci": false,
+            "screenshots": false,
+            "known_limitations": false
+          },
+          "summary": "Thin LLM wrapper without proof artifacts."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=repo_health_check; selected=repo_health_check"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_profile",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:score",
+          "passed": true,
+          "detail": "expected=1; actual=1"
+        },
+        {
+          "name": "must_contain:missing",
+          "passed": true,
+          "detail": "expected list to contain 'tests'; actual=['tests', 'ci', 'screenshots', 'known_limitations']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "course-note-mcp-contracts-with-repo-noise",
+      "title": "Find MCP contract notes despite repo wording",
+      "expected_tool": "course_note_search",
+      "selected_tool": "course_note_search",
+      "agent_plan": {
+        "selected_tool": "course_note_search",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "learning",
+          "resource",
+          "notes",
+          "mcp",
+          "tool interfaces",
+          "structured contracts",
+          "contracts"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "course_note_search",
+          "payload": {
+            "query": "mcp structured contracts tool interfaces"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "course_note_search",
+        "output": {
+          "query": "mcp structured contracts tool interfaces",
+          "matches": [
+            {
+              "source_id": "mcp-beginners-001",
+              "title": "Microsoft MCP for Beginners",
+              "score": 5,
+              "snippet": "MCP material is useful for public-safe tool interfaces and for explaining how agents call external capabilities through structured contracts."
+            },
+            {
+              "source_id": "hf-agents-001",
+              "title": "Hugging Face Agents Course",
+              "score": 1,
+              "snippet": "Use agent courses selectively to learn tool calling, observation loops, and evaluation. Do not binge frameworks before shipping a working project."
+            }
+          ],
+          "match_count": 2,
+          "needs_clarification": false
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=course_note_search; selected=course_note_search"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:needs_clarification",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:matches.0.source_id",
+          "passed": true,
+          "detail": "expected='mcp-beginners-001'; actual='mcp-beginners-001'"
+        },
+        {
+          "name": "min_value:match_count",
+          "passed": true,
+          "detail": "expected >= 1; actual=2"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "application-missing-company-clarification",
+      "title": "Ask for company before tracking an application",
+      "expected_tool": "application_tracker_update",
+      "selected_tool": "application_tracker_update",
+      "agent_plan": {
+        "selected_tool": "application_tracker_update",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "application",
+          "tracker",
+          "internship",
+          "role",
+          "company",
+          "applied"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "application_tracker_update",
+          "payload": {
+            "role": "Software Engineering Intern",
+            "event_type": "applied",
+            "source": "manual"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "application_tracker_update",
+        "output": {
+          "needs_clarification": true,
+          "missing_fields": [
+            "company"
+          ],
+          "normalized": null
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=application_tracker_update; selected=application_tracker_update"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:needs_clarification",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:normalized",
+          "passed": true,
+          "detail": "expected=None; actual=None"
+        },
+        {
+          "name": "must_contain:missing_fields",
+          "passed": true,
+          "detail": "expected list to contain 'company'; actual=['company']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "repo-health-dev-card-ready",
+      "title": "Confirm GitHub Dev Card is profile-ready",
+      "expected_tool": "repo_health_check",
+      "selected_tool": "repo_health_check",
+      "agent_plan": {
+        "selected_tool": "repo_health_check",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "repo",
+          "github",
+          "profile-ready",
+          "readme",
+          "ci"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "repo_health_check",
+          "payload": {
+            "repo_name": "GitHub-Dev-Card-Generator"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "repo_health_check",
+        "output": {
+          "repo_name": "GitHub-Dev-Card-Generator",
+          "ready_for_profile": true,
+          "score": 5,
+          "max_score": 5,
+          "missing": [],
+          "checks": {
+            "readme": true,
+            "tests": true,
+            "ci": true,
+            "screenshots": true,
+            "known_limitations": true
+          },
+          "summary": "FastAPI/Gemini developer card generator with no-key fallback and smoke-test CI."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=repo_health_check; selected=repo_health_check"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_profile",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:score",
+          "passed": true,
+          "detail": "expected=5; actual=5"
+        },
+        {
+          "name": "must_equal:summary",
+          "passed": true,
+          "detail": "expected='FastAPI/Gemini developer card generator with no-key fallback and smoke-test CI.'; actual='FastAPI/Gemini developer card generator with no-key fallback and smoke-test CI.'"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "course-note-no-match",
+      "title": "Return no note matches for unrelated learning query",
+      "expected_tool": "course_note_search",
+      "selected_tool": "course_note_search",
+      "agent_plan": {
+        "selected_tool": "course_note_search",
+        "confidence": 0.81,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "course",
+          "learning",
+          "notes"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "course_note_search",
+          "payload": {
+            "query": "quantum database tuning"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "course_note_search",
+        "output": {
+          "query": "quantum database tuning",
+          "matches": [],
+          "match_count": 0,
+          "needs_clarification": false
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=course_note_search; selected=course_note_search"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:match_count",
+          "passed": true,
+          "detail": "expected=0; actual=0"
+        },
+        {
+          "name": "must_equal:matches",
+          "passed": true,
+          "detail": "expected=[]; actual=[]"
+        },
+        {
+          "name": "must_equal:needs_clarification",
+          "passed": true,
+          "detail": "expected=False; actual=False"
         }
       ],
       "score": 1.0,
