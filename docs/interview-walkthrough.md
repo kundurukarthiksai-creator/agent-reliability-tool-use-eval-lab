@@ -36,7 +36,7 @@ This project narrows the problem to inspectable tool-use behavior:
 ## Current Proof
 
 - `42/42` deterministic tasks pass.
-- `8` local tools are exercised.
+- `9` local tools are exercised.
 - `42/42` tool-call traces are recorded.
 - The strict quality gate requires full pass rate, full average score, zero failed tasks, and no non-passing failure categories.
 - GitHub Actions verifies the deterministic path.
