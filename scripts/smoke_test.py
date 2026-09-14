@@ -34,6 +34,20 @@ def main():
     runs_html_response.raise_for_status()
     assert "Saved Evaluation Runs" in runs_html_response.text
 
+    first_saved_run = client.post("/eval/runs")
+    first_saved_run.raise_for_status()
+    second_saved_run = client.post("/eval/runs")
+    second_saved_run.raise_for_status()
+
+    run_comparison_response = client.get("/eval/runs/compare")
+    run_comparison_response.raise_for_status()
+    comparison = run_comparison_response.json()
+    assert comparison["current_run_id"] > comparison["previous_run_id"]
+
+    run_comparison_html_response = client.get("/eval/runs/compare.html")
+    run_comparison_html_response.raise_for_status()
+    assert "Saved Run Comparison" in run_comparison_html_response.text
+
     comparison_response = client.get("/planners/compare")
     comparison_response.raise_for_status()
     assert comparison_response.json()[0]["planner_name"] == "rule_based"

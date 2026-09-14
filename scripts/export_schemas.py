@@ -9,12 +9,14 @@ sys.path.insert(0, str(BACKEND))
 
 from app.comparison import PlannerComparisonResult  # noqa: E402
 from app.models import EvalReport, EvalRunRecord, EvaluationTask  # noqa: E402
+from app.run_comparison import EvalRunComparison  # noqa: E402
 
 
 SCHEMAS = {
     "evaluation-task.schema.json": EvaluationTask,
     "eval-report.schema.json": EvalReport,
     "eval-run-record.schema.json": EvalRunRecord,
+    "eval-run-comparison.schema.json": EvalRunComparison,
     "planner-comparison-result.schema.json": PlannerComparisonResult,
 }
 

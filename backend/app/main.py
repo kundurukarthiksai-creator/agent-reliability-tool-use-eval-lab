@@ -10,8 +10,13 @@ from app.comparison import (
 from app.models import EvalReport, EvalRunMetadata, EvalRunRecord, ToolDefinition
 from app.reporting import render_eval_report_html, render_runs_index_html
 from app.registry import build_default_registry
+from app.run_comparison import (
+    EvalRunComparison,
+    compare_eval_runs,
+    render_run_comparison_html,
+)
 from app.runner import run_evaluation
-from app.storage import get_run, list_runs, save_report
+from app.storage import get_latest_run_pair, get_run, list_runs, save_report
 
 
 class HealthResponse(BaseModel):
@@ -69,6 +74,31 @@ async def eval_runs() -> list[EvalRunMetadata]:
 @app.get("/eval/runs.html", response_class=HTMLResponse)
 async def eval_runs_html() -> HTMLResponse:
     return HTMLResponse(render_runs_index_html(list_runs()))
+
+
+@app.get("/eval/runs/compare", response_model=EvalRunComparison)
+async def eval_runs_compare() -> EvalRunComparison:
+    run_pair = get_latest_run_pair()
+    if run_pair is None:
+        raise HTTPException(
+            status_code=404,
+            detail="At least two saved evaluation runs are required.",
+        )
+    previous, current = run_pair
+    return compare_eval_runs(previous, current)
+
+
+@app.get("/eval/runs/compare.html", response_class=HTMLResponse)
+async def eval_runs_compare_html() -> HTMLResponse:
+    run_pair = get_latest_run_pair()
+    if run_pair is None:
+        raise HTTPException(
+            status_code=404,
+            detail="At least two saved evaluation runs are required.",
+        )
+    previous, current = run_pair
+    comparison = compare_eval_runs(previous, current)
+    return HTMLResponse(render_run_comparison_html(comparison))
 
 
 @app.get("/eval/runs/{run_id}", response_model=EvalRunRecord)

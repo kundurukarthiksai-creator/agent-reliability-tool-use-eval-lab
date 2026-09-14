@@ -1,0 +1,182 @@
+{
+  "$defs": {
+    "RunTaskComparison": {
+      "properties": {
+        "task_id": {
+          "title": "Task Id",
+          "type": "string"
+        },
+        "title": {
+          "title": "Title",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "unchanged_pass",
+            "unchanged_fail",
+            "regression",
+            "recovery",
+            "score_changed",
+            "added",
+            "removed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "previous_passed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Previous Passed"
+        },
+        "current_passed": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Current Passed"
+        },
+        "previous_score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Previous Score"
+        },
+        "current_score": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Current Score"
+        },
+        "score_delta": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Score Delta"
+        },
+        "previous_category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Previous Category"
+        },
+        "current_category": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Current Category"
+        }
+      },
+      "required": [
+        "task_id",
+        "title",
+        "status",
+        "previous_passed",
+        "current_passed",
+        "previous_score",
+        "current_score",
+        "score_delta",
+        "previous_category",
+        "current_category"
+      ],
+      "title": "RunTaskComparison",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "previous_run_id": {
+      "title": "Previous Run Id",
+      "type": "integer"
+    },
+    "current_run_id": {
+      "title": "Current Run Id",
+      "type": "integer"
+    },
+    "previous_created_at": {
+      "title": "Previous Created At",
+      "type": "string"
+    },
+    "current_created_at": {
+      "title": "Current Created At",
+      "type": "string"
+    },
+    "total_tasks_delta": {
+      "title": "Total Tasks Delta",
+      "type": "integer"
+    },
+    "passed_tasks_delta": {
+      "title": "Passed Tasks Delta",
+      "type": "integer"
+    },
+    "failed_tasks_delta": {
+      "title": "Failed Tasks Delta",
+      "type": "integer"
+    },
+    "average_score_delta": {
+      "title": "Average Score Delta",
+      "type": "number"
+    },
+    "status_counts": {
+      "additionalProperties": {
+        "type": "integer"
+      },
+      "title": "Status Counts",
+      "type": "object"
+    },
+    "task_comparisons": {
+      "items": {
+        "$ref": "#/$defs/RunTaskComparison"
+      },
+      "title": "Task Comparisons",
+      "type": "array"
+    }
+  },
+  "required": [
+    "previous_run_id",
+    "current_run_id",
+    "previous_created_at",
+    "current_created_at",
+    "total_tasks_delta",
+    "passed_tasks_delta",
+    "failed_tasks_delta",
+    "average_score_delta",
+    "status_counts",
+    "task_comparisons"
+  ],
+  "title": "EvalRunComparison",
+  "type": "object"
+}

@@ -67,6 +67,18 @@ Saved runs persist:
 
 The persistence layer does not change scoring. It only records the report produced by the deterministic runner.
 
+## Saved-Run Comparison
+
+Saved-run comparison compares the latest two persisted reports and records:
+
+- total, passed, failed, and average-score deltas;
+- task-level regressions;
+- task-level recoveries;
+- unchanged passes and unchanged failures;
+- added or removed tasks when the task set changes.
+
+This is useful because a single green run is not enough evidence. The project should also make regressions visible when the task suite or planner changes.
+
 ## Failure Categories
 
 Each task receives one failure category:

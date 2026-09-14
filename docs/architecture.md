@@ -54,6 +54,8 @@ API:
 - `POST /eval/runs` executes and saves an eval run to SQLite.
 - `GET /eval/runs` lists saved run summaries.
 - `GET /eval/runs.html` renders saved run summaries as HTML.
+- `GET /eval/runs/compare` compares the latest two saved runs as JSON.
+- `GET /eval/runs/compare.html` renders the latest saved-run comparison as HTML.
 - `GET /eval/runs/{run_id}` returns one saved run and report.
 - `GET /reports/latest.html` renders the latest deterministic report as HTML.
 
@@ -92,3 +94,11 @@ EvalReport -> backend/app/storage.py -> data/eval_runs.sqlite3
 ```
 
 SQLite stores run metadata and the full report JSON. The database file is intentionally ignored by git.
+
+## Saved-Run Comparison
+
+```text
+EvalRunRecord + EvalRunRecord -> backend/app/run_comparison.py -> JSON/HTML delta
+```
+
+The comparison view labels task-level movement between the latest two saved runs: unchanged pass, unchanged fail, regression, recovery, score changed, added, or removed. This turns saved reports into a simple reliability trend signal without adding any non-deterministic dependencies.

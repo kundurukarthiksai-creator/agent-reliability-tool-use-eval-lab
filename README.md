@@ -27,6 +27,7 @@ The default path is intentionally CI-safe: no API keys, no paid model calls, and
 - HTML report renderer and report API route.
 - Deliberate failure demo for wrong tool selection.
 - SQLite persistence for saved runs.
+- Saved-run comparison API and HTML view.
 - GitHub Actions CI.
 
 ## Quickstart
@@ -61,6 +62,7 @@ Render sample reports:
 .\.venv\Scripts\python scripts\render_failure_demo.py
 .\.venv\Scripts\python scripts\render_failure_catalog.py
 .\.venv\Scripts\python scripts\compare_planners.py
+.\.venv\Scripts\python scripts\render_run_comparison_demo.py
 .\.venv\Scripts\python scripts\export_schemas.py
 ```
 
@@ -87,6 +89,8 @@ POST /eval/run
 POST /eval/runs
 GET  /eval/runs
 GET  /eval/runs.html
+GET  /eval/runs/compare
+GET  /eval/runs/compare.html
 GET  /eval/runs/{run_id}
 GET  /reports/latest.html
 ```
@@ -102,11 +106,14 @@ reports/failure-catalog.json
 reports/failure-catalog.html
 reports/planner-comparison.json
 reports/planner-comparison.md
+reports/run-comparison-demo.json
+reports/run-comparison-demo.html
 ```
 
 The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
 The failure catalog demonstrates `tool_selection`, `tool_execution`, and `output_assertion` categories.
 The planner comparison shows the default planner against a deliberately weak baseline.
+The run comparison demo shows how saved runs surface regressions and recoveries.
 
 ## Project Layout
 
@@ -132,13 +139,14 @@ docs/            architecture and methodology notes
 - The starter eval set is small while tool contracts stabilize.
 - Fixtures are synthetic/public-safe examples.
 - CI proves deterministic behavior, not broad real-world agent generalization.
+- Saved-run comparison needs at least two persisted runs.
 
 ## Roadmap
 
 - Add more tools and harder task fixtures.
 - Add comparison mode for optional LLM-backed planners.
-- Add a compact dashboard view for saved runs.
-- Add richer failure categories and trend summaries.
+- Add richer trend summaries across many saved runs.
+- Add optional LLM-backed planner comparison behind environment variables.
 
 ## Docs
 

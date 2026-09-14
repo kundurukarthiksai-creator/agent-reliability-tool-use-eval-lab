@@ -123,6 +123,28 @@ def get_run(run_id: int, db_path: Path = DB_PATH) -> EvalRunRecord | None:
     )
 
 
+def get_latest_run_pair(db_path: Path = DB_PATH) -> tuple[EvalRunRecord, EvalRunRecord] | None:
+    with connect(db_path) as connection:
+        init_db(connection)
+        rows = connection.execute(
+            """
+            SELECT id
+            FROM eval_runs
+            ORDER BY id DESC
+            LIMIT 2
+            """
+        ).fetchall()
+
+    if len(rows) < 2:
+        return None
+
+    current = get_run(int(rows[0]["id"]), db_path=db_path)
+    previous = get_run(int(rows[1]["id"]), db_path=db_path)
+    if previous is None or current is None:
+        return None
+    return previous, current
+
+
 def _metadata_from_row(row: sqlite3.Row) -> EvalRunMetadata:
     return EvalRunMetadata(
         run_id=int(row["id"]),

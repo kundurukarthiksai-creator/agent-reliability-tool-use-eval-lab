@@ -2,7 +2,7 @@ from fastapi.testclient import TestClient
 
 from app import main as main_module
 from app.main import app
-from app.storage import get_run, list_runs, save_report
+from app.storage import get_latest_run_pair, get_run, list_runs, save_report
 
 
 def test_tools_endpoint_lists_registered_tools():
@@ -110,3 +110,40 @@ def test_saved_runs_html_endpoint(monkeypatch, tmp_path):
     assert response.headers["content-type"].startswith("text/html")
     assert "Saved Evaluation Runs" in response.text
     assert f"#{saved.run_id}" in response.text
+
+
+def test_saved_run_comparison_endpoints(monkeypatch, tmp_path):
+    db_path = tmp_path / "runs.sqlite3"
+    save_report(main_module.run_evaluation(), db_path=db_path)
+    save_report(main_module.run_evaluation(), db_path=db_path)
+    monkeypatch.setattr(
+        main_module,
+        "get_latest_run_pair",
+        lambda: get_latest_run_pair(db_path=db_path),
+    )
+    client = TestClient(app)
+
+    json_response = client.get("/eval/runs/compare")
+    html_response = client.get("/eval/runs/compare.html")
+
+    assert json_response.status_code == 200
+    assert json_response.json()["previous_run_id"] == 1
+    assert json_response.json()["current_run_id"] == 2
+    assert html_response.status_code == 200
+    assert html_response.headers["content-type"].startswith("text/html")
+    assert "Saved Run Comparison" in html_response.text
+
+
+def test_saved_run_comparison_requires_two_runs(monkeypatch, tmp_path):
+    db_path = tmp_path / "runs.sqlite3"
+    save_report(main_module.run_evaluation(), db_path=db_path)
+    monkeypatch.setattr(
+        main_module,
+        "get_latest_run_pair",
+        lambda: get_latest_run_pair(db_path=db_path),
+    )
+    client = TestClient(app)
+
+    response = client.get("/eval/runs/compare")
+
+    assert response.status_code == 404

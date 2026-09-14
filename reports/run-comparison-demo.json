@@ -1,0 +1,136 @@
+{
+  "previous_run_id": 1,
+  "current_run_id": 2,
+  "previous_created_at": "2026-09-14T00:00:00+00:00",
+  "current_created_at": "2026-09-14T01:00:00+00:00",
+  "total_tasks_delta": 0,
+  "passed_tasks_delta": 1,
+  "failed_tasks_delta": -1,
+  "average_score_delta": 0.1,
+  "status_counts": {
+    "recovery": 1,
+    "unchanged_pass": 9
+  },
+  "task_comparisons": [
+    {
+      "task_id": "ambiguous-application-event",
+      "title": "Flag ambiguous application input",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "application-tracker-update",
+      "title": "Normalize an application event",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "application-unknown-event",
+      "title": "Normalize an unknown application event",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "course-note-deepmind-foundations",
+      "title": "Find model evaluation foundations notes",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "course-note-empty-query",
+      "title": "Ask for clarification on an empty course-note query",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "course-note-search",
+      "title": "Find relevant tool-use learning notes",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "repo-health-ai-linkedin",
+      "title": "Check another cleaned repo for public proof",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "repo-health-missing-repo",
+      "title": "Flag a missing repo fixture",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "repo-health-ready",
+      "title": "Check whether a cleaned repo is profile-ready",
+      "status": "recovery",
+      "previous_passed": false,
+      "current_passed": true,
+      "previous_score": 0.0,
+      "current_score": 1.0,
+      "score_delta": 1.0,
+      "previous_category": "output_assertion",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "repo-health-unverified",
+      "title": "Flag an unverified repo before promotion",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    }
+  ]
+}

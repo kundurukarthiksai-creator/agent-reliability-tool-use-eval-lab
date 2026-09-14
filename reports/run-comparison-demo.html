@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saved Run Comparison</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #16181d;
+      --muted: #5d6470;
+      --line: #d9dee7;
+      --good: #117a47;
+      --bad: #b42318;
+      --accent: #2454a6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.5 Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      width: min(1080px, calc(100vw - 32px));
+      margin: 32px auto;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0 0 24px;
+      color: var(--muted);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .metric,
+    table {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .metric {
+      padding: 16px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 24px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      overflow: hidden;
+    }
+
+    th,
+    td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    code {
+      background: #eef2f8;
+      border: 1px solid #d7deea;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+
+    .regression {
+      color: var(--bad);
+      font-weight: 700;
+    }
+
+    .recovery {
+      color: var(--good);
+      font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Saved Run Comparison</h1>
+    <p>Latest saved run compared against the previous saved run.</p>
+
+    <section class="summary" aria-label="Run comparison summary">
+      <div class="metric"><span>Previous Run</span><strong>#1</strong></div>
+      <div class="metric"><span>Current Run</span><strong>#2</strong></div>
+      <div class="metric"><span>Passed Delta</span><strong>+1</strong></div>
+      <div class="metric"><span>Avg Score Delta</span><strong>+0.1</strong></div>
+    </section>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>Status</th>
+          <th>Previous</th>
+          <th>Current</th>
+          <th>Score Delta</th>
+          <th>Category</th>
+        </tr>
+      </thead>
+      <tbody>
+        
+        <tr>
+          <td><code>ambiguous-application-event</code><br>Flag ambiguous application input</td>
+          <td class="">unchanged_pass</td>
+          <td>passed / 1.00</td>
+          <td>passed / 1.00</td>
+          <td>0.0</td>
+          <td>passed</td>
+        </tr>
+
+
+        <tr>
+          <td><code>application-tracker-update</code><br>Normalize an application event</td>
+          <td class="">unchanged_pass</td>
+          <td>passed / 1.00</td>
+          <td>passed / 1.00</td>
+          <td>0.0</td>
+          <td>passed</td>
+        </tr>
+
+
+        <tr>
+          <td><code>application-unknown-event</code><br>Normalize an unknown application event</td>
+          <td class="">unchanged_pass</td>
+          <td>passed / 1.00</td>
+          <td>passed / 1.00</td>
+          <td>0.0</td>
+          <td>passed</td>
+        </tr>
+
+
+        <tr>
+          <td><code>course-note-deepmind-foundations</code><br>Find model evaluation foundations notes</td>
+          <td class="">unchanged_pass</td>
+          <td>passed / 1.00</td>
+          <td>passed / 1.00</td>
+          <td>0.0</td>
+          <td>passed</td>
+        </tr>
+
+
+        <tr>
+          <td><code>course-note-empty-query</code><br>Ask for clarification on an empty course-note query</td>
+          <td class="">unchanged_pass</td>
+          <td>passed / 1.00</td>
+          <td>passed / 1.00</td>
+          <td>0.0</td>
+          <td>passed</td>
+        </tr>
+
+
+        <tr>
+          <td><code>course-note-search</code><br>Find relevant tool-use learning notes</td>
+          <td class="">unchanged_pass</td>
+          <td>passed / 1.00</td>
+          <td>passed / 1.00</td>
+          <td>0.0</td>
+          <td>passed</td>
+        </tr>
+
+
+        <tr>
+          <td><code>repo-health-ai-linkedin</code><br>Check another cleaned repo for public proof</td>
+          <td class="">unchanged_pass</td>
+          <td>passed / 1.00</td>
+          <td>passed / 1.00</td>
+          <td>0.0</td>
+          <td>passed</td>
+        </tr>
+
+
+        <tr>
+          <td><code>repo-health-missing-repo</code><br>Flag a missing repo fixture</td>
+          <td class="">unchanged_pass</td>
+          <td>passed / 1.00</td>
+          <td>passed / 1.00</td>
+          <td>0.0</td>
+          <td>passed</td>
+        </tr>
+
+
+        <tr>
+          <td><code>repo-health-ready</code><br>Check whether a cleaned repo is profile-ready</td>
+          <td class="recovery">recovery</td>
+          <td>failed / 0.00</td>
+          <td>passed / 1.00</td>
+          <td>+1.0</td>
+          <td>output_assertion -> passed</td>
+        </tr>
+
+
+        <tr>
+          <td><code>repo-health-unverified</code><br>Flag an unverified repo before promotion</td>
+          <td class="">unchanged_pass</td>
+          <td>passed / 1.00</td>
+          <td>passed / 1.00</td>
+          <td>0.0</td>
+          <td>passed</td>
+        </tr>
+
+      </tbody>
+    </table>
+  </main>
+</body>
+</html>

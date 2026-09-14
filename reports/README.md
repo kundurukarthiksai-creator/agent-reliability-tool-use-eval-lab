@@ -7,5 +7,6 @@ This folder contains public-safe sample output from the deterministic evaluation
 - `sample-failure-report.json` and `sample-failure-report.html` were generated with `scripts/render_failure_demo.py`.
 - `failure-catalog.json` and `failure-catalog.html` were generated with `scripts/render_failure_catalog.py`.
 - `planner-comparison.json` and `planner-comparison.md` were generated with `scripts/compare_planners.py`.
+- `run-comparison-demo.json` and `run-comparison-demo.html` were generated with `scripts/render_run_comparison_demo.py`.
 - The sample uses synthetic/public-safe fixtures only.
 - Regenerate it after intentional report-schema changes.
