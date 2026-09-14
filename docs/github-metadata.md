@@ -3,7 +3,7 @@
 Suggested repository description:
 
 ```text
-Deterministic tool-use agent eval lab with traces, quality gates, HTML reports, OpenAPI export, and a no-key static demo.
+Deterministic tool-use agent eval lab with traces, quality gates, artifact checks, OpenAPI export, and a no-key static demo.
 ```
 
 Repository homepage:
@@ -25,6 +25,11 @@ sqlite
 pytest
 developer-tools
 reliability
+artifact-consistency
+ci
+github-pages
+openapi
+quality-gates
 ```
 
 Suggested pinned-repo framing:
