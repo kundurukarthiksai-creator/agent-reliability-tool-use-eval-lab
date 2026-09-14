@@ -51,6 +51,7 @@ Render sample reports:
 ```powershell
 .\.venv\Scripts\python scripts\render_report.py
 .\.venv\Scripts\python scripts\render_failure_demo.py
+.\.venv\Scripts\python scripts\render_failure_catalog.py
 ```
 
 Run the API:
@@ -85,9 +86,12 @@ reports/sample-eval-report.json
 reports/sample-eval-report.html
 reports/sample-failure-report.json
 reports/sample-failure-report.html
+reports/failure-catalog.json
+reports/failure-catalog.html
 ```
 
 The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
+The failure catalog demonstrates `tool_selection`, `tool_execution`, and `output_assertion` categories.
 
 ## Project Layout
 

@@ -34,3 +34,6 @@ jobs:
 
       - name: Render failure demo
         run: python scripts/render_failure_demo.py
+
+      - name: Render failure catalog
+        run: python scripts/render_failure_catalog.py

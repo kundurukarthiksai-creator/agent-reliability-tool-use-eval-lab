@@ -59,6 +59,11 @@
           "detail": "expected=repo_health_check; selected=repo_health_check"
         },
         {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
           "name": "must_equal:ready_for_profile",
           "passed": true,
           "detail": "expected=True; actual=True"
@@ -135,6 +140,11 @@
           "detail": "expected=repo_health_check; selected=repo_health_check"
         },
         {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
           "name": "must_equal:ready_for_profile",
           "passed": true,
           "detail": "expected=False; actual=False"
@@ -208,6 +218,11 @@
           "detail": "expected=course_note_search; selected=course_note_search"
         },
         {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
           "name": "must_equal:matches.0.source_id",
           "passed": true,
           "detail": "expected='mcp-beginners-001'; actual='mcp-beginners-001'"
@@ -275,6 +290,11 @@
           "name": "tool_selection",
           "passed": true,
           "detail": "expected=application_tracker_update; selected=application_tracker_update"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
         },
         {
           "name": "must_equal:needs_clarification",
@@ -345,6 +365,11 @@
           "detail": "expected=application_tracker_update; selected=application_tracker_update"
         },
         {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
           "name": "must_equal:needs_clarification",
           "passed": true,
           "detail": "expected=True; actual=True"
@@ -405,6 +430,11 @@
           "detail": "expected=repo_health_check; selected=repo_health_check"
         },
         {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
           "name": "must_equal:ready_for_profile",
           "passed": true,
           "detail": "expected=False; actual=False"
@@ -463,6 +493,11 @@
           "name": "tool_selection",
           "passed": true,
           "detail": "expected=course_note_search; selected=course_note_search"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
         },
         {
           "name": "must_equal:needs_clarification",
@@ -529,6 +564,11 @@
           "name": "tool_selection",
           "passed": true,
           "detail": "expected=application_tracker_update; selected=application_tracker_update"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
         },
         {
           "name": "must_equal:needs_clarification",
@@ -610,6 +650,11 @@
           "detail": "expected=course_note_search; selected=course_note_search"
         },
         {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
           "name": "must_equal:matches.0.source_id",
           "passed": true,
           "detail": "expected='google-deepmind-001'; actual='google-deepmind-001'"
@@ -674,6 +719,11 @@
           "name": "tool_selection",
           "passed": true,
           "detail": "expected=repo_health_check; selected=repo_health_check"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
         },
         {
           "name": "must_equal:ready_for_profile",

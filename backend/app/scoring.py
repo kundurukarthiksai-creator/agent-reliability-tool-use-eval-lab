@@ -32,6 +32,13 @@ def score_task(
             detail=f"expected={task.expected_tool}; selected={selected_tool}",
         )
     )
+    assertions.append(
+        AssertionResult(
+            name="tool_status",
+            passed=tool_result.status == "ok",
+            detail=f"status={tool_result.status}; error={tool_result.error!r}",
+        )
+    )
 
     output = tool_result.output
     expectations = task.expectations

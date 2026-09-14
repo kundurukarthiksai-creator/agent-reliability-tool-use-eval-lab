@@ -1,0 +1,185 @@
+{
+  "summary": {
+    "total_tasks": 3,
+    "passed_tasks": 0,
+    "failed_tasks": 3,
+    "average_score": 0.4556
+  },
+  "results": [
+    {
+      "task_id": "repo-health-ready",
+      "title": "Check whether a cleaned repo is profile-ready",
+      "expected_tool": "repo_health_check",
+      "selected_tool": "course_note_search",
+      "agent_plan": {
+        "selected_tool": "course_note_search",
+        "confidence": 0.99,
+        "rationale": "Failure catalog: intentionally chooses the wrong registered tool.",
+        "matched_signals": [
+          "failure-catalog-tool-selection"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "course_note_search",
+          "payload": {
+            "repo_name": "GitHub-Dev-Card-Generator"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "course_note_search",
+        "output": {
+          "query": "",
+          "matches": [],
+          "match_count": 0,
+          "needs_clarification": true
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": false,
+          "detail": "expected=repo_health_check; selected=course_note_search"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:ready_for_profile",
+          "passed": false,
+          "detail": "expected=True; actual=None"
+        },
+        {
+          "name": "must_equal:score",
+          "passed": false,
+          "detail": "expected=5; actual=None"
+        },
+        {
+          "name": "min_value:max_score",
+          "passed": false,
+          "detail": "expected >= 5; actual=None"
+        }
+      ],
+      "score": 0.2,
+      "passed": false,
+      "failure_category": "tool_selection"
+    },
+    {
+      "task_id": "failure-catalog-tool-execution",
+      "title": "Classify an unregistered tool call",
+      "expected_tool": "missing_tool",
+      "selected_tool": "missing_tool",
+      "agent_plan": {
+        "selected_tool": "missing_tool",
+        "confidence": 0.99,
+        "rationale": "Failure catalog: intentionally selects an unregistered tool.",
+        "matched_signals": [
+          "failure-catalog-tool-execution"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "missing_tool",
+          "payload": {},
+          "status": "error"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "missing_tool",
+        "output": {
+          "error": "\"Unknown tool 'missing_tool'. Available tools: application_tracker_update, course_note_search, repo_health_check\""
+        },
+        "status": "error",
+        "error": "\"Unknown tool 'missing_tool'. Available tools: application_tracker_update, course_note_search, repo_health_check\""
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=missing_tool; selected=missing_tool"
+        },
+        {
+          "name": "tool_status",
+          "passed": false,
+          "detail": "status=error; error='\"Unknown tool \\'missing_tool\\'. Available tools: application_tracker_update, course_note_search, repo_health_check\"'"
+        }
+      ],
+      "score": 0.5,
+      "passed": false,
+      "failure_category": "tool_execution"
+    },
+    {
+      "task_id": "failure-catalog-output-assertion",
+      "title": "Classify a wrong supported output",
+      "expected_tool": "course_note_search",
+      "selected_tool": "course_note_search",
+      "agent_plan": {
+        "selected_tool": "course_note_search",
+        "confidence": 0.57,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "course"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "course_note_search",
+          "payload": {
+            "query": "model evaluation foundations"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "course_note_search",
+        "output": {
+          "query": "model evaluation foundations",
+          "matches": [
+            {
+              "source_id": "google-deepmind-001",
+              "title": "Google DeepMind AI Research Foundations",
+              "score": 3,
+              "snippet": "Use the foundations path for model and evaluation concepts that directly support the reliability lab. Avoid turning it into passive course collecting."
+            },
+            {
+              "source_id": "hf-agents-001",
+              "title": "Hugging Face Agents Course",
+              "score": 1,
+              "snippet": "Use agent courses selectively to learn tool calling, observation loops, and evaluation. Do not binge frameworks before shipping a working project."
+            }
+          ],
+          "match_count": 2,
+          "needs_clarification": false
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=course_note_search; selected=course_note_search"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:matches.0.source_id",
+          "passed": false,
+          "detail": "expected='not-the-right-note'; actual='google-deepmind-001'"
+        }
+      ],
+      "score": 0.6666666666666666,
+      "passed": false,
+      "failure_category": "output_assertion"
+    }
+  ]
+}

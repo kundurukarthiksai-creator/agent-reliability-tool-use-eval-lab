@@ -3,7 +3,7 @@
     "total_tasks": 1,
     "passed_tasks": 0,
     "failed_tasks": 1,
-    "average_score": 0.0
+    "average_score": 0.2
   },
   "results": [
     {
@@ -46,6 +46,11 @@
           "detail": "expected=repo_health_check; selected=course_note_search"
         },
         {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
           "name": "must_equal:ready_for_profile",
           "passed": false,
           "detail": "expected=True; actual=None"
@@ -61,7 +66,7 @@
           "detail": "expected >= 5; actual=None"
         }
       ],
-      "score": 0.0,
+      "score": 0.2,
       "passed": false,
       "failure_category": "tool_selection"
     }

@@ -185,9 +185,9 @@
     </header>
 
     <section class="summary" aria-label="Evaluation summary">
-      <div class="metric"><span>Total Tasks</span><strong>1</strong></div>
+      <div class="metric"><span>Total Tasks</span><strong>3</strong></div>
       <div class="metric"><span>Passed</span><strong>0</strong></div>
-      <div class="metric"><span>Failed</span><strong>1</strong></div>
+      <div class="metric"><span>Failed</span><strong>3</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>0.0%</strong></div>
     </section>
 
@@ -214,7 +214,7 @@
       <dt>Confidence</dt>
       <dd>0.99</dd>
       <dt>Signals</dt>
-      <dd>failure-demo</dd>
+      <dd>failure-catalog-tool-selection</dd>
     </dl>
     <div>
       <h2>Assertions</h2>
@@ -224,7 +224,80 @@
 <li><strong>fail</strong> must_equal:score: expected=5; actual=None</li>
 <li><strong>fail</strong> min_value:max_score: expected &gt;= 5; actual=None</li></ul>
       <h2>Planner Rationale</h2>
-      <p>Failure demo: intentionally picks the wrong tool so the report shows tool-selection and assertion failures.</p>
+      <p>Failure catalog: intentionally chooses the wrong registered tool.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>course_note_search</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Classify an unregistered tool call</strong>
+      <p>failure-catalog-tool-execution</p>
+    </div>
+    <span class="badge failed">Failed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>missing_tool</code></dd>
+      <dt>Selected</dt>
+      <dd><code>missing_tool</code></dd>
+      <dt>Score</dt>
+      <dd>0.50</dd>
+      <dt>Category</dt>
+      <dd>tool_execution</dd>
+      <dt>Confidence</dt>
+      <dd>0.99</dd>
+      <dt>Signals</dt>
+      <dd>failure-catalog-tool-execution</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=missing_tool; selected=missing_tool</li>
+<li><strong>fail</strong> tool_status: status=error; error=&#x27;&quot;Unknown tool \&#x27;missing_tool\&#x27;. Available tools: application_tracker_update, course_note_search, repo_health_check&quot;&#x27;</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Failure catalog: intentionally selects an unregistered tool.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>missing_tool</code> returned <code>error</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Classify a wrong supported output</strong>
+      <p>failure-catalog-output-assertion</p>
+    </div>
+    <span class="badge failed">Failed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>course_note_search</code></dd>
+      <dt>Selected</dt>
+      <dd><code>course_note_search</code></dd>
+      <dt>Score</dt>
+      <dd>0.67</dd>
+      <dt>Category</dt>
+      <dd>output_assertion</dd>
+      <dt>Confidence</dt>
+      <dd>0.57</dd>
+      <dt>Signals</dt>
+      <dd>course</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=course_note_search; selected=course_note_search</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>fail</strong> must_equal:matches.0.source_id: expected=&#x27;not-the-right-note&#x27;; actual=&#x27;google-deepmind-001&#x27;</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
       <h2>Tool Call Trace</h2>
       <p><code>course_note_search</code> returned <code>ok</code>.</p>
     </div>
