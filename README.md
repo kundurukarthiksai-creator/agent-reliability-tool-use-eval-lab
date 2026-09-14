@@ -69,11 +69,19 @@ The report includes the agent plan, selected tool, tool-call trace, assertion re
 .\.venv\Scripts\python scripts\render_report.py
 ```
 
+## Render Failure Demo
+
+```powershell
+.\.venv\Scripts\python scripts\render_failure_demo.py
+```
+
 Sample output:
 
 ```text
 reports/sample-eval-report.json
 reports/sample-eval-report.html
+reports/sample-failure-report.json
+reports/sample-failure-report.html
 ```
 
 ## Known Limitations

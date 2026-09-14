@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Reliability Eval Report</title>
+  <style>
+    :root {
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #16181d;
+      --muted: #5d6470;
+      --line: #d9dee7;
+      --good: #117a47;
+      --bad: #b42318;
+      --accent: #2454a6;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.5 Arial, Helvetica, sans-serif;
+    }
+
+    main {
+      width: min(1120px, calc(100vw - 32px));
+      margin: 32px auto;
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .metric,
+    .task {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }
+
+    .metric {
+      padding: 16px;
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 24px;
+    }
+
+    .task {
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .task-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .task-title {
+      min-width: 0;
+    }
+
+    .task-title strong {
+      display: block;
+      overflow-wrap: anywhere;
+    }
+
+    .badge {
+      align-self: flex-start;
+      border-radius: 999px;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 4px 10px;
+      white-space: nowrap;
+    }
+
+    .passed {
+      background: var(--good);
+    }
+
+    .failed {
+      background: var(--bad);
+    }
+
+    .task-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+      gap: 16px;
+      padding: 16px;
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 6px 12px;
+      margin: 0;
+    }
+
+    dt {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    dd {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+
+    code {
+      background: #eef2f8;
+      border: 1px solid #d7deea;
+      border-radius: 4px;
+      padding: 1px 4px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 760px) {
+      .summary,
+      .task-body {
+        grid-template-columns: 1fr;
+      }
+
+      .task-header {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <h1>Agent Reliability Eval Report</h1>
+      <p>Deterministic tool-use evaluation with planner traces and assertion-level scoring.</p>
+    </header>
+
+    <section class="summary" aria-label="Evaluation summary">
+      <div class="metric"><span>Total Tasks</span><strong>1</strong></div>
+      <div class="metric"><span>Passed</span><strong>0</strong></div>
+      <div class="metric"><span>Failed</span><strong>1</strong></div>
+      <div class="metric"><span>Pass Rate</span><strong>0.0%</strong></div>
+    </section>
+
+    <section aria-label="Task results">
+      
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Check whether a cleaned repo is profile-ready</strong>
+      <p>repo-health-ready</p>
+    </div>
+    <span class="badge failed">Failed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>repo_health_check</code></dd>
+      <dt>Selected</dt>
+      <dd><code>course_note_search</code></dd>
+      <dt>Score</dt>
+      <dd>0.00</dd>
+      <dt>Confidence</dt>
+      <dd>0.99</dd>
+      <dt>Signals</dt>
+      <dd>failure-demo</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>fail</strong> tool_selection: expected=repo_health_check; selected=course_note_search</li>
+<li><strong>fail</strong> must_equal:ready_for_profile: expected=True; actual=None</li>
+<li><strong>fail</strong> must_equal:score: expected=5; actual=None</li>
+<li><strong>fail</strong> min_value:max_score: expected &gt;= 5; actual=None</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Failure demo: intentionally picks the wrong tool so the report shows tool-selection and assertion failures.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>course_note_search</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+    </section>
+  </main>
+</body>
+</html>

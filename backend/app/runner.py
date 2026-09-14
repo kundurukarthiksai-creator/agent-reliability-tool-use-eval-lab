@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-from app.agent import RuleBasedAgent
+from app.agent import AgentPlanner, RuleBasedAgent
 from app.models import (
     EvalReport,
     EvalSummary,
@@ -31,7 +31,7 @@ def load_tasks(tasks_dir: Path = TASKS_DIR) -> list[EvaluationTask]:
 def run_task(
     task: EvaluationTask,
     registry: ToolRegistry,
-    agent: RuleBasedAgent | None = None,
+    agent: AgentPlanner | None = None,
 ) -> TaskRunResult:
     selected_agent = agent if agent is not None else RuleBasedAgent()
     agent_plan = selected_agent.plan(task, registry.list_tools())
@@ -73,7 +73,7 @@ def run_task(
 def run_evaluation(
     tasks: list[EvaluationTask] | None = None,
     registry: ToolRegistry | None = None,
-    agent: RuleBasedAgent | None = None,
+    agent: AgentPlanner | None = None,
 ) -> EvalReport:
     selected_tasks = tasks if tasks is not None else load_tasks()
     selected_registry = registry if registry is not None else build_default_registry()

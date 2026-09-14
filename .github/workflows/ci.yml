@@ -31,3 +31,6 @@ jobs:
 
       - name: Render HTML report
         run: python scripts/render_report.py
+
+      - name: Render failure demo
+        run: python scripts/render_failure_demo.py

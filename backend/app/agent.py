@@ -1,5 +1,6 @@
 import json
 from dataclasses import dataclass
+from typing import Protocol
 
 from app.models import AgentPlan, EvaluationTask, ToolDefinition
 
@@ -39,6 +40,11 @@ SIGNALS_BY_TOOL = {
         "rejected",
     ],
 }
+
+
+class AgentPlanner(Protocol):
+    def plan(self, task: EvaluationTask, tools: list[ToolDefinition]) -> AgentPlan:
+        """Return a tool-use plan for one evaluation task."""
 
 
 @dataclass

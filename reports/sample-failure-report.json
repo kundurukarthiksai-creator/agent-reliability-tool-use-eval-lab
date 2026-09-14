@@ -1,0 +1,68 @@
+{
+  "summary": {
+    "total_tasks": 1,
+    "passed_tasks": 0,
+    "failed_tasks": 1,
+    "average_score": 0.0
+  },
+  "results": [
+    {
+      "task_id": "repo-health-ready",
+      "title": "Check whether a cleaned repo is profile-ready",
+      "expected_tool": "repo_health_check",
+      "selected_tool": "course_note_search",
+      "agent_plan": {
+        "selected_tool": "course_note_search",
+        "confidence": 0.99,
+        "rationale": "Failure demo: intentionally picks the wrong tool so the report shows tool-selection and assertion failures.",
+        "matched_signals": [
+          "failure-demo"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "course_note_search",
+          "payload": {
+            "repo_name": "GitHub-Dev-Card-Generator"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "course_note_search",
+        "output": {
+          "query": "",
+          "matches": [],
+          "match_count": 0,
+          "needs_clarification": true
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": false,
+          "detail": "expected=repo_health_check; selected=course_note_search"
+        },
+        {
+          "name": "must_equal:ready_for_profile",
+          "passed": false,
+          "detail": "expected=True; actual=None"
+        },
+        {
+          "name": "must_equal:score",
+          "passed": false,
+          "detail": "expected=5; actual=None"
+        },
+        {
+          "name": "min_value:max_score",
+          "passed": false,
+          "detail": "expected >= 5; actual=None"
+        }
+      ],
+      "score": 0.0,
+      "passed": false
+    }
+  ]
+}
