@@ -61,6 +61,10 @@ def main() -> None:
         encoding="utf-8",
     )
     (SITE_DIR / "case-study.html").write_text(render_case_study(), encoding="utf-8")
+    (SITE_DIR / "interview-walkthrough.html").write_text(
+        render_interview_walkthrough(),
+        encoding="utf-8",
+    )
     (SITE_DIR / "traceability.html").write_text(
         render_traceability_guide(),
         encoding="utf-8",
@@ -76,6 +80,7 @@ def render_index() -> str:
     links = [
         ("Project One-Pager", "project-one-pager.html", "Scan the project's purpose, proof, engineering signals, and limits."),
         ("Case Study", "case-study.html", "Read the reviewer-friendly project walkthrough."),
+        ("Interview Walkthrough", "interview-walkthrough.html", "Practice a concise technical explanation with tradeoffs and limits."),
         ("Traceability Guide", "traceability.html", "Follow one task from fixture to planner, trace, and assertions."),
         ("Architecture Flow", "architecture-flow.html", "See how fixtures, planner, tools, scoring, reports, and quality gate connect."),
         ("Dashboard", "reports/dashboard.html", "Start with the portfolio demo index."),
@@ -108,6 +113,10 @@ def render_index() -> str:
         (
             "traceability.html",
             "Use the traceability guide to understand how one task becomes auditable evidence.",
+        ),
+        (
+            "interview-walkthrough.html",
+            "Use the interview walkthrough to explain the project design, tradeoffs, proof, and limits.",
         ),
         (
             "architecture-flow.html",
@@ -735,6 +744,225 @@ def render_architecture_flow() -> str:
           </ul>
         </div>
       </div>
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+
+def render_interview_walkthrough() -> str:
+    return """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Reliability Eval Lab Interview Walkthrough</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #171a21;
+      --muted: #566173;
+      --border: #d9e0ea;
+      --accent: #0f5db8;
+      --success: #147d43;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    main {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 36px 20px 52px;
+    }
+    a { color: var(--accent); }
+    .back {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .summary {
+      max-width: 780px;
+      margin: 16px 0 28px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    section {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 21px;
+      letter-spacing: 0;
+    }
+    p, li {
+      color: var(--muted);
+      line-height: 1.58;
+      overflow-wrap: anywhere;
+    }
+    ul, ol {
+      margin: 10px 0 0;
+      padding-left: 22px;
+    }
+    code {
+      background: #eef2f8;
+      border: 1px solid #d7deea;
+      border-radius: 4px;
+      padding: 1px 4px;
+      white-space: normal;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .metric, .answer {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .metric {
+      min-height: 104px;
+      padding: 18px;
+    }
+    .metric span {
+      color: var(--muted);
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .metric strong {
+      color: var(--success);
+      display: block;
+      font-size: 28px;
+      margin-top: 8px;
+      overflow-wrap: anywhere;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+    .answer {
+      padding: 20px;
+    }
+    @media (max-width: 820px) {
+      h1 { font-size: 29px; }
+      .metrics, .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px) {
+      main { max-width: 390px; margin: 0; padding: 28px 16px 42px; }
+      h1 { font-size: 26px; line-height: 1.15; }
+      .summary { font-size: 16px; }
+      .metrics, .split { grid-template-columns: 1fr; }
+      .metric { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="index.html">Back to demo</a>
+    <h1>Agent Reliability Eval Lab Interview Walkthrough</h1>
+    <p class="summary">A concise technical explanation of the project: problem, design choices, tradeoffs, current proof, follow-up questions, and honest limits.</p>
+
+    <section>
+      <h2>Thirty-Second Version</h2>
+      <p>Agent Reliability and Tool-Use Eval Lab is a deterministic evaluation system for tool-using agents. It tests whether a planner chooses the right tool, records the tool-call trace, scores structured output, and publishes reviewer-friendly reports. The default path runs without API keys, which keeps the core reliability claims reproducible in CI.</p>
+    </section>
+
+    <section aria-label="Current proof">
+      <h2>Current Proof</h2>
+      <div class="metrics">
+        <div class="metric"><span>Eval Result</span><strong>38/38</strong></div>
+        <div class="metric"><span>Tool Coverage</span><strong>8 tools</strong></div>
+        <div class="metric"><span>Traceability</span><strong>38/38</strong></div>
+        <div class="metric"><span>CI Path</span><strong>No Keys</strong></div>
+      </div>
+    </section>
+
+    <section aria-label="Problem and design choices">
+      <div class="split">
+        <div>
+          <h2>Problem</h2>
+          <p>Many agent demos look convincing because the final answer reads well. That does not prove the agent selected the right tool, passed the right inputs, handled missing data, or exposed why a failure happened.</p>
+        </div>
+        <div>
+          <h2>Design Choices</h2>
+          <ul>
+            <li>Use deterministic fixtures so CI can verify behavior.</li>
+            <li>Separate planner selection from tool execution.</li>
+            <li>Use structured outputs and assertion-level scoring.</li>
+            <li>Publish a no-key static demo for reviewers.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Strong Interview Answer</h2>
+      <div class="answer">
+        <p>I would describe the project as an eval harness, not a chatbot. The key design decision was to make tool-use behavior auditable. Each task has an expected tool, structured input, and assertions over structured output. The runner asks a planner to choose a tool, executes that tool, records a trace, and scores the result. If something fails, the report separates tool-selection failures, tool-execution failures, and output-assertion failures.</p>
+        <p>The main tradeoff is that the default planner is deterministic. That is intentional because the baseline needs to run in CI without API keys or flaky model calls. I added an optional OpenAI planner adapter for manual experiments, but kept it out of the default proof path. That way the public project proves reproducible infrastructure first, and LLM experiments can be layered on later without weakening the baseline.</p>
+      </div>
+    </section>
+
+    <section aria-label="Tradeoffs and follow-up questions">
+      <div class="split">
+        <div>
+          <h2>Tradeoffs</h2>
+          <ul>
+            <li>Rule-based baseline is less flashy but easier to verify.</li>
+            <li>Synthetic fixtures are repeatable but less messy than real workflows.</li>
+            <li>Focused corpus keeps claims honest and testable.</li>
+            <li>Static demo favors inspection over interaction.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Good Follow-Up Questions</h2>
+          <ul>
+            <li>How would you expand from fixtures to real-world tasks?</li>
+            <li>How would you compare multiple planners fairly?</li>
+            <li>How would you prevent the eval corpus from becoming stale?</li>
+            <li>What should fail the quality gate?</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Honest Limits</h2>
+      <ul>
+        <li>This is not a research benchmark.</li>
+        <li>This does not prove universal agent reliability.</li>
+        <li>The default planner is not an LLM planner.</li>
+        <li>The fixtures are public-safe and synthetic.</li>
+        <li>Larger experiment sweeps are future work.</li>
+      </ul>
     </section>
   </main>
 </body>

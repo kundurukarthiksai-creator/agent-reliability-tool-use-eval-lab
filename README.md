@@ -29,9 +29,11 @@ Then inspect these artifacts in order:
    - Demonstrates `tool_selection`, `tool_execution`, and `output_assertion` failure categories.
 5. Static demo traceability guide
    - Explains how a reviewer follows one task from fixture to planner decision, trace, assertions, and failure category.
-6. Static demo architecture flow
+6. Static demo interview walkthrough
+   - Gives a concise explanation for interviews, including tradeoffs, proof, and honest limits.
+7. Static demo architecture flow
    - Shows how fixtures, planner, tools, scoring, reports, quality gate, and the static demo connect.
-7. `docs/openapi.json`
+8. `docs/openapi.json`
    - Exposes the FastAPI route contract as a versioned public artifact.
 
 ## What It Proves
@@ -55,6 +57,7 @@ Then inspect these artifacts in order:
 - Task catalog API and HTML view.
 - Static project one-pager for recruiters and reviewers.
 - Static case-study walkthrough for reviewers.
+- Static interview walkthrough for technical explanation practice.
 - Static architecture flow for reviewer inspection.
 - Deliberate failure demo for wrong tool selection.
 - SQLite persistence for saved runs.
@@ -178,6 +181,7 @@ docs/openapi.json
 site/index.html
 site/project-one-pager.html
 site/case-study.html
+site/interview-walkthrough.html
 site/traceability.html
 site/architecture-flow.html
 ```
@@ -185,6 +189,7 @@ site/architecture-flow.html
 The dashboard links the report, run history, run comparison, trends, and planner comparison views.
 The project one-pager summarizes purpose, proof, engineering signals, inspection path, and limits.
 The case-study page explains what the project proves, how to inspect it, and its limits.
+The interview walkthrough explains the project in interview format with tradeoffs, proof, and limits.
 The traceability guide explains how one task becomes auditable evidence.
 The architecture flow explains how fixtures, planner, tools, scoring, reports, quality gate, and static demo publishing connect.
 The task catalog shows all deterministic task fixtures and the expected tool for each task.
@@ -238,6 +243,7 @@ docs/            architecture and methodology notes
 - `docs/evaluation-methodology.md`
 - `docs/commands.md`
 - `docs/case-study.md`
+- `docs/interview-walkthrough.md`
 - `docs/traceability-guide.md`
 - `docs/demo-walkthrough.md`
 - `docs/schemas.md`

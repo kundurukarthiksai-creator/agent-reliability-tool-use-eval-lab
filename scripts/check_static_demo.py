@@ -34,6 +34,14 @@ EXPECTED_TEXT = {
         "How To Inspect It",
         "Honest Limits",
     ],
+    "interview-walkthrough.html": [
+        "Agent Reliability Eval Lab Interview Walkthrough",
+        "Thirty-Second Version",
+        "Strong Interview Answer",
+        "Tradeoffs",
+        "Good Follow-Up Questions",
+        "Honest Limits",
+    ],
     "traceability.html": [
         "Agent Reliability Eval Lab Traceability Guide",
         "Audit Path",
