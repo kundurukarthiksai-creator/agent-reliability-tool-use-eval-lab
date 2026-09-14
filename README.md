@@ -11,6 +11,23 @@ Static demo: https://kundurukarthiksai-creator.github.io/agent-reliability-tool-
 
 ![HTML evaluation report screenshot](docs/assets/eval-report.png)
 
+## Reviewer Inspection Path
+
+Start with the static demo checklist:
+
+https://kundurukarthiksai-creator.github.io/agent-reliability-tool-use-eval-lab/
+
+Then inspect these artifacts in order:
+
+1. `reports/sample-eval-report.html`
+   - Confirms `26/26` tasks pass, `6` tools are exercised, `26/26` traces are recorded, and the strict regression guard is passing.
+2. `reports/task-catalog.html`
+   - Shows the deterministic task corpus, expected tools, assertion keys, and tool coverage.
+3. `reports/failure-catalog.html`
+   - Demonstrates `tool_selection`, `tool_execution`, and `output_assertion` failure categories.
+4. `docs/openapi.json`
+   - Exposes the FastAPI route contract as a versioned public artifact.
+
 ## What It Proves
 
 - An agent can be evaluated on tool choice, not just final text.
