@@ -1,0 +1,358 @@
+{
+  "summary": {
+    "total_tasks": 5,
+    "passed_tasks": 5,
+    "failed_tasks": 0,
+    "average_score": 1.0
+  },
+  "results": [
+    {
+      "task_id": "repo-health-ready",
+      "title": "Check whether a cleaned repo is profile-ready",
+      "expected_tool": "repo_health_check",
+      "selected_tool": "repo_health_check",
+      "agent_plan": {
+        "selected_tool": "repo_health_check",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "repo",
+          "github",
+          "portfolio",
+          "public proof",
+          "profile-ready"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "repo_health_check",
+          "payload": {
+            "repo_name": "GitHub-Dev-Card-Generator"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "repo_health_check",
+        "output": {
+          "repo_name": "GitHub-Dev-Card-Generator",
+          "ready_for_profile": true,
+          "score": 5,
+          "max_score": 5,
+          "missing": [],
+          "checks": {
+            "readme": true,
+            "tests": true,
+            "ci": true,
+            "screenshots": true,
+            "known_limitations": true
+          },
+          "summary": "FastAPI/Gemini developer card generator with no-key fallback and smoke-test CI."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=repo_health_check; selected=repo_health_check"
+        },
+        {
+          "name": "must_equal:ready_for_profile",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:score",
+          "passed": true,
+          "detail": "expected=5; actual=5"
+        },
+        {
+          "name": "min_value:max_score",
+          "passed": true,
+          "detail": "expected >= 5; actual=5"
+        }
+      ],
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task_id": "repo-health-unverified",
+      "title": "Flag an unverified repo before promotion",
+      "expected_tool": "repo_health_check",
+      "selected_tool": "repo_health_check",
+      "agent_plan": {
+        "selected_tool": "repo_health_check",
+        "confidence": 0.93,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "repo",
+          "promoted publicly",
+          "promote",
+          "wrapper"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "repo_health_check",
+          "payload": {
+            "repo_name": "Unverified-AI-Wrapper"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "repo_health_check",
+        "output": {
+          "repo_name": "Unverified-AI-Wrapper",
+          "ready_for_profile": false,
+          "score": 1,
+          "max_score": 5,
+          "missing": [
+            "tests",
+            "ci",
+            "screenshots",
+            "known_limitations"
+          ],
+          "checks": {
+            "readme": true,
+            "tests": false,
+            "ci": false,
+            "screenshots": false,
+            "known_limitations": false
+          },
+          "summary": "Thin LLM wrapper without proof artifacts."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=repo_health_check; selected=repo_health_check"
+        },
+        {
+          "name": "must_equal:ready_for_profile",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_contain:missing",
+          "passed": true,
+          "detail": "expected list to contain 'ci'; actual=['tests', 'ci', 'screenshots', 'known_limitations']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task_id": "course-note-search",
+      "title": "Find relevant tool-use learning notes",
+      "expected_tool": "course_note_search",
+      "selected_tool": "course_note_search",
+      "agent_plan": {
+        "selected_tool": "course_note_search",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "learning",
+          "resource",
+          "notes",
+          "mcp",
+          "tool interfaces",
+          "structured contracts",
+          "contracts"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "course_note_search",
+          "payload": {
+            "query": "MCP tool interfaces structured contracts"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "course_note_search",
+        "output": {
+          "query": "mcp tool interfaces structured contracts",
+          "matches": [
+            {
+              "source_id": "mcp-beginners-001",
+              "title": "Microsoft MCP for Beginners",
+              "score": 5,
+              "snippet": "MCP material is useful for public-safe tool interfaces and for explaining how agents call external capabilities through structured contracts."
+            },
+            {
+              "source_id": "hf-agents-001",
+              "title": "Hugging Face Agents Course",
+              "score": 1,
+              "snippet": "Use agent courses selectively to learn tool calling, observation loops, and evaluation. Do not binge frameworks before shipping a working project."
+            }
+          ],
+          "match_count": 2,
+          "needs_clarification": false
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=course_note_search; selected=course_note_search"
+        },
+        {
+          "name": "must_equal:matches.0.source_id",
+          "passed": true,
+          "detail": "expected='mcp-beginners-001'; actual='mcp-beginners-001'"
+        },
+        {
+          "name": "min_value:match_count",
+          "passed": true,
+          "detail": "expected >= 1; actual=2"
+        }
+      ],
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task_id": "application-tracker-update",
+      "title": "Normalize an application event",
+      "expected_tool": "application_tracker_update",
+      "selected_tool": "application_tracker_update",
+      "agent_plan": {
+        "selected_tool": "application_tracker_update",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "application",
+          "tracker",
+          "internship",
+          "role",
+          "company",
+          "saved"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "application_tracker_update",
+          "payload": {
+            "company": "Google",
+            "role": "Software Engineering Intern, MS",
+            "event_type": "saved",
+            "source": "company site",
+            "next_action": "prepare transcript"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "application_tracker_update",
+        "output": {
+          "needs_clarification": false,
+          "missing_fields": [],
+          "normalized": {
+            "company": "Google",
+            "role": "Software Engineering Intern, MS",
+            "status": "saved",
+            "source": "company site",
+            "next_action": "prepare transcript",
+            "notes": ""
+          }
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=application_tracker_update; selected=application_tracker_update"
+        },
+        {
+          "name": "must_equal:needs_clarification",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:normalized.company",
+          "passed": true,
+          "detail": "expected='Google'; actual='Google'"
+        },
+        {
+          "name": "must_equal:normalized.status",
+          "passed": true,
+          "detail": "expected='saved'; actual='saved'"
+        },
+        {
+          "name": "must_equal:normalized.next_action",
+          "passed": true,
+          "detail": "expected='prepare transcript'; actual='prepare transcript'"
+        }
+      ],
+      "score": 1.0,
+      "passed": true
+    },
+    {
+      "task_id": "ambiguous-application-event",
+      "title": "Flag ambiguous application input",
+      "expected_tool": "application_tracker_update",
+      "selected_tool": "application_tracker_update",
+      "agent_plan": {
+        "selected_tool": "application_tracker_update",
+        "confidence": 0.81,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "application",
+          "company",
+          "applied"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "application_tracker_update",
+          "payload": {
+            "company": "Google",
+            "event_type": "applied"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "application_tracker_update",
+        "output": {
+          "needs_clarification": true,
+          "missing_fields": [
+            "role"
+          ],
+          "normalized": null
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=application_tracker_update; selected=application_tracker_update"
+        },
+        {
+          "name": "must_equal:needs_clarification",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_contain:missing_fields",
+          "passed": true,
+          "detail": "expected list to contain 'role'; actual=['role']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true
+    }
+  ]
+}

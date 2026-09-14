@@ -29,6 +29,13 @@ Phase 2 baseline:
 - tool-call trace in each task result
 - CI-safe agent behavior with no external API key
 
+Project hard rules:
+
+- `STEERING.md`
+- `.kiro/steering/product.md`
+- `.kiro/steering/tech.md`
+- `.kiro/steering/quality.md`
+
 ## Local Setup
 
 ```powershell
@@ -55,6 +62,12 @@ python -m venv .venv
 ```
 
 The report includes the agent plan, selected tool, tool-call trace, assertion results, and score for each task.
+
+Sample output:
+
+```text
+reports/sample-eval-report.json
+```
 
 ## Run API
 
