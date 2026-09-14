@@ -25,8 +25,9 @@ The project measures whether an agent uses the correct tool and produces support
 8. Role readiness audit -> `role_readiness_audit`
 9. Public launch readiness audit -> `launch_readiness_audit`
 10. Public proof artifact consistency audit -> `artifact_consistency_audit`
+11. Tool safety proof audit -> `tool_safety_audit`
 
-The current focused corpus has 38 tasks, including adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, missing repository fixtures, incident runbook lookup, profile README readiness, target-role readiness, public launch readiness, and artifact consistency.
+The current focused corpus has 42 tasks, including adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, missing repository fixtures, incident runbook lookup, profile README readiness, target-role readiness, public launch readiness, artifact consistency, and tool-safety proof.
 
 ## Phase 1 Scoring
 

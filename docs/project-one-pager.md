@@ -6,9 +6,9 @@ Agent Reliability and Tool-Use Eval Lab is a deterministic evaluation system for
 
 ## Current Proof
 
-- `38/38` deterministic tasks pass.
+- `42/42` deterministic tasks pass.
 - `8` local tools are exercised.
-- `38/38` tool-call traces are recorded.
+- `42/42` tool-call traces are recorded.
 - The strict quality gate requires 100% pass rate, 1.0 average score, zero failed tasks, and only passed failure categories.
 - The public static demo runs without API keys, paid model calls, or private data.
 
@@ -38,7 +38,7 @@ Most agent demos are hard to evaluate because they show final text, not evidence
 1. `reports/sample-eval-report.html`
    - Confirm the reviewer evidence summary, traces, assertions, and quality gate.
 2. `reports/task-catalog.html`
-   - Confirm task coverage across all 8 tools.
+   - Confirm task coverage across all 9 tools.
 3. `traceability.html`
    - Follow one task from fixture to report evidence.
 4. `architecture-flow.html`

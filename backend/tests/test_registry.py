@@ -15,4 +15,5 @@ def test_default_registry_contains_mvp_tools():
         "role_readiness_audit",
         "launch_readiness_audit",
         "artifact_consistency_audit",
+        "tool_safety_audit",
     }

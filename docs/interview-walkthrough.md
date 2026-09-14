@@ -35,9 +35,9 @@ This project narrows the problem to inspectable tool-use behavior:
 
 ## Current Proof
 
-- `38/38` deterministic tasks pass.
+- `42/42` deterministic tasks pass.
 - `8` local tools are exercised.
-- `38/38` tool-call traces are recorded.
+- `42/42` tool-call traces are recorded.
 - The strict quality gate requires full pass rate, full average score, zero failed tasks, and no non-passing failure categories.
 - GitHub Actions verifies the deterministic path.
 - GitHub Pages publishes the public demo.
@@ -63,4 +63,3 @@ The main tradeoff is that the default planner is deterministic. That is intentio
 - The default planner is not an LLM planner.
 - The fixtures are public-safe and synthetic.
 - Larger scale experiment sweeps are future work.
-

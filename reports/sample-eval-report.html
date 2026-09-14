@@ -297,8 +297,8 @@
     </header>
 
     <section class="summary" aria-label="Evaluation summary">
-      <div class="metric"><span>Total Tasks</span><strong>38</strong></div>
-      <div class="metric"><span>Passed</span><strong>38</strong></div>
+      <div class="metric"><span>Total Tasks</span><strong>42</strong></div>
+      <div class="metric"><span>Passed</span><strong>42</strong></div>
       <div class="metric"><span>Failed</span><strong>0</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100.0%</strong></div>
     </section>
@@ -309,23 +309,23 @@
       <div class="evidence-grid">
         <div class="evidence-item">
           <span>Deterministic baseline</span>
-          <strong>38/38 tasks pass</strong>
+          <strong>42/42 tasks pass</strong>
           <p>Average assertion score: 1.0000.</p>
         </div>
         <div class="evidence-item">
           <span>Tool coverage</span>
-          <strong>8 tools exercised</strong>
-          <p><code>application_tracker_update</code><br><code>artifact_consistency_audit</code><br><code>course_note_search</code><br><code>launch_readiness_audit</code><br><code>profile_readme_audit</code><br><code>repo_health_check</code><br><code>role_readiness_audit</code><br><code>runbook_lookup</code></p>
+          <strong>9 tools exercised</strong>
+          <p><code>application_tracker_update</code><br><code>artifact_consistency_audit</code><br><code>course_note_search</code><br><code>launch_readiness_audit</code><br><code>profile_readme_audit</code><br><code>repo_health_check</code><br><code>role_readiness_audit</code><br><code>runbook_lookup</code><br><code>tool_safety_audit</code></p>
         </div>
         <div class="evidence-item">
           <span>Traceability</span>
-          <strong>38/38 traces recorded</strong>
+          <strong>42/42 traces recorded</strong>
           <p>Each task keeps the planner rationale, selected tool, and tool result.</p>
         </div>
         <div class="evidence-item">
           <span>Regression guard</span>
           <strong>Passing</strong>
-          <p>Requires at least 38 tasks, 100% pass rate, 1.0 average score, and only passed failure categories.</p>
+          <p>Requires at least 42 tasks, 100% pass rate, 1.0 average score, and only passed failure categories.</p>
         </div>
       </div>
     </section>
@@ -372,6 +372,11 @@
         </tr>
 
         <tr>
+          <td><code>tool_safety_audit</code></td>
+          <td>4</td>
+        </tr>
+
+        <tr>
           <td><code>runbook_lookup</code></td>
           <td>3</td>
         </tr>
@@ -386,7 +391,7 @@
             
         <tr>
           <td><code>passed</code></td>
-          <td>38</td>
+          <td>42</td>
         </tr>
 
           </tbody>
@@ -1874,6 +1879,162 @@
       <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
       <h2>Tool Call Trace</h2>
       <p><code>artifact_consistency_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Audit tool safety proof for the MCP tool safety lab</strong>
+      <p>tool-safety-mcp-lab-ready</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>tool_safety_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>tool_safety_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>tool safety, tool safety audit, mcp tool safety, permission gate, permission gates, approval gate, approval gates, audit log, audit logs, dry-run, schemas, public-safe limits</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=tool_safety_audit; selected=tool_safety_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:safety_ready: expected=True; actual=True</li>
+<li><strong>pass</strong> must_equal:safety_score: expected=100; actual=100</li>
+<li><strong>pass</strong> must_contain:matched_controls: expected list to contain &#x27;approval-gate&#x27;; actual=[&#x27;schema&#x27;, &#x27;permission-gate&#x27;, &#x27;audit-log&#x27;, &#x27;approval-gate&#x27;, &#x27;dry-run&#x27;, &#x27;negative-tests&#x27;, &#x27;ci&#x27;, &#x27;public-safe-limits&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>tool_safety_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Catch missing approval control in a tool-use demo</strong>
+      <p>tool-safety-missing-approval</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>tool_safety_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>tool_safety_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>tool safety, tool safety audit, human approval, audit log, audit logs, dry-run, schemas, public-safe limits</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=tool_safety_audit; selected=tool_safety_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:safety_ready: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:safety_score: expected=88; actual=88</li>
+<li><strong>pass</strong> must_contain:missing_controls: expected list to contain &#x27;approval-gate&#x27;; actual=[&#x27;approval-gate&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>tool_safety_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Catch missing audit logging in a tool-use demo</strong>
+      <p>tool-safety-missing-audit</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>tool_safety_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>tool_safety_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>tool safety, tool safety audit, approval gate, approval gates, audit log, dry-run, schemas, allowed tool calls</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=tool_safety_audit; selected=tool_safety_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:safety_ready: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:safety_score: expected=88; actual=88</li>
+<li><strong>pass</strong> must_contain:missing_controls: expected list to contain &#x27;audit-log&#x27;; actual=[&#x27;audit-log&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>tool_safety_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Require a project id before running tool safety audit</strong>
+      <p>tool-safety-missing-project-id</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>tool_safety_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>tool_safety_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.81</dd>
+      <dt>Signals</dt>
+      <dd>tool safety, tool safety audit, project id</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=tool_safety_audit; selected=tool_safety_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:safety_ready: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:safety_score: expected=0; actual=0</li>
+<li><strong>pass</strong> must_contain:missing_controls: expected list to contain &#x27;project_id_required&#x27;; actual=[&#x27;project_id_required&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>tool_safety_audit</code> returned <code>ok</code>.</p>
     </div>
   </div>
 </article>

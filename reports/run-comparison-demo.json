@@ -6,10 +6,10 @@
   "total_tasks_delta": 0,
   "passed_tasks_delta": 1,
   "failed_tasks_delta": -1,
-  "average_score_delta": 0.0263,
+  "average_score_delta": 0.0238,
   "status_counts": {
     "recovery": 1,
-    "unchanged_pass": 37
+    "unchanged_pass": 41
   },
   "task_comparisons": [
     {
@@ -459,6 +459,54 @@
     {
       "task_id": "runbook-storage-persistence",
       "title": "Find the saved-runs persistence runbook",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "tool-safety-mcp-lab-ready",
+      "title": "Audit tool safety proof for the MCP tool safety lab",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "tool-safety-missing-approval",
+      "title": "Catch missing approval control in a tool-use demo",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "tool-safety-missing-audit",
+      "title": "Catch missing audit logging in a tool-use demo",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "tool-safety-missing-project-id",
+      "title": "Require a project id before running tool safety audit",
       "status": "unchanged_pass",
       "previous_passed": true,
       "current_passed": true,

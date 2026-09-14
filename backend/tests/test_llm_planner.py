@@ -44,6 +44,7 @@ def test_openai_planner_builds_structured_payload_and_parses_plan():
         "role_readiness_audit",
         "launch_readiness_audit",
         "artifact_consistency_audit",
+        "tool_safety_audit",
     ]
 
 

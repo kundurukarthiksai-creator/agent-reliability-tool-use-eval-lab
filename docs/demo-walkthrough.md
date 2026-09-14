@@ -31,7 +31,7 @@ This verifies:
 ## What To Inspect First
 
 1. `site/index.html`
-   - Start with the reviewer inspection checklist. It points to the current 38/38 report, task catalog, failure catalog, and OpenAPI contract.
+   - Start with the reviewer inspection checklist. It points to the current 42/42 report, task catalog, failure catalog, and OpenAPI contract.
 2. `site/project-one-pager.html`
    - Quick recruiter and reviewer scan of purpose, proof, engineering signals, inspection path, and honest limits.
 3. `reports/dashboard.html`
@@ -45,7 +45,7 @@ This verifies:
 7. `site/architecture-flow.html`
    - Shows how fixtures, planner, tools, scoring, reports, quality gate, and static publishing connect.
 8. `reports/task-catalog.html`
-   - Shows all 38 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
+   - Shows all 42 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
 9. `reports/sample-eval-report.html`
    - Shows reviewer evidence summary, planner traces, selected tools, scores, assertions, and failure categories.
 10. `reports/failure-catalog.html`

@@ -1,0 +1,61 @@
+{
+  "required_controls": [
+    "schema",
+    "permission-gate",
+    "audit-log",
+    "approval-gate",
+    "dry-run",
+    "negative-tests",
+    "ci",
+    "public-safe-limits"
+  ],
+  "projects": [
+    {
+      "id": "mcp-tool-safety-lab",
+      "summary": "Public-safe MCP-style tool safety lab with schemas, permission gates, approval boundaries, dry-run behavior, negative tests, CI, and explicit public-safe limits.",
+      "controls": [
+        "schema",
+        "permission-gate",
+        "audit-log",
+        "approval-gate",
+        "dry-run",
+        "negative-tests",
+        "ci",
+        "public-safe-limits"
+      ],
+      "risky_gaps": []
+    },
+    {
+      "id": "agent-tools-no-approval",
+      "summary": "Tool-use demo with schemas, permission checks, audit logs, dry-run behavior, tests, and CI, but no explicit approval gate for publish-like actions.",
+      "controls": [
+        "schema",
+        "permission-gate",
+        "audit-log",
+        "dry-run",
+        "negative-tests",
+        "ci",
+        "public-safe-limits"
+      ],
+      "risky_gaps": [
+        "publish-like action lacks approval boundary"
+      ]
+    },
+    {
+      "id": "agent-tools-no-audit",
+      "summary": "Tool-use demo with schemas and permission checks, but blocked and allowed calls are not visible enough for reviewers.",
+      "controls": [
+        "schema",
+        "permission-gate",
+        "approval-gate",
+        "dry-run",
+        "negative-tests",
+        "ci",
+        "public-safe-limits"
+      ],
+      "risky_gaps": [
+        "tool calls are not observable after execution"
+      ]
+    }
+  ]
+}

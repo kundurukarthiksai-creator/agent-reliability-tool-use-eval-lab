@@ -22,7 +22,7 @@ def test_compare_planners_reports_good_and_bad_planner_results():
     result = results[0]
 
     assert result.planner_name == "always_course_notes"
-    assert result.total_tasks == 38
+    assert result.total_tasks == 42
     assert result.failed_tasks > 0
     assert result.failure_categories["tool_selection"] > 0
 

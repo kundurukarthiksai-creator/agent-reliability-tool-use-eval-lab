@@ -27,7 +27,7 @@ def main():
     eval_response = client.post("/eval/run")
     eval_response.raise_for_status()
     report = eval_response.json()
-    assert report["summary"]["total_tasks"] == 38
+    assert report["summary"]["total_tasks"] == 42
     assert report["summary"]["failed_tasks"] == 0
 
     html_response = client.get("/reports/latest.html")

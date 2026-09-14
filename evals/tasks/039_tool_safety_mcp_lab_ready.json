@@ -1,0 +1,18 @@
+{
+  "id": "tool-safety-mcp-lab-ready",
+  "title": "Audit tool safety proof for the MCP tool safety lab",
+  "description": "A reviewer asks whether the tool safety audit sees schemas, permission gates, audit logs, approval gates, dry-run behavior, negative tests, CI, and public-safe limits in the MCP Tool Safety Lab.",
+  "expected_tool": "tool_safety_audit",
+  "input": {
+    "project_id": "mcp-tool-safety-lab"
+  },
+  "expectations": {
+    "must_equal": {
+      "safety_ready": true,
+      "safety_score": 100
+    },
+    "must_contain": {
+      "matched_controls": "approval-gate"
+    }
+  }
+}

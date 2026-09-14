@@ -230,8 +230,8 @@
     </header>
 
     <section class="summary" aria-label="Task catalog summary">
-      <div class="metric"><span>Tasks</span><strong>38</strong></div>
-      <div class="metric"><span>Tools</span><strong>8</strong></div>
+      <div class="metric"><span>Tasks</span><strong>42</strong></div>
+      <div class="metric"><span>Tools</span><strong>9</strong></div>
       <div class="metric"><span>Fixture Type</span><strong>Public</strong></div>
     </section>
 
@@ -741,6 +741,58 @@
           </td>
         </tr>
 
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Audit tool safety proof for the MCP tool safety lab</strong>
+            <code>tool-safety-mcp-lab-ready</code>
+          </td>
+          <td data-label="Expected Tool"><code>tool_safety_audit</code></td>
+          <td data-label="Checks">
+            A reviewer asks whether the tool safety audit sees schemas, permission gates, audit logs, approval gates, dry-run behavior, negative tests, CI, and public-safe limits in the MCP Tool Safety Lab.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Catch missing approval control in a tool-use demo</strong>
+            <code>tool-safety-missing-approval</code>
+          </td>
+          <td data-label="Expected Tool"><code>tool_safety_audit</code></td>
+          <td data-label="Checks">
+            A project has schemas, permissions, audit logs, dry-run behavior, negative tests, CI, and public-safe limits, but the tool safety audit should catch that a publish-like action lacks a human approval boundary.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Catch missing audit logging in a tool-use demo</strong>
+            <code>tool-safety-missing-audit</code>
+          </td>
+          <td data-label="Expected Tool"><code>tool_safety_audit</code></td>
+          <td data-label="Checks">
+            A reviewer asks for a tool safety audit of a demo with schemas, permission checks, approval gates, dry-run behavior, tests, and CI, but blocked and allowed tool calls are not observable after execution.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Require a project id before running tool safety audit</strong>
+            <code>tool-safety-missing-project-id</code>
+          </td>
+          <td data-label="Expected Tool"><code>tool_safety_audit</code></td>
+          <td data-label="Checks">
+            A user asks for a tool safety audit but does not provide a project id. The audit should fail closed and ask for the required identifier.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
           </tbody>
         </table>
       </section>
@@ -810,6 +862,13 @@
           <td data-label="Tool"><code>artifact_consistency_audit</code></td>
           <td data-label="Tasks">4</td>
           <td data-label="Description">Audits public proof artifacts for stale or missing consistency markers.</td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Tool"><code>tool_safety_audit</code></td>
+          <td data-label="Tasks">4</td>
+          <td data-label="Description">Audits tool-use projects for schemas, permissions, approvals, dry-run behavior, audit logs, tests, CI, and public-safe limits.</td>
         </tr>
 
           </tbody>

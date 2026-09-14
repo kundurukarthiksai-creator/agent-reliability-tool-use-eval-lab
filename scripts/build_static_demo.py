@@ -84,7 +84,7 @@ def render_index() -> str:
         ("Traceability Guide", "traceability.html", "Follow one task from fixture to planner, trace, and assertions."),
         ("Architecture Flow", "architecture-flow.html", "See how fixtures, planner, tools, scoring, reports, and quality gate connect."),
         ("Dashboard", "reports/dashboard.html", "Start with the portfolio demo index."),
-        ("Task Catalog", "reports/task-catalog.html", "Inspect all 38 deterministic tasks."),
+        ("Task Catalog", "reports/task-catalog.html", "Inspect all 42 deterministic tasks."),
         ("Eval Report", "reports/sample-eval-report.html", "Review traces, assertions, and scoring."),
         ("Quality Gate", "reports/quality-gate.json", "See the strict regression gate output."),
         ("Failure Catalog", "reports/failure-catalog.html", "Inspect deliberate failure categories."),
@@ -100,7 +100,7 @@ def render_index() -> str:
         ),
         (
             "reports/sample-eval-report.html",
-            "Confirm the report shows 38/38 tasks pass, 8 tools exercised, 38/38 traces, and a passing regression guard.",
+            "Confirm the report shows 42/42 tasks pass, 9 tools exercised, 42/42 traces, and a passing regression guard.",
         ),
         (
             "reports/task-catalog.html",
@@ -310,11 +310,11 @@ def render_index() -> str:
   <main>
     <header>
       <h1>Agent Reliability Eval Lab Demo</h1>
-      <p class="summary">Static public demo for a deterministic tool-use evaluation lab. The default path runs without API keys, scores 38 tasks across 8 local tools, and publishes the same reports verified by CI.</p>
+      <p class="summary">Static public demo for a deterministic tool-use evaluation lab. The default path runs without API keys, scores 42 tasks across 9 local tools, and publishes the same reports verified by CI.</p>
     </header>
     <section class="metrics" aria-label="Demo metrics">
-      <div class="metric"><span>Tasks</span><strong>38</strong></div>
-      <div class="metric"><span>Tools</span><strong>8</strong></div>
+      <div class="metric"><span>Tasks</span><strong>42</strong></div>
+      <div class="metric"><span>Tools</span><strong>9</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100%</strong></div>
       <div class="metric"><span>CI Path</span><strong>No Keys</strong></div>
     </section>
@@ -473,9 +473,9 @@ def render_project_one_pager() -> str:
     <section aria-label="Current proof">
       <h2>Current Proof</h2>
       <div class="metrics">
-        <div class="metric"><span>Eval Result</span><strong>38/38</strong></div>
-        <div class="metric"><span>Tool Coverage</span><strong>8 tools</strong></div>
-        <div class="metric"><span>Traceability</span><strong>38/38</strong></div>
+        <div class="metric"><span>Eval Result</span><strong>42/42</strong></div>
+        <div class="metric"><span>Tool Coverage</span><strong>9 tools</strong></div>
+        <div class="metric"><span>Traceability</span><strong>42/42</strong></div>
         <div class="metric"><span>Default Path</span><strong>No Keys</strong></div>
       </div>
     </section>
@@ -707,8 +707,8 @@ def render_architecture_flow() -> str:
     <section aria-label="Current Proof">
       <h2>Current Proof</h2>
       <div class="proof">
-        <div class="metric"><span>Eval Result</span><strong>38/38</strong></div>
-        <div class="metric"><span>Tool Coverage</span><strong>8 tools</strong></div>
+        <div class="metric"><span>Eval Result</span><strong>42/42</strong></div>
+        <div class="metric"><span>Tool Coverage</span><strong>9 tools</strong></div>
         <div class="metric"><span>Launch Cases</span><strong>8 tasks</strong></div>
         <div class="metric"><span>Default Path</span><strong>No Keys</strong></div>
       </div>
@@ -898,9 +898,9 @@ def render_interview_walkthrough() -> str:
     <section aria-label="Current proof">
       <h2>Current Proof</h2>
       <div class="metrics">
-        <div class="metric"><span>Eval Result</span><strong>38/38</strong></div>
-        <div class="metric"><span>Tool Coverage</span><strong>8 tools</strong></div>
-        <div class="metric"><span>Traceability</span><strong>38/38</strong></div>
+        <div class="metric"><span>Eval Result</span><strong>42/42</strong></div>
+        <div class="metric"><span>Tool Coverage</span><strong>9 tools</strong></div>
+        <div class="metric"><span>Traceability</span><strong>42/42</strong></div>
         <div class="metric"><span>CI Path</span><strong>No Keys</strong></div>
       </div>
     </section>
@@ -1247,8 +1247,8 @@ def render_case_study() -> str:
     <section>
       <h2>What It Evaluates</h2>
       <ul>
-        <li>Tool selection across <strong>38</strong> public-safe tasks.</li>
-        <li>Tool-call traces for <strong>8</strong> deterministic local tools.</li>
+        <li>Tool selection across <strong>42</strong> public-safe tasks.</li>
+        <li>Tool-call traces for <strong>9</strong> deterministic local tools.</li>
         <li>Assertion-level scoring for expected fields and values.</li>
         <li>Failure categories for tool selection, tool execution, and output assertions.</li>
         <li>Saved-run comparison and trend views for regression visibility.</li>

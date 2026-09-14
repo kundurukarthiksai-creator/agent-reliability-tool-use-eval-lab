@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_tasks": 38,
-    "passed_tasks": 38,
+    "total_tasks": 42,
+    "passed_tasks": 42,
     "failed_tasks": 0,
     "average_score": 1.0
   },
@@ -3017,6 +3017,344 @@
           "name": "must_contain:missing_required",
           "passed": true,
           "detail": "expected list to contain 'artifact_id_required'; actual=['artifact_id_required']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "tool-safety-mcp-lab-ready",
+      "title": "Audit tool safety proof for the MCP tool safety lab",
+      "expected_tool": "tool_safety_audit",
+      "selected_tool": "tool_safety_audit",
+      "agent_plan": {
+        "selected_tool": "tool_safety_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "tool safety",
+          "tool safety audit",
+          "mcp tool safety",
+          "permission gate",
+          "permission gates",
+          "approval gate",
+          "approval gates",
+          "audit log",
+          "audit logs",
+          "dry-run",
+          "schemas",
+          "public-safe limits"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "tool_safety_audit",
+          "payload": {
+            "project_id": "mcp-tool-safety-lab"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "tool_safety_audit",
+        "output": {
+          "project_id": "mcp-tool-safety-lab",
+          "safety_ready": true,
+          "safety_score": 100,
+          "matched_controls": [
+            "schema",
+            "permission-gate",
+            "audit-log",
+            "approval-gate",
+            "dry-run",
+            "negative-tests",
+            "ci",
+            "public-safe-limits"
+          ],
+          "missing_controls": [],
+          "risky_gaps": [],
+          "recommended_fixes": [],
+          "summary": "Public-safe MCP-style tool safety lab with schemas, permission gates, approval boundaries, dry-run behavior, negative tests, CI, and explicit public-safe limits."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=tool_safety_audit; selected=tool_safety_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:safety_ready",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:safety_score",
+          "passed": true,
+          "detail": "expected=100; actual=100"
+        },
+        {
+          "name": "must_contain:matched_controls",
+          "passed": true,
+          "detail": "expected list to contain 'approval-gate'; actual=['schema', 'permission-gate', 'audit-log', 'approval-gate', 'dry-run', 'negative-tests', 'ci', 'public-safe-limits']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "tool-safety-missing-approval",
+      "title": "Catch missing approval control in a tool-use demo",
+      "expected_tool": "tool_safety_audit",
+      "selected_tool": "tool_safety_audit",
+      "agent_plan": {
+        "selected_tool": "tool_safety_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "tool safety",
+          "tool safety audit",
+          "human approval",
+          "audit log",
+          "audit logs",
+          "dry-run",
+          "schemas",
+          "public-safe limits"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "tool_safety_audit",
+          "payload": {
+            "project_id": "agent-tools-no-approval"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "tool_safety_audit",
+        "output": {
+          "project_id": "agent-tools-no-approval",
+          "safety_ready": false,
+          "safety_score": 88,
+          "matched_controls": [
+            "schema",
+            "permission-gate",
+            "audit-log",
+            "dry-run",
+            "negative-tests",
+            "ci",
+            "public-safe-limits"
+          ],
+          "missing_controls": [
+            "approval-gate"
+          ],
+          "risky_gaps": [
+            "publish-like action lacks approval boundary"
+          ],
+          "recommended_fixes": [
+            "Require explicit human approval for risky or publish-like actions."
+          ],
+          "summary": "Tool-use demo with schemas, permission checks, audit logs, dry-run behavior, tests, and CI, but no explicit approval gate for publish-like actions."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=tool_safety_audit; selected=tool_safety_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:safety_ready",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:safety_score",
+          "passed": true,
+          "detail": "expected=88; actual=88"
+        },
+        {
+          "name": "must_contain:missing_controls",
+          "passed": true,
+          "detail": "expected list to contain 'approval-gate'; actual=['approval-gate']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "tool-safety-missing-audit",
+      "title": "Catch missing audit logging in a tool-use demo",
+      "expected_tool": "tool_safety_audit",
+      "selected_tool": "tool_safety_audit",
+      "agent_plan": {
+        "selected_tool": "tool_safety_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "tool safety",
+          "tool safety audit",
+          "approval gate",
+          "approval gates",
+          "audit log",
+          "dry-run",
+          "schemas",
+          "allowed tool calls"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "tool_safety_audit",
+          "payload": {
+            "project_id": "agent-tools-no-audit"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "tool_safety_audit",
+        "output": {
+          "project_id": "agent-tools-no-audit",
+          "safety_ready": false,
+          "safety_score": 88,
+          "matched_controls": [
+            "schema",
+            "permission-gate",
+            "approval-gate",
+            "dry-run",
+            "negative-tests",
+            "ci",
+            "public-safe-limits"
+          ],
+          "missing_controls": [
+            "audit-log"
+          ],
+          "risky_gaps": [
+            "tool calls are not observable after execution"
+          ],
+          "recommended_fixes": [
+            "Record every allowed and blocked tool-call attempt in an audit log."
+          ],
+          "summary": "Tool-use demo with schemas and permission checks, but blocked and allowed calls are not visible enough for reviewers."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=tool_safety_audit; selected=tool_safety_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:safety_ready",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:safety_score",
+          "passed": true,
+          "detail": "expected=88; actual=88"
+        },
+        {
+          "name": "must_contain:missing_controls",
+          "passed": true,
+          "detail": "expected list to contain 'audit-log'; actual=['audit-log']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "tool-safety-missing-project-id",
+      "title": "Require a project id before running tool safety audit",
+      "expected_tool": "tool_safety_audit",
+      "selected_tool": "tool_safety_audit",
+      "agent_plan": {
+        "selected_tool": "tool_safety_audit",
+        "confidence": 0.81,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "tool safety",
+          "tool safety audit",
+          "project id"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "tool_safety_audit",
+          "payload": {
+            "project": "mcp-tool-safety-lab"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "tool_safety_audit",
+        "output": {
+          "project_id": null,
+          "safety_ready": false,
+          "safety_score": 0,
+          "matched_controls": [],
+          "missing_controls": [
+            "project_id_required"
+          ],
+          "risky_gaps": [],
+          "recommended_fixes": [],
+          "summary": "A known project id is required before tool-safety proof can be audited."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=tool_safety_audit; selected=tool_safety_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:safety_ready",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:safety_score",
+          "passed": true,
+          "detail": "expected=0; actual=0"
+        },
+        {
+          "name": "must_contain:missing_controls",
+          "passed": true,
+          "detail": "expected list to contain 'project_id_required'; actual=['project_id_required']"
         }
       ],
       "score": 1.0,

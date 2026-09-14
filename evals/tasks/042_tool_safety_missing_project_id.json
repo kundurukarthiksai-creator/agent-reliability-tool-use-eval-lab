@@ -1,0 +1,18 @@
+{
+  "id": "tool-safety-missing-project-id",
+  "title": "Require a project id before running tool safety audit",
+  "description": "A user asks for a tool safety audit but does not provide a project id. The audit should fail closed and ask for the required identifier.",
+  "expected_tool": "tool_safety_audit",
+  "input": {
+    "project": "mcp-tool-safety-lab"
+  },
+  "expectations": {
+    "must_equal": {
+      "safety_ready": false,
+      "safety_score": 0
+    },
+    "must_contain": {
+      "missing_controls": "project_id_required"
+    }
+  }
+}

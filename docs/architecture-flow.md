@@ -21,7 +21,7 @@ This project is designed to make tool-use evaluation inspectable. A reviewer sho
 
 ## Current Proof
 
-- `38/38` deterministic tasks pass.
+- `42/42` deterministic tasks pass.
 - `8` local tools are exercised.
 - `8` launch-readiness tasks test reviewer-facing project proof.
 - `4` artifact-consistency tasks test stale public proof markers.

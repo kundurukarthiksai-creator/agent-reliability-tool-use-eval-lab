@@ -22,7 +22,7 @@ Then inspect these artifacts in order:
 1. Static demo project one-pager
    - Gives a recruiter-friendly scan of purpose, proof, engineering signals, inspection path, and honest limits.
 2. `reports/sample-eval-report.html`
-   - Confirms `38/38` tasks pass, `8` tools are exercised, `38/38` traces are recorded, and the strict regression guard is passing.
+   - Confirms `42/42` tasks pass, `9` tools are exercised, `42/42` traces are recorded, and the strict regression guard is passing.
 3. `reports/task-catalog.html`
    - Shows the deterministic task corpus, expected tools, assertion keys, and tool coverage.
 4. `reports/failure-catalog.html`
@@ -48,8 +48,8 @@ Then inspect these artifacts in order:
 
 - FastAPI backend.
 - Deterministic rule-based planner.
-- Tool registry with 8 local tools.
-- 38 deterministic evaluation tasks.
+- Tool registry with 9 local tools.
+- 42 deterministic evaluation tasks.
 - Assertion-level scoring.
 - Strict quality gate for deterministic eval regressions.
 - JSON report output.

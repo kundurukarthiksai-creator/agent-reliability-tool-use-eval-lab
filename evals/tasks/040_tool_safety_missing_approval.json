@@ -1,0 +1,18 @@
+{
+  "id": "tool-safety-missing-approval",
+  "title": "Catch missing approval control in a tool-use demo",
+  "description": "A project has schemas, permissions, audit logs, dry-run behavior, negative tests, CI, and public-safe limits, but the tool safety audit should catch that a publish-like action lacks a human approval boundary.",
+  "expected_tool": "tool_safety_audit",
+  "input": {
+    "project_id": "agent-tools-no-approval"
+  },
+  "expectations": {
+    "must_equal": {
+      "safety_ready": false,
+      "safety_score": 88
+    },
+    "must_contain": {
+      "missing_controls": "approval-gate"
+    }
+  }
+}

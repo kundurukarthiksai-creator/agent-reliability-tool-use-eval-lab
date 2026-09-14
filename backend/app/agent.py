@@ -114,6 +114,25 @@ SIGNALS_BY_TOOL = {
         "current tool count",
         "artifact id",
     ],
+    "tool_safety_audit": [
+        "tool safety",
+        "tool safety audit",
+        "mcp tool safety",
+        "permission gate",
+        "permission gates",
+        "approval gate",
+        "approval gates",
+        "human approval",
+        "audit log",
+        "audit logs",
+        "dry-run",
+        "dry run",
+        "schemas",
+        "blocked tool calls",
+        "allowed tool calls",
+        "public-safe limits",
+        "project id",
+    ],
 }
 
 

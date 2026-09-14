@@ -13,8 +13,8 @@
       "quality-gate"
     ],
     "metrics": [
-      "38 deterministic tasks",
-      "8 local tools",
+      "42 deterministic tasks",
+      "9 local tools",
       "strict quality gate"
     ],
     "learning_focus": [

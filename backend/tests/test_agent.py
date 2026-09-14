@@ -100,3 +100,18 @@ def test_agent_selects_launch_readiness_for_public_launch_audit():
 
     assert plan.selected_tool == "launch_readiness_audit"
     assert "launch readiness" in plan.matched_signals
+
+
+def test_agent_selects_tool_safety_for_permission_and_approval_audit():
+    task = EvaluationTask(
+        id="tool-safety-review",
+        title="Audit tool safety for MCP-style permission gates",
+        description="A user asks whether a tool safety audit sees schemas, permission gates, audit logs, approval gates, dry-run behavior, negative tests, CI, and public-safe limits.",
+        expected_tool="repo_health_check",
+        input={"project_id": "mcp-tool-safety-lab"},
+    )
+
+    plan = RuleBasedAgent().plan(task, build_default_registry().list_tools())
+
+    assert plan.selected_tool == "tool_safety_audit"
+    assert "tool safety" in plan.matched_signals

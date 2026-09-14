@@ -10,6 +10,7 @@ from app.tools.profile_readme import profile_readme_audit
 from app.tools.repo_health import repo_health_check
 from app.tools.role_readiness import role_readiness_audit
 from app.tools.runbooks import runbook_lookup
+from app.tools.tool_safety import tool_safety_audit
 
 
 ToolHandler = Callable[[dict[str, Any]], dict[str, Any]]
@@ -79,5 +80,10 @@ def build_default_registry() -> ToolRegistry:
         "artifact_consistency_audit",
         "Audits public proof artifacts for stale or missing consistency markers.",
         artifact_consistency_audit,
+    )
+    registry.register(
+        "tool_safety_audit",
+        "Audits tool-use projects for schemas, permissions, approvals, dry-run behavior, audit logs, tests, CI, and public-safe limits.",
+        tool_safety_audit,
     )
     return registry
