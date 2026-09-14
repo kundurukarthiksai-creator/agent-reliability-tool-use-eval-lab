@@ -56,6 +56,10 @@ def main() -> None:
 
     (SITE_DIR / ".nojekyll").write_text("", encoding="utf-8")
     (SITE_DIR / "index.html").write_text(render_index(), encoding="utf-8")
+    (SITE_DIR / "project-one-pager.html").write_text(
+        render_project_one_pager(),
+        encoding="utf-8",
+    )
     (SITE_DIR / "case-study.html").write_text(render_case_study(), encoding="utf-8")
     (SITE_DIR / "traceability.html").write_text(
         render_traceability_guide(),
@@ -70,6 +74,7 @@ def main() -> None:
 
 def render_index() -> str:
     links = [
+        ("Project One-Pager", "project-one-pager.html", "Scan the project's purpose, proof, engineering signals, and limits."),
         ("Case Study", "case-study.html", "Read the reviewer-friendly project walkthrough."),
         ("Traceability Guide", "traceability.html", "Follow one task from fixture to planner, trace, and assertions."),
         ("Architecture Flow", "architecture-flow.html", "See how fixtures, planner, tools, scoring, reports, and quality gate connect."),
@@ -84,6 +89,10 @@ def render_index() -> str:
         ("OpenAPI Contract", "docs/openapi.json", "Inspect the FastAPI route schema."),
     ]
     inspection_steps = [
+        (
+            "project-one-pager.html",
+            "Start with the project one-pager for a quick recruiter and reviewer scan.",
+        ),
         (
             "reports/sample-eval-report.html",
             "Confirm the report shows 38/38 tasks pass, 8 tools exercised, 38/38 traces, and a passing regression guard.",
@@ -311,6 +320,201 @@ def render_index() -> str:
     </section>
     <section class="preview" aria-label="Report screenshot">
       <img src="assets/eval-report.png" alt="HTML evaluation report screenshot">
+    </section>
+  </main>
+</body>
+</html>
+"""
+
+
+def render_project_one_pager() -> str:
+    return """<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Reliability Eval Lab Project One-Pager</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f5f7fb;
+      --panel: #ffffff;
+      --text: #171a21;
+      --muted: #566173;
+      --border: #d9e0ea;
+      --accent: #0f5db8;
+      --success: #147d43;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    main {
+      width: 100%;
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: 36px 20px 52px;
+    }
+    a { color: var(--accent); }
+    .back {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }
+    h1 {
+      margin: 0;
+      font-size: 34px;
+      line-height: 1.1;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+    .summary {
+      max-width: 780px;
+      margin: 16px 0 28px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.55;
+    }
+    section {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+    }
+    h2 {
+      margin: 0 0 14px;
+      font-size: 21px;
+      letter-spacing: 0;
+    }
+    p, li {
+      color: var(--muted);
+      line-height: 1.58;
+      overflow-wrap: anywhere;
+    }
+    ul, ol {
+      margin: 10px 0 0;
+      padding-left: 22px;
+    }
+    code {
+      background: #eef2f8;
+      border: 1px solid #d7deea;
+      border-radius: 4px;
+      padding: 1px 4px;
+      white-space: normal;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+    .metric {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      min-height: 104px;
+      padding: 18px;
+    }
+    .metric span {
+      color: var(--muted);
+      display: block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .metric strong {
+      color: var(--success);
+      display: block;
+      font-size: 28px;
+      margin-top: 8px;
+      overflow-wrap: anywhere;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+    @media (max-width: 820px) {
+      h1 { font-size: 29px; }
+      .metrics, .split { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 520px) {
+      main { max-width: 390px; margin: 0; padding: 28px 16px 42px; }
+      h1 { font-size: 26px; line-height: 1.15; }
+      .summary { font-size: 16px; }
+      .metrics, .split { grid-template-columns: 1fr; }
+      .metric { min-height: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <a class="back" href="index.html">Back to demo</a>
+    <h1>Agent Reliability Eval Lab Project One-Pager</h1>
+    <p class="summary">A recruiter and reviewer scan for what the project does, what is verified, what engineering signals it demonstrates, and where the limits are.</p>
+
+    <section aria-label="Current proof">
+      <h2>Current Proof</h2>
+      <div class="metrics">
+        <div class="metric"><span>Eval Result</span><strong>38/38</strong></div>
+        <div class="metric"><span>Tool Coverage</span><strong>8 tools</strong></div>
+        <div class="metric"><span>Traceability</span><strong>38/38</strong></div>
+        <div class="metric"><span>Default Path</span><strong>No Keys</strong></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>What This Is</h2>
+      <p>Agent Reliability and Tool-Use Eval Lab is a deterministic evaluation system for tool-using agents. It checks whether a planner chooses the right tool, records the tool call, scores structured output, and turns the result into reviewer-friendly reports.</p>
+    </section>
+
+    <section>
+      <h2>Why It Matters</h2>
+      <p>Most agent demos are hard to evaluate because they show final text, not evidence. This project makes the path inspectable from task fixture to planner decision, selected tool, trace, assertions, failure category, and public report.</p>
+    </section>
+
+    <section aria-label="Engineering signals and inspection path">
+      <div class="split">
+        <div>
+          <h2>Engineering Signals</h2>
+          <ul>
+            <li>FastAPI route surface with OpenAPI export.</li>
+            <li>Pydantic models for task, report, storage, comparison, trends, and quality-gate contracts.</li>
+            <li>SQLite persistence for saved evaluation runs.</li>
+            <li>CI-safe deterministic planner baseline.</li>
+            <li>Failure catalog for deliberate failure classes.</li>
+            <li>Static GitHub Pages demo built from checked artifacts.</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Inspect First</h2>
+          <ol>
+            <li><a href="reports/sample-eval-report.html">Eval report</a></li>
+            <li><a href="reports/task-catalog.html">Task catalog</a></li>
+            <li><a href="traceability.html">Traceability guide</a></li>
+            <li><a href="architecture-flow.html">Architecture flow</a></li>
+            <li><a href="docs/openapi.json">OpenAPI contract</a></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Honest Limits</h2>
+      <ul>
+        <li>The default planner is rule-based.</li>
+        <li>Fixtures are synthetic and public-safe.</li>
+        <li>CI proves deterministic reliability on this corpus, not universal agent performance.</li>
+        <li>Optional OpenAI planner comparison is manual and disabled by default.</li>
+      </ul>
     </section>
   </main>
 </body>

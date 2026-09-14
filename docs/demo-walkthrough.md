@@ -32,21 +32,23 @@ This verifies:
 
 1. `site/index.html`
    - Start with the reviewer inspection checklist. It points to the current 38/38 report, task catalog, failure catalog, and OpenAPI contract.
-2. `reports/dashboard.html`
+2. `site/project-one-pager.html`
+   - Quick recruiter and reviewer scan of purpose, proof, engineering signals, inspection path, and honest limits.
+3. `reports/dashboard.html`
    - Entry point for the report, task catalog, saved runs, comparison, trends, and planner comparison.
-3. `site/case-study.html`
+4. `site/case-study.html`
    - Reviewer-focused explanation of what the project proves, where to inspect evidence, and what the limits are.
-4. `site/traceability.html`
+5. `site/traceability.html`
    - Shows how one task flows from fixture to planner decision, tool trace, assertions, and failure category.
-5. `site/architecture-flow.html`
+6. `site/architecture-flow.html`
    - Shows how fixtures, planner, tools, scoring, reports, quality gate, and static publishing connect.
-6. `reports/task-catalog.html`
+7. `reports/task-catalog.html`
    - Shows all 38 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
-7. `reports/sample-eval-report.html`
+8. `reports/sample-eval-report.html`
    - Shows reviewer evidence summary, planner traces, selected tools, scores, assertions, and failure categories.
-8. `reports/failure-catalog.html`
+9. `reports/failure-catalog.html`
    - Shows deliberate `tool_selection`, `tool_execution`, and `output_assertion` failures.
-9. `reports/planner-comparison.md`
+10. `reports/planner-comparison.md`
    - Compares the deterministic planner against a deliberately weak baseline.
 
 ## Local API Demo

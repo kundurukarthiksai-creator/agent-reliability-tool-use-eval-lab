@@ -10,6 +10,7 @@ SITE_DIR = ROOT / "site"
 EXPECTED_TEXT = {
     "index.html": [
         "Agent Reliability Eval Lab Demo",
+        "Project One-Pager",
         "Case Study",
         "OpenAPI Contract",
         "Reviewer Inspection Checklist",
@@ -18,6 +19,14 @@ EXPECTED_TEXT = {
         "38 tasks",
         "8 local tools",
         "No Keys",
+    ],
+    "project-one-pager.html": [
+        "Agent Reliability Eval Lab Project One-Pager",
+        "Current Proof",
+        "Engineering Signals",
+        "Inspect First",
+        "Honest Limits",
+        "38/38",
     ],
     "case-study.html": [
         "Agent Reliability Eval Lab Case Study",

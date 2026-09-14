@@ -19,17 +19,19 @@ https://kundurukarthiksai-creator.github.io/agent-reliability-tool-use-eval-lab/
 
 Then inspect these artifacts in order:
 
-1. `reports/sample-eval-report.html`
+1. Static demo project one-pager
+   - Gives a recruiter-friendly scan of purpose, proof, engineering signals, inspection path, and honest limits.
+2. `reports/sample-eval-report.html`
    - Confirms `38/38` tasks pass, `8` tools are exercised, `38/38` traces are recorded, and the strict regression guard is passing.
-2. `reports/task-catalog.html`
+3. `reports/task-catalog.html`
    - Shows the deterministic task corpus, expected tools, assertion keys, and tool coverage.
-3. `reports/failure-catalog.html`
+4. `reports/failure-catalog.html`
    - Demonstrates `tool_selection`, `tool_execution`, and `output_assertion` failure categories.
-4. Static demo traceability guide
+5. Static demo traceability guide
    - Explains how a reviewer follows one task from fixture to planner decision, trace, assertions, and failure category.
-5. Static demo architecture flow
+6. Static demo architecture flow
    - Shows how fixtures, planner, tools, scoring, reports, quality gate, and the static demo connect.
-6. `docs/openapi.json`
+7. `docs/openapi.json`
    - Exposes the FastAPI route contract as a versioned public artifact.
 
 ## What It Proves
@@ -51,6 +53,7 @@ Then inspect these artifacts in order:
 - JSON report output.
 - HTML report renderer and report API route.
 - Task catalog API and HTML view.
+- Static project one-pager for recruiters and reviewers.
 - Static case-study walkthrough for reviewers.
 - Static architecture flow for reviewer inspection.
 - Deliberate failure demo for wrong tool selection.
@@ -173,12 +176,14 @@ reports/run-trends-demo.json
 reports/run-trends-demo.html
 docs/openapi.json
 site/index.html
+site/project-one-pager.html
 site/case-study.html
 site/traceability.html
 site/architecture-flow.html
 ```
 
 The dashboard links the report, run history, run comparison, trends, and planner comparison views.
+The project one-pager summarizes purpose, proof, engineering signals, inspection path, and limits.
 The case-study page explains what the project proves, how to inspect it, and its limits.
 The traceability guide explains how one task becomes auditable evidence.
 The architecture flow explains how fixtures, planner, tools, scoring, reports, quality gate, and static demo publishing connect.
