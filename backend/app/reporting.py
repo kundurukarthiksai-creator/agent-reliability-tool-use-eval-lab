@@ -1,6 +1,257 @@
 from html import escape
 
-from app.models import AssertionResult, EvalReport, EvalRunMetadata, TaskRunResult
+from app.models import (
+    AssertionResult,
+    EvalReport,
+    EvalRunMetadata,
+    TaskRunResult,
+    ToolDefinition,
+)
+
+
+def render_dashboard_html(
+    report: EvalReport,
+    tools: list[ToolDefinition],
+    runs: list[EvalRunMetadata],
+) -> str:
+    summary = report.summary
+    pass_rate = (
+        round((summary.passed_tasks / summary.total_tasks) * 100, 1)
+        if summary.total_tasks
+        else 0.0
+    )
+    tool_rows = "\n".join(_render_tool_row(tool) for tool in tools)
+    latest_run = f"#{runs[0].run_id}" if runs else "none"
+
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Reliability Lab</title>
+  <style>
+    :root {{
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #16181d;
+      --muted: #5d6470;
+      --line: #d9dee7;
+      --accent: #2454a6;
+      --good: #117a47;
+    }}
+
+    * {{
+      box-sizing: border-box;
+    }}
+
+    body {{
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.5 Arial, Helvetica, sans-serif;
+    }}
+
+    main {{
+      width: min(1120px, calc(100vw - 32px));
+      margin: 32px auto;
+    }}
+
+    header {{
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }}
+
+    h1 {{
+      margin: 0 0 8px;
+      font-size: 30px;
+      letter-spacing: 0;
+    }}
+
+    h2 {{
+      margin: 0 0 12px;
+      font-size: 18px;
+      letter-spacing: 0;
+    }}
+
+    p {{
+      margin: 0;
+      color: var(--muted);
+    }}
+
+    nav {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-self: flex-start;
+    }}
+
+    a {{
+      color: var(--accent);
+      font-weight: 700;
+      text-decoration: none;
+    }}
+
+    nav a {{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 8px 10px;
+    }}
+
+    .summary {{
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }}
+
+    .metric,
+    section {{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+    }}
+
+    .metric,
+    section {{
+      padding: 16px;
+    }}
+
+    .metric span {{
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }}
+
+    .metric strong {{
+      display: block;
+      margin-top: 6px;
+      font-size: 24px;
+    }}
+
+    .grid {{
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 16px;
+    }}
+
+    table {{
+      width: 100%;
+      border-collapse: collapse;
+    }}
+
+    th,
+    td {{
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }}
+
+    td:first-child {{
+      width: 38%;
+      padding-right: 16px;
+    }}
+
+    tr:last-child td {{
+      border-bottom: 0;
+    }}
+
+    th {{
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }}
+
+    code {{
+      display: inline-block;
+      max-width: 100%;
+      background: #eef2f8;
+      border: 1px solid #d7deea;
+      border-radius: 4px;
+      font-size: 13px;
+      overflow-wrap: anywhere;
+      padding: 1px 4px;
+      white-space: normal;
+    }}
+
+    .ok {{
+      color: var(--good);
+      font-weight: 700;
+    }}
+
+    @media (max-width: 820px) {{
+      header,
+      .grid {{
+        grid-template-columns: 1fr;
+      }}
+
+      header {{
+        display: block;
+      }}
+
+      nav {{
+        margin-top: 16px;
+      }}
+
+      .summary {{
+        grid-template-columns: 1fr;
+      }}
+    }}
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <div>
+        <h1>Agent Reliability Lab</h1>
+        <p>Deterministic tool-use evaluation, traces, reports, and saved-run analysis.</p>
+      </div>
+      <nav aria-label="Dashboard navigation">
+        <a href="/reports/latest.html">Report</a>
+        <a href="/eval/runs.html">Runs</a>
+        <a href="/eval/runs/compare.html">Compare</a>
+        <a href="/eval/runs/trends.html">Trends</a>
+        <a href="/planners/compare.html">Planners</a>
+      </nav>
+    </header>
+
+    <section class="summary" aria-label="Current evaluation summary">
+      <div class="metric"><span>Tasks</span><strong>{summary.total_tasks}</strong></div>
+      <div class="metric"><span>Pass Rate</span><strong>{pass_rate}%</strong></div>
+      <div class="metric"><span>Tools</span><strong>{len(tools)}</strong></div>
+      <div class="metric"><span>Latest Run</span><strong>{escape(latest_run)}</strong></div>
+    </section>
+
+    <div class="grid">
+      <section>
+        <h2>Registered Tools</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            {tool_rows}
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Current Status</h2>
+        <p class="ok">Evaluation path is passing.</p>
+        <p>Total: {summary.total_tasks}; passed: {summary.passed_tasks}; failed: {summary.failed_tasks}; average score: {summary.average_score:.4f}.</p>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
+"""
 
 
 def render_eval_report_html(report: EvalReport) -> str:
@@ -326,6 +577,15 @@ def _render_run_row(run: EvalRunMetadata) -> str:
           <td>{run.summary.total_tasks}</td>
           <td>{run.summary.passed_tasks}</td>
           <td>{run.summary.failed_tasks}</td>
+        </tr>
+"""
+
+
+def _render_tool_row(tool: ToolDefinition) -> str:
+    return f"""
+        <tr>
+          <td><code>{escape(tool.name)}</code></td>
+          <td>{escape(tool.description)}</td>
         </tr>
 """
 

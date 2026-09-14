@@ -16,6 +16,7 @@ COMMANDS = [
         [sys.executable, "scripts/run_eval.py", "reports/sample-eval-report.json"],
         False,
     ),
+    ("dashboard", [sys.executable, "scripts/render_dashboard.py"], False),
     ("html-report", [sys.executable, "scripts/render_report.py"], False),
     ("failure-demo", [sys.executable, "scripts/render_failure_demo.py"], False),
     ("failure-catalog", [sys.executable, "scripts/render_failure_catalog.py"], False),

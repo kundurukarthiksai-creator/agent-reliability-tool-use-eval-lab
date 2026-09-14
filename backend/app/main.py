@@ -8,7 +8,11 @@ from app.comparison import (
     render_planner_comparison_html,
 )
 from app.models import EvalReport, EvalRunMetadata, EvalRunRecord, ToolDefinition
-from app.reporting import render_eval_report_html, render_runs_index_html
+from app.reporting import (
+    render_dashboard_html,
+    render_eval_report_html,
+    render_runs_index_html,
+)
 from app.registry import build_default_registry
 from app.run_comparison import (
     EvalRunComparison,
@@ -45,6 +49,18 @@ async def health() -> HealthResponse:
 @app.get("/tools", response_model=list[ToolDefinition])
 async def tools() -> list[ToolDefinition]:
     return build_default_registry().list_tools()
+
+
+@app.get("/", response_class=HTMLResponse)
+async def dashboard() -> HTMLResponse:
+    registry = build_default_registry()
+    return HTMLResponse(
+        render_dashboard_html(
+            report=run_evaluation(registry=registry),
+            tools=registry.list_tools(),
+            runs=list_runs(),
+        )
+    )
 
 
 @app.get("/planners/compare", response_model=list[PlannerComparisonResult])

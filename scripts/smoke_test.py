@@ -20,6 +20,10 @@ def main():
     assert payload["status"] == "ok"
     assert payload["service"] == "agent-reliability-tool-use-eval-lab"
 
+    dashboard_response = client.get("/")
+    dashboard_response.raise_for_status()
+    assert "Agent Reliability Lab" in dashboard_response.text
+
     eval_response = client.post("/eval/run")
     eval_response.raise_for_status()
     report = eval_response.json()

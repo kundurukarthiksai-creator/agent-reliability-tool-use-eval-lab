@@ -20,6 +20,17 @@ def test_tools_endpoint_lists_registered_tools():
     }
 
 
+def test_dashboard_endpoint_returns_navigation_page():
+    client = TestClient(app)
+
+    response = client.get("/")
+
+    assert response.status_code == 200
+    assert response.headers["content-type"].startswith("text/html")
+    assert "Agent Reliability Lab" in response.text
+    assert "/planners/compare.html" in response.text
+
+
 def test_planner_comparison_endpoints_return_default_comparison():
     client = TestClient(app)
 

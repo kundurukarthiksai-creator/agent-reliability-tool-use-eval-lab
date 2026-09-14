@@ -32,6 +32,9 @@ jobs:
       - name: Write sample JSON report
         run: python scripts/run_eval.py reports/sample-eval-report.json
 
+      - name: Render dashboard
+        run: python scripts/render_dashboard.py
+
       - name: Render HTML report
         run: python scripts/render_report.py
 

@@ -48,6 +48,7 @@ EvalReport JSON
 
 API:
 
+- `GET /` renders the dashboard index for report and run-analysis views.
 - `GET /tools` lists registered deterministic tools.
 - `GET /planners/compare` compares default planner summaries as JSON.
 - `GET /planners/compare.html` renders default planner comparison as HTML.

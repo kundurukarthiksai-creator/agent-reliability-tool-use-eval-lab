@@ -59,6 +59,7 @@ Run the evaluation:
 Render sample reports:
 
 ```powershell
+.\.venv\Scripts\python scripts\render_dashboard.py
 .\.venv\Scripts\python scripts\render_report.py
 .\.venv\Scripts\python scripts\render_failure_demo.py
 .\.venv\Scripts\python scripts\render_failure_catalog.py
@@ -83,6 +84,7 @@ http://127.0.0.1:8000/reports/latest.html
 ## API Routes
 
 ```text
+GET  /
 GET  /health
 GET  /tools
 GET  /planners/compare
@@ -102,6 +104,7 @@ GET  /reports/latest.html
 ## Sample Artifacts
 
 ```text
+reports/dashboard.html
 reports/sample-eval-report.json
 reports/sample-eval-report.html
 reports/sample-failure-report.json
@@ -116,6 +119,7 @@ reports/run-trends-demo.json
 reports/run-trends-demo.html
 ```
 
+The dashboard links the report, run history, run comparison, trends, and planner comparison views.
 The failure sample intentionally chooses the wrong tool so the report shows how planner failures appear.
 The failure catalog demonstrates `tool_selection`, `tool_execution`, and `output_assertion` categories.
 The planner comparison shows the default planner against a deliberately weak baseline.
