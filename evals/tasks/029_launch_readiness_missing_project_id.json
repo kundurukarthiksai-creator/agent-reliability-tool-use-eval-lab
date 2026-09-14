@@ -1,0 +1,16 @@
+{
+  "id": "launch-readiness-missing-project-id",
+  "title": "Ask for launch readiness without a project id",
+  "description": "A user asks for a public launch readiness audit but does not identify which project proof package should be checked.",
+  "expected_tool": "launch_readiness_audit",
+  "input": {},
+  "expectations": {
+    "must_equal": {
+      "launch_ready": false,
+      "readiness_score": 0
+    },
+    "must_contain": {
+      "missing_required": "project_id_required"
+    }
+  }
+}

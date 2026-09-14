@@ -8,10 +8,11 @@ This folder contains deterministic evaluation fixtures and tasks.
 - `fixtures/course_notes.json`: small course-note corpus for source-backed retrieval.
 - `fixtures/profiles.json`: synthetic profile README readiness signals.
 - `fixtures/role_readiness.json`: synthetic target-role and portfolio signal fixtures.
+- `fixtures/launch_readiness.json`: synthetic public launch evidence signals.
 
 ## Tasks
 
-The current focused corpus has 26 tasks, including happy-path checks and adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, missing repository fixtures, incident runbook lookup, profile README readiness, and target-role readiness.
+The current focused corpus has 30 tasks, including happy-path checks and adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, missing repository fixtures, incident runbook lookup, profile README readiness, target-role readiness, and public launch readiness.
 
 Each task is a JSON object with:
 

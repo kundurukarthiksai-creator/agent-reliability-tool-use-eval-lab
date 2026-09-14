@@ -31,13 +31,13 @@ This verifies:
 ## What To Inspect First
 
 1. `site/index.html`
-   - Start with the reviewer inspection checklist. It points to the current 26/26 report, task catalog, failure catalog, and OpenAPI contract.
+   - Start with the reviewer inspection checklist. It points to the current 30/30 report, task catalog, failure catalog, and OpenAPI contract.
 2. `reports/dashboard.html`
    - Entry point for the report, task catalog, saved runs, comparison, trends, and planner comparison.
 3. `site/case-study.html`
    - Reviewer-focused explanation of what the project proves, where to inspect evidence, and what the limits are.
 4. `reports/task-catalog.html`
-   - Shows all 26 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
+   - Shows all 30 deterministic tasks, their expected tools, assertion keys, and tool coverage counts.
 5. `reports/sample-eval-report.html`
    - Shows reviewer evidence summary, planner traces, selected tools, scores, assertions, and failure categories.
 6. `reports/failure-catalog.html`

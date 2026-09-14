@@ -13,10 +13,10 @@ EXPECTED_TEXT = {
         "Case Study",
         "OpenAPI Contract",
         "Reviewer Inspection Checklist",
-        "26/26 tasks pass",
+        "30/30 tasks pass",
         "passing regression guard",
-        "26 tasks",
-        "6 local tools",
+        "30 tasks",
+        "7 local tools",
         "No Keys",
     ],
     "case-study.html": [

@@ -6,7 +6,7 @@ from app.task_catalog import summarize_task_coverage
 def test_summarize_task_coverage_counts_tasks_by_registered_tool():
     summary = summarize_task_coverage(load_tasks(), build_default_registry().list_tools())
 
-    assert summary.total_tasks == 26
+    assert summary.total_tasks == 30
     assert {item.tool_name: item.task_count for item in summary.coverage} == {
         "repo_health_check": 6,
         "course_note_search": 5,
@@ -14,4 +14,5 @@ def test_summarize_task_coverage_counts_tasks_by_registered_tool():
         "runbook_lookup": 3,
         "profile_readme_audit": 4,
         "role_readiness_audit": 4,
+        "launch_readiness_audit": 4,
     }

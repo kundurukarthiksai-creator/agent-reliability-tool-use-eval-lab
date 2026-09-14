@@ -64,7 +64,7 @@ def render_index() -> str:
     links = [
         ("Case Study", "case-study.html", "Read the reviewer-friendly project walkthrough."),
         ("Dashboard", "reports/dashboard.html", "Start with the portfolio demo index."),
-        ("Task Catalog", "reports/task-catalog.html", "Inspect all 26 deterministic tasks."),
+        ("Task Catalog", "reports/task-catalog.html", "Inspect all 30 deterministic tasks."),
         ("Eval Report", "reports/sample-eval-report.html", "Review traces, assertions, and scoring."),
         ("Quality Gate", "reports/quality-gate.json", "See the strict regression gate output."),
         ("Failure Catalog", "reports/failure-catalog.html", "Inspect deliberate failure categories."),
@@ -76,7 +76,7 @@ def render_index() -> str:
     inspection_steps = [
         (
             "reports/sample-eval-report.html",
-            "Confirm the report shows 26/26 tasks pass, 6 tools exercised, 26/26 traces, and a passing regression guard.",
+            "Confirm the report shows 30/30 tasks pass, 7 tools exercised, 30/30 traces, and a passing regression guard.",
         ),
         (
             "reports/task-catalog.html",
@@ -274,11 +274,11 @@ def render_index() -> str:
   <main>
     <header>
       <h1>Agent Reliability Eval Lab Demo</h1>
-      <p class="summary">Static public demo for a deterministic tool-use evaluation lab. The default path runs without API keys, scores 26 tasks across 6 local tools, and publishes the same reports verified by CI.</p>
+      <p class="summary">Static public demo for a deterministic tool-use evaluation lab. The default path runs without API keys, scores 30 tasks across 7 local tools, and publishes the same reports verified by CI.</p>
     </header>
     <section class="metrics" aria-label="Demo metrics">
-      <div class="metric"><span>Tasks</span><strong>26</strong></div>
-      <div class="metric"><span>Tools</span><strong>6</strong></div>
+      <div class="metric"><span>Tasks</span><strong>30</strong></div>
+      <div class="metric"><span>Tools</span><strong>7</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100%</strong></div>
       <div class="metric"><span>CI Path</span><strong>No Keys</strong></div>
     </section>
@@ -411,8 +411,8 @@ def render_case_study() -> str:
     <section>
       <h2>What It Evaluates</h2>
       <ul>
-        <li>Tool selection across <strong>26</strong> public-safe tasks.</li>
-        <li>Tool-call traces for <strong>6</strong> deterministic local tools.</li>
+        <li>Tool selection across <strong>30</strong> public-safe tasks.</li>
+        <li>Tool-call traces for <strong>7</strong> deterministic local tools.</li>
         <li>Assertion-level scoring for expected fields and values.</li>
         <li>Failure categories for tool selection, tool execution, and output assertions.</li>
         <li>Saved-run comparison and trend views for regression visibility.</li>

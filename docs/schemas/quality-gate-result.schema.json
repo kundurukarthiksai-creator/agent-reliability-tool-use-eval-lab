@@ -54,7 +54,7 @@
     "QualityGateConfig": {
       "properties": {
         "min_total_tasks": {
-          "default": 26,
+          "default": 30,
           "title": "Min Total Tasks",
           "type": "integer"
         },

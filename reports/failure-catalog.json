@@ -93,10 +93,10 @@
       "tool_result": {
         "tool_name": "missing_tool",
         "output": {
-          "error": "\"Unknown tool 'missing_tool'. Available tools: application_tracker_update, course_note_search, profile_readme_audit, repo_health_check, role_readiness_audit, runbook_lookup\""
+          "error": "\"Unknown tool 'missing_tool'. Available tools: application_tracker_update, course_note_search, launch_readiness_audit, profile_readme_audit, repo_health_check, role_readiness_audit, runbook_lookup\""
         },
         "status": "error",
-        "error": "\"Unknown tool 'missing_tool'. Available tools: application_tracker_update, course_note_search, profile_readme_audit, repo_health_check, role_readiness_audit, runbook_lookup\""
+        "error": "\"Unknown tool 'missing_tool'. Available tools: application_tracker_update, course_note_search, launch_readiness_audit, profile_readme_audit, repo_health_check, role_readiness_audit, runbook_lookup\""
       },
       "assertions": [
         {
@@ -107,7 +107,7 @@
         {
           "name": "tool_status",
           "passed": false,
-          "detail": "status=error; error='\"Unknown tool \\'missing_tool\\'. Available tools: application_tracker_update, course_note_search, profile_readme_audit, repo_health_check, role_readiness_audit, runbook_lookup\"'"
+          "detail": "status=error; error='\"Unknown tool \\'missing_tool\\'. Available tools: application_tracker_update, course_note_search, launch_readiness_audit, profile_readme_audit, repo_health_check, role_readiness_audit, runbook_lookup\"'"
         }
       ],
       "score": 0.5,

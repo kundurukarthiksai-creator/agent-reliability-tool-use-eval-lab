@@ -1,0 +1,18 @@
+{
+  "id": "launch-readiness-eval-lab-ready",
+  "title": "Audit public launch readiness for the eval lab",
+  "description": "A user asks for a launch readiness audit before public promotion, including README reviewer inspection path, no-key static demo, CI quality gate, eval report, task catalog, failure catalog, OpenAPI contract, and honest limits.",
+  "expected_tool": "launch_readiness_audit",
+  "input": {
+    "project_id": "agent-reliability-eval-lab"
+  },
+  "expectations": {
+    "must_equal": {
+      "launch_ready": true,
+      "readiness_score": 100
+    },
+    "must_contain": {
+      "matched_required": "openapi-contract"
+    }
+  }
+}

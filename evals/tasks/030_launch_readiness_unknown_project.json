@@ -1,0 +1,18 @@
+{
+  "id": "launch-readiness-unknown-project",
+  "title": "Ask for launch readiness on an unknown project",
+  "description": "A user asks for a public launch readiness audit, but the project id is not present in the local launch evidence fixture.",
+  "expected_tool": "launch_readiness_audit",
+  "input": {
+    "project_id": "unknown-project"
+  },
+  "expectations": {
+    "must_equal": {
+      "launch_ready": false,
+      "readiness_score": 0
+    },
+    "must_contain": {
+      "missing_required": "project_not_found"
+    }
+  }
+}

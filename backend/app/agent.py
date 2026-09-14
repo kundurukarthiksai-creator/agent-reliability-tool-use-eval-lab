@@ -79,6 +79,24 @@ SIGNALS_BY_TOOL = {
         "cloud platform",
         "portfolio evidence",
     ],
+    "launch_readiness_audit": [
+        "launch readiness",
+        "public launch",
+        "launch",
+        "release",
+        "public promotion",
+        "reviewer inspection",
+        "inspection checklist",
+        "no-key demo",
+        "static demo",
+        "quality gate",
+        "eval report",
+        "task catalog",
+        "failure catalog",
+        "openapi contract",
+        "proof package",
+        "honest limits",
+    ],
 }
 
 

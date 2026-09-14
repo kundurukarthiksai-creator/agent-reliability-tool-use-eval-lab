@@ -230,8 +230,8 @@
     </header>
 
     <section class="summary" aria-label="Task catalog summary">
-      <div class="metric"><span>Tasks</span><strong>26</strong></div>
-      <div class="metric"><span>Tools</span><strong>6</strong></div>
+      <div class="metric"><span>Tasks</span><strong>30</strong></div>
+      <div class="metric"><span>Tools</span><strong>7</strong></div>
       <div class="metric"><span>Fixture Type</span><strong>Public</strong></div>
     </section>
 
@@ -585,6 +585,58 @@
           </td>
         </tr>
 
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Audit public launch readiness for the eval lab</strong>
+            <code>launch-readiness-eval-lab-ready</code>
+          </td>
+          <td data-label="Expected Tool"><code>launch_readiness_audit</code></td>
+          <td data-label="Checks">
+            A user asks for a launch readiness audit before public promotion, including README reviewer inspection path, no-key static demo, CI quality gate, eval report, task catalog, failure catalog, OpenAPI contract, and honest limits.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Find public launch readiness gaps for a demo without contract proof</strong>
+            <code>launch-readiness-missing-contract</code>
+          </td>
+          <td data-label="Expected Tool"><code>launch_readiness_audit</code></td>
+          <td data-label="Checks">
+            A user asks whether a no-key demo is ready for public launch and wants missing reviewer evidence called out, especially the OpenAPI contract and failure catalog.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Ask for launch readiness without a project id</strong>
+            <code>launch-readiness-missing-project-id</code>
+          </td>
+          <td data-label="Expected Tool"><code>launch_readiness_audit</code></td>
+          <td data-label="Checks">
+            A user asks for a public launch readiness audit but does not identify which project proof package should be checked.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Ask for launch readiness on an unknown project</strong>
+            <code>launch-readiness-unknown-project</code>
+          </td>
+          <td data-label="Expected Tool"><code>launch_readiness_audit</code></td>
+          <td data-label="Checks">
+            A user asks for a public launch readiness audit, but the project id is not present in the local launch evidence fixture.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
           </tbody>
         </table>
       </section>
@@ -640,6 +692,13 @@
           <td data-label="Tool"><code>role_readiness_audit</code></td>
           <td data-label="Tasks">4</td>
           <td data-label="Description">Audits public-safe portfolio evidence against target-role signals.</td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Tool"><code>launch_readiness_audit</code></td>
+          <td data-label="Tasks">4</td>
+          <td data-label="Description">Audits a public project proof package before launch or promotion.</td>
         </tr>
 
           </tbody>

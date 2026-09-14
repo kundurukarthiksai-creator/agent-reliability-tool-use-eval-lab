@@ -1,0 +1,18 @@
+{
+  "id": "launch-readiness-missing-contract",
+  "title": "Find public launch readiness gaps for a demo without contract proof",
+  "description": "A user asks whether a no-key demo is ready for public launch and wants missing reviewer evidence called out, especially the OpenAPI contract and failure catalog.",
+  "expected_tool": "launch_readiness_audit",
+  "input": {
+    "project_id": "agent-demo-no-contract"
+  },
+  "expectations": {
+    "must_equal": {
+      "launch_ready": false,
+      "readiness_score": 75
+    },
+    "must_contain": {
+      "missing_required": "openapi-contract"
+    }
+  }
+}

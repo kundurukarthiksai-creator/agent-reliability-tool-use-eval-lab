@@ -85,3 +85,18 @@ def test_agent_selects_role_readiness_for_target_role_fit():
 
     assert plan.selected_tool == "role_readiness_audit"
     assert "role readiness" in plan.matched_signals
+
+
+def test_agent_selects_launch_readiness_for_public_launch_audit():
+    task = EvaluationTask(
+        id="launch-readiness-review",
+        title="Audit public launch readiness for the eval lab",
+        description="A user asks for a reviewer inspection checklist, no-key demo, quality gate, OpenAPI contract, and failure catalog before public promotion.",
+        expected_tool="repo_health_check",
+        input={"project_id": "agent-reliability-eval-lab"},
+    )
+
+    plan = RuleBasedAgent().plan(task, build_default_registry().list_tools())
+
+    assert plan.selected_tool == "launch_readiness_audit"
+    assert "launch readiness" in plan.matched_signals

@@ -4,6 +4,7 @@ from typing import Any
 from app.models import ToolDefinition
 from app.tools.application_tracker import application_tracker_update
 from app.tools.course_notes import course_note_search
+from app.tools.launch_readiness import launch_readiness_audit
 from app.tools.profile_readme import profile_readme_audit
 from app.tools.repo_health import repo_health_check
 from app.tools.role_readiness import role_readiness_audit
@@ -67,5 +68,10 @@ def build_default_registry() -> ToolRegistry:
         "role_readiness_audit",
         "Audits public-safe portfolio evidence against target-role signals.",
         role_readiness_audit,
+    )
+    registry.register(
+        "launch_readiness_audit",
+        "Audits a public project proof package before launch or promotion.",
+        launch_readiness_audit,
     )
     return registry

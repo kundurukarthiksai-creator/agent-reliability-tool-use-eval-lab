@@ -6,10 +6,10 @@
   "total_tasks_delta": 0,
   "passed_tasks_delta": 1,
   "failed_tasks_delta": -1,
-  "average_score_delta": 0.0385,
+  "average_score_delta": 0.0333,
   "status_counts": {
     "recovery": 1,
-    "unchanged_pass": 25
+    "unchanged_pass": 29
   },
   "task_comparisons": [
     {
@@ -111,6 +111,54 @@
     {
       "task_id": "course-note-search",
       "title": "Find relevant tool-use learning notes",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "launch-readiness-eval-lab-ready",
+      "title": "Audit public launch readiness for the eval lab",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "launch-readiness-missing-contract",
+      "title": "Find public launch readiness gaps for a demo without contract proof",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "launch-readiness-missing-project-id",
+      "title": "Ask for launch readiness without a project id",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "launch-readiness-unknown-project",
+      "title": "Ask for launch readiness on an unknown project",
       "status": "unchanged_pass",
       "previous_passed": true,
       "current_passed": true,

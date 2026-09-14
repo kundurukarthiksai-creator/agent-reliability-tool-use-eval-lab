@@ -1,0 +1,43 @@
+{
+  "required_signals": [
+    "readme-inspection-path",
+    "no-key-static-demo",
+    "ci-quality-gate",
+    "eval-report",
+    "task-catalog",
+    "failure-catalog",
+    "openapi-contract",
+    "honest-limits"
+  ],
+  "projects": [
+    {
+      "id": "agent-reliability-eval-lab",
+      "summary": "Public proof package for the Agent Reliability and Tool-Use Eval Lab, including deterministic reports, reviewer docs, a no-key static demo, and contract artifacts.",
+      "signals": [
+        "readme-inspection-path",
+        "no-key-static-demo",
+        "ci-quality-gate",
+        "eval-report",
+        "task-catalog",
+        "failure-catalog",
+        "openapi-contract",
+        "honest-limits",
+        "quality-gate-report",
+        "planner-comparison",
+        "screenshot-proof"
+      ]
+    },
+    {
+      "id": "agent-demo-no-contract",
+      "summary": "Demo project with visible reports and CI proof, but missing explicit API contract and failure-catalog evidence.",
+      "signals": [
+        "readme-inspection-path",
+        "no-key-static-demo",
+        "ci-quality-gate",
+        "eval-report",
+        "task-catalog",
+        "honest-limits"
+      ]
+    }
+  ]
+}

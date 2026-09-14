@@ -13,4 +13,5 @@ def test_default_registry_contains_mvp_tools():
         "runbook_lookup",
         "profile_readme_audit",
         "role_readiness_audit",
+        "launch_readiness_audit",
     }
