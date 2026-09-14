@@ -1,5 +1,7 @@
 # Agent Reliability and Tool-Use Eval Lab
 
+[![CI](https://github.com/kundurukarthiksai-creator/agent-reliability-tool-use-eval-lab/actions/workflows/ci.yml/badge.svg)](https://github.com/kundurukarthiksai-creator/agent-reliability-tool-use-eval-lab/actions/workflows/ci.yml)
+
 Deterministic evaluation lab for tool-using AI agents. It runs structured tasks, asks an agent planner to choose a tool, records the tool-call trace, scores the result, and produces JSON plus HTML reports.
 
 The default path is intentionally CI-safe: no API keys, no paid model calls, and no private data.
