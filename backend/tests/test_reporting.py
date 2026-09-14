@@ -17,6 +17,12 @@ def test_render_eval_report_html_contains_summary_and_trace():
     assert "repo-health-ready" in html
     assert "Tool Call Trace" in html
     assert "Pass Rate" in html
+    assert "Reviewer Evidence Summary" in html
+    assert "Deterministic baseline" in html
+    assert "26/26 tasks pass" in html
+    assert "6 tools exercised" in html
+    assert "26/26 traces recorded" in html
+    assert "Regression guard" in html
     assert "Category" in html
     assert "Tool Selection" in html
     assert "Failure Categories" in html

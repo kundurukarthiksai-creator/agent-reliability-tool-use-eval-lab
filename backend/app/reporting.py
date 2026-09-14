@@ -10,6 +10,7 @@ from app.models import (
     TaskRunResult,
     ToolDefinition,
 )
+from app.quality_gate import evaluate_quality_gate
 from app.task_catalog import summarize_task_coverage
 
 
@@ -53,10 +54,12 @@ def render_dashboard_html(
       background: var(--bg);
       color: var(--text);
       font: 15px/1.5 Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
     }}
 
     main {{
-      width: min(1120px, calc(100vw - 32px));
+      max-width: 1120px;
+      width: calc(100% - 32px);
       margin: 32px auto;
     }}
 
@@ -71,6 +74,7 @@ def render_dashboard_html(
       margin: 0 0 8px;
       font-size: 30px;
       letter-spacing: 0;
+      overflow-wrap: anywhere;
     }}
 
     h2 {{
@@ -82,6 +86,7 @@ def render_dashboard_html(
     p {{
       margin: 0;
       color: var(--muted);
+      overflow-wrap: anywhere;
     }}
 
     nav {{
@@ -297,6 +302,7 @@ def render_task_catalog_html(
       background: var(--bg);
       color: var(--text);
       font: 15px/1.5 Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
     }}
 
     main {{
@@ -315,6 +321,7 @@ def render_task_catalog_html(
       margin: 0 0 8px;
       font-size: 30px;
       letter-spacing: 0;
+      overflow-wrap: anywhere;
     }}
 
     h2 {{
@@ -326,6 +333,7 @@ def render_task_catalog_html(
     p {{
       margin: 0;
       color: var(--muted);
+      overflow-wrap: anywhere;
     }}
 
     a {{
@@ -552,6 +560,17 @@ def render_eval_report_html(report: EvalReport) -> str:
         result.failure_category for result in report.results
     )
     summary = report.summary
+    selected_tools = sorted({result.selected_tool for result in report.results})
+    selected_tool_html = _render_code_list(selected_tools)
+    traced_tasks = sum(1 for result in report.results if result.trace)
+    gate = evaluate_quality_gate(report)
+    gate_label = "Passing" if gate.passed else "Needs review"
+    gate_detail = (
+        f"Requires at least {gate.config.min_total_tasks} tasks, "
+        f"{gate.config.min_pass_rate:.0%} pass rate, "
+        f"{gate.config.min_average_score:.1f} average score, "
+        "and only passed failure categories."
+    )
     pass_rate = (
         round((summary.passed_tasks / summary.total_tasks) * 100, 1)
         if summary.total_tasks
@@ -585,10 +604,12 @@ def render_eval_report_html(report: EvalReport) -> str:
       background: var(--bg);
       color: var(--text);
       font: 15px/1.5 Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
     }}
 
     main {{
-      width: min(1120px, calc(100vw - 32px));
+      max-width: 1120px;
+      width: calc(100% - 32px);
       margin: 32px auto;
     }}
 
@@ -600,6 +621,7 @@ def render_eval_report_html(report: EvalReport) -> str:
       margin: 0 0 8px;
       font-size: 30px;
       letter-spacing: 0;
+      overflow-wrap: anywhere;
     }}
 
     h2 {{
@@ -611,6 +633,7 @@ def render_eval_report_html(report: EvalReport) -> str:
     p {{
       margin: 0;
       color: var(--muted);
+      overflow-wrap: anywhere;
     }}
 
     .summary {{
@@ -664,8 +687,9 @@ def render_eval_report_html(report: EvalReport) -> str:
     }}
 
     .overview-panel table {{
-      width: 100%;
       border-collapse: collapse;
+      table-layout: fixed;
+      width: 100%;
     }}
 
     .overview-panel td {{
@@ -683,6 +707,51 @@ def render_eval_report_html(report: EvalReport) -> str:
       font-weight: 700;
       text-align: right;
       white-space: nowrap;
+    }}
+
+    .evidence {{
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 16px;
+    }}
+
+    .evidence-grid {{
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 12px;
+      padding-top: 12px;
+    }}
+
+    .evidence-item {{
+      min-width: 0;
+    }}
+
+    .evidence-item span {{
+      color: var(--muted);
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+    }}
+
+    .evidence-item strong {{
+      display: block;
+      font-size: 18px;
+      margin-top: 4px;
+    }}
+
+    .evidence-item p {{
+      font-size: 13px;
+      margin-top: 4px;
+      overflow-wrap: anywhere;
+    }}
+
+    .evidence-item p code {{
+      display: inline-block;
+      margin: 0 4px 4px 0;
     }}
 
     .task-header {{
@@ -750,6 +819,7 @@ def render_eval_report_html(report: EvalReport) -> str:
       border: 1px solid #d7deea;
       border-radius: 4px;
       padding: 1px 4px;
+      white-space: normal;
     }}
 
     ul {{
@@ -762,10 +832,34 @@ def render_eval_report_html(report: EvalReport) -> str:
     }}
 
     @media (max-width: 760px) {{
+      main {{
+        margin: 24px auto;
+        width: calc(100% - 18px);
+      }}
+
+      h1 {{
+        font-size: 24px;
+        line-height: 1.15;
+      }}
+
+      p {{
+        max-width: 34ch;
+      }}
+
       .summary,
       .overview-grid,
+      .evidence-grid,
       .task-body {{
         grid-template-columns: 1fr;
+      }}
+
+      .overview-panel td {{
+        display: block;
+        padding: 6px 0;
+      }}
+
+      .overview-panel td:last-child {{
+        text-align: left;
       }}
 
       .task-header {{
@@ -786,6 +880,33 @@ def render_eval_report_html(report: EvalReport) -> str:
       <div class="metric"><span>Passed</span><strong>{summary.passed_tasks}</strong></div>
       <div class="metric"><span>Failed</span><strong>{summary.failed_tasks}</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>{pass_rate}%</strong></div>
+    </section>
+
+    <section class="evidence" aria-label="Reviewer evidence summary">
+      <h2>Reviewer Evidence Summary</h2>
+      <p>Compact proof points for code reviewers, recruiters, and future maintainers.</p>
+      <div class="evidence-grid">
+        <div class="evidence-item">
+          <span>Deterministic baseline</span>
+          <strong>{summary.passed_tasks}/{summary.total_tasks} tasks pass</strong>
+          <p>Average assertion score: {summary.average_score:.4f}.</p>
+        </div>
+        <div class="evidence-item">
+          <span>Tool coverage</span>
+          <strong>{len(selected_tools)} tools exercised</strong>
+          <p>{selected_tool_html}</p>
+        </div>
+        <div class="evidence-item">
+          <span>Traceability</span>
+          <strong>{traced_tasks}/{summary.total_tasks} traces recorded</strong>
+          <p>Each task keeps the planner rationale, selected tool, and tool result.</p>
+        </div>
+        <div class="evidence-item">
+          <span>Regression guard</span>
+          <strong>{gate_label}</strong>
+          <p>{escape(gate_detail)}</p>
+        </div>
+      </div>
     </section>
 
     <section class="overview-grid" aria-label="Evaluation distribution summary">
@@ -1040,3 +1161,8 @@ def _render_count_rows(values: Iterable[str]) -> str:
 """
         )
     return "".join(rows)
+
+
+def _render_code_list(names: Iterable[str]) -> str:
+    values = sorted(set(names))
+    return "<br>".join(f"<code>{escape(name)}</code>" for name in values) or "none"

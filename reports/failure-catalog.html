@@ -25,10 +25,12 @@
       background: var(--bg);
       color: var(--text);
       font: 15px/1.5 Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
     }
 
     main {
-      width: min(1120px, calc(100vw - 32px));
+      max-width: 1120px;
+      width: calc(100% - 32px);
       margin: 32px auto;
     }
 
@@ -40,6 +42,7 @@
       margin: 0 0 8px;
       font-size: 30px;
       letter-spacing: 0;
+      overflow-wrap: anywhere;
     }
 
     h2 {
@@ -51,6 +54,7 @@
     p {
       margin: 0;
       color: var(--muted);
+      overflow-wrap: anywhere;
     }
 
     .summary {
@@ -104,8 +108,9 @@
     }
 
     .overview-panel table {
-      width: 100%;
       border-collapse: collapse;
+      table-layout: fixed;
+      width: 100%;
     }
 
     .overview-panel td {
@@ -123,6 +128,51 @@
       font-weight: 700;
       text-align: right;
       white-space: nowrap;
+    }
+
+    .evidence {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      margin-bottom: 20px;
+      padding: 16px;
+    }
+
+    .evidence-grid {
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      margin-top: 12px;
+      padding-top: 12px;
+    }
+
+    .evidence-item {
+      min-width: 0;
+    }
+
+    .evidence-item span {
+      color: var(--muted);
+      display: block;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .evidence-item strong {
+      display: block;
+      font-size: 18px;
+      margin-top: 4px;
+    }
+
+    .evidence-item p {
+      font-size: 13px;
+      margin-top: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    .evidence-item p code {
+      display: inline-block;
+      margin: 0 4px 4px 0;
     }
 
     .task-header {
@@ -190,6 +240,7 @@
       border: 1px solid #d7deea;
       border-radius: 4px;
       padding: 1px 4px;
+      white-space: normal;
     }
 
     ul {
@@ -202,10 +253,34 @@
     }
 
     @media (max-width: 760px) {
+      main {
+        margin: 24px auto;
+        width: calc(100% - 18px);
+      }
+
+      h1 {
+        font-size: 24px;
+        line-height: 1.15;
+      }
+
+      p {
+        max-width: 34ch;
+      }
+
       .summary,
       .overview-grid,
+      .evidence-grid,
       .task-body {
         grid-template-columns: 1fr;
+      }
+
+      .overview-panel td {
+        display: block;
+        padding: 6px 0;
+      }
+
+      .overview-panel td:last-child {
+        text-align: left;
       }
 
       .task-header {
@@ -226,6 +301,33 @@
       <div class="metric"><span>Passed</span><strong>0</strong></div>
       <div class="metric"><span>Failed</span><strong>3</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>0.0%</strong></div>
+    </section>
+
+    <section class="evidence" aria-label="Reviewer evidence summary">
+      <h2>Reviewer Evidence Summary</h2>
+      <p>Compact proof points for code reviewers, recruiters, and future maintainers.</p>
+      <div class="evidence-grid">
+        <div class="evidence-item">
+          <span>Deterministic baseline</span>
+          <strong>0/3 tasks pass</strong>
+          <p>Average assertion score: 0.4556.</p>
+        </div>
+        <div class="evidence-item">
+          <span>Tool coverage</span>
+          <strong>2 tools exercised</strong>
+          <p><code>course_note_search</code><br><code>missing_tool</code></p>
+        </div>
+        <div class="evidence-item">
+          <span>Traceability</span>
+          <strong>3/3 traces recorded</strong>
+          <p>Each task keeps the planner rationale, selected tool, and tool result.</p>
+        </div>
+        <div class="evidence-item">
+          <span>Regression guard</span>
+          <strong>Needs review</strong>
+          <p>Requires at least 26 tasks, 100% pass rate, 1.0 average score, and only passed failure categories.</p>
+        </div>
+      </div>
     </section>
 
     <section class="overview-grid" aria-label="Evaluation distribution summary">
