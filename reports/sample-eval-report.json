@@ -1,7 +1,7 @@
 {
   "summary": {
-    "total_tasks": 34,
-    "passed_tasks": 34,
+    "total_tasks": 38,
+    "passed_tasks": 38,
     "failed_tasks": 0,
     "average_score": 1.0
   },
@@ -2691,6 +2691,332 @@
           "name": "must_contain:missing_required",
           "passed": true,
           "detail": "expected list to contain 'project_id_required'; actual=['project_id_required']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "artifact-consistency-current-proof",
+      "title": "Audit artifact consistency for the current public proof package",
+      "expected_tool": "artifact_consistency_audit",
+      "selected_tool": "artifact_consistency_audit",
+      "agent_plan": {
+        "selected_tool": "artifact_consistency_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "artifact consistency",
+          "artifact consistency audit",
+          "public proof markers",
+          "proof markers",
+          "current eval count"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "artifact_consistency_audit",
+          "payload": {
+            "artifact_id": "eval-lab-current-proof"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "artifact_consistency_audit",
+        "output": {
+          "artifact_id": "eval-lab-current-proof",
+          "consistent": true,
+          "consistency_score": 100,
+          "matched_required": [
+            "current-eval-count",
+            "current-tool-count",
+            "quality-gate-proof",
+            "traceability-guide",
+            "architecture-flow",
+            "openapi-contract"
+          ],
+          "missing_required": [],
+          "stale_markers": [],
+          "recommended_fixes": [],
+          "summary": "Current public proof package with fresh task/tool counts, quality gate, traceability guide, architecture flow, and OpenAPI contract."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=artifact_consistency_audit; selected=artifact_consistency_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:consistent",
+          "passed": true,
+          "detail": "expected=True; actual=True"
+        },
+        {
+          "name": "must_equal:consistency_score",
+          "passed": true,
+          "detail": "expected=100; actual=100"
+        },
+        {
+          "name": "must_contain:matched_required",
+          "passed": true,
+          "detail": "expected list to contain 'architecture-flow'; actual=['current-eval-count', 'current-tool-count', 'quality-gate-proof', 'traceability-guide', 'architecture-flow', 'openapi-contract']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "artifact-consistency-stale-counts",
+      "title": "Find stale public proof counts in artifact consistency audit",
+      "expected_tool": "artifact_consistency_audit",
+      "selected_tool": "artifact_consistency_audit",
+      "agent_plan": {
+        "selected_tool": "artifact_consistency_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "artifact consistency",
+          "artifact consistency audit",
+          "stale public proof",
+          "stale task-count",
+          "tool-count markers"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "artifact_consistency_audit",
+          "payload": {
+            "artifact_id": "eval-lab-stale-counts"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "artifact_consistency_audit",
+        "output": {
+          "artifact_id": "eval-lab-stale-counts",
+          "consistent": false,
+          "consistency_score": 67,
+          "matched_required": [
+            "quality-gate-proof",
+            "traceability-guide",
+            "architecture-flow",
+            "openapi-contract"
+          ],
+          "missing_required": [
+            "current-eval-count",
+            "current-tool-count"
+          ],
+          "stale_markers": [
+            "old-eval-count",
+            "old-tool-count"
+          ],
+          "recommended_fixes": [
+            "Refresh public proof text so task-count claims match the current verified eval report.",
+            "Refresh public proof text so tool-count claims match the current verified registry coverage."
+          ],
+          "summary": "Public proof package with useful evidence links, but stale task and tool count claims."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=artifact_consistency_audit; selected=artifact_consistency_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:consistent",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:consistency_score",
+          "passed": true,
+          "detail": "expected=67; actual=67"
+        },
+        {
+          "name": "must_contain:missing_required",
+          "passed": true,
+          "detail": "expected list to contain 'current-eval-count'; actual=['current-eval-count', 'current-tool-count']"
+        },
+        {
+          "name": "must_contain:stale_markers",
+          "passed": true,
+          "detail": "expected list to contain 'old-eval-count'; actual=['old-eval-count', 'old-tool-count']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "artifact-consistency-docs-only",
+      "title": "Audit docs-only artifact consistency proof-marker gaps",
+      "expected_tool": "artifact_consistency_audit",
+      "selected_tool": "artifact_consistency_audit",
+      "agent_plan": {
+        "selected_tool": "artifact_consistency_audit",
+        "confidence": 0.95,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "artifact consistency",
+          "artifact consistency audit",
+          "public proof markers",
+          "proof-marker",
+          "proof markers",
+          "proof drift"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "artifact_consistency_audit",
+          "payload": {
+            "artifact_id": "eval-lab-docs-only"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "artifact_consistency_audit",
+        "output": {
+          "artifact_id": "eval-lab-docs-only",
+          "consistent": false,
+          "consistency_score": 67,
+          "matched_required": [
+            "current-eval-count",
+            "current-tool-count",
+            "traceability-guide",
+            "architecture-flow"
+          ],
+          "missing_required": [
+            "quality-gate-proof",
+            "openapi-contract"
+          ],
+          "stale_markers": [],
+          "recommended_fixes": [
+            "Show the strict quality-gate result and the command that reproduces it.",
+            "Publish or link the OpenAPI contract for the public API surface."
+          ],
+          "summary": "Public proof package with helpful docs, but missing contract and quality-gate proof."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=artifact_consistency_audit; selected=artifact_consistency_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:consistent",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:consistency_score",
+          "passed": true,
+          "detail": "expected=67; actual=67"
+        },
+        {
+          "name": "must_contain:missing_required",
+          "passed": true,
+          "detail": "expected list to contain 'quality-gate-proof'; actual=['quality-gate-proof', 'openapi-contract']"
+        }
+      ],
+      "score": 1.0,
+      "passed": true,
+      "failure_category": "passed"
+    },
+    {
+      "task_id": "artifact-consistency-wrong-identifier-key",
+      "title": "Ask for artifact consistency with the wrong identifier field",
+      "expected_tool": "artifact_consistency_audit",
+      "selected_tool": "artifact_consistency_audit",
+      "agent_plan": {
+        "selected_tool": "artifact_consistency_audit",
+        "confidence": 0.81,
+        "rationale": "Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.",
+        "matched_signals": [
+          "artifact consistency",
+          "artifact consistency audit",
+          "artifact id"
+        ]
+      },
+      "trace": [
+        {
+          "tool_name": "artifact_consistency_audit",
+          "payload": {
+            "repo_slug": "agent-reliability-eval-lab"
+          },
+          "status": "ok"
+        }
+      ],
+      "tool_result": {
+        "tool_name": "artifact_consistency_audit",
+        "output": {
+          "artifact_id": null,
+          "consistent": false,
+          "consistency_score": 0,
+          "matched_required": [],
+          "missing_required": [
+            "artifact_id_required"
+          ],
+          "stale_markers": [],
+          "recommended_fixes": [],
+          "summary": "A known artifact id is required before public proof consistency can be audited."
+        },
+        "status": "ok",
+        "error": null
+      },
+      "assertions": [
+        {
+          "name": "tool_selection",
+          "passed": true,
+          "detail": "expected=artifact_consistency_audit; selected=artifact_consistency_audit"
+        },
+        {
+          "name": "tool_status",
+          "passed": true,
+          "detail": "status=ok; error=None"
+        },
+        {
+          "name": "must_equal:consistent",
+          "passed": true,
+          "detail": "expected=False; actual=False"
+        },
+        {
+          "name": "must_equal:consistency_score",
+          "passed": true,
+          "detail": "expected=0; actual=0"
+        },
+        {
+          "name": "must_contain:missing_required",
+          "passed": true,
+          "detail": "expected list to contain 'artifact_id_required'; actual=['artifact_id_required']"
         }
       ],
       "score": 1.0,

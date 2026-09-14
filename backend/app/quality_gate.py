@@ -15,7 +15,7 @@ FailureCategory = Literal[
 
 
 class QualityGateConfig(BaseModel):
-    min_total_tasks: int = 34
+    min_total_tasks: int = 38
     min_pass_rate: float = 1.0
     min_average_score: float = 1.0
     max_failed_tasks: int = 0

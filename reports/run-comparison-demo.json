@@ -6,10 +6,10 @@
   "total_tasks_delta": 0,
   "passed_tasks_delta": 1,
   "failed_tasks_delta": -1,
-  "average_score_delta": 0.0294,
+  "average_score_delta": 0.0263,
   "status_counts": {
     "recovery": 1,
-    "unchanged_pass": 33
+    "unchanged_pass": 37
   },
   "task_comparisons": [
     {
@@ -51,6 +51,54 @@
     {
       "task_id": "application-unknown-event",
       "title": "Normalize an unknown application event",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "artifact-consistency-current-proof",
+      "title": "Audit artifact consistency for the current public proof package",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "artifact-consistency-docs-only",
+      "title": "Audit docs-only artifact consistency proof-marker gaps",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "artifact-consistency-stale-counts",
+      "title": "Find stale public proof counts in artifact consistency audit",
+      "status": "unchanged_pass",
+      "previous_passed": true,
+      "current_passed": true,
+      "previous_score": 1.0,
+      "current_score": 1.0,
+      "score_delta": 0.0,
+      "previous_category": "passed",
+      "current_category": "passed"
+    },
+    {
+      "task_id": "artifact-consistency-wrong-identifier-key",
+      "title": "Ask for artifact consistency with the wrong identifier field",
       "status": "unchanged_pass",
       "previous_passed": true,
       "current_passed": true,

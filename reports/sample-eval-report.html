@@ -297,8 +297,8 @@
     </header>
 
     <section class="summary" aria-label="Evaluation summary">
-      <div class="metric"><span>Total Tasks</span><strong>34</strong></div>
-      <div class="metric"><span>Passed</span><strong>34</strong></div>
+      <div class="metric"><span>Total Tasks</span><strong>38</strong></div>
+      <div class="metric"><span>Passed</span><strong>38</strong></div>
       <div class="metric"><span>Failed</span><strong>0</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100.0%</strong></div>
     </section>
@@ -309,23 +309,23 @@
       <div class="evidence-grid">
         <div class="evidence-item">
           <span>Deterministic baseline</span>
-          <strong>34/34 tasks pass</strong>
+          <strong>38/38 tasks pass</strong>
           <p>Average assertion score: 1.0000.</p>
         </div>
         <div class="evidence-item">
           <span>Tool coverage</span>
-          <strong>7 tools exercised</strong>
-          <p><code>application_tracker_update</code><br><code>course_note_search</code><br><code>launch_readiness_audit</code><br><code>profile_readme_audit</code><br><code>repo_health_check</code><br><code>role_readiness_audit</code><br><code>runbook_lookup</code></p>
+          <strong>8 tools exercised</strong>
+          <p><code>application_tracker_update</code><br><code>artifact_consistency_audit</code><br><code>course_note_search</code><br><code>launch_readiness_audit</code><br><code>profile_readme_audit</code><br><code>repo_health_check</code><br><code>role_readiness_audit</code><br><code>runbook_lookup</code></p>
         </div>
         <div class="evidence-item">
           <span>Traceability</span>
-          <strong>34/34 traces recorded</strong>
+          <strong>38/38 traces recorded</strong>
           <p>Each task keeps the planner rationale, selected tool, and tool result.</p>
         </div>
         <div class="evidence-item">
           <span>Regression guard</span>
           <strong>Passing</strong>
-          <p>Requires at least 34 tasks, 100% pass rate, 1.0 average score, and only passed failure categories.</p>
+          <p>Requires at least 38 tasks, 100% pass rate, 1.0 average score, and only passed failure categories.</p>
         </div>
       </div>
     </section>
@@ -357,6 +357,11 @@
         </tr>
 
         <tr>
+          <td><code>artifact_consistency_audit</code></td>
+          <td>4</td>
+        </tr>
+
+        <tr>
           <td><code>profile_readme_audit</code></td>
           <td>4</td>
         </tr>
@@ -381,7 +386,7 @@
             
         <tr>
           <td><code>passed</code></td>
-          <td>34</td>
+          <td>38</td>
         </tr>
 
           </tbody>
@@ -1712,6 +1717,163 @@
       <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
       <h2>Tool Call Trace</h2>
       <p><code>launch_readiness_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Audit artifact consistency for the current public proof package</strong>
+      <p>artifact-consistency-current-proof</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>artifact_consistency_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>artifact_consistency_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>artifact consistency, artifact consistency audit, public proof markers, proof markers, current eval count</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=artifact_consistency_audit; selected=artifact_consistency_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:consistent: expected=True; actual=True</li>
+<li><strong>pass</strong> must_equal:consistency_score: expected=100; actual=100</li>
+<li><strong>pass</strong> must_contain:matched_required: expected list to contain &#x27;architecture-flow&#x27;; actual=[&#x27;current-eval-count&#x27;, &#x27;current-tool-count&#x27;, &#x27;quality-gate-proof&#x27;, &#x27;traceability-guide&#x27;, &#x27;architecture-flow&#x27;, &#x27;openapi-contract&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>artifact_consistency_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Find stale public proof counts in artifact consistency audit</strong>
+      <p>artifact-consistency-stale-counts</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>artifact_consistency_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>artifact_consistency_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>artifact consistency, artifact consistency audit, stale public proof, stale task-count, tool-count markers</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=artifact_consistency_audit; selected=artifact_consistency_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:consistent: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:consistency_score: expected=67; actual=67</li>
+<li><strong>pass</strong> must_contain:missing_required: expected list to contain &#x27;current-eval-count&#x27;; actual=[&#x27;current-eval-count&#x27;, &#x27;current-tool-count&#x27;]</li>
+<li><strong>pass</strong> must_contain:stale_markers: expected list to contain &#x27;old-eval-count&#x27;; actual=[&#x27;old-eval-count&#x27;, &#x27;old-tool-count&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>artifact_consistency_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Audit docs-only artifact consistency proof-marker gaps</strong>
+      <p>artifact-consistency-docs-only</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>artifact_consistency_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>artifact_consistency_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.95</dd>
+      <dt>Signals</dt>
+      <dd>artifact consistency, artifact consistency audit, public proof markers, proof-marker, proof markers, proof drift</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=artifact_consistency_audit; selected=artifact_consistency_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:consistent: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:consistency_score: expected=67; actual=67</li>
+<li><strong>pass</strong> must_contain:missing_required: expected list to contain &#x27;quality-gate-proof&#x27;; actual=[&#x27;quality-gate-proof&#x27;, &#x27;openapi-contract&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>artifact_consistency_audit</code> returned <code>ok</code>.</p>
+    </div>
+  </div>
+</article>
+
+
+<article class="task">
+  <div class="task-header">
+    <div class="task-title">
+      <strong>Ask for artifact consistency with the wrong identifier field</strong>
+      <p>artifact-consistency-wrong-identifier-key</p>
+    </div>
+    <span class="badge passed">Passed</span>
+  </div>
+  <div class="task-body">
+    <dl>
+      <dt>Expected</dt>
+      <dd><code>artifact_consistency_audit</code></dd>
+      <dt>Selected</dt>
+      <dd><code>artifact_consistency_audit</code></dd>
+      <dt>Score</dt>
+      <dd>1.00</dd>
+      <dt>Category</dt>
+      <dd>passed</dd>
+      <dt>Confidence</dt>
+      <dd>0.81</dd>
+      <dt>Signals</dt>
+      <dd>artifact consistency, artifact consistency audit, artifact id</dd>
+    </dl>
+    <div>
+      <h2>Assertions</h2>
+      <ul><li><strong>pass</strong> tool_selection: expected=artifact_consistency_audit; selected=artifact_consistency_audit</li>
+<li><strong>pass</strong> tool_status: status=ok; error=None</li>
+<li><strong>pass</strong> must_equal:consistent: expected=False; actual=False</li>
+<li><strong>pass</strong> must_equal:consistency_score: expected=0; actual=0</li>
+<li><strong>pass</strong> must_contain:missing_required: expected list to contain &#x27;artifact_id_required&#x27;; actual=[&#x27;artifact_id_required&#x27;]</li></ul>
+      <h2>Planner Rationale</h2>
+      <p>Selected the tool with the strongest deterministic signal match from the task title, description, and input payload.</p>
+      <h2>Tool Call Trace</h2>
+      <p><code>artifact_consistency_audit</code> returned <code>ok</code>.</p>
     </div>
   </div>
 </article>

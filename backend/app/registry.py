@@ -3,6 +3,7 @@ from typing import Any
 
 from app.models import ToolDefinition
 from app.tools.application_tracker import application_tracker_update
+from app.tools.artifact_consistency import artifact_consistency_audit
 from app.tools.course_notes import course_note_search
 from app.tools.launch_readiness import launch_readiness_audit
 from app.tools.profile_readme import profile_readme_audit
@@ -73,5 +74,10 @@ def build_default_registry() -> ToolRegistry:
         "launch_readiness_audit",
         "Audits a public project proof package before launch or promotion.",
         launch_readiness_audit,
+    )
+    registry.register(
+        "artifact_consistency_audit",
+        "Audits public proof artifacts for stale or missing consistency markers.",
+        artifact_consistency_audit,
     )
     return registry

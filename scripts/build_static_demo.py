@@ -74,7 +74,7 @@ def render_index() -> str:
         ("Traceability Guide", "traceability.html", "Follow one task from fixture to planner, trace, and assertions."),
         ("Architecture Flow", "architecture-flow.html", "See how fixtures, planner, tools, scoring, reports, and quality gate connect."),
         ("Dashboard", "reports/dashboard.html", "Start with the portfolio demo index."),
-        ("Task Catalog", "reports/task-catalog.html", "Inspect all 34 deterministic tasks."),
+        ("Task Catalog", "reports/task-catalog.html", "Inspect all 38 deterministic tasks."),
         ("Eval Report", "reports/sample-eval-report.html", "Review traces, assertions, and scoring."),
         ("Quality Gate", "reports/quality-gate.json", "See the strict regression gate output."),
         ("Failure Catalog", "reports/failure-catalog.html", "Inspect deliberate failure categories."),
@@ -86,7 +86,7 @@ def render_index() -> str:
     inspection_steps = [
         (
             "reports/sample-eval-report.html",
-            "Confirm the report shows 34/34 tasks pass, 7 tools exercised, 34/34 traces, and a passing regression guard.",
+            "Confirm the report shows 38/38 tasks pass, 8 tools exercised, 38/38 traces, and a passing regression guard.",
         ),
         (
             "reports/task-catalog.html",
@@ -292,11 +292,11 @@ def render_index() -> str:
   <main>
     <header>
       <h1>Agent Reliability Eval Lab Demo</h1>
-      <p class="summary">Static public demo for a deterministic tool-use evaluation lab. The default path runs without API keys, scores 34 tasks across 7 local tools, and publishes the same reports verified by CI.</p>
+      <p class="summary">Static public demo for a deterministic tool-use evaluation lab. The default path runs without API keys, scores 38 tasks across 8 local tools, and publishes the same reports verified by CI.</p>
     </header>
     <section class="metrics" aria-label="Demo metrics">
-      <div class="metric"><span>Tasks</span><strong>34</strong></div>
-      <div class="metric"><span>Tools</span><strong>7</strong></div>
+      <div class="metric"><span>Tasks</span><strong>38</strong></div>
+      <div class="metric"><span>Tools</span><strong>8</strong></div>
       <div class="metric"><span>Pass Rate</span><strong>100%</strong></div>
       <div class="metric"><span>CI Path</span><strong>No Keys</strong></div>
     </section>
@@ -426,6 +426,10 @@ def render_architecture_flow() -> str:
       margin-top: 8px;
       overflow-wrap: anywhere;
     }
+    .proof-note {
+      margin: 0;
+      max-width: 820px;
+    }
     .flow {
       display: grid;
       grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -490,11 +494,12 @@ def render_architecture_flow() -> str:
     <section aria-label="Current Proof">
       <h2>Current Proof</h2>
       <div class="proof">
-        <div class="metric"><span>Eval Result</span><strong>34/34</strong></div>
-        <div class="metric"><span>Tool Coverage</span><strong>7 tools</strong></div>
+        <div class="metric"><span>Eval Result</span><strong>38/38</strong></div>
+        <div class="metric"><span>Tool Coverage</span><strong>8 tools</strong></div>
         <div class="metric"><span>Launch Cases</span><strong>8 tasks</strong></div>
         <div class="metric"><span>Default Path</span><strong>No Keys</strong></div>
       </div>
+      <p class="proof-note">The suite now includes 4 artifact-consistency tasks that check stale public proof markers before they reach reviewers.</p>
     </section>
 
     <section aria-label="Evaluation Path">
@@ -810,8 +815,8 @@ def render_case_study() -> str:
     <section>
       <h2>What It Evaluates</h2>
       <ul>
-        <li>Tool selection across <strong>34</strong> public-safe tasks.</li>
-        <li>Tool-call traces for <strong>7</strong> deterministic local tools.</li>
+        <li>Tool selection across <strong>38</strong> public-safe tasks.</li>
+        <li>Tool-call traces for <strong>8</strong> deterministic local tools.</li>
         <li>Assertion-level scoring for expected fields and values.</li>
         <li>Failure categories for tool selection, tool execution, and output assertions.</li>
         <li>Saved-run comparison and trend views for regression visibility.</li>

@@ -1,0 +1,18 @@
+{
+  "id": "artifact-consistency-wrong-identifier-key",
+  "title": "Ask for artifact consistency with the wrong identifier field",
+  "description": "A reviewer asks for an artifact consistency audit but sends a repo slug instead of the required artifact id.",
+  "expected_tool": "artifact_consistency_audit",
+  "input": {
+    "repo_slug": "agent-reliability-eval-lab"
+  },
+  "expectations": {
+    "must_equal": {
+      "consistent": false,
+      "consistency_score": 0
+    },
+    "must_contain": {
+      "missing_required": "artifact_id_required"
+    }
+  }
+}

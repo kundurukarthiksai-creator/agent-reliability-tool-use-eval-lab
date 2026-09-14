@@ -21,9 +21,10 @@ This project is designed to make tool-use evaluation inspectable. A reviewer sho
 
 ## Current Proof
 
-- `34/34` deterministic tasks pass.
-- `7` local tools are exercised.
+- `38/38` deterministic tasks pass.
+- `8` local tools are exercised.
 - `8` launch-readiness tasks test reviewer-facing project proof.
+- `4` artifact-consistency tasks test stale public proof markers.
 - The default path uses no API keys, paid model calls, or private data.
 
 ## Why This Matters

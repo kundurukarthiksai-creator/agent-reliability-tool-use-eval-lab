@@ -1,0 +1,19 @@
+{
+  "id": "artifact-consistency-stale-counts",
+  "title": "Find stale public proof counts in artifact consistency audit",
+  "description": "A reviewer asks for an artifact consistency audit because the public proof package appears to have stale task-count and tool-count markers.",
+  "expected_tool": "artifact_consistency_audit",
+  "input": {
+    "artifact_id": "eval-lab-stale-counts"
+  },
+  "expectations": {
+    "must_equal": {
+      "consistent": false,
+      "consistency_score": 67
+    },
+    "must_contain": {
+      "missing_required": "current-eval-count",
+      "stale_markers": "old-eval-count"
+    }
+  }
+}

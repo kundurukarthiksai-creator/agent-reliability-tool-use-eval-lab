@@ -14,4 +14,5 @@ def test_default_registry_contains_mvp_tools():
         "profile_readme_audit",
         "role_readiness_audit",
         "launch_readiness_audit",
+        "artifact_consistency_audit",
     }

@@ -19,9 +19,9 @@ def test_render_eval_report_html_contains_summary_and_trace():
     assert "Pass Rate" in html
     assert "Reviewer Evidence Summary" in html
     assert "Deterministic baseline" in html
-    assert "34/34 tasks pass" in html
-    assert "7 tools exercised" in html
-    assert "34/34 traces recorded" in html
+    assert "38/38 tasks pass" in html
+    assert "8 tools exercised" in html
+    assert "38/38 traces recorded" in html
     assert "Regression guard" in html
     assert "Category" in html
     assert "Tool Selection" in html
@@ -43,7 +43,7 @@ def test_render_dashboard_html_contains_navigation_and_tools():
     assert "/eval/runs/trends.html" in html
     assert "runbook_lookup" in html
     assert "profile_readme_audit" in html
-    assert "34" in html
+    assert "38" in html
 
 
 def test_render_task_catalog_html_contains_tool_coverage_counts():
@@ -56,6 +56,7 @@ def test_render_task_catalog_html_contains_tool_coverage_counts():
     assert "repo_health_check" in html
     assert "profile_readme_audit" in html
     assert "launch_readiness_audit" in html
+    assert "artifact_consistency_audit" in html
     assert 'data-label="Tasks">6</td>' in html
 
 
@@ -66,7 +67,7 @@ def test_render_runs_index_html_contains_saved_run(tmp_path):
 
     assert "Saved Evaluation Runs" in html
     assert f"#{saved.run_id}" in html
-    assert "34" in html
+    assert "38" in html
 
 
 def test_render_runs_index_html_handles_empty_state():

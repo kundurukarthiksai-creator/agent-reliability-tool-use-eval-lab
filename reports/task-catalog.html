@@ -230,8 +230,8 @@
     </header>
 
     <section class="summary" aria-label="Task catalog summary">
-      <div class="metric"><span>Tasks</span><strong>34</strong></div>
-      <div class="metric"><span>Tools</span><strong>7</strong></div>
+      <div class="metric"><span>Tasks</span><strong>38</strong></div>
+      <div class="metric"><span>Tools</span><strong>8</strong></div>
       <div class="metric"><span>Fixture Type</span><strong>Public</strong></div>
     </section>
 
@@ -689,6 +689,58 @@
           </td>
         </tr>
 
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Audit artifact consistency for the current public proof package</strong>
+            <code>artifact-consistency-current-proof</code>
+          </td>
+          <td data-label="Expected Tool"><code>artifact_consistency_audit</code></td>
+          <td data-label="Checks">
+            A reviewer asks whether the artifact consistency audit sees fresh public proof markers for current eval count, tool count, quality gate, traceability guide, architecture flow, and OpenAPI contract.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Find stale public proof counts in artifact consistency audit</strong>
+            <code>artifact-consistency-stale-counts</code>
+          </td>
+          <td data-label="Expected Tool"><code>artifact_consistency_audit</code></td>
+          <td data-label="Checks">
+            A reviewer asks for an artifact consistency audit because the public proof package appears to have stale task-count and tool-count markers.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Audit docs-only artifact consistency proof-marker gaps</strong>
+            <code>artifact-consistency-docs-only</code>
+          </td>
+          <td data-label="Expected Tool"><code>artifact_consistency_audit</code></td>
+          <td data-label="Checks">
+            A reviewer asks for an artifact consistency audit of public proof markers. The artifact consistency check should catch proof drift in a docs-only package that has architecture and traceability pages but lacks quality gate and OpenAPI contract proof.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Task">
+            <strong class="task-title">Ask for artifact consistency with the wrong identifier field</strong>
+            <code>artifact-consistency-wrong-identifier-key</code>
+          </td>
+          <td data-label="Expected Tool"><code>artifact_consistency_audit</code></td>
+          <td data-label="Checks">
+            A reviewer asks for an artifact consistency audit but sends a repo slug instead of the required artifact id.
+            <div class="expectations">Assertions: must_contain, must_equal</div>
+          </td>
+        </tr>
+
           </tbody>
         </table>
       </section>
@@ -751,6 +803,13 @@
           <td data-label="Tool"><code>launch_readiness_audit</code></td>
           <td data-label="Tasks">8</td>
           <td data-label="Description">Audits a public project proof package before launch or promotion.</td>
+        </tr>
+
+
+        <tr>
+          <td data-label="Tool"><code>artifact_consistency_audit</code></td>
+          <td data-label="Tasks">4</td>
+          <td data-label="Description">Audits public proof artifacts for stale or missing consistency markers.</td>
         </tr>
 
           </tbody>

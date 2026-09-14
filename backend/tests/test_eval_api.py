@@ -20,6 +20,7 @@ def test_tools_endpoint_lists_registered_tools():
         "profile_readme_audit",
         "role_readiness_audit",
         "launch_readiness_audit",
+        "artifact_consistency_audit",
     }
 
 
@@ -44,7 +45,7 @@ def test_eval_task_catalog_endpoints_return_public_task_coverage():
 
     assert json_response.status_code == 200
     tasks = json_response.json()
-    assert len(tasks) == 34
+    assert len(tasks) == 38
     assert tasks[0]["id"] == "repo-health-ready"
     assert {task["expected_tool"] for task in tasks} == {
         "repo_health_check",
@@ -54,10 +55,11 @@ def test_eval_task_catalog_endpoints_return_public_task_coverage():
         "profile_readme_audit",
         "role_readiness_audit",
         "launch_readiness_audit",
+        "artifact_consistency_audit",
     }
     assert coverage_response.status_code == 200
     assert coverage_response.json() == {
-        "total_tasks": 34,
+        "total_tasks": 38,
         "coverage": [
             {"tool_name": "repo_health_check", "task_count": 6},
             {"tool_name": "course_note_search", "task_count": 5},
@@ -66,6 +68,7 @@ def test_eval_task_catalog_endpoints_return_public_task_coverage():
             {"tool_name": "profile_readme_audit", "task_count": 4},
             {"tool_name": "role_readiness_audit", "task_count": 4},
             {"tool_name": "launch_readiness_audit", "task_count": 8},
+            {"tool_name": "artifact_consistency_audit", "task_count": 4},
         ],
     }
     assert html_response.status_code == 200
@@ -82,7 +85,7 @@ def test_planner_comparison_endpoints_return_default_comparison():
 
     assert json_response.status_code == 200
     assert json_response.json()[0]["planner_name"] == "rule_based"
-    assert json_response.json()[0]["passed_tasks"] == 34
+    assert json_response.json()[0]["passed_tasks"] == 38
     assert html_response.status_code == 200
     assert html_response.headers["content-type"].startswith("text/html")
     assert "Planner Comparison" in html_response.text
@@ -96,12 +99,12 @@ def test_eval_run_endpoint_returns_passing_report():
     assert response.status_code == 200
     payload = response.json()
     assert payload["summary"] == {
-        "total_tasks": 34,
-        "passed_tasks": 34,
+        "total_tasks": 38,
+        "passed_tasks": 38,
         "failed_tasks": 0,
         "average_score": 1.0,
     }
-    assert len(payload["results"]) == 34
+    assert len(payload["results"]) == 38
     assert all("agent_plan" in result for result in payload["results"])
     assert all(result["trace"] for result in payload["results"])
 
@@ -149,7 +152,7 @@ def test_persisted_eval_run_read_endpoints(monkeypatch, tmp_path):
     assert list_response.status_code == 200
     assert list_response.json()[0]["run_id"] == saved.run_id
     assert get_response.status_code == 200
-    assert get_response.json()["report"]["summary"]["total_tasks"] == 34
+    assert get_response.json()["report"]["summary"]["total_tasks"] == 38
     assert missing_response.status_code == 404
 
 

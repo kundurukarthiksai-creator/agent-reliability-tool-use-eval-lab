@@ -1,0 +1,53 @@
+{
+  "required_markers": [
+    "current-eval-count",
+    "current-tool-count",
+    "quality-gate-proof",
+    "traceability-guide",
+    "architecture-flow",
+    "openapi-contract"
+  ],
+  "artifacts": [
+    {
+      "id": "eval-lab-current-proof",
+      "summary": "Current public proof package with fresh task/tool counts, quality gate, traceability guide, architecture flow, and OpenAPI contract.",
+      "markers": [
+        "current-eval-count",
+        "current-tool-count",
+        "quality-gate-proof",
+        "traceability-guide",
+        "architecture-flow",
+        "openapi-contract",
+        "failure-catalog",
+        "task-catalog"
+      ],
+      "stale_markers": []
+    },
+    {
+      "id": "eval-lab-stale-counts",
+      "summary": "Public proof package with useful evidence links, but stale task and tool count claims.",
+      "markers": [
+        "quality-gate-proof",
+        "traceability-guide",
+        "architecture-flow",
+        "openapi-contract",
+        "failure-catalog"
+      ],
+      "stale_markers": [
+        "old-eval-count",
+        "old-tool-count"
+      ]
+    },
+    {
+      "id": "eval-lab-docs-only",
+      "summary": "Public proof package with helpful docs, but missing contract and quality-gate proof.",
+      "markers": [
+        "current-eval-count",
+        "current-tool-count",
+        "traceability-guide",
+        "architecture-flow"
+      ],
+      "stale_markers": []
+    }
+  ]
+}

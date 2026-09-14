@@ -1,0 +1,18 @@
+{
+  "id": "artifact-consistency-current-proof",
+  "title": "Audit artifact consistency for the current public proof package",
+  "description": "A reviewer asks whether the artifact consistency audit sees fresh public proof markers for current eval count, tool count, quality gate, traceability guide, architecture flow, and OpenAPI contract.",
+  "expected_tool": "artifact_consistency_audit",
+  "input": {
+    "artifact_id": "eval-lab-current-proof"
+  },
+  "expectations": {
+    "must_equal": {
+      "consistent": true,
+      "consistency_score": 100
+    },
+    "must_contain": {
+      "matched_required": "architecture-flow"
+    }
+  }
+}

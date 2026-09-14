@@ -43,6 +43,7 @@ def test_openai_planner_builds_structured_payload_and_parses_plan():
         "profile_readme_audit",
         "role_readiness_audit",
         "launch_readiness_audit",
+        "artifact_consistency_audit",
     ]
 
 

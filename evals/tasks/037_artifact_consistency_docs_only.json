@@ -1,0 +1,18 @@
+{
+  "id": "artifact-consistency-docs-only",
+  "title": "Audit docs-only artifact consistency proof-marker gaps",
+  "description": "A reviewer asks for an artifact consistency audit of public proof markers. The artifact consistency check should catch proof drift in a docs-only package that has architecture and traceability pages but lacks quality gate and OpenAPI contract proof.",
+  "expected_tool": "artifact_consistency_audit",
+  "input": {
+    "artifact_id": "eval-lab-docs-only"
+  },
+  "expectations": {
+    "must_equal": {
+      "consistent": false,
+      "consistency_score": 67
+    },
+    "must_contain": {
+      "missing_required": "quality-gate-proof"
+    }
+  }
+}

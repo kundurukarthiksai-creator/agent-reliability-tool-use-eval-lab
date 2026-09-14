@@ -97,6 +97,23 @@ SIGNALS_BY_TOOL = {
         "proof package",
         "honest limits",
     ],
+    "artifact_consistency_audit": [
+        "artifact consistency",
+        "artifact consistency audit",
+        "artifact markers",
+        "public proof markers",
+        "proof-marker",
+        "proof markers",
+        "stale public proof",
+        "stale proof",
+        "stale task-count",
+        "stale task count",
+        "tool-count markers",
+        "proof drift",
+        "current eval count",
+        "current tool count",
+        "artifact id",
+    ],
 }
 
 

@@ -1,23 +1,23 @@
 [
   {
     "planner_name": "rule_based",
-    "total_tasks": 34,
-    "passed_tasks": 34,
+    "total_tasks": 38,
+    "passed_tasks": 38,
     "failed_tasks": 0,
     "average_score": 1.0,
     "failure_categories": {
-      "passed": 34
+      "passed": 38
     }
   },
   {
     "planner_name": "always_course_notes",
-    "total_tasks": 34,
+    "total_tasks": 38,
     "passed_tasks": 5,
-    "failed_tasks": 29,
-    "average_score": 0.3525,
+    "failed_tasks": 33,
+    "average_score": 0.3355,
     "failure_categories": {
       "passed": 5,
-      "tool_selection": 29
+      "tool_selection": 33
     }
   }
 ]
