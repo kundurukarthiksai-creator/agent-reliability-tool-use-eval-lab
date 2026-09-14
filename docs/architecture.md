@@ -53,6 +53,7 @@ API:
 - `GET /planners/compare` compares default planner summaries as JSON.
 - `GET /planners/compare.html` renders default planner comparison as HTML.
 - `GET /eval/tasks` lists deterministic evaluation tasks as JSON.
+- `GET /eval/tasks/coverage` summarizes task coverage by expected tool as JSON.
 - `GET /eval/tasks.html` renders task coverage as HTML.
 - `POST /eval/run` executes all starter tasks and returns an `EvalReport`.
 - `POST /eval/runs` executes and saves an eval run to SQLite.

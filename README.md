@@ -92,6 +92,7 @@ GET  /tools
 GET  /planners/compare
 GET  /planners/compare.html
 GET  /eval/tasks
+GET  /eval/tasks/coverage
 GET  /eval/tasks.html
 POST /eval/run
 POST /eval/runs

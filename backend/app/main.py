@@ -12,6 +12,7 @@ from app.models import (
     EvalRunMetadata,
     EvalRunRecord,
     EvaluationTask,
+    TaskCatalogSummary,
     ToolDefinition,
 )
 from app.reporting import (
@@ -29,6 +30,7 @@ from app.run_comparison import (
 from app.run_trends import EvalRunTrend, build_run_trend, render_run_trend_html
 from app.runner import load_tasks, run_evaluation
 from app.storage import get_latest_run_pair, get_run, list_runs, save_report
+from app.task_catalog import summarize_task_coverage
 
 
 class HealthResponse(BaseModel):
@@ -83,6 +85,12 @@ async def compare_default_planners_html() -> HTMLResponse:
 @app.get("/eval/tasks", response_model=list[EvaluationTask])
 async def eval_tasks() -> list[EvaluationTask]:
     return load_tasks()
+
+
+@app.get("/eval/tasks/coverage", response_model=TaskCatalogSummary)
+async def eval_tasks_coverage() -> TaskCatalogSummary:
+    registry = build_default_registry()
+    return summarize_task_coverage(load_tasks(), registry.list_tools())
 
 
 @app.get("/eval/tasks.html", response_class=HTMLResponse)

@@ -57,6 +57,7 @@ Useful pages:
 http://127.0.0.1:8000/reports/latest.html
 http://127.0.0.1:8000/
 http://127.0.0.1:8000/eval/tasks.html
+http://127.0.0.1:8000/eval/tasks/coverage
 http://127.0.0.1:8000/eval/runs.html
 http://127.0.0.1:8000/eval/runs/compare.html
 http://127.0.0.1:8000/eval/runs/trends.html

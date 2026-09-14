@@ -16,6 +16,7 @@ Generated schemas:
 - `docs/schemas/eval-run-comparison.schema.json`
 - `docs/schemas/eval-run-trend.schema.json`
 - `docs/schemas/planner-comparison-result.schema.json`
+- `docs/schemas/task-catalog-summary.schema.json`
 
 These schemas describe:
 
@@ -24,4 +25,5 @@ These schemas describe:
 - persisted run record format;
 - saved run comparison format;
 - saved run trend summary format;
-- planner comparison summary format.
+- planner comparison summary format;
+- task catalog coverage summary format.

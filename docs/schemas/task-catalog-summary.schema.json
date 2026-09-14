@@ -1,0 +1,41 @@
+{
+  "$defs": {
+    "ToolTaskCoverage": {
+      "properties": {
+        "tool_name": {
+          "title": "Tool Name",
+          "type": "string"
+        },
+        "task_count": {
+          "title": "Task Count",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tool_name",
+        "task_count"
+      ],
+      "title": "ToolTaskCoverage",
+      "type": "object"
+    }
+  },
+  "properties": {
+    "total_tasks": {
+      "title": "Total Tasks",
+      "type": "integer"
+    },
+    "coverage": {
+      "items": {
+        "$ref": "#/$defs/ToolTaskCoverage"
+      },
+      "title": "Coverage",
+      "type": "array"
+    }
+  },
+  "required": [
+    "total_tasks",
+    "coverage"
+  ],
+  "title": "TaskCatalogSummary",
+  "type": "object"
+}

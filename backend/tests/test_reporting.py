@@ -2,9 +2,10 @@ from app.reporting import (
     render_dashboard_html,
     render_eval_report_html,
     render_runs_index_html,
+    render_task_catalog_html,
 )
 from app.registry import build_default_registry
-from app.runner import run_evaluation
+from app.runner import load_tasks, run_evaluation
 from app.storage import save_report
 
 
@@ -32,6 +33,17 @@ def test_render_dashboard_html_contains_navigation_and_tools():
     assert "/eval/runs/trends.html" in html
     assert "runbook_lookup" in html
     assert "18" in html
+
+
+def test_render_task_catalog_html_contains_tool_coverage_counts():
+    registry = build_default_registry()
+
+    html = render_task_catalog_html(load_tasks(), registry.list_tools())
+
+    assert "Evaluation Task Catalog" in html
+    assert "repo-health-ready" in html
+    assert "repo_health_check" in html
+    assert 'data-label="Tasks">6</td>' in html
 
 
 def test_render_runs_index_html_contains_saved_run(tmp_path):

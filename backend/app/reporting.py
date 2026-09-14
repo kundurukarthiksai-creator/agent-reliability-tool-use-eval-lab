@@ -8,6 +8,7 @@ from app.models import (
     TaskRunResult,
     ToolDefinition,
 )
+from app.task_catalog import summarize_task_coverage
 
 
 def render_dashboard_html(
@@ -261,7 +262,13 @@ def render_task_catalog_html(
     tools: list[ToolDefinition],
 ) -> str:
     rows = "\n".join(_render_task_catalog_row(task) for task in tasks)
-    tool_rows = "\n".join(_render_tool_row(tool) for tool in tools)
+    coverage_by_tool = {
+        item.tool_name: item.task_count
+        for item in summarize_task_coverage(tasks, tools).coverage
+    }
+    tool_rows = "\n".join(
+        _render_catalog_tool_row(tool, coverage_by_tool[tool.name]) for tool in tools
+    )
 
     return f"""<!doctype html>
 <html lang="en">
@@ -520,6 +527,7 @@ def render_task_catalog_html(
           <thead>
             <tr>
               <th>Tool</th>
+              <th>Tasks</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -866,6 +874,16 @@ def _render_tool_row(tool: ToolDefinition) -> str:
     return f"""
         <tr>
           <td data-label="Tool"><code>{escape(tool.name)}</code></td>
+          <td data-label="Description">{escape(tool.description)}</td>
+        </tr>
+"""
+
+
+def _render_catalog_tool_row(tool: ToolDefinition, task_count: int) -> str:
+    return f"""
+        <tr>
+          <td data-label="Tool"><code>{escape(tool.name)}</code></td>
+          <td data-label="Tasks">{task_count}</td>
           <td data-label="Description">{escape(tool.description)}</td>
         </tr>
 """

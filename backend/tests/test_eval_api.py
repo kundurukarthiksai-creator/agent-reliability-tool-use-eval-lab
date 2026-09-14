@@ -36,6 +36,7 @@ def test_eval_task_catalog_endpoints_return_public_task_coverage():
     client = TestClient(app)
 
     json_response = client.get("/eval/tasks")
+    coverage_response = client.get("/eval/tasks/coverage")
     html_response = client.get("/eval/tasks.html")
 
     assert json_response.status_code == 200
@@ -47,6 +48,16 @@ def test_eval_task_catalog_endpoints_return_public_task_coverage():
         "course_note_search",
         "application_tracker_update",
         "runbook_lookup",
+    }
+    assert coverage_response.status_code == 200
+    assert coverage_response.json() == {
+        "total_tasks": 18,
+        "coverage": [
+            {"tool_name": "repo_health_check", "task_count": 6},
+            {"tool_name": "course_note_search", "task_count": 5},
+            {"tool_name": "application_tracker_update", "task_count": 4},
+            {"tool_name": "runbook_lookup", "task_count": 3},
+        ],
     }
     assert html_response.status_code == 200
     assert html_response.headers["content-type"].startswith("text/html")

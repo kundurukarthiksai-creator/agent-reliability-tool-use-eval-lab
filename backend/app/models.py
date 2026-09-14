@@ -17,6 +17,16 @@ class ToolDefinition(BaseModel):
     description: str
 
 
+class ToolTaskCoverage(BaseModel):
+    tool_name: str
+    task_count: int
+
+
+class TaskCatalogSummary(BaseModel):
+    total_tasks: int
+    coverage: list[ToolTaskCoverage]
+
+
 class ToolResult(BaseModel):
     tool_name: str
     output: dict[str, Any]
