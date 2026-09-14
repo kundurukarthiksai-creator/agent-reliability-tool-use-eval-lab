@@ -1,7 +1,7 @@
 from app.runner import load_tasks, run_evaluation
 
 
-def test_loads_twenty_six_starter_tasks():
+def test_loads_twenty_six_deterministic_tasks():
     tasks = load_tasks()
 
     assert len(tasks) == 26
@@ -15,7 +15,7 @@ def test_loads_twenty_six_starter_tasks():
     }
 
 
-def test_evaluation_report_all_starter_tasks_pass():
+def test_evaluation_report_all_deterministic_tasks_pass():
     report = run_evaluation()
 
     assert report.summary.total_tasks == 26

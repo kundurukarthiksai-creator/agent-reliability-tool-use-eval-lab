@@ -11,7 +11,7 @@ This folder contains deterministic evaluation fixtures and tasks.
 
 ## Tasks
 
-The current starter set has 26 tasks, including happy-path checks and adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, missing repository fixtures, incident runbook lookup, profile README readiness, and target-role readiness.
+The current focused corpus has 26 tasks, including happy-path checks and adversarial cases for noisy wording, missing required fields, no-match retrieval, unverified repositories, missing repository fixtures, incident runbook lookup, profile README readiness, and target-role readiness.
 
 Each task is a JSON object with:
 
